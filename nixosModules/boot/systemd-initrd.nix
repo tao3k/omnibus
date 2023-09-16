@@ -2,7 +2,7 @@
   config =
     with lib;
     mkMerge [
-      (mkIf cfg.__profiles__.systemd-initrd {
+      (mkIf cfg.__profiles__.systemd-initrd.enable {
         boot = {
           loader = {
             # timeout = 0;

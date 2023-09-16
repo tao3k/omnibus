@@ -30,7 +30,10 @@
         system = "x86_64-linux";
         modules = [
           loadModules.outputsForTarget.default.boot
-          { config.boot.__profiles__.systemd-boot.enable = true; }
+          {
+            # config.boot.__profiles__.systemd-boot.enable = true;
+            config.boot.__profiles__.systemd-initrd.enable = true;
+          }
         ];
       };
     };

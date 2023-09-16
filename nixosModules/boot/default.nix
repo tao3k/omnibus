@@ -1,7 +1,7 @@
 with lib; {
   # do we need to import the submodules automatically in imports?
   imports = [
-    (builtins.scopedImport { inherit mkOpt lib; } ./systemd-initrd.nix)
+    (builtins.scopedImport { inherit mkOpt lib cfg; } ./systemd-initrd.nix)
   ];
   config = mkMerge [
     (mkIf cfg.__profiles__.systemd-boot.enable {
