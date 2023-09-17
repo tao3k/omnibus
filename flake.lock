@@ -92,11 +92,11 @@
         "yants": "yants"
       },
       "locked": {
-        "lastModified": 1694809489,
-        "narHash": "sha256-VsjTZCbKoK1Fvp3IzYANsmuXWVCfhhRIjhJGmeg+h2s=",
+        "lastModified": 1694935715,
+        "narHash": "sha256-B0tqaK6Uj3wWFdZgKYT0cgPWijDZYs0Z294tky7V6/g=",
         "owner": "gtrunsec",
         "repo": "flops",
-        "rev": "a53a508f3f4aa486a4a9571a07c89b8b04460cd4",
+        "rev": "8408d1a087f4309c730b23fa12f47c6d6043176c",
         "type": "github"
       },
       "original": {
@@ -126,27 +126,6 @@
         "type": "github"
       }
     },
-    "haumea_2": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1685133229,
-        "narHash": "sha256-FePm/Gi9PBSNwiDFq3N+DWdfxFq0UKsVVTJS3cQPn94=",
-        "owner": "nix-community",
-        "repo": "haumea",
-        "rev": "34dd58385092a23018748b50f9b23de6266dffc2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "v0.2.2",
-        "repo": "haumea",
-        "type": "github"
-      }
-    },
     "nixlib": {
       "locked": {
         "lastModified": 1653180592,
@@ -169,21 +148,6 @@
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
         "rev": "02fea408f27186f139153e1ae88f8ab2abd9c22c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "type": "github"
-      }
-    },
-    "nixlib_3": {
-      "locked": {
-        "lastModified": 1694306727,
-        "narHash": "sha256-26fkTOJOI65NOTNKFvtcJF9mzzf/kK9swHzfYt1Dl6Q=",
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "rev": "c30b6a84c0b84ec7aecbe74466033facc9ed103f",
         "type": "github"
       },
       "original": {
@@ -225,9 +189,11 @@
     },
     "root": {
       "inputs": {
+        "POP": [
+          "flops",
+          "POP"
+        ],
         "flops": "flops",
-        "haumea": "haumea_2",
-        "nixlib": "nixlib_3",
         "nixpkgs": "nixpkgs_2"
       }
     },

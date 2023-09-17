@@ -1,24 +1,26 @@
 {
   inputs = {
-    haumea = {
-      url = "github:nix-community/haumea/v0.2.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixlib.url = "github:nix-community/nixpkgs.lib";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flops.url = "github:gtrunsec/flops";
+    POP.follows = "flops/POP";
   };
 
   outputs =
     {
       self,
-      nixlib,
       nixpkgs,
       flops,
+      POP,
       ...
     }@inputs:
     let
-      l = nixlib.lib;
+      eachSystem = nixpkgs.lib.genAttrs [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ];
+      loadInputs = flops.lib.flake.pops.default.setInitInputs ./local;
       loadModules = flops.lib.haumea.pops.default.setInit {
         src = ./nixosModules;
         type = "nixosModules";
@@ -26,15 +28,36 @@
     in
     {
       inherit loadModules;
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          loadModules.outputsForTarget.default.boot
-          {
-            # config.boot.__profiles__.systemd-boot.enable = true;
-            config.boot.__profiles__.systemd-initrd.enable = true;
-          }
-        ];
-      };
+      __inputs__ =
+        (loadInputs.addInputsExtender (
+          POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
+            self: super: { inputs.nixpkgs = inputs.nixpkgs; }
+          )
+        )).setSystem
+          "x86_64-linux";
+      nixos =
+        let
+          __inputs__ =
+            (loadInputs.addInputsExtender (
+              POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
+                self: super: { inputs.nixpkgs = inputs.nixpkgs; }
+              )
+            )).setSystem
+              system;
+          system = "x86_64-linux";
+          exporter = loadModules.addLoadExtender { inputs = __inputs__.outputs; };
+        in
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          pkgs = import nixpkgs { inherit system; };
+          modules = [
+            ./examples/nixos.nix
+            exporter.outputsForTarget.default.boot
+            {
+              # config.boot.__profiles__.systemd-boot.enable = true;
+              config.boot.__profiles__.systemd-initrd.enable = true;
+            }
+          ];
+        };
     };
 }
