@@ -27,14 +27,7 @@
       };
     in
     {
-      inherit loadModules;
-      __inputs__ =
-        (loadInputs.addInputsExtender (
-          POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
-            self: super: { inputs.nixpkgs = inputs.nixpkgs; }
-          )
-        )).setSystem
-          "x86_64-linux";
+      inherit loadModules loadInputs;
       nixos =
         let
           __inputs__ =
