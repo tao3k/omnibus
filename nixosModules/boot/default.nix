@@ -2,8 +2,9 @@ with lib; {
   # do we need to import the submodules automatically in imports?
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/virtualisation/google-compute-image.nix")
     (builtins.scopedImport { inherit mkOpt lib cfg; } ./systemd-initrd.nix)
-    ({ environment.systemPackages = [ nixpkgs.legacyPackages.hello ]; })
+    ({ environment.systemPackages = [ nixpkgs.hello ]; })
   ];
   config = mkMerge [
     (mkIf cfg.__profiles__.systemd-boot.enable {

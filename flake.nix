@@ -40,7 +40,7 @@
           __inputs__ =
             (loadInputs.addInputsExtender (
               POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
-                self: super: { inputs.nixpkgs = inputs.nixpkgs; }
+                self: super: { inputs.nixpkgs = inputs.nixpkgs.legacyPackages; }
               )
             )).setSystem
               system;
@@ -54,8 +54,8 @@
             ./examples/nixos.nix
             exporter.outputsForTarget.default.boot
             {
-              # config.boot.__profiles__.systemd-boot.enable = true;
-              config.boot.__profiles__.systemd-initrd.enable = true;
+              config.boot.__profiles__.systemd-boot.enable = true;
+              # config.boot.__profiles__.systemd-initrd.enable = true;
             }
           ];
         };
