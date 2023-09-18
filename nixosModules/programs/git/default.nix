@@ -1,1 +1,4 @@
-{ enable = true; }
+{
+  enable = true;
+  imports = [ ({ environment.systemPackages = [ pkgs.git ]; }) ];
+}

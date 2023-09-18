@@ -38,14 +38,26 @@
             )).setSystem
               system;
           system = "x86_64-linux";
-          exporter = loadModules.addLoadExtender { inputs = __inputs__.outputs; };
+          exporter =
+            (loadModules.addLoadExtender { inputs = __inputs__.outputs; })
+            .outputsForTarget.nixosModules;
         in
         nixpkgs.lib.nixosSystem {
           inherit system;
           pkgs = import nixpkgs { inherit system; };
           modules = [
             ./examples/nixos.nix
-            exporter.outputsForTarget.default.boot
+            exporter.boot
+            (
+              {
+                pkgs,
+                utils,
+                config,
+                options,
+                ...
+              }@args:
+              (exporter.programs.git args)
+            )
             {
               config.boot.__profiles__.systemd-boot.enable = true;
               # config.boot.__profiles__.systemd-initrd.enable = true;
