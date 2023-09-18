@@ -1,7 +1,8 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flops.url = "github:gtrunsec/flops";
+    # flops.url = "github:gtrunsec/flops";
+    flops.url = "/home/guangtao/ghq/github.com/GTrunSec/flops";
     POP.follows = "flops/POP";
   };
 
@@ -22,7 +23,7 @@
       ];
       loadInputs = flops.lib.flake.pops.default.setInitInputs ./local;
       loadModules = flops.lib.haumea.pops.default.setInit {
-        src = ./nixosModules;
+        src = ./nixos/nixosModules;
         type = "nixosModules";
       };
     in
@@ -39,7 +40,7 @@
               system;
           system = "x86_64-linux";
           exporter =
-            (loadModules.addLoadExtender { inputs = __inputs__.outputs; })
+            (loadModules.addLoadExtender { inputs = __inputs__.outputs // { }; })
             .outputsForTarget.nixosModules;
         in
         nixpkgs.lib.nixosSystem {
@@ -48,20 +49,11 @@
           modules = [
             ./examples/nixos.nix
             exporter.boot
-            (
-              {
-                pkgs,
-                utils,
-                config,
-                options,
-                ...
-              }@args:
-              (exporter.programs.git args)
-            )
-            {
+            exporter.programs.git
+            ({
               config.boot.__profiles__.systemd-boot.enable = true;
               # config.boot.__profiles__.systemd-initrd.enable = true;
-            }
+            })
           ];
         };
     };

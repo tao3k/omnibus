@@ -92,17 +92,16 @@
         "yants": "yants"
       },
       "locked": {
+        "dirtyRev": "061491d57f2c2b64fb18866172a86e80aa6b1d7f-dirty",
+        "dirtyShortRev": "061491d-dirty",
         "lastModified": 1695015179,
-        "narHash": "sha256-qaPoIBZKHUMk/aHP5sfRNRKXQu/WjEI9YY3vsGbnAQg=",
-        "owner": "gtrunsec",
-        "repo": "flops",
-        "rev": "061491d57f2c2b64fb18866172a86e80aa6b1d7f",
-        "type": "github"
+        "narHash": "sha256-fmJSSvJ7rRBLVxULXJEt/JvoVthLxJ2HMoPgGzderZ0=",
+        "type": "git",
+        "url": "file:///home/guangtao/ghq/github.com/GTrunSec/flops"
       },
       "original": {
-        "owner": "gtrunsec",
-        "repo": "flops",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/guangtao/ghq/github.com/GTrunSec/flops"
       }
     },
     "haumea": {
