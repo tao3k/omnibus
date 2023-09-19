@@ -1,6 +1,10 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
+  inputs = {
     flops.url = "github:gtrunsec/flops";
     POP.follows = "flops/POP";
     haumea.follows = "flops/haumea";
@@ -23,22 +27,50 @@
         "x86_64-linux"
       ];
       loadInputs = flops.lib.flake.pops.default.setInitInputs ./local;
-      loadModules = flops.lib.haumea.pops.default.setInit {
+      loadNixOSModules = flops.lib.haumea.pops.default.setInit {
         src = ./nixos/nixosModules;
         type = "nixosModules";
       };
+      loadHomeModules = flops.lib.haumea.pops.default.setInit {
+        src = ./nixos/homeModules;
+        type = "nixosModules";
+      };
+      loadHomeProfiles = loadHomeModules.addLoadExtender {
+        src = ./nixos/homeProfiles;
+        type = "default";
+      };
+      lib = flops.lib.haumea.pops.default.setInit {
+        src = ./lib;
+        loader = haumea.lib.loaders.scoped;
+        inputs = {
+          lib = nixpkgs.lib // builtins;
+          home-manager = inputs.home-manager;
+        };
+      };
     in
     {
-      inherit loadModules loadInputs;
+      inherit
+        loadNixOSModules
+        loadHomeModules
+        loadHomeProfiles
+        lib
+      ;
       exporters = flops.lib.haumea.pops.default.setInit {
         loader = with haumea.lib; loaders.scoped;
         src = ./examples;
         inputs = {
-          inherit loadModules loadInputs nixpkgs;
+          inherit
+            loadNixOSModules
+            loadHomeModules
+            loadHomeProfiles
+            loadInputs
+            nixpkgs
+          ;
           lib = nixpkgs.lib // builtins;
           flops = flops.lib;
           haumea = flops.inputs.haumea.lib;
           POP = POP.lib;
+          selfLib = lib.outputsForTarget.default;
         };
       };
       nixosConfigurations =

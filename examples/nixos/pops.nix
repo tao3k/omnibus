@@ -7,14 +7,28 @@ let
     )).setSystem
       "x86_64-linux";
   nixosModules =
-    (loadModules.addLoadExtender { inputs = __inputs__.outputs // { }; });
+    (loadNixOSModules.addLoadExtender { inputs = __inputs__.outputs // { }; });
+
+  homeProfiles = loadHomeProfiles.addLoadExtender {
+    inputs = __inputs__.outputs // { };
+  };
 
   selfNixOSProfiles = nixosModules.addLoadExtender {
     src = ./__nixosProfiles;
     loader = haumea.loaders.scoped;
     type = "default";
   };
+
+  homeModules = loadHomeModules.addLoadExtender {
+    inputs = __inputs__.outputs // { };
+  };
 in
 {
-  inherit __inputs__ selfNixOSProfiles nixosModules;
+  inherit
+    __inputs__
+    selfNixOSProfiles
+    nixosModules
+    homeModules
+    homeProfiles
+  ;
 }
