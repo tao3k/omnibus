@@ -37,6 +37,6 @@
     in
     [
       customProfiles.presets.hyprland.default
-      self.homeModules.wayland.windowManager.hyprland
+      # self.homeModules.wayland.windowManager.hyprland
     ];
 }

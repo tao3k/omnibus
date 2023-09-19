@@ -37,6 +37,7 @@
       };
       loadHomeProfiles = loadHomeModules.addLoadExtender {
         src = ./nixos/homeProfiles;
+        loader = haumea.lib.loaders.scoped;
         type = "default";
       };
       lib = flops.lib.haumea.pops.default.setInit {

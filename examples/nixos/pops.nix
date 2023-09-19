@@ -10,7 +10,11 @@ let
     (loadNixOSModules.addLoadExtender { inputs = __inputs__.outputs // { }; });
 
   homeProfiles = loadHomeProfiles.addLoadExtender {
-    inputs = __inputs__.outputs // { };
+    inputs = __inputs__.outputs // {
+      POS = {
+        homeModules = homeModules.outputsForTarget.nixosModules;
+      };
+    };
   };
 
   selfNixOSProfiles = nixosModules.addLoadExtender {
