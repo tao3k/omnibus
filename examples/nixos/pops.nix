@@ -1,4 +1,3 @@
-system:
 let
   __inputs__ =
     (loadInputs.addInputsExtender (
@@ -6,7 +5,7 @@ let
         self: super: { inputs.nixpkgs = nixpkgs.legacyPackages; }
       )
     )).setSystem
-      system;
+      "x86_64-linux";
   nixosModules =
     (loadModules.addLoadExtender { inputs = __inputs__.outputs // { }; });
 

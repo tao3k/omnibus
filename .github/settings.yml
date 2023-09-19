@@ -1,0 +1,15 @@
+repository:
+  allow_merge_commit: false
+  allow_rebase_merge: true
+  allow_squash_merge: false
+  default_branch: main
+  delete_branch_on_merge: true
+  description: 'A nix language configuration framework based on POP: Pure Object'
+  has_downloads: false
+  has_issues: false
+  has_projects: false
+  has_wiki: false
+  homepage: ''
+  name: CONFIGURE-ME
+  private: true
+  topics: Flops

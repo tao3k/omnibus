@@ -5,5 +5,5 @@ in
 nixpkgs.lib.nixosSystem {
   inherit system;
   pkgs = import nixpkgs { inherit system; };
-  modules = lib.flatten [ exporter.pops.nixosSuites ];
+  modules = lib.flatten [ exporter.default.nixosSuites ];
 }

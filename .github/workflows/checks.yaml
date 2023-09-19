@@ -1,0 +1,19 @@
+name: "CI"
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  nix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: nixbuild/nix-quick-install-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Build Example/nixos
+        run: nix -Lv build .#nixosConfigurations.nixos.config.system.build.toplevel --dry-run
