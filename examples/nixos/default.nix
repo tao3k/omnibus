@@ -7,23 +7,33 @@
 
   homeProfiles = super.pops.homeProfiles.outputs;
 
-  nixosSuites = lib.flatten [
-    self.selfNixOSProfiles.bootstrap
-    self.nixosModules.boot
-    self.nixosModules.programs.git
-    (selfLib.mkHome
-      {
-        admin = {
-          uid = 1000;
-          description = "default manager";
-          isNormalUser = true;
-          extraGroups = [ "wheel" ];
-        };
-      }
-      "zsh"
-      self.homeSuites
-    )
-  ];
+  nixosProfiles = super.pops.nixosProfiles.outputs;
+
+  nixosSuites =
+    let
+      customProfiles = self.nixosProfiles { };
+    in
+    lib.flatten [
+      self.selfNixOSProfiles.bootstrap
+      self.nixosModules.boot
+      self.nixosModules.programs.git
+
+      # --custom profiles
+      customProfiles.presets.nix
+
+      (selfLib.mkHome
+        {
+          admin = {
+            uid = 1000;
+            description = "default manager";
+            isNormalUser = true;
+            extraGroups = [ "wheel" ];
+          };
+        }
+        "zsh"
+        self.homeSuites
+      )
+    ];
 
   homeSuites =
     let

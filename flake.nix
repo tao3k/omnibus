@@ -40,6 +40,11 @@
         loader = haumea.lib.loaders.scoped;
         type = "default";
       };
+      loadNixOSProfiles = loadNixOSModules.addLoadExtender {
+        src = ./nixos/nixosProfiles;
+        loader = haumea.lib.loaders.scoped;
+        type = "default";
+      };
       lib = flops.lib.haumea.pops.default.setInit {
         src = ./lib;
         loader = haumea.lib.loaders.scoped;
@@ -54,6 +59,7 @@
         loadNixOSModules
         loadHomeModules
         loadHomeProfiles
+        loadNixOSProfiles
         lib
       ;
       exporters = flops.lib.haumea.pops.default.setInit {
@@ -64,6 +70,7 @@
             loadNixOSModules
             loadHomeModules
             loadHomeProfiles
+            loadNixOSProfiles
             loadInputs
             nixpkgs
           ;
