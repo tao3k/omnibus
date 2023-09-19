@@ -1,8 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # flops.url = "github:gtrunsec/flops";
-    flops.url = "/home/guangtao/ghq/github.com/GTrunSec/flops";
+    flops.url = "github:gtrunsec/flops";
     POP.follows = "flops/POP";
   };
 

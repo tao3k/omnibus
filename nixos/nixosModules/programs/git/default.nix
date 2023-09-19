@@ -1,4 +1,7 @@
+let
+  inherit (moduleArgs) pkgs;
+in
 {
   enable = true;
-  imports = [ ({ environment.systemPackages = [ nixpkgs.git ]; }) ];
+  imports = [ ({ environment.systemPackages = [ pkgs.git ]; }) ];
 }
