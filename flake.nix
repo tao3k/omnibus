@@ -3,6 +3,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flops.url = "github:gtrunsec/flops";
     POP.follows = "flops/POP";
+    haumea.follows = "flops/haumea";
   };
 
   outputs =
@@ -11,6 +12,7 @@
       nixpkgs,
       flops,
       POP,
+      haumea,
       ...
     }@inputs:
     let
@@ -28,32 +30,23 @@
     in
     {
       inherit loadModules loadInputs;
-      nixos =
-        let
-          __inputs__ =
-            (loadInputs.addInputsExtender (
-              POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
-                self: super: { inputs.nixpkgs = inputs.nixpkgs.legacyPackages; }
-              )
-            )).setSystem
-              system;
-          system = "x86_64-linux";
-          exporter =
-            (loadModules.addLoadExtender { inputs = __inputs__.outputs // { }; })
-            .outputsForTarget.nixosModules;
-        in
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          pkgs = import nixpkgs { inherit system; };
-          modules = [
-            ./examples/nixos.nix
-            exporter.boot
-            exporter.programs.git
-            ({
-              config.boot.__profiles__.systemd-boot.enable = true;
-              # config.boot.__profiles__.systemd-initrd.enable = true;
-            })
-          ];
+      exporters = flops.lib.haumea.pops.default.setInit {
+        loader = with haumea.lib; loaders.scoped;
+        src = ./examples;
+        inputs = {
+          inherit loadModules loadInputs nixpkgs;
+          lib = nixpkgs.lib // builtins;
+          flops = flops.lib;
+          haumea = flops.inputs.haumea.lib;
+          POP = POP.lib;
         };
+      };
+      nixosConfigurations =
+        (self.exporters.addLoadExtender {
+          src = ./nixos/nixosConfigurations;
+          inputs = {
+            exporters = self.exporters.outputsForTarget.default;
+          };
+        }).outputsForTarget.default;
     };
 }
