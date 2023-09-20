@@ -1,5 +1,6 @@
-_:
-{ pkgs, ... }:
+let
+  inherit (moduleArgs) pkgs;
+in
 {
   nix = {
     package = pkgs.nixUnstable;

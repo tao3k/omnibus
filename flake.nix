@@ -38,12 +38,11 @@
       loadHomeProfiles = loadHomeModules.addLoadExtender {
         src = ./nixos/homeProfiles;
         loader = haumea.lib.loaders.scoped;
-        type = "default";
+        type = "nixosProfiles";
       };
-      loadNixOSProfiles = loadNixOSModules.addLoadExtender {
+      loadNixOSProfiles = flops.lib.haumea.pops.default.setInit {
         src = ./nixos/nixosProfiles;
-        loader = haumea.lib.loaders.scoped;
-        type = "default";
+        type = "nixosProfiles";
       };
       lib = flops.lib.haumea.pops.default.setInit {
         src = ./lib;

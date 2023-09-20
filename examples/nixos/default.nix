@@ -5,21 +5,53 @@
 
   homeModules = super.pops.homeModules.outputsForTarget.nixosModules;
 
-  homeProfiles = super.pops.homeProfiles.outputs;
+  homeProfiles = super.pops.homeProfiles.outputsForTarget;
 
-  nixosProfiles = super.pops.nixosProfiles.outputs;
+  nixosProfiles = super.pops.nixosProfiles.outputsForTarget;
 
   nixosSuites =
     let
-      customProfiles = self.nixosProfiles { };
+      customProfiles = {
+        nix =
+          (self.nixosProfiles.dmerge {
+            nix.extraOptions = ''
+              allowed-uris = https://github.com/
+            '';
+          }).presets.nix;
+        boot =
+          (self.nixosProfiles.dmerge {
+            # boot.__profiles__.systemd-initrd.enable = true;
+            boot.__profiles__.systemd-boot.enable = true;
+          }).presets.boot;
+      };
     in
     lib.flatten [
       self.selfNixOSProfiles.bootstrap
-      self.nixosModules.boot
+
+      # self.nixosProfiles.default.presets.boot
+      customProfiles.boot
+
       self.nixosModules.programs.git
 
+      # (
+      #   {
+      #     lib,
+      #     config,
+      #     options,
+      #     ...
+      #   }@args:
+      #   {
+      #     options = {
+      #       __test__ = lib.mkOption {
+      #         type = lib.types.attrs;
+      #         default = ;
+      #       };
+      #     };
+      #   }
+      # )
+
       # --custom profiles
-      customProfiles.presets.nix
+      customProfiles.nix
 
       (selfLib.mkHome
         {
@@ -37,16 +69,17 @@
 
   homeSuites =
     let
-      customProfiles = self.homeProfiles {
-        presets.hyprland.default = {
-          wayland.windowManager.hyprland.__profiles__ = {
-            nvidia = true;
-          };
-        };
+      customProfiles = {
+        hyprland =
+          (self.homeProfiles.dmerge {
+            wayland.windowManager.hyprland.__profiles__ = {
+              nvidia = true;
+            };
+          }).presets.hyprland;
       };
     in
     [
-      customProfiles.presets.hyprland.default
+      customProfiles.hyprland
       # self.homeModules.wayland.windowManager.hyprland
     ];
 }
