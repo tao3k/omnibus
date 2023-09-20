@@ -1,19 +1,14 @@
+let
+  pops = lib.mapAttrs (_: v: v.outputsForTarget) (
+    lib.removeAttrs super.pops [ "inputs__" ]
+  );
+in
 {
-  selfNixOSProfiles = super.pops.selfNixOSProfiles.outputsForTarget.default;
-
-  nixosModules = super.pops.nixosModules.outputsForTarget.nixosModules;
-
-  homeModules = super.pops.homeModules.outputsForTarget.nixosModules;
-
-  homeProfiles = super.pops.homeProfiles.outputsForTarget;
-
-  nixosProfiles = super.pops.nixosProfiles.outputsForTarget;
-
   nixosSuites =
     let
       customProfiles = {
         nix =
-          (self.nixosProfiles.dmerge {
+          (pops.nixosProfiles.dmerge {
             nix.extraOptions = ''
               allowed-uris = https://github.com/
             '';
@@ -23,7 +18,7 @@
               "nix"
             ];
         boot =
-          (self.nixosProfiles.dmerge {
+          (pops.nixosProfiles.dmerge {
             # boot.__profiles__.systemd-initrd.enable = true;
             boot.__profiles__.systemd-boot.enable = true;
           })
@@ -34,12 +29,12 @@
       };
     in
     lib.flatten [
-      self.selfNixOSProfiles.bootstrap
+      pops.selfNixOSProfiles.default.bootstrap
 
       # self.nixosProfiles.default.presets.boot
       customProfiles.boot
 
-      self.nixosModules.programs.git
+      pops.nixosModules.default.programs.git
 
       # (
       #   {
@@ -79,7 +74,7 @@
     let
       customProfiles = {
         hyprland =
-          (self.homeProfiles.dmerge {
+          (pops.homeProfiles.dmerge {
             wayland.windowManager.hyprland.__profiles__ = {
               nvidia = true;
             };
