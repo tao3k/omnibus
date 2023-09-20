@@ -14,7 +14,7 @@ in
     exporter.nixosProfiles.customProfiles.nix
     exporter.nixosProfiles.customProfiles.boot
 
-    (selfLib.mkHome
+    (POS.lib.mkHome
       {
         admin = {
           uid = 1000;

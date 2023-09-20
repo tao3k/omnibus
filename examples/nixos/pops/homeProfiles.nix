@@ -1,4 +1,4 @@
-(loadHomeProfiles.addLoadExtender {
+(POS.loadHomeProfiles.addLoadExtender {
   inputs = super.inputs.outputs // {
     POS = {
       homeModules = super.homeModules.outputsForTarget.nixosModules;

@@ -65,20 +65,22 @@
         loader = with haumea.lib; loaders.scoped;
         src = ./examples;
         inputs = {
-          inherit
-            loadNixOSModules
-            loadHomeModules
-            loadHomeProfiles
-            loadNixOSProfiles
-            loadInputs
-            nixpkgs
-          ;
+          inherit nixpkgs;
           lib = nixpkgs.lib // builtins;
           flops = flops.lib;
           haumea = flops.inputs.haumea.lib;
           dmerge = flops.inputs.dmerge;
           POP = POP.lib;
-          selfLib = lib.outputsForTarget.default;
+          POS = {
+            lib = lib.outputsForTarget.default;
+            inherit
+              loadNixOSModules
+              loadHomeModules
+              loadHomeProfiles
+              loadNixOSProfiles
+              loadInputs
+            ;
+          };
         };
       };
       nixosConfigurations =

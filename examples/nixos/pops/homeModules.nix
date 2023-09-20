@@ -1,4 +1,4 @@
-(loadHomeModules.addLoadExtender { inputs = super.inputs.outputs // { }; })
+(POS.loadHomeModules.addLoadExtender { inputs = super.inputs.outputs // { }; })
 .addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (

@@ -1,4 +1,4 @@
-(loadNixOSProfiles.addLoadExtender {
+(POS.loadNixOSProfiles.addLoadExtender {
   inputs = super.inputs.outputs // {
     POS = {
       nixosModules = super.nixosModules.outputsForTarget.nixosModules;

@@ -1,4 +1,4 @@
-(loadNixOSModules.addLoadExtender { inputs = super.inputs.outputs // { }; })
+(POS.loadNixOSModules.addLoadExtender { inputs = super.inputs.outputs // { }; })
 .addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
