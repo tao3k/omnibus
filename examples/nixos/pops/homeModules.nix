@@ -1,1 +1,19 @@
-loadHomeModules.addLoadExtender { inputs = super.inputs__.outputs // { }; }
+(loadHomeModules.addLoadExtender { inputs = super.inputs__.outputs // { }; })
+.addExporters
+  [
+    (POP.extendPop flops.haumea.pops.exporter (
+      self: super: {
+        exports.customModules.git =
+          self.outputsForTarget.dmerge
+            {
+              enable = false;
+              customList = with dmerge; append [ "1" ];
+              imports = with dmerge; append [ ];
+            }
+            [
+              "services"
+              "openssh"
+            ];
+      }
+    ))
+  ]

@@ -1,4 +1,4 @@
-super.nixosProfiles.addLoadExtender {
+(super.nixosProfiles.addLoadExtender {
   src = ../__nixosProfiles;
   loader = haumea.loaders.scoped;
   type = "nixosProfiles";
@@ -7,4 +7,5 @@ super.nixosProfiles.addLoadExtender {
       nixosProfiles = super.nixosProfiles.outputsForTarget.nixosProfiles;
     };
   };
-}
+}).addExporters
+  [ (POP.extendPop flops.haumea.pops.exporter (self: super: { })) ]

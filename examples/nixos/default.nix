@@ -1,92 +1,35 @@
 let
-  pops = lib.mapAttrs (_: v: v.outputsForTarget) (
+  pops = lib.mapAttrs (_: v: v.exports) (
     lib.removeAttrs super.pops [ "inputs__" ]
   );
 in
 {
-  nixosSuites =
-    let
-      customProfiles = {
-        nix =
-          (pops.nixosProfiles.dmerge {
-            nix.extraOptions = ''
-              allowed-uris = https://github.com/
-            '';
-          })
-            [
-              "presets"
-              "nix"
-            ];
-        boot =
-          (pops.nixosProfiles.dmerge {
-            # boot.__profiles__.systemd-initrd.enable = true;
-            boot.__profiles__.systemd-boot.enable = true;
-          })
-            [
-              "presets"
-              "boot"
-            ];
-      };
-    in
-    lib.flatten [
-      pops.selfNixOSProfiles.default.bootstrap
+  nixosSuites = lib.flatten [
+    pops.selfNixOSProfiles.default.bootstrap
 
-      # self.nixosProfiles.default.presets.boot
-      customProfiles.boot
+    # self.nixosProfiles.default.presets.boot
+    pops.nixosModules.default.programs.git
 
-      pops.nixosModules.default.programs.git
+    # --custom profiles
+    pops.nixosProfiles.customProfiles.nix
+    pops.nixosProfiles.customProfiles.boot
 
-      # (
-      #   {
-      #     lib,
-      #     config,
-      #     options,
-      #     ...
-      #   }@args:
-      #   {
-      #     options = {
-      #       __test__ = lib.mkOption {
-      #         type = lib.types.attrs;
-      #         default = ;
-      #       };
-      #     };
-      #   }
-      # )
+    (selfLib.mkHome
+      {
+        admin = {
+          uid = 1000;
+          description = "default manager";
+          isNormalUser = true;
+          extraGroups = [ "wheel" ];
+        };
+      }
+      "zsh"
+      self.homeSuites
+    )
+  ];
 
-      # --custom profiles
-      customProfiles.nix
-
-      (selfLib.mkHome
-        {
-          admin = {
-            uid = 1000;
-            description = "default manager";
-            isNormalUser = true;
-            extraGroups = [ "wheel" ];
-          };
-        }
-        "zsh"
-        self.homeSuites
-      )
-    ];
-
-  homeSuites =
-    let
-      customProfiles = {
-        hyprland =
-          (pops.homeProfiles.dmerge {
-            wayland.windowManager.hyprland.__profiles__ = {
-              nvidia = true;
-            };
-          })
-            [
-              "presets"
-              "hyprland"
-            ];
-      };
-    in
-    [
-      customProfiles.hyprland
-      # self.homeModules.wayland.windowManager.hyprland
-    ];
+  homeSuites = [
+    pops.homeProfiles.customProfiles.hyprland
+    # self.homeModules.wayland.windowManager.hyprland
+  ];
 }

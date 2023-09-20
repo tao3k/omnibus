@@ -76,6 +76,7 @@
           lib = nixpkgs.lib // builtins;
           flops = flops.lib;
           haumea = flops.inputs.haumea.lib;
+          dmerge = flops.inputs.dmerge;
           POP = POP.lib;
           selfLib = lib.outputsForTarget.default;
         };
