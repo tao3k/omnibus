@@ -17,12 +17,20 @@
             nix.extraOptions = ''
               allowed-uris = https://github.com/
             '';
-          }).presets.nix;
+          })
+            [
+              "presets"
+              "nix"
+            ];
         boot =
           (self.nixosProfiles.dmerge {
             # boot.__profiles__.systemd-initrd.enable = true;
             boot.__profiles__.systemd-boot.enable = true;
-          }).presets.boot;
+          })
+            [
+              "presets"
+              "boot"
+            ];
       };
     in
     lib.flatten [
@@ -75,7 +83,11 @@
             wayland.windowManager.hyprland.__profiles__ = {
               nvidia = true;
             };
-          }).presets.hyprland;
+          })
+            [
+              "presets"
+              "hyprland"
+            ];
       };
     in
     [
