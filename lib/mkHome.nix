@@ -16,6 +16,9 @@ in
       (
         { pkgs, lib, ... }:
         {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
           home-manager.users.${user} = {
             imports = lib.flatten suites;
             home.stateVersion =

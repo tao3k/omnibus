@@ -2,10 +2,15 @@
   description = "Flops";
 
   inputs.std.follows = "std-ext/std";
-  inputs.nixpkgs.follows = "std-ext/nixpkgs";
   inputs.std-ext.url = "github:gtrunsec/std-ext";
   inputs.call-flake.url = "github:divnix/call-flake";
   inputs.namaka.follows = "";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   outputs =
     { std, ... }@inputs:
