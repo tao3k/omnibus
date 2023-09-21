@@ -14,6 +14,7 @@ in
 
     # --custom profiles
     exporter.nixosProfiles.customProfiles.nix
+    exporter.nixosModules.customModules.boot
     exporter.nixosProfiles.customProfiles.boot
 
     exporter.srvos.default.common.nix

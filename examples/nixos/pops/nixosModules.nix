@@ -2,6 +2,15 @@
 .addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
-      self: super: { exports.customModules = { }; }
+      self: super: {
+        exports.customModules.boot =
+          self.outputsForTarget.dmerge
+            {
+              config.loader = {
+                timeout = 10;
+              };
+            }
+            [ "boot" ];
+      }
     ))
   ]
