@@ -2,23 +2,37 @@
   config =
     with lib;
     mkMerge [
-      (mkIf cfg.__profiles__.catppuccin-mocha.enable {
+      (mkIf (cfg.__profiles__.catppuccin-themes.name != "") {
         config = {
-          theme = "Catppuccin-mocha";
+          theme = "Catppuccin-${cfg.__profiles__.catppuccin-themes.name}";
           style = "changes,header";
         };
         # bat cache --build
         themes = {
           Catppuccin-mocha = builtins.readFile (
-            __misc__.catppuccin-bat + "/Catppuccin-mocha.tmTheme"
+            __misc__.catppuccin-bat
+            + "/Catppuccin-${cfg.__profiles__.catppuccin-themes.name}.tmTheme"
           );
         };
       })
     ];
 
   options.__profiles__ = with lib; {
-    catppuccin-mocha.enable =
-      mkEnableOption
-        "Whether to enable the catppuccino-mocha theme";
+    catppuccin-themes = mkOption {
+      default = { };
+      type = types.submodule {
+        options = {
+          name = mkOption {
+            type = types.enum [
+              "mocha"
+              "macchiato"
+              "latte"
+              "frappe"
+            ];
+            default = "";
+          };
+        };
+      };
+    };
   };
 }
