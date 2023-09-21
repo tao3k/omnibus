@@ -9,6 +9,11 @@
 { inputs, cell }:
 with inputs.std.inputs.dmerge; {
   conform.data = {
-    commit.conventional.scopes = append [ "nixosModules" ];
+    commit.conventional.scopes = append [
+      "nixosModules"
+      "nixosProfiles"
+      "homeProfiles"
+      "homeModules"
+    ];
   };
 }
