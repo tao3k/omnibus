@@ -14,6 +14,7 @@
       ...
     }@inputs:
     let
+      dotfiles = ./dotfiles;
       loadInputs = flops.lib.flake.pops.default.setInitInputs ./local;
       loadData = flops.lib.haumea.pops.default.setInit {
         src = ./examples/__data;
@@ -39,6 +40,9 @@
         src = ./nixos/homeProfiles;
         loader = haumea.lib.loaders.scoped;
         type = "nixosProfiles";
+        inputs = {
+          inherit dotfiles;
+        };
       };
       loadNixOSProfiles = flops.lib.haumea.pops.default.setInit {
         src = ./nixos/nixosProfiles;
@@ -69,6 +73,7 @@
         srvos
         loadData
         lib
+        dotfiles
       ;
       exporters = flops.lib.haumea.pops.default.setInit {
         loader = with haumea.lib; loaders.scoped;

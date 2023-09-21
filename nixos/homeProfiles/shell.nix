@@ -6,5 +6,6 @@ in
     presets.zoxide
     presets.fzf
     presets.direnv
+    presets.dircolors
   ];
 }
