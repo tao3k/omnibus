@@ -2,5 +2,9 @@ let
   presets = root.presets;
 in
 {
-  default = [ presets.zoxide ];
+  default = [
+    presets.zoxide
+    presets.fzf
+    presets.direnv
+  ];
 }

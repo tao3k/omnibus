@@ -22,7 +22,7 @@ in
           home-manager.users.${user} = {
             imports = lib.flatten suites;
             home.stateVersion =
-              if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "23.05";
+              if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "23.11";
           };
           users.users.${user} = {
             shell = pkgs."${shell}";
