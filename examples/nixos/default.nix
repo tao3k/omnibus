@@ -35,6 +35,8 @@ in
   homeSuites = [
     exporter.homeProfiles.customProfiles.hyprland
     exporter.homeProfiles.default.presets.bat
+    # The parent directory of "presets" is categorized as a list type of "suites"
+    (exporter.homeProfiles.default.shell { }).default
     # super.pops.homeModules.wayland.windowManager.hyprland
   ];
 }
