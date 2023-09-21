@@ -92,11 +92,11 @@
         "yants": "yants"
       },
       "locked": {
-        "lastModified": 1695179580,
-        "narHash": "sha256-fxZz0WWsvPXcIWDIOMfhKKl1N9Ls7yOxC6WfEqh84ZQ=",
+        "lastModified": 1695271180,
+        "narHash": "sha256-W9oOata5aXpNtbU6WVBbfGpRZgmyIOM7ytUB1v+j5xo=",
         "owner": "gtrunsec",
         "repo": "flops",
-        "rev": "5d9663ba5557bab727c8052749b8ff03414357bf",
+        "rev": "8e74825e00b444e01fb1c09f279edda8d157fb16",
         "type": "github"
       },
       "original": {
@@ -171,20 +171,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1694948089,
-        "narHash": "sha256-d2B282GmQ9o8klc22/Rbbbj6r99EnELQpOQjWMyv0rU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "5148520bfab61f99fd25fb9ff7bfbb50dad3c9db",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
     "root": {
       "inputs": {
         "POP": [
@@ -195,8 +181,7 @@
         "haumea": [
           "flops",
           "haumea"
-        ],
-        "nixpkgs": "nixpkgs_2"
+        ]
       }
     },
     "yants": {

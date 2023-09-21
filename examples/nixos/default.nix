@@ -14,6 +14,8 @@ in
     exporter.nixosProfiles.customProfiles.nix
     exporter.nixosProfiles.customProfiles.boot
 
+    exporter.srvos.default.common.nix
+
     (POS.lib.mkHome
       {
         admin = {

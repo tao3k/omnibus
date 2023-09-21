@@ -32,6 +32,12 @@
         src = ./nixos/nixosProfiles;
         type = "nixosProfiles";
       };
+      srvos = flops.lib.haumea.pops.default.setInit {
+        src = builtins.unsafeDiscardStringContext (loadInputs.outputs.srvos + "/nixos");
+        type = "nixosProfiles";
+        # reset the transformer to the default
+        transformer = [ (_: _: _) ];
+      };
       lib = flops.lib.haumea.pops.default.setInit {
         src = ./lib;
         loader = haumea.lib.loaders.scoped;
@@ -47,6 +53,8 @@
         loadHomeModules
         loadHomeProfiles
         loadNixOSProfiles
+        loadInputs
+        srvos
         lib
       ;
       exporters = flops.lib.haumea.pops.default.setInit {
@@ -66,6 +74,7 @@
               loadHomeProfiles
               loadNixOSProfiles
               loadInputs
+              srvos
             ;
           };
         };

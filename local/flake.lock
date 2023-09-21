@@ -840,11 +840,32 @@
         "home-manager": "home-manager",
         "namaka": [],
         "nixpkgs": "nixpkgs",
+        "srvos": "srvos",
         "std": [
           "std-ext",
           "std"
         ],
         "std-ext": "std-ext"
+      }
+    },
+    "srvos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1695259376,
+        "narHash": "sha256-JCQIEVIuao8B26PxfXVCJTbaJKPP/WKY23rIaPoABd0=",
+        "owner": "numtide",
+        "repo": "srvos",
+        "rev": "72ece75d281bbf9f492caedb2c504593a5a0d3f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "srvos",
+        "type": "github"
       }
     },
     "std": {
