@@ -15,6 +15,18 @@
     }@inputs:
     let
       loadInputs = flops.lib.flake.pops.default.setInitInputs ./local;
+      loadData = flops.lib.haumea.pops.default.setInit {
+        src = ./examples/__data;
+        loader = with inputs.flops.inputs.haumea.lib; [
+          # without the nixpkgs requirement, only the nixpkgs.lib
+          # (matchers.regex "^(.+)\\.(yaml|yml)$" (
+          #   _: _: path:
+          #   loadInputs.outputs.std."x86_64-linux".lib.ops.readYAML path
+          # ))
+          matchers.json
+          matchers.toml
+        ];
+      };
       loadNixOSModules = flops.lib.haumea.pops.default.setInit {
         src = ./nixos/nixosModules;
         type = "nixosModules";
@@ -55,6 +67,7 @@
         loadNixOSProfiles
         loadInputs
         srvos
+        loadData
         lib
       ;
       exporters = flops.lib.haumea.pops.default.setInit {
@@ -74,6 +87,7 @@
               loadHomeProfiles
               loadNixOSProfiles
               loadInputs
+              loadData
               srvos
             ;
           };
