@@ -5,6 +5,7 @@
   inputs = {
     POS = {
       nixosProfiles = super.nixosProfiles.outputsForTarget.nixosProfiles;
+      data = super.data.outputsForTarget.default;
     };
   };
 }).addExporters
