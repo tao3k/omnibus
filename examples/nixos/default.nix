@@ -32,6 +32,7 @@ in
 
   homeSuites = [
     exporter.homeProfiles.customProfiles.hyprland
+    exporter.homeProfiles.default.presets.bat
     # super.pops.homeModules.wayland.windowManager.hyprland
   ];
 }

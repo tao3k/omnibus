@@ -1,5 +1,10 @@
-(POS.loadHomeModules.addLoadExtender { inputs = super.inputs.outputs // { }; })
-.addExporters
+(POS.loadHomeModules.addLoadExtender {
+  inputs = {
+    __misc__ = {
+      inherit (super.inputs.outputs) catppuccin-bat;
+    };
+  };
+}).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: super: {
