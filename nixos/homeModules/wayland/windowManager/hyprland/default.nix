@@ -1,17 +1,5 @@
 {
-  imports = [
-    (builtins.scopedImport
-      {
-        inherit
-          mkOpt
-          lib
-          cfg
-          moduleArgs
-        ;
-      }
-      ./config.nix
-    )
-  ];
+  imports = [ (loadSubmodule ./config.nix) ];
 
   options.__profiles__ =
     with lib;

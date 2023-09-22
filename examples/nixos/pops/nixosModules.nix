@@ -6,7 +6,14 @@
         exports.customModules.boot =
           with dmerge;
           self.outputsForTarget.dmerge
-            { config.contents = update [ 0 ] [ { content.loader.timeout.content = 10; } ]; }
+            {
+              config.boot.contents = update [ 0 ] [ {
+                content = {
+                  loader.timeout.content = 10;
+                  # loader.efi.canTouchEfiVariables = false;
+                };
+              } ];
+            }
             [ "boot" ];
       }
     ))
