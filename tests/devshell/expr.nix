@@ -13,8 +13,8 @@ let
       POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
         self: super: {
           inputs = {
-            nixpkgs = POS.loadInputs.outputs.nixpkgs.legacyPackages;
-            devshell = POS.loadInputs.outputs.devshell.legacyPackages;
+            nixpkgs = loadInputs.outputs.nixpkgs.legacyPackages;
+            devshell = loadInputs.outputs.devshell.legacyPackages;
           };
         }
       )
