@@ -14,6 +14,7 @@ with inputs.std.inputs.dmerge; {
       "nixosProfiles"
       "homeProfiles"
       "homeModules"
+      ".*."
     ];
   };
 }
