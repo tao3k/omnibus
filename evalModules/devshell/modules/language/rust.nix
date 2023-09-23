@@ -1,5 +1,9 @@
 {
   options = with lib; {
+    rustSrc = mkOption {
+      type = types.nullOr types.package;
+      default = null;
+    };
     overlays = mkOption {
       type = types.lazyAttrsOf (
         types.uniq (
