@@ -6,7 +6,10 @@
 }:
 let
   inputs =
-    ((POS.loadInputs.addInputsExtender (
+    let
+      loadInputs = POS.loadInputs.setInitInputs ./__lock;
+    in
+    ((loadInputs.addInputsExtender (
       POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
         self: super: {
           inputs = {
