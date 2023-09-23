@@ -5,12 +5,23 @@
 { inputs, cell }:
 let
   inherit (inputs.std) lib;
+  devshellProfiles =
+    let
+      __inptus__ = (inputs.POS.loadInputs.setSystem inputs.nixpkgs.system).outputs;
+    in
+    (inputs.POS.evalModules.devshell.loadProfiles.addLoadExtender {
+      inputs = {
+        inherit (__inptus__) fenix;
+        nixpkgs = __inptus__.nixpkgs.legacyPackages;
+      };
+    }).exports.default;
 in
 {
   # Tool Homepage: https://numtide.github.io/devshell/
   default = lib.dev.mkShell {
     name = "flops devshell";
 
+    # imports = [ devshellProfiles.rust ];
     # Tool Homepage: https://nix-community.github.io/nixago/
     # This is Standard's devshell integration.
     # It runs the startup hook when entering the shell.

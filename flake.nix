@@ -15,7 +15,7 @@
     }@inputs:
     let
       dotfiles = ./dotfiles;
-      loadInputs = flops.lib.flake.pops.default.setInitInputs ./local;
+      loadInputs = flops.lib.flake.pops.default.setInitInputs ./local/lock;
       loadData = flops.lib.haumea.pops.default.setInit {
         src = ./examples/__data;
         loader = with inputs.flops.inputs.haumea.lib; [
@@ -98,6 +98,7 @@
           };
         };
       };
+
       nixosConfigurations =
         (self.exporters.addLoadExtender {
           src = ./nixos/nixosConfigurations;
@@ -106,5 +107,23 @@
             exporters = self.exporters.outputsForTarget.default;
           };
         }).outputsForTarget.default;
+
+      test = self;
+
+      evalModules = {
+        devshell = rec {
+          loadModules = flops.lib.haumea.pops.default.setInit {
+            src = ./evalModules/devshell/modules;
+            type = "nixosModules";
+          };
+          loadProfiles = flops.lib.haumea.pops.default.setInit {
+            src = ./evalModules/devshell/profiles;
+            type = "nixosProfiles";
+            inputs = {
+              POS.devshellModules = loadModules.exports.default;
+            };
+          };
+        };
+      };
     };
 }

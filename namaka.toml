@@ -1,0 +1,20 @@
+[check]
+cmd = [
+  "nix",
+  "flake",
+  "check",
+  "./local",
+  "--override-input",
+  "namaka",
+  "github:nix-community/namaka"
+]
+
+[eval]
+cmd = [
+  "nix",
+  "eval",
+  "./local#checks",
+  "--override-input",
+  "namaka",
+  "github:nix-community/namaka"
+]
