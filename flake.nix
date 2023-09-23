@@ -108,8 +108,6 @@
           };
         }).outputsForTarget.default;
 
-      test = self;
-
       evalModules = {
         devshell = rec {
           loadModules = flops.lib.haumea.pops.default.setInit {

@@ -30,7 +30,7 @@ let
     }).exports.default;
 
   shell = inputs.devshell.mkShell {
-    name = "devshell";
+    name = "rust";
     imports = [ devshellProfiles.rust ];
   };
 in

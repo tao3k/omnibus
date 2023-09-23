@@ -1,10 +1,14 @@
 let
-  pkgs' = nixpkgs.appendOverlays [ fenix.overlays.default ];
+  pkgs' = nixpkgs.appendOverlays [ config.language.rust.overlays.default ];
 in
 {
-  imports = [ (extraModulesPath + "/language/rust.nix") ];
+  imports = [
+    POS.devshellModules.language.rust
+    (extraModulesPath + "/language/rust.nix")
+  ];
 
   language.rust = {
+    overlays = fenix.overlays;
     packageSet = pkgs'.fenix.default;
     enableDefaultToolchain = true;
     tools = [ "toolchain" ];

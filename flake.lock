@@ -2,7 +2,9 @@
   "nodes": {
     "POP": {
       "inputs": {
-        "flake-compat": "flake-compat",
+        "flake-compat": [
+          "flops"
+        ],
         "nixlib": "nixlib",
         "nixpkgs": [
           "flops"
@@ -66,22 +68,6 @@
         "type": "github"
       }
     },
-    "flake-compat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1650374568,
-        "narHash": "sha256-Z+s0J8/r907g149rllvwhb4pKi8Wam5ij0st8PwAh+E=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "b4a34015c698c7793d592d66adbab377907a2be8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "flops": {
       "inputs": {
         "POP": "POP",
@@ -92,11 +78,11 @@
         "yants": "yants"
       },
       "locked": {
-        "lastModified": 1695362114,
-        "narHash": "sha256-rlfdkPLtUl7ywvjMxhQP0It97W6JZ3ZL0AkjQcSGGl0=",
+        "lastModified": 1695449865,
+        "narHash": "sha256-N/CRXXd5VU91BJ1cpiy7TAZJVVzZI7d8fraMSKY/Rw4=",
         "owner": "gtrunsec",
         "repo": "flops",
-        "rev": "156a1c0d9d5cc4563d34071d8d204623ed340bcc",
+        "rev": "b9d082d3254091f9f6677948fc4f37ea2692888d",
         "type": "github"
       },
       "original": {
