@@ -47,20 +47,26 @@
         loadNixOSModules = flops.lib.haumea.pops.default.setInit {
           src = ./nixos/nixosModules;
           type = "nixosModules";
+          inputs = {
+            POP = POP.lib;
+            flops = flops.lib;
+            POS = self.lib;
+          };
         };
         loadHomeModules = flops.lib.haumea.pops.default.setInit {
           src = ./nixos/homeModules;
           type = "nixosModules";
+          inputs = {
+            POS = self.lib;
+            inherit (self.lib) dotfiles;
+          };
         };
         loadHomeProfiles = self.lib.loadHomeModules.addLoadExtender {
           src = ./nixos/homeProfiles;
           loader = haumea.lib.loaders.scoped;
           type = "nixosProfiles";
-          inputs = {
-            inherit (self.lib) dotfiles;
-          };
         };
-        loadNixOSProfiles = flops.lib.haumea.pops.default.setInit {
+        loadNixOSProfiles = self.lib.loadNixOSModules.addLoadExtender {
           src = ./nixos/nixosProfiles;
           type = "nixosProfiles";
         };
