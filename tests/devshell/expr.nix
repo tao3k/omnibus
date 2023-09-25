@@ -7,7 +7,7 @@
 let
   inputs =
     let
-      loadInputs = POS.loadInputs.setInitInputs ./__lock;
+      loadInputs = POS.lib.loadInputs.setInitInputs ./__lock;
     in
     ((loadInputs.addInputsExtender (
       POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
