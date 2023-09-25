@@ -23,7 +23,7 @@ let
     ).outputs;
 
   devshellProfiles =
-    (POS.evalModules.devshell.loadProfiles.addLoadExtender {
+    (POS.lib.evalModules.devshell.loadProfiles.addLoadExtender {
       inputs = {
         inherit (inputs) fenix nixpkgs;
       };

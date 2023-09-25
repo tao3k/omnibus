@@ -22,8 +22,18 @@
           home-manager = self.lib.loadInputs.outputs.home-manager;
         };
       };
+
+      nixosConfigurations =
+        (self.exporters.addLoadExtender {
+          src = ./nixos/nixosConfigurations;
+          inputs = {
+            nixpkgs = self.lib.loadInputs.outputs.nixpkgs;
+            exporters = self.exporters.outputsForTarget.default;
+          };
+        }).exports.default;
     in
     {
+      inherit nixosConfigurations;
       lib = {
         dotfiles = ./dotfiles;
         loadInputs = flops.lib.flake.pops.default.setInitInputs ./local/lock;
@@ -62,6 +72,21 @@
           # reset the transformer to the default
           transformer = [ (_: _: _) ];
         };
+        evalModules = {
+          devshell = rec {
+            loadModules = self.lib.loadNixOSModules.addLoadExtender {
+              src = ./evalModules/devshell/modules;
+              type = "nixosModules";
+            };
+            loadProfiles = self.lib.loadNixOSProfiles.addLoadExtender {
+              src = ./evalModules/devshell/profiles;
+              type = "nixosProfiles";
+              inputs = {
+                POS.devshellModules = loadModules.exports.default;
+              };
+            };
+          };
+        };
         lib = lib.exports.default;
       };
       exporters = flops.lib.haumea.pops.default.setInit {
@@ -74,31 +99,6 @@
           dmerge = flops.inputs.dmerge;
           POP = POP.lib;
           POS = self.lib;
-        };
-      };
-
-      nixosConfigurations =
-        (self.exporters.addLoadExtender {
-          src = ./nixos/nixosConfigurations;
-          inputs = {
-            nixpkgs = self.lib.loadInputs.outputs.nixpkgs;
-            exporters = self.exporters.outputsForTarget.default;
-          };
-        }).outputsForTarget.default;
-
-      evalModules = {
-        devshell = rec {
-          loadModules = self.lib.loadNixOSModules.addLoadExtender {
-            src = ./evalModules/devshell/modules;
-            type = "nixosModules";
-          };
-          loadProfiles = self.lib.loadNixOSProfiles.addLoadExtender {
-            src = ./evalModules/devshell/profiles;
-            type = "nixosProfiles";
-            inputs = {
-              POS.devshellModules = loadModules.exports.default;
-            };
-          };
         };
       };
     };
