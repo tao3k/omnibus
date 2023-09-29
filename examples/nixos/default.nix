@@ -2,22 +2,25 @@ let
   exporter = lib.mapAttrs (_: v: v.exports) (
     lib.removeAttrs super.pops [ "inputs" ]
   );
+  outputs = lib.mapAttrs (_: v: v.outputs) (
+    lib.removeAttrs super.pops [ "inputs" ]
+  );
 in
 {
   data = exporter.data.default;
 
   nixosSuites = lib.flatten [
-    exporter.selfNixOSProfiles.default.bootstrap
+    outputs.selfNixOSProfiles.default.bootstrap
 
     # self.nixosProfiles.default.presets.boot
-    exporter.nixosModules.default.programs.git
+    outputs.nixosModules.default.programs.git
 
-    # --custom profiles
-    exporter.nixosProfiles.customProfiles.nix
+    # # --custom profiles
+    exporter.nixosProfiles.customProfiles.presets.nix
+    exporter.nixosProfiles.customProfiles.presets.boot
     exporter.nixosModules.customModules.boot
-    exporter.nixosProfiles.customProfiles.boot
 
-    exporter.srvos.default.common.nix
+    outputs.srvos.default.common.nix
 
     (POS.lib.mkHome
       {
@@ -34,10 +37,10 @@ in
   ];
 
   homeSuites = [
-    exporter.homeProfiles.customProfiles.hyprland
-    exporter.homeProfiles.default.presets.bat
-    # The parent directory of "presets" is categorized as a list type of "suites"
-    (exporter.homeProfiles.default.shell { }).default
-    # super.pops.homeModules.wayland.windowManager.hyprland
+    exporter.homeProfiles.customProfiles.presets.hyprland
+    outputs.homeProfiles.default.presets.bat
+    # # The parent directory of "presets" is categorized as a list type of "suites"
+    (outputs.homeProfiles.default.shell { }).default
+    # super.pops.homeModules.outputs.default.wayland.windowManager.hyprland
   ];
 }

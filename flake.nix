@@ -28,9 +28,9 @@
           src = ./nixos/nixosConfigurations;
           inputs = {
             nixpkgs = self.lib.loadInputs.outputs.nixpkgs;
-            exporters = self.exporters.outputsForTarget.default;
+            exporters = self.exporters.outputs.default;
           };
-        }).exports.default;
+        }).outputs.default;
     in
     {
       inherit nixosConfigurations;
@@ -88,12 +88,12 @@
               src = ./evalModules/devshell/profiles;
               type = "nixosProfiles";
               inputs = {
-                POS.devshellModules = loadModules.exports.default;
+                POS.devshellModules = loadModules.outputs.default;
               };
             };
           };
         };
-        lib = lib.exports.default;
+        lib = lib.outputs.default;
       };
       exporters = flops.lib.haumea.pops.default.setInit {
         loader = with haumea.lib; loaders.scoped;

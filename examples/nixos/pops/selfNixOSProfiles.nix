@@ -4,8 +4,8 @@
   type = "nixosProfiles";
   inputs = {
     POS = {
-      nixosProfiles = super.nixosProfiles.outputsForTarget.nixosProfiles;
-      data = super.data.outputsForTarget.default;
+      nixosProfiles = super.nixosProfiles.outputs.nixosProfiles;
+      data = super.data.outputs.default;
     };
   };
 }).addExporters

@@ -3,18 +3,24 @@
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: super: {
-        exports.customModules.boot =
+        exports.customModules =
           with dmerge;
-          self.outputsForTarget.dmerge
-            {
-              config.boot.contents = update [ 0 ] [ {
-                content = {
-                  loader.timeout.content = 10;
-                  # loader.efi.canTouchEfiVariables = false;
-                };
-              } ];
-            }
-            [ "boot" ];
+          self.outputs.__extenders [ ({
+            value =
+              { self' }:
+              self' (
+                m:
+                dmerge m {
+                  config.boot.contents = update [ 0 ] [ {
+                    content = {
+                      loader.timeout.content = 10;
+                      # loader.efi.canTouchEfiVariables = false;
+                    };
+                  } ];
+                }
+              );
+            path = [ "boot" ];
+          }) ];
       }
     ))
   ]

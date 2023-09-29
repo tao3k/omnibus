@@ -1,26 +1,29 @@
 (POS.loadHomeProfiles.addLoadExtender {
   inputs = super.inputs.outputs // {
     POS = {
-      homeModules = super.homeModules.outputsForTarget.nixosModules;
+      homeModules = super.homeModules.outputs.nixosModules;
     };
   };
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: super: {
-        exports.customProfiles = {
-          hyprland =
-            self.outputsForTarget.dmerge
-              {
+        exports.customProfiles = self.outputs.__extenders [ {
+          value =
+            { self' }:
+            self' (
+              m:
+              dmerge m {
                 wayland.windowManager.hyprland.__profiles__ = {
                   nvidia = true;
                 };
               }
-              [
-                "presets"
-                "hyprland"
-              ];
-        };
+            );
+          path = [
+            "presets"
+            "hyprland"
+          ];
+        } ];
       }
     ))
   ]

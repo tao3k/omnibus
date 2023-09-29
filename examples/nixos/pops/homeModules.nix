@@ -8,17 +8,17 @@
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: super: {
-        exports.customModules.git =
-          self.outputsForTarget.dmerge
-            {
-              enable = false;
-              customList = with dmerge; append [ "1" ];
-              imports = with dmerge; append [ ];
-            }
-            [
-              "services"
-              "openssh"
-            ];
+        exports.customModules = self.outputs.__extenders [ {
+          value = {
+            enable = false;
+            customList = with dmerge; append [ "1" ];
+            imports = with dmerge; append [ ];
+          };
+          path = [
+            "services"
+            "openssh"
+          ];
+        } ];
       }
     ))
   ]
