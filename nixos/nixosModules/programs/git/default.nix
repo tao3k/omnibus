@@ -1,6 +1,3 @@
-let
-  inherit (moduleArgs) pkgs;
-in
 {
   enable = true;
   imports = [ ({

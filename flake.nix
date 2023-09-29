@@ -82,7 +82,7 @@
           devshell = rec {
             loadModules = self.lib.loadNixOSModules.addLoadExtender {
               src = ./evalModules/devshell/modules;
-              type = "nixosModules";
+              type = "evalModules";
             };
             loadProfiles = self.lib.loadNixOSProfiles.addLoadExtender {
               src = ./evalModules/devshell/profiles;

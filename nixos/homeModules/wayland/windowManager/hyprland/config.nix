@@ -1,6 +1,3 @@
-let
-  inherit (moduleArgs) pkgs;
-in
 with lib; {
   config = mkIf cfg.enable (
     mkMerge [

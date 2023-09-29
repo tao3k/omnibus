@@ -1,6 +1,3 @@
-let
-  inherit (moduleArgs) pkgs;
-in
 {
   imports = [ POS.homeModules.programs.bat ];
   programs.bat = {

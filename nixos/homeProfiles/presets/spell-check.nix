@@ -1,5 +1,4 @@
 let
-  inherit (moduleArgs) pkgs;
   ordering = lib.concatStringsSep "," (
     (lib.optionals pkgs.stdenv.isDarwin [ "AppleSpell" ])
     ++ [
