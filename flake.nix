@@ -79,10 +79,22 @@
           transformer = [ (_: _: _) ];
         };
         evalModules = {
+          flake-parts = {
+            loadModules = self.lib.loadNixOSModules.addLoadExtender {
+              src = ./evalModules/flake-parts/modules;
+            };
+            loadProfiles = self.lib.loadNixOSProfiles.addLoadExtender {
+              src = ./evalModules/flake-parts/profiles;
+              inputs = {
+                POS.evalModules.flake-parts.modules =
+                  self.evalModules.flake-parts.modules.outputs.default;
+              };
+            };
+          };
           devshell = rec {
             loadModules = self.lib.loadNixOSModules.addLoadExtender {
               src = ./evalModules/devshell/modules;
-              type = "evalModules";
+              type = "nixosModules";
             };
             loadProfiles = self.lib.loadNixOSProfiles.addLoadExtender {
               src = ./evalModules/devshell/profiles;

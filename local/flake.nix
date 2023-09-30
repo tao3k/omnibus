@@ -8,7 +8,7 @@
   inputs.namaka.follows = "";
 
   outputs =
-    { std, ... }@inputs:
+    { std, self, ... }@inputs:
     let
       POS = inputs.call-flake ../.;
     in
@@ -36,6 +36,7 @@
           inputs = POS.inputs // {
             POS = POS;
             lib = inputs.nixpkgs.lib // POS.lib;
+            inputs' = inputs;
           };
         };
       };
