@@ -1,9 +1,10 @@
 {
-  description = "Flops";
+  description = "POS";
 
   inputs.std.follows = "std-ext/std";
   inputs.nixpkgs.follows = "std-ext/nixpkgs";
   inputs.std-ext.url = "github:gtrunsec/std-ext";
+  inputs.std-ext.inputs.org-roam-book-template.follows = "";
   inputs.call-flake.url = "github:divnix/call-flake";
   inputs.namaka.follows = "";
 

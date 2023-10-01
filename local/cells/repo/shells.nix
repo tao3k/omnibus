@@ -19,7 +19,7 @@ in
 {
   # Tool Homepage: https://numtide.github.io/devshell/
   default = lib.dev.mkShell {
-    name = "flops devshell";
+    name = "POS devshell";
 
     # imports = [ devshellProfiles.rust ];
     # Tool Homepage: https://nix-community.github.io/nixago/
