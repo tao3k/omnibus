@@ -105,7 +105,7 @@
             };
           };
         };
-        lib = lib.outputs.default;
+        inherit lib;
       };
       exporters = flops.lib.haumea.pops.default.setInit {
         loader = with haumea.lib; loaders.scoped;
