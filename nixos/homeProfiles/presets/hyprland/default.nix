@@ -1,5 +1,5 @@
 {
-  imports = [ POS.homeModules.wayland.windowManager.hyprland ];
+  imports = [ omnibus.homeModules.wayland.windowManager.hyprland ];
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;

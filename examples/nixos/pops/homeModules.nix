@@ -1,4 +1,4 @@
-(POS.loadHomeModules.addLoadExtender {
+(omnibus.loadHomeModules.addLoadExtender {
   inputs = {
     __misc__ = {
       inherit (super.inputs.outputs) catppuccin-bat;

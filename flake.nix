@@ -50,14 +50,14 @@
           inputs = {
             POP = POP.lib;
             flops = flops.lib;
-            POS = self.lib;
+            omnibus = self.lib;
           };
         };
         loadHomeModules = flops.lib.haumea.pops.default.setInit {
           src = ./nixos/homeModules;
           type = "nixosModules";
           inputs = {
-            POS = self.lib;
+            omnibus = self.lib;
             inherit (self.lib) dotfiles;
           };
         };
@@ -86,7 +86,7 @@
             loadProfiles = self.lib.loadNixOSProfiles.addLoadExtender {
               src = ./evalModules/flake-parts/profiles;
               inputs = {
-                POS.evalModules.flake-parts.modules =
+                omnibus.evalModules.flake-parts.modules =
                   self.evalModules.flake-parts.modules.outputs.default;
               };
             };
@@ -100,7 +100,7 @@
               src = ./evalModules/devshell/profiles;
               type = "nixosProfiles";
               inputs = {
-                POS.devshellModules = loadModules.outputs.default;
+                omnibus.devshellModules = loadModules.outputs.default;
               };
             };
           };
@@ -116,7 +116,7 @@
           haumea = flops.inputs.haumea.lib;
           dmerge = flops.inputs.dmerge;
           POP = POP.lib;
-          POS = self.lib;
+          omnibus = self.lib;
         };
       };
     };

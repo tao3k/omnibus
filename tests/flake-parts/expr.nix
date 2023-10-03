@@ -1,5 +1,5 @@
 {
-  POS,
+  omnibus,
   POP,
   flops,
   lib,
@@ -9,7 +9,7 @@ let
   system = "x86_64-linux";
   inputs =
     let
-      loadInputs = POS.lib.loadInputs.setInitInputs ./__lock;
+      loadInputs = omnibus.lib.loadInputs.setInitInputs ./__lock;
     in
     ((loadInputs.addInputsExtender (
       POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
@@ -24,7 +24,7 @@ let
     ).outputs;
 
   flakePartsProfiles =
-    (POS.lib.evalModules.flake-parts.loadProfiles.addLoadExtender {
+    (omnibus.lib.evalModules.flake-parts.loadProfiles.addLoadExtender {
       inputs = {
         inherit (inputs) nixpkgs;
         inputs = {
@@ -45,7 +45,7 @@ let
         systems = [ system ];
         imports = [ inputs.process-compose-flake.flakeModule ];
         perSystem =
-          { self', ... }: { imports = [ flakePartsProfiles.sqlite-example ]; };
+          { selfModule', ... }: { imports = [ flakePartsProfiles.sqlite-example ]; };
       };
 in
 lib.mapAttrs (_: builtins.unsafeDiscardStringContext) {

@@ -1,5 +1,5 @@
 {
-  description = "POS";
+  description = "omnibus";
 
   inputs.std.follows = "std-ext/std";
   inputs.nixpkgs.follows = "std-ext/nixpkgs";
@@ -11,12 +11,12 @@
   outputs =
     { std, self, ... }@inputs:
     let
-      POS = inputs.call-flake ../.;
+      omnibus = inputs.call-flake ../.;
     in
     std.growOn
       {
         inputs = inputs // {
-          inherit POS;
+          inherit omnibus;
         };
         cellsFrom = ./cells;
         cellBlocks = with std.blockTypes; [
@@ -34,9 +34,9 @@
       {
         checks = inputs.namaka.lib.load {
           src = ../tests;
-          inputs = POS.inputs // {
-            POS = POS;
-            lib = inputs.nixpkgs.lib // POS.lib;
+          inputs = omnibus.inputs // {
+            omnibus = omnibus;
+            lib = inputs.nixpkgs.lib // omnibus.lib;
             inputs' = inputs;
           };
         };

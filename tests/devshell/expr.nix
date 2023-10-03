@@ -1,5 +1,5 @@
 {
-  POS,
+  omnibus,
   POP,
   flops,
   lib,
@@ -7,7 +7,7 @@
 let
   inputs =
     let
-      loadInputs = POS.lib.loadInputs.setInitInputs ./__lock;
+      loadInputs = omnibus.lib.loadInputs.setInitInputs ./__lock;
     in
     ((loadInputs.addInputsExtender (
       POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
@@ -23,7 +23,7 @@ let
     ).outputs;
 
   devshellProfiles =
-    (POS.lib.evalModules.devshell.loadProfiles.addLoadExtender {
+    (omnibus.lib.evalModules.devshell.loadProfiles.addLoadExtender {
       inputs = {
         inherit (inputs) fenix nixpkgs;
       };

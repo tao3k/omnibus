@@ -3,7 +3,7 @@
   loader = haumea.loaders.scoped;
   type = "nixosProfiles";
   inputs = {
-    POS = {
+    omnibus = {
       nixosProfiles = super.nixosProfiles.outputs.nixosProfiles;
       data = super.data.outputs.default;
     };

@@ -1,6 +1,6 @@
-(POS.loadNixOSProfiles.addLoadExtender {
+(omnibus.loadNixOSProfiles.addLoadExtender {
   inputs = super.inputs.outputs // {
-    POS = {
+    omnibus = {
       nixosModules = super.nixosModules.outputs.nixosModules;
     };
   };
@@ -11,8 +11,8 @@
         exports.customProfiles = self.outputs.__extenders [
           {
             value =
-              { self' }:
-              self' (
+              { selfModule' }:
+              selfModule' (
                 m:
                 dmerge m {
                   nix.extraOptions = ''
@@ -28,8 +28,8 @@
           {
             # boot.__profiles__.systemd-initrd.enable = true;
             value =
-              { self' }:
-              self' (m: dmerge m { boot.__profiles__.systemd-boot.enable = true; });
+              { selfModule' }:
+              selfModule' (m: dmerge m { boot.__profiles__.systemd-boot.enable = true; });
             path = [
               "presets"
               "boot"

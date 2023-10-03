@@ -7,9 +7,10 @@ let
   inherit (inputs.std) lib;
   devshellProfiles =
     let
-      __inptus__ = (inputs.POS.loadInputs.setSystem inputs.nixpkgs.system).outputs;
+      __inptus__ =
+        (inputs.omnibus.loadInputs.setSystem inputs.nixpkgs.system).outputs;
     in
-    (inputs.POS.evalModules.devshell.loadProfiles.addLoadExtender {
+    (inputs.omnibus.evalModules.devshell.loadProfiles.addLoadExtender {
       inputs = {
         inherit (__inptus__) fenix;
         nixpkgs = __inptus__.nixpkgs.legacyPackages;
@@ -19,7 +20,7 @@ in
 {
   # Tool Homepage: https://numtide.github.io/devshell/
   default = lib.dev.mkShell {
-    name = "POS devshell";
+    name = "omnibus devshell";
 
     # imports = [ devshellProfiles.rust ];
     # Tool Homepage: https://nix-community.github.io/nixago/

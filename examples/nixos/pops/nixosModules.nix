@@ -1,5 +1,6 @@
-(POS.loadNixOSModules.addLoadExtender { inputs = super.inputs.outputs // { }; })
-.addExporters
+(omnibus.loadNixOSModules.addLoadExtender {
+  inputs = super.inputs.outputs // { };
+}).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: super: {
@@ -7,8 +8,8 @@
           with dmerge;
           self.outputs.__extenders [ ({
             value =
-              { self' }:
-              self' (
+              { selfModule' }:
+              selfModule' (
                 m:
                 dmerge m {
                   config.boot.contents = update [ 0 ] [ {

@@ -22,7 +22,7 @@ in
 
     outputs.srvos.default.common.nix
 
-    (POS.lib.mkHome
+    (omnibus.lib.mkHome
       {
         admin = {
           uid = 1000;

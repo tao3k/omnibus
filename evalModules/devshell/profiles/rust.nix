@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-    POS.devshellModules.language.rust
+    omnibus.devshellModules.language.rust
     (extraModulesPath + "/language/rust.nix")
   ];
 

@@ -1,6 +1,6 @@
-(POS.loadHomeProfiles.addLoadExtender {
+(omnibus.loadHomeProfiles.addLoadExtender {
   inputs = super.inputs.outputs // {
-    POS = {
+    omnibus = {
       homeModules = super.homeModules.outputs.nixosModules;
     };
   };
@@ -10,8 +10,8 @@
       self: super: {
         exports.customProfiles = self.outputs.__extenders [ {
           value =
-            { self' }:
-            self' (
+            { selfModule' }:
+            selfModule' (
               m:
               dmerge m {
                 wayland.windowManager.hyprland.__profiles__ = {
