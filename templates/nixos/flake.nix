@@ -48,7 +48,7 @@
     {
       lib =
         (inputs.omnibus.exporters.addLoadExtender {
-          src = ./lib;
+          src = ./nix/lib;
           inputs = {
             inherit inputs eachSystem;
             omnibus = inputs.omnibus.lib;
