@@ -403,17 +403,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1696323936,
-        "narHash": "sha256-xEKOV/i0u8sLLpMTbPqJWAoDQKd+BAiueWdSr5NSQao=",
-        "owner": "gtrunsec",
-        "repo": "omnibus",
-        "rev": "e0fa902a57dee4914811817aa7415756b0aa54d6",
-        "type": "github"
+        "dirtyRev": "de3129c12f3d258c700ca541e940eff7801f2ea0-dirty",
+        "dirtyShortRev": "de3129c-dirty",
+        "lastModified": 1696368797,
+        "narHash": "sha256-hUhUtFKG7k47YriaQeSOMYOrK5CNs6RlVKZXlyidrvk=",
+        "type": "git",
+        "url": "file:///home/guangtao/ghq/github.com/GTrunSec/omnibus"
       },
       "original": {
-        "owner": "gtrunsec",
-        "repo": "omnibus",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/guangtao/ghq/github.com/GTrunSec/omnibus"
       }
     },
     "root": {
@@ -421,6 +420,10 @@
         "darwin": "darwin",
         "darwin-unstable": "darwin-unstable",
         "disko": "disko",
+        "flops": [
+          "omnibus",
+          "flops"
+        ],
         "haumea": [
           "omnibus",
           "flops",

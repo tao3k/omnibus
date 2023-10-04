@@ -14,12 +14,17 @@
       ...
     }@inputs:
     let
+      omnibus = self.lib // {
+        lib = self.lib.lib;
+      };
       lib = flops.lib.haumea.pops.default.setInit {
         src = ./lib;
         loader = haumea.lib.loaders.scoped;
         inputs = {
           lib = flops.inputs.nixlib.lib // builtins;
           home-manager = self.lib.loadInputs.outputs.home-manager;
+          haumea = haumea.lib;
+          inherit omnibus;
         };
       };
 
@@ -116,7 +121,7 @@
           haumea = flops.inputs.haumea.lib;
           dmerge = flops.inputs.dmerge;
           POP = POP.lib;
-          omnibus = self.lib;
+          inherit omnibus;
         };
       };
     };

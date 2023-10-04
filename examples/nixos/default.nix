@@ -19,7 +19,7 @@ in
 
     outputs.srvos.default.common.nix
 
-    (omnibus.lib.outputs.default.mkHome
+    (omnibus.lib.mkHome
       {
         admin = {
           uid = 1000;

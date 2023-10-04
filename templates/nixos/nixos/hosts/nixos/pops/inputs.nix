@@ -1,9 +1,8 @@
-(omnibus.loadInputs.addInputsExtender (
+(self'.inputs.loadInputs.addInputsExtender (
   POP.extendPop flops.flake.pops.inputsExtender (
     self: super:
     let
       selfInputs = omnibus.loadInputs.setInitInputs ../__lock;
-      local = omnibus.loadInputs.setInitInputs ../../../local;
     in
     {
       inputs = {
@@ -13,4 +12,4 @@
     }
   )
 )).setSystem
-  "x86_64-linux"
+  root.nixos.layouts.system

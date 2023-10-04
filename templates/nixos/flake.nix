@@ -8,8 +8,10 @@
     srvos.url = "github:numtide/srvos";
     srvos.inputs.nixpkgs.follows = "nixpkgs";
 
-    omnibus.url = "github:gtrunsec/omnibus";
+    # omnibus.url = "github:gtrunsec/omnibus";
+    omnibus.url = "/home/guangtao/ghq/github.com/GTrunSec/omnibus";
     haumea.follows = "omnibus/flops/haumea";
+    flops.follows = "omnibus/flops";
   };
 
   # nixpkgs & home-manager
@@ -36,12 +38,28 @@
 
   outputs =
     { self, ... }@inputs:
+    let
+      eachSystem = inputs.nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+    in
     {
-      lib = inputs.omnibus.exporters.addLoadExtender {
-        src = ./lib;
-        inputs = {
-          inherit inputs;
-        };
-      };
+      lib =
+        (inputs.omnibus.exporters.addLoadExtender {
+          src = ./lib;
+          inputs = {
+            inherit inputs eachSystem;
+          };
+        }).outputs.default;
+
+      inherit (self.lib.exporters)
+        darwinConfigurations
+        nixosConfigurations
+        packages
+        local
+      ;
     };
 }
