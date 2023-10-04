@@ -51,6 +51,7 @@
           src = ./lib;
           inputs = {
             inherit inputs eachSystem;
+            omnibus = inputs.omnibus.lib;
           };
         }).outputs.default;
 

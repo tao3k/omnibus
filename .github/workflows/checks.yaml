@@ -12,7 +12,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: nixbuild/nix-quick-install-action@master
+      - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: Build Example/nixos

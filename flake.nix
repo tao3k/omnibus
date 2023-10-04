@@ -121,7 +121,9 @@
           haumea = flops.inputs.haumea.lib;
           dmerge = flops.inputs.dmerge;
           POP = POP.lib;
-          inherit omnibus;
+          omnibus = omnibus // {
+            lib = lib.outputs.default;
+          };
         };
       };
 

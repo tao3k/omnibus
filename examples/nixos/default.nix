@@ -15,8 +15,6 @@ in
     # # --custom profiles
     outputs.nixosProfiles.customProfiles.presets.nix
     outputs.nixosProfiles.customProfiles.presets.boot
-    outputs.nixosModules.customModules.boot
-
     outputs.srvos.default.common.nix
 
     (omnibus.lib.mkHome
