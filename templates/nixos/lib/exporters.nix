@@ -47,6 +47,7 @@ in
       (flops.haumea.pops.default.setInit {
         src = ../packages;
         loader = _: path: inputs.nixpkgs.callPackage path { };
+        transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
       })
     ).outputs.default
   );

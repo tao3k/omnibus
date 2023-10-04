@@ -403,16 +403,17 @@
         ]
       },
       "locked": {
-        "dirtyRev": "f35be63f3200410f800d572e337f9b5a6dc95c2f-dirty",
-        "dirtyShortRev": "f35be63-dirty",
-        "lastModified": 1696396358,
-        "narHash": "sha256-tLqrsk6fZXV77weNLoFPDtSpDezVqvvVhg9DlFcLqmE=",
-        "type": "git",
-        "url": "file:///home/guangtao/ghq/github.com/GTrunSec/omnibus"
+        "lastModified": 1696400299,
+        "narHash": "sha256-4YlnjkrSjkqGxrrjtd5sOv1OAtb5YD1RlU+q5CFLLXc=",
+        "owner": "gtrunsec",
+        "repo": "omnibus",
+        "rev": "36554c660eddca205acb0047d46c51c3fceef7ec",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/guangtao/ghq/github.com/GTrunSec/omnibus"
+        "owner": "gtrunsec",
+        "repo": "omnibus",
+        "type": "github"
       }
     },
     "root": {
