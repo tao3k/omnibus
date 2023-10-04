@@ -9,9 +9,9 @@ in
   data = outputs.data.default;
 
   nixosSuites = lib.flatten [
-    # outputs.selfNixOSProfiles.default.bootstrap
+    outputs.selfNixOSProfiles.default.bootstrap
 
-    # # self.nixosProfiles.default.presets.boot
+    outputs.nixosProfiles.default.presets.boot
     # outputs.nixosModules.default.programs.git
 
     # # # --custom profiles
@@ -34,12 +34,11 @@ in
     )
   ];
 
-  homeSuites =
-    [
-      # outputs.homeProfiles.customProfiles.presets.hyprland
-      # outputs.homeProfiles.default.presets.bat
-      # # # The parent directory of "presets" is categorized as a list type of "suites"
-      # (outputs.homeProfiles.default.shell { }).default
-      # super.pops.homeModules.outputs.default.wayland.windowManager.hyprland
-    ];
+  homeSuites = [
+    outputs.homeProfiles.default.presets.emacs
+    # outputs.homeProfiles.default.presets.bat
+    # # # The parent directory of "presets" is categorized as a list type of "suites"
+    # (outputs.homeProfiles.default.shell { }).default
+    # super.pops.homeModules.outputs.default.wayland.windowManager.hyprland
+  ];
 }

@@ -403,10 +403,10 @@
         ]
       },
       "locked": {
-        "dirtyRev": "de3129c12f3d258c700ca541e940eff7801f2ea0-dirty",
-        "dirtyShortRev": "de3129c-dirty",
-        "lastModified": 1696368797,
-        "narHash": "sha256-hUhUtFKG7k47YriaQeSOMYOrK5CNs6RlVKZXlyidrvk=",
+        "dirtyRev": "f35be63f3200410f800d572e337f9b5a6dc95c2f-dirty",
+        "dirtyShortRev": "f35be63-dirty",
+        "lastModified": 1696396358,
+        "narHash": "sha256-tLqrsk6fZXV77weNLoFPDtSpDezVqvvVhg9DlFcLqmE=",
         "type": "git",
         "url": "file:///home/guangtao/ghq/github.com/GTrunSec/omnibus"
       },

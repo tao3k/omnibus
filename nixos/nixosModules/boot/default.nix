@@ -4,7 +4,6 @@ with lib; {
     (modulesPath + "/installer/scan/not-detected.nix")
     # (modulesPath + "/virtualisation/google-compute-image.nix")
     (loadSubmodule ./systemd-initrd.nix)
-    ({ environment.systemPackages = [ nixpkgs.hello ]; })
   ];
 
   config = mkMerge [

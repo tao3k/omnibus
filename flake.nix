@@ -15,7 +15,7 @@
     }@inputs:
     let
       omnibus = self.lib // {
-        lib = self.lib.lib;
+        inherit lib;
       };
       lib = flops.lib.haumea.pops.default.setInit {
         src = ./lib;
@@ -123,6 +123,14 @@
           POP = POP.lib;
           inherit omnibus;
         };
+      };
+
+      templates.default = {
+        path = ./templates/nixos;
+        description = "Omnibus & nixos";
+        welcomeText = ''
+          You have created a Omnibus.nixos template!
+        '';
       };
     };
 }

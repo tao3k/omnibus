@@ -1,14 +1,11 @@
-(self'.inputs.loadInputs.addInputsExtender (
+(self'.lib.inputs.addInputsExtender (
   POP.extendPop flops.flake.pops.inputsExtender (
     self: super:
     let
       selfInputs = omnibus.loadInputs.setInitInputs ../__lock;
     in
     {
-      inputs = {
-        std = local.outputs.std;
-        nixpkgs = omnibus.loadInputs.outputs.nixpkgs.legacyPackages;
-      } // selfInputs.outputs;
+      inputs = { } // selfInputs.outputs;
     }
   )
 )).setSystem

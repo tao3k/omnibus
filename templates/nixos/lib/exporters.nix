@@ -11,9 +11,7 @@ in
     (inputs.omnibus.exporters.addLoadExtender {
       src = ../nixos/hosts;
       inputs = inputs // {
-        self' = {
-          inherit (super) inputs;
-        };
+        self'.lib = super;
         omnibus = inputs.omnibus.lib // {
           lib = super.omnibus.lib.outputs.default;
         };

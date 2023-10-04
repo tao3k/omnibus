@@ -8,8 +8,7 @@
     srvos.url = "github:numtide/srvos";
     srvos.inputs.nixpkgs.follows = "nixpkgs";
 
-    # omnibus.url = "github:gtrunsec/omnibus";
-    omnibus.url = "/home/guangtao/ghq/github.com/GTrunSec/omnibus";
+    omnibus.url = "github:gtrunsec/omnibus";
     haumea.follows = "omnibus/flops/haumea";
     flops.follows = "omnibus/flops";
   };

@@ -3,9 +3,17 @@
   loader = haumea.loaders.scoped;
   type = "nixosProfiles";
   inputs = {
-    omnibus = {
-      nixosProfiles = super.nixosProfiles.outputs.nixosProfiles;
-      data = super.data.outputs.default;
+    local.data = self.lib.expoters.local.${root.nixos.layouts.system}.data;
+    omnibus = rec {
+      nixosModules = omnibus.loadNixOSModules.outputs.default;
+      nixosProfiles =
+        (omnibus.loadNixOSProfiles.addLoadExtender {
+          inputs = {
+            omnibus = {
+              inherit nixosModules;
+            };
+          };
+        }).outputs.default;
     };
   };
 }).addExporters
