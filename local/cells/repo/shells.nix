@@ -8,7 +8,7 @@ let
   devshellProfiles =
     let
       __inptus__ =
-        (inputs.omnibus.loadInputs.setSystem inputs.nixpkgs.system).outputs;
+        (inputs.omnibus.pops.loadInputs.setSystem inputs.nixpkgs.system).outputs;
     in
     (inputs.omnibus.evalModules.devshell.loadProfiles.addLoadExtender {
       inputs = {

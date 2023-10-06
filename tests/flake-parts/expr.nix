@@ -9,7 +9,7 @@ let
   system = "x86_64-linux";
   inputs =
     let
-      loadInputs = omnibus.lib.loadInputs.setInitInputs ./__lock;
+      loadInputs = omnibus.pops.loadInputs.setInitInputs ./__lock;
     in
     ((loadInputs.addInputsExtender (
       POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
@@ -24,7 +24,7 @@ let
     ).outputs;
 
   flakePartsProfiles =
-    (omnibus.lib.evalModules.flake-parts.loadProfiles.addLoadExtender {
+    (omnibus.pops.evalModules.flake-parts.loadProfiles.addLoadExtender {
       inputs = {
         inherit (inputs) nixpkgs;
         inputs = {

@@ -8,8 +8,8 @@ let
 in
 {
   hosts =
-    (inputs.omnibus.exporters.addLoadExtender {
-      src = ../../nixos/hosts;
+    (inputs.omnibus.pops.exporters.addLoadExtender {
+      src = self'.outPath + "/nixos/hosts";
       inputs = inputs // {
         self'.lib = super;
         omnibus = inputs.omnibus.lib // {
@@ -35,7 +35,8 @@ in
     in
     {
       data =
-        (loadDataAll.addLoadExtender { src = ../../local/data; }).outputs.default;
+        (loadDataAll.addLoadExtender { src = self'.outPath + "/local/data"; })
+        .outputs.default;
     }
   );
 

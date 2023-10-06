@@ -44,17 +44,19 @@
         "aarch64-linux"
         "aarch64-darwin"
       ];
-    in
-    {
-      lib =
-        (inputs.omnibus.exporters.addLoadExtender {
+      pops =
+        (inputs.omnibus.pops.exporters.addLoadExtender {
           src = ./nix/lib;
           inputs = {
+            self' = self;
             inherit inputs eachSystem;
             omnibus = inputs.omnibus.lib;
           };
-        }).outputs.default;
-
+        });
+    in
+    {
+      inherit pops;
+      lib = pops.outputs.default;
       inherit (self.lib.exporters)
         darwinConfigurations
         nixosConfigurations

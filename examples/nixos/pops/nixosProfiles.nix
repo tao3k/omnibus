@@ -1,4 +1,4 @@
-(omnibus.loadNixOSProfiles.addLoadExtender {
+(omnibus.pops.loadNixOSProfiles.addLoadExtender {
   inputs = super.inputs.outputs // {
     omnibus = {
       nixosModules = super.nixosModules.outputs.nixosModules;

@@ -1,14 +1,14 @@
-(omnibus.loadInputs.addInputsExtender (
+(omnibus.pops.loadInputs.addInputsExtender (
   POP.extendPop flops.flake.pops.inputsExtender (
     self: super:
     let
-      selfInputs = omnibus.loadInputs.setInitInputs ../__lock;
-      local = omnibus.loadInputs.setInitInputs ../../../local;
+      selfInputs = omnibus.pops.loadInputs.setInitInputs ../__lock;
+      local = omnibus.pops.loadInputs.setInitInputs (self'.outPath + "/local");
     in
     {
       inputs = {
         std = local.outputs.std;
-        nixpkgs = omnibus.loadInputs.outputs.nixpkgs.legacyPackages;
+        nixpkgs = omnibus.pops.loadInputs.outputs.nixpkgs.legacyPackages;
       } // selfInputs.outputs;
     }
   )

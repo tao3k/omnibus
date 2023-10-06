@@ -4,6 +4,7 @@ let
   );
 in
 {
+  inherit outputs;
   data = outputs.data.default;
 
   nixosSuites = lib.flatten [
@@ -17,7 +18,7 @@ in
     outputs.nixosProfiles.customProfiles.presets.boot
     outputs.srvos.default.common.nix
 
-    (omnibus.lib.mkHome
+    (omnibus.lib.outputs.default.mkHome
       {
         admin = {
           uid = 1000;

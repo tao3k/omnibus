@@ -1,11 +1,11 @@
 {
-  loadHomeModules = (omnibus.loadHomeModules.addLoadExtender { });
+  loadHomeModules = (omnibus.pops.loadHomeModules.addLoadExtender { });
 
-  loadHomeProfiles = (omnibus.loadHomeProfiles.addLoadExtender { });
+  loadHomeProfiles = (omnibus.pops.loadHomeProfiles.addLoadExtender { });
 
-  loadNixOSProfiles = (omnibus.loadNixOSProfiles.addLoadExtender { });
+  loadNixOSProfiles = (omnibus.pops.loadNixOSProfiles.addLoadExtender { });
 
-  loadNixOSModules = (omnibus.loadNixOSModules.addLoadExtender { });
+  loadNixOSModules = (omnibus.pops.loadNixOSModules.addLoadExtender { });
 
   lib = omnibus.lib.addLoadExtender {
     inputs = {

@@ -5,9 +5,9 @@
   inputs = {
     local.data = self.lib.expoters.local.${root.nixos.layouts.system}.data;
     omnibus = rec {
-      nixosModules = omnibus.loadNixOSModules.outputs.default;
+      nixosModules = omnibus.pops.loadNixOSModules.outputs.default;
       nixosProfiles =
-        (omnibus.loadNixOSProfiles.addLoadExtender {
+        (omnibus.pops.loadNixOSProfiles.addLoadExtender {
           inputs = {
             omnibus = {
               inherit nixosModules;

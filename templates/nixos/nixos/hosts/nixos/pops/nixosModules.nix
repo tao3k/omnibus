@@ -1,4 +1,4 @@
-(omnibus.loadNixOSModules.addLoadExtender {
+(omnibus.pops.loadNixOSModules.addLoadExtender {
   inputs = super.inputs.outputs // { };
 }).addExporters
   [
