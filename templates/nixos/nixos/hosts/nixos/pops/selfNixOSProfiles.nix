@@ -1,19 +1,23 @@
 (super.nixosProfiles.addLoadExtender {
-  src = ../__nixosProfiles;
-  loader = haumea.loaders.scoped;
-  type = "nixosProfiles";
-  inputs = {
-    local.data = self.lib.expoters.local.${root.nixos.layouts.system}.data;
-    omnibus = rec {
-      nixosModules = omnibus.pops.loadNixOSModules.outputs.default;
-      nixosProfiles =
-        (omnibus.pops.loadNixOSProfiles.addLoadExtender {
-          inputs = {
-            omnibus = {
-              inherit nixosModules;
+  load = {
+    src = ../__nixosProfiles;
+    loader = haumea.loaders.scoped;
+    type = "nixosProfiles";
+    inputs = {
+      local.data = self.lib.expoters.local.${root.nixos.layouts.system}.data;
+      omnibus = rec {
+        nixosModules = omnibus.pops.loadNixOSModules.layouts.default;
+        nixosProfiles =
+          (omnibus.pops.loadNixOSProfiles.addLoadExtender {
+            load = {
+              inputs = {
+                omnibus = {
+                  inherit nixosModules;
+                };
+              };
             };
-          };
-        }).outputs.default;
+          }).layouts.default;
+      };
     };
   };
 }).addExporters

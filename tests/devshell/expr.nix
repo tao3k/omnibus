@@ -24,10 +24,10 @@ let
 
   devshellProfiles =
     (omnibus.pops.evalModules.devshell.loadProfiles.addLoadExtender {
-      inputs = {
+      load.inputs = {
         inherit (inputs) fenix nixpkgs;
       };
-    }).outputs.default;
+    }).layouts.default;
 
   shell = inputs.devshell.mkShell {
     name = "rust";

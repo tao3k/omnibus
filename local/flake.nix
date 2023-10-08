@@ -6,7 +6,8 @@
   inputs.std-ext.url = "github:gtrunsec/std-ext";
   inputs.std-ext.inputs.org-roam-book-template.follows = "";
   inputs.call-flake.url = "github:divnix/call-flake";
-  inputs.namaka.follows = "";
+  inputs.namaka.url = "github:nix-community/namaka";
+  inputs.haumea.follows = "namaka/haumea";
 
   outputs =
     { std, self, ... }@inputs:
@@ -32,12 +33,22 @@
         ] ];
       }
       {
+        eval = inputs.haumea.lib.load {
+          src = ../tests;
+          inputs = omnibus.inputs // {
+            omnibus = omnibus;
+            lib = inputs.nixpkgs.lib // builtins;
+            inputs' = inputs;
+            trace = true;
+          };
+        };
         checks = inputs.namaka.lib.load {
           src = ../tests;
           inputs = omnibus.inputs // {
             omnibus = omnibus;
-            lib = inputs.nixpkgs.lib // omnibus.lib;
+            lib = inputs.nixpkgs.lib // builtins;
             inputs' = inputs;
+            trace = false;
           };
         };
       };

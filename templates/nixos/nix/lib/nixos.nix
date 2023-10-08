@@ -1,37 +1,41 @@
 {
   loadHomeModules =
     (omnibus.pops.loadHomeModules.addLoadExtender {
-      src = self'.outPath + "/nixos/homeModules";
+      load.src = self'.outPath + "/nixos/homeModules";
     });
 
   loadHomeProfiles =
     (omnibus.pops.loadHomeProfiles.addLoadExtender {
-      src = self'.outPath + "/nixos/homeProfiles";
-      inputs = {
-        homeModules = self.loadHomeModules.outputs.default;
+      load = {
+        src = self'.outPath + "/nixos/homeProfiles";
+        inputs = {
+          homeModules = self.loadHomeModules.layouts.default;
+        };
       };
     });
 
   loadNixOSProfiles =
     (omnibus.pops.loadNixOSProfiles.addLoadExtender {
-      src = self'.outPath + "/nixos/nixosProfiles";
-      inputs = {
-        nixosModules = self.loadNixOSModules.outputs.default;
+      load = {
+        src = self'.outPath + "/nixos/nixosProfiles";
+        inputs = {
+          nixosModules = self.loadNixOSModules.layouts.default;
+        };
       };
     });
 
   loadNixOSModules =
     (omnibus.pops.loadNixOSModules.addLoadExtender {
-      src = self'.outPath + "/nixos/nixosModules";
+      load.src = self'.outPath + "/nixos/nixosModules";
     });
 
   loadDarwinProfiles =
     (omnibus.pops.loadNixOSProfiles.addLoadExtender {
-      src = self'.outPath + "/nixos/darwinProfiles";
+      load.src = self'.outPath + "/nixos/darwinProfiles";
     });
 
   loadDarwinModules =
     (omnibus.pops.loadNixOSModules.addLoadExtender {
-      src = self'.outPath + "/nixos/darwinModules";
+      load.src = self'.outPath + "/nixos/darwinModules";
     });
 }

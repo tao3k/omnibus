@@ -16,7 +16,7 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: Build Example/nixos
-        run: nix -Lv build .#nixosConfigurations.nixos.config.system.build.toplevel --dry-run
+        run: nix -Lv build ./local#eval.nixos.expr.nixosConfiguration.config.system.build.toplevel --dry-run
 
       - name: Run Eval check
         run: nix -Lv eval ./local#checks --override-input namaka github:nix-community/namaka

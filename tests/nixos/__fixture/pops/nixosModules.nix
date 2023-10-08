@@ -1,12 +1,12 @@
 (omnibus.pops.loadNixOSModules.addLoadExtender {
-  inputs = super.inputs.outputs // { };
+  load.inputs = super.inputs.outputs // { };
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: super: {
         exports.customModules =
           with dmerge;
-          self.outputs.__extenders [ ({
+          self.outputs [ ({
             value =
               { selfModule' }:
               selfModule' (

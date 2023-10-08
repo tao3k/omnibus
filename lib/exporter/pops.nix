@@ -4,7 +4,6 @@
     self'.outPath + "/local/lock"
   );
   loadData = flops.haumea.pops.default.setInit {
-    src = self'.outPath + "/examples/__data";
     loader = with haumea; [
       matchers.json
       matchers.toml
@@ -28,13 +27,17 @@
     };
   };
   loadHomeProfiles = self.loadHomeModules.addLoadExtender {
-    src = self'.outPath + "/nixos/homeProfiles";
-    loader = haumea.loaders.scoped;
-    type = "nixosProfiles";
+    load = {
+      src = self'.outPath + "/nixos/homeProfiles";
+      loader = haumea.loaders.scoped;
+      type = "nixosProfiles";
+    };
   };
   loadNixOSProfiles = self.loadNixOSModules.addLoadExtender {
-    src = self'.outPath + "/nixos/nixosProfiles";
-    type = "nixosProfiles";
+    load = {
+      src = self'.outPath + "/nixos/nixosProfiles";
+      type = "nixosProfiles";
+    };
   };
   srvos = flops.haumea.pops.default.setInit {
     src = builtins.unsafeDiscardStringContext (
@@ -47,34 +50,39 @@
   evalModules = {
     flake-parts = {
       loadModules = self.loadNixOSModules.addLoadExtender {
-        src = self'.outPath + "/evalModules/flake-parts/modules";
+        load.src = self'.outPath + "/evalModules/flake-parts/modules";
       };
       loadProfiles = self.loadNixOSProfiles.addLoadExtender {
-        src = self'.outPath + "/evalModules/flake-parts/profiles";
-        inputs = {
-          omnibus.evalModules.flake-parts.modules =
-            self.evalModules.flake-parts.modules.outputs.default;
+        load = {
+          src = self'.outPath + "/evalModules/flake-parts/profiles";
+          inputs = {
+            omnibus.evalModules.flake-parts.modules =
+              self.evalModules.flake-parts.modules.layouts.default;
+          };
         };
       };
     };
     devshell = rec {
       loadModules = self.loadNixOSModules.addLoadExtender {
-        src = self'.outPath + "/evalModules/devshell/modules";
-        type = "nixosModules";
+        load = {
+          src = self'.outPath + "/evalModules/devshell/modules";
+          type = "nixosModules";
+        };
       };
       loadProfiles = self.loadNixOSProfiles.addLoadExtender {
-        src = self'.outPath + "/evalModules/devshell/profiles";
-        type = "nixosProfiles";
-        inputs = {
-          omnibus.devshellModules = loadModules.outputs.default;
+        load = {
+          src = self'.outPath + "/evalModules/devshell/profiles";
+          type = "nixosProfiles";
+          inputs = {
+            omnibus.devshellModules = loadModules.layouts.default;
+          };
         };
       };
     };
   };
 
-  exporters = flops.haumea.pops.default.setInit {
+  exporter = flops.haumea.pops.default.setInit {
     loader = with haumea; loaders.scoped;
-    src = self'.outPath + "/examples";
     inputs = {
       self' = self;
       inherit

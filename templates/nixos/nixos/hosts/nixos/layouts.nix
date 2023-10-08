@@ -1,5 +1,5 @@
 let
-  outputs = lib.mapAttrs (_: v: v.outputs) (
+  outputs = lib.mapAttrs (_: v: v.layouts) (
     lib.removeAttrs super.pops [ "inputs" ]
   );
 in
@@ -20,7 +20,7 @@ in
     # outputs.nixosModules.customModules.boot
 
     # outputs.srvos.default.common.nix
-    (omnibus.lib.outputs.default.mkHome
+    (omnibus.lib.layouts.default.mkHome
       {
         admin = {
           uid = 1000;
@@ -39,6 +39,6 @@ in
     # outputs.homeProfiles.default.presets.bat
     # # # The parent directory of "presets" is categorized as a list type of "suites"
     # (outputs.homeProfiles.default.shell { }).default
-    # super.pops.homeModules.outputs.default.wayland.windowManager.hyprland
+    # super.pops.homeModules.layouts.default.wayland.windowManager.hyprland
   ];
 }

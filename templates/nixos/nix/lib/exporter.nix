@@ -8,15 +8,17 @@ let
 in
 {
   hosts =
-    (inputs.omnibus.pops.exporters.addLoadExtender {
-      src = self'.outPath + "/nixos/hosts";
-      inputs = inputs // {
-        self'.lib = super;
-        omnibus = inputs.omnibus.lib // {
-          lib = super.omnibus.lib.outputs.default;
+    (inputs.omnibus.pops.exporter.addLoadExtender {
+      load = {
+        src = self'.outPath + "/nixos/hosts";
+        inputs = inputs // {
+          self'.lib = super;
+          omnibus = inputs.omnibus // {
+            lib = super.omnibus.lib.layouts.default;
+          };
         };
       };
-    }).outputs.default;
+    }).layouts.default;
 
   nixosConfigurations = filterConfigs "nixosConfiguration";
 
@@ -28,15 +30,17 @@ in
       inputs = (super.inputs.setSystem system).outputs;
       loadDataAll =
         (omnibus.lib.addLoadExtender {
-          inputs = {
-            nixpkgs = inputs.nixpkgs.legacyPackages.${system};
+          load = {
+            inputs = {
+              nixpkgs = inputs.nixpkgs.legacyPackages.${system};
+            };
           };
-        }).outputs.default.loadDataAll;
+        }).layouts.default.loadDataAll;
     in
     {
       data =
-        (loadDataAll.addLoadExtender { src = self'.outPath + "/local/data"; })
-        .outputs.default;
+        (loadDataAll.addLoadExtender { load.src = self'.outPath + "/local/data"; })
+        .layouts.default;
     }
   );
 
@@ -51,6 +55,6 @@ in
         loader = _: path: inputs.nixpkgs.callPackage path { };
         transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
       })
-    ).outputs.default
+    ).layouts.default
   );
 }

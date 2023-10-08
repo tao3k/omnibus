@@ -13,4 +13,4 @@
     }
   )
 )).setSystem
-  "x86_64-linux"
+  root.layouts.system

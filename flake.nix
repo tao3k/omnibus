@@ -32,19 +32,12 @@
           inherit omnibus;
         };
       };
-
-      nixosConfigurations =
-        (self.pops.exporters.addLoadExtender {
-          src = ./nixos/nixosConfigurations;
-          inputs = {
-            nixpkgs = omnibus.pops.loadInputs.outputs.nixpkgs;
-            exporters = self.pops.exporters.outputs.default;
-          };
-        }).outputs.default;
     in
     {
-      inherit (lib.outputs.default.exporters) pops;
-      inherit nixosConfigurations lib;
+      pops = lib.layouts.default.exporter.pops // {
+        inherit lib;
+      };
+      lib = lib.layouts.default;
 
       templates.default = {
         path = ./templates/nixos;

@@ -25,13 +25,15 @@ let
 
   flakePartsProfiles =
     (omnibus.pops.evalModules.flake-parts.loadProfiles.addLoadExtender {
-      inputs = {
-        inherit (inputs) nixpkgs;
+      load = {
         inputs = {
-          inherit (inputs) chinookDb;
+          inherit (inputs) nixpkgs;
+          inputs = {
+            inherit (inputs) chinookDb;
+          };
         };
       };
-    }).outputs.default.process-compose;
+    }).layouts.default.process-compose;
 
   mkFlake =
     inputs.flake-parts.lib.mkFlake

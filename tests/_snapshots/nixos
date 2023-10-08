@@ -1,0 +1,13 @@
+#pretty
+{
+  bootProfile = {
+    speedup = true;
+    systemd-boot = {
+      enable = true;
+    };
+    systemd-initrd = {
+      enable = false;
+    };
+  };
+  customModuleBootTimeOut = 10;
+}

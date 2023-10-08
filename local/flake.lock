@@ -85,7 +85,7 @@
     },
     "devshell": {
       "inputs": {
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "systems": "systems"
       },
       "locked": {
@@ -263,7 +263,7 @@
         "POP": "POP",
         "call-flake": "call-flake_2",
         "dmerge": "dmerge",
-        "haumea": "haumea",
+        "haumea": "haumea_2",
         "nixlib": "nixlib_2",
         "yants": "yants"
       },
@@ -282,6 +282,28 @@
       }
     },
     "haumea": {
+      "inputs": {
+        "nixpkgs": [
+          "namaka",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1685133229,
+        "narHash": "sha256-FePm/Gi9PBSNwiDFq3N+DWdfxFq0UKsVVTJS3cQPn94=",
+        "owner": "nix-community",
+        "repo": "haumea",
+        "rev": "34dd58385092a23018748b50f9b23de6266dffc2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "v0.2.2",
+        "repo": "haumea",
+        "type": "github"
+      }
+    },
+    "haumea_2": {
       "inputs": {
         "nixpkgs": [
           "std-ext",
@@ -303,7 +325,7 @@
         "type": "github"
       }
     },
-    "haumea_2": {
+    "haumea_3": {
       "inputs": {
         "nixpkgs": [
           "std-ext",
@@ -360,6 +382,25 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "namaka": {
+      "inputs": {
+        "haumea": "haumea",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1696528717,
+        "narHash": "sha256-y9iQPJuIhUHojV/5yiYV68a9DaRSbHxMR2QbSdNtb/I=",
+        "owner": "nix-community",
+        "repo": "namaka",
+        "rev": "30a62e16535c85aa2ada2929ab7998dc2d3e5a7b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "namaka",
         "type": "github"
       }
     },
@@ -520,6 +561,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1688590700,
+        "narHash": "sha256-ZF055rIUP89cVwiLpG5xkJzx00gEuuGFF60Bs/LM3wc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "f292b4964cb71f9dfbbd30dc9f511d6165cd109b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1677383253,
         "narHash": "sha256-UfpzWfSxkfXHnb4boXZNaKsAcUrZT9Hw+tao1oZxd08=",
         "owner": "NixOS",
@@ -534,7 +591,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1660438583,
         "narHash": "sha256-rJUTYxFKlWUJI3njAwEc1pKAVooAViZGJvsgqfh/q/E=",
@@ -549,7 +606,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1692190437,
         "narHash": "sha256-yJUZzmzSmDYb9ONPnMQDru66RjZgGQZRvj3tQebkexk=",
@@ -629,7 +686,11 @@
     "root": {
       "inputs": {
         "call-flake": "call-flake",
-        "namaka": [],
+        "haumea": [
+          "namaka",
+          "haumea"
+        ],
+        "namaka": "namaka",
         "nixpkgs": [
           "std-ext",
           "nixpkgs"
@@ -654,7 +715,7 @@
           "devshell"
         ],
         "dmerge": "dmerge_2",
-        "haumea": "haumea_2",
+        "haumea": "haumea_3",
         "incl": "incl",
         "lib": "lib",
         "makes": [
@@ -708,7 +769,7 @@
         "devshell": "devshell",
         "flops": "flops",
         "nixago": "nixago",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "org-roam-book-template": [],
         "std": "std"
       },
@@ -743,7 +804,7 @@
     },
     "yants": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1686863218,

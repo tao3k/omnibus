@@ -1,5 +1,5 @@
 (omnibus.pops.loadHomeModules.addLoadExtender {
-  inputs = {
+  load.inputs = {
     __misc__ = {
       inherit (super.inputs.outputs) catppuccin-bat;
     };
@@ -8,7 +8,7 @@
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: super: {
-        exports.customModules = self.outputs.__extenders [ {
+        exports.customModules = self.outputs [ {
           value = {
             enable = false;
             customList = with dmerge; append [ "1" ];

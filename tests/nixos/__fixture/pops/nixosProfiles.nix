@@ -1,14 +1,16 @@
 (omnibus.pops.loadNixOSProfiles.addLoadExtender {
-  inputs = super.inputs.outputs // {
-    omnibus = {
-      nixosModules = super.nixosModules.outputs.nixosModules;
+  load = {
+    inputs = super.inputs.outputs // {
+      omnibus = {
+        nixosModules = super.nixosModules.layouts.nixosModules;
+      };
     };
   };
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: super: {
-        exports.customProfiles = self.outputs.__extenders [
+        exports.customProfiles = self.outputs [
           {
             value =
               { selfModule' }:

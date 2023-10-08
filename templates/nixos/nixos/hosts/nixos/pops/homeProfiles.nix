@@ -1,9 +1,9 @@
-(self'.lib.nixos.loadHomeProfiles.addLoadExtender { inputs = { }; })
+(self'.lib.nixos.loadHomeProfiles.addLoadExtender { load.inputs = { }; })
 .addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: super: {
-        exports.customProfiles = self.outputs.__extenders [ {
+        exports.customProfiles = self.outputs [ {
           value =
             { selfModule' }:
             selfModule' (
