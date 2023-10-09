@@ -1,0 +1,11 @@
+:PROPERTIES:
+:header-args: :noweb tangle :comments noweb :exports both
+:PRJ-DIR: ../../nixos/homeModules
+:ID:       84d2da32-5e9d-4bf0-9bec-7192415d8fe5
+:END:
+#+TITLE: homeModules
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2023-10-08 Sun 21:22
+
+- tags :: [[id:6bb7d46d-7358-4110-a848-f68fffda5b4d][homeProfiles]]

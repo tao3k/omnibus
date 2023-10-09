@@ -11,14 +11,21 @@
               { selfModule' }:
               selfModule' (
                 m:
-                dmerge m {
-                  config.boot.contents = update [ 0 ] [ {
-                    content = {
-                      loader.timeout.content = 10;
-                      # loader.efi.canTouchEfiVariables = false;
-                    };
-                  } ];
-                }
+                dmerge
+                  (lib.removeAttrs m
+                    [
+                      # popup the imports, so that we can use own nixosModule
+                      # "imports"
+                    ]
+                  )
+                  {
+                    config.boot.contents = update [ 0 ] [ {
+                      content = {
+                        loader.timeout.content = 10;
+                        # loader.efi.canTouchEfiVariables = false;
+                      };
+                    } ];
+                  }
               );
             path = [ "boot" ];
           }) ];

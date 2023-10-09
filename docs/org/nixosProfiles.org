@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       55e5de92-922e-4e91-aa8c-c8121545aac8
+:END:
+#+TITLE: nixosProfiles
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2023-10-08 Sun 22:00
+
+- tags :: [[id:50ab7f73-4fae-481b-8987-6e206a9d8f95][homeProfiles]]

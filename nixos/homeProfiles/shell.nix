@@ -1,11 +1,21 @@
+# [[file:../../docs/org/homeProfiles.org::*shell][shell:1]]
+{ root }:
 let
   presets = root.presets;
 in
-{
+with presets; {
   default = [
-    presets.zoxide
-    presets.fzf
-    presets.direnv
-    presets.dircolors
+    zoxide
+    fzf
+    direnv
+    dircolors
+  ];
+
+  fileManager = [ yazi ];
+
+  modernTools = [
+    pls
+    # eza
   ];
 }
+# shell:1 ends here

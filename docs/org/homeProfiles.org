@@ -1,0 +1,49 @@
+:PROPERTIES:
+:header-args: :noweb tangle :comments noweb :exports both
+:PRJ-DIR: ../../nixos/homeProfiles
+:ID:       6bb7d46d-7358-4110-a848-f68fffda5b4d
+:END:
+#+TITLE: homeProfiles
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2023-10-08 Sun 21:22
+
+- tags :: [[id:84d2da32-5e9d-4bf0-9bec-7192415d8fe5][homeModules]]
+
+** Suites
+*** shell
+
+#+begin_src nix :tangle (concat (org-entry-get nil "PRJ-DIR" t) "/shell.nix")
+{ root }:
+let
+  presets = root.presets;
+in
+with presets; {
+  default = [
+    zoxide
+    fzf
+    direnv
+    dircolors
+  ];
+
+  fileManager = [ yazi ];
+
+  modernTools = [
+    pls
+    # eza
+  ];
+}
+#+end_src
+
+*** audio
+:PROPERTIES:
+:ID:       28ab95ad-1c3f-4bab-b23c-c9c6e18beacc
+:END:
+
+- https://github.com/musnix/musnix
+
+* presets
+:PROPERTIES:
+:ID:       8cb3750b-c465-4674-8d38-7a3b4cf6d1dc
+:END:
+
