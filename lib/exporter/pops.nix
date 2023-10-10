@@ -44,35 +44,32 @@
     # reset the transformer to the default
     transformer = [ (_: _: _) ];
   };
-  evalModules = {
-    flake-parts = {
-      loadModules = self.loadNixOSModules.addLoadExtender {
-        load.src = self'.outPath + "/evalModules/flake-parts/modules";
-      };
-      loadProfiles = self.loadNixOSProfiles.addLoadExtender {
-        load = {
-          src = self'.outPath + "/evalModules/flake-parts/profiles";
-          inputs = {
-            omnibus.evalModules.flake-parts.modules =
-              self.evalModules.flake-parts.modules.layouts.default;
-          };
+  flake-parts = {
+    loadModules = self.loadNixOSModules.addLoadExtender {
+      load.src = self'.outPath + "/evalModules/flake-parts/modules";
+    };
+    loadProfiles = self.loadNixOSProfiles.addLoadExtender {
+      load = {
+        src = self'.outPath + "/evalModules/flake-parts/profiles";
+        inputs = {
+          omnibus.flake-parts.modules = self.flake-parts.modules.layouts.default;
         };
       };
     };
-    devshell = rec {
-      loadModules = self.loadNixOSModules.addLoadExtender {
-        load = {
-          src = self'.outPath + "/evalModules/devshell/modules";
-          type = "nixosModules";
-        };
+  };
+  devshell = rec {
+    loadModules = self.loadNixOSModules.addLoadExtender {
+      load = {
+        src = self'.outPath + "/evalModules/devshell/modules";
+        type = "nixosModules";
       };
-      loadProfiles = self.loadNixOSProfiles.addLoadExtender {
-        load = {
-          src = self'.outPath + "/evalModules/devshell/profiles";
-          type = "nixosProfiles";
-          inputs = {
-            omnibus.devshellModules = loadModules.layouts.default;
-          };
+    };
+    loadProfiles = self.loadNixOSProfiles.addLoadExtender {
+      load = {
+        src = self'.outPath + "/evalModules/devshell/profiles";
+        type = "nixosProfiles";
+        inputs = {
+          omnibus.devshellModules = loadModules.layouts.default;
         };
       };
     };

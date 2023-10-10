@@ -10,7 +10,7 @@ let
       __inptus__ =
         (inputs.omnibus.pops.loadInputs.setSystem inputs.nixpkgs.system).outputs;
     in
-    (inputs.omnibus.evalModules.devshell.loadProfiles.addLoadExtender {
+    (inputs.omnibus.devshell.loadProfiles.addLoadExtender {
       inputs = {
         inherit (__inptus__) fenix;
         nixpkgs = __inptus__.nixpkgs.legacyPackages;

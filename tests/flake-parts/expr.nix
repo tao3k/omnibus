@@ -24,7 +24,7 @@ let
     ).outputs;
 
   flakePartsProfiles =
-    (omnibus.pops.evalModules.flake-parts.loadProfiles.addLoadExtender {
+    (omnibus.pops.flake-parts.loadProfiles.addLoadExtender {
       load = {
         inputs = {
           inherit (inputs) nixpkgs;

@@ -23,7 +23,7 @@ let
     ).outputs;
 
   devshellProfiles =
-    (omnibus.pops.evalModules.devshell.loadProfiles.addLoadExtender {
+    (omnibus.pops.devshell.loadProfiles.addLoadExtender {
       load.inputs = {
         inherit (inputs) fenix nixpkgs;
       };

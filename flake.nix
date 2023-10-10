@@ -19,13 +19,15 @@
         inherit lib;
       };
       lib = import ./lib/__init.nix { inherit inputs omnibus; };
+      lib' = lib.layouts.default;
     in
-    {
+    lib'.exporter.flakeOutputs
+    // {
       pops = lib.layouts.default.exporter.pops // {
         inherit lib;
       };
 
-      lib = lib.layouts.default;
+      lib = lib';
 
       templates.default = {
         path = ./templates/nixos;
@@ -34,5 +36,6 @@
           You have created an Omnibus.nixos template!
         '';
       };
-    };
+    }
+  ;
 }
