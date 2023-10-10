@@ -13,8 +13,6 @@ in
 
     # self.nixosProfiles.default.presets.boot
     exporter.nixosModules.default.programs.git
-
-    # outputs.nixosModules.default.hardware.bluetooth
     # load a suite profile from audio
     # (outputs.nixosProfiles.default.audio {}).default
 

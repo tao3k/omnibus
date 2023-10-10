@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       55e5de92-922e-4e91-aa8c-c8121545aac8
+:header-args: :noweb tangle :comments noweb :exports both
+:PRJ-DIR: ../../nixos/nixosProfiles
 :END:
 #+TITLE: nixosProfiles
 #+AUTHOR: GuangTao Zhang
@@ -7,3 +9,28 @@
 #+DATE: 2023-10-08 Sun 22:00
 
 - tags :: [[id:50ab7f73-4fae-481b-8987-6e206a9d8f95][homeProfiles]]
+
+
+* Suites
+
+** cloud
+
+#+begin_src nix :tangle (concat (org-entry-get nil "PRJ-DIR" t) "/cloud.nix")
+{ root }:
+let
+  presets = root.presets;
+in
+with presets; {
+  default = [ {
+    boot.cleanTmpDir = true;
+    boot.tmp.cleanOnBoot = true;
+    zramSwap.enable = true;
+    documentation.enable = false;
+  } ];
+
+  contabo = [
+    self.default
+    contabo
+  ];
+}
+#+end_src

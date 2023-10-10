@@ -10,8 +10,8 @@
 
 - tags :: [[id:84d2da32-5e9d-4bf0-9bec-7192415d8fe5][homeModules]]
 
-** Suites
-*** shell
+* Suites
+** shell
 
 #+begin_src nix :tangle (concat (org-entry-get nil "PRJ-DIR" t) "/shell.nix")
 { root }:
@@ -35,7 +35,7 @@ with presets; {
 }
 #+end_src
 
-*** audio
+** audio
 :PROPERTIES:
 :ID:       28ab95ad-1c3f-4bab-b23c-c9c6e18beacc
 :END:
