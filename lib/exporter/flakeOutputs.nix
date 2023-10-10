@@ -11,10 +11,14 @@ let
   ;
 in
 {
+  inherit (outputs) srvos;
+  dotfiles = inputs.self.outPath + "/dotfiles";
+
   devshellModules = outputs.devshell.loadModules;
   devshellProfiles = outputs.devshell.loadProfiles;
 
-  flake-partsProfiles = outputs.flake-parts.loadProfiles;
+  flakePartsProfiles = outputs.flake-parts.loadProfiles;
+  flakePartsModules = outputs.flake-parts.loadModules;
 
   nixosModules = outputs.loadNixOSModules;
   nixosProfiles = outputs.loadNixOSProfiles;

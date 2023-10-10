@@ -17,17 +17,18 @@
       omnibus = {
         inherit (self) pops;
         inherit lib;
-      };
-      lib = import ./lib/__init.nix { inherit inputs omnibus; };
-      lib' = lib.layouts.default;
+      } // lib.exporter.flakeOutputs;
+
+      libPops = import ./lib/__init.nix { inherit inputs omnibus; };
+      lib = libPops.layouts.default;
     in
-    lib'.exporter.flakeOutputs
+    lib.exporter.flakeOutputs
     // {
-      pops = lib.layouts.default.exporter.pops // {
-        inherit lib;
+      pops = libPops.layouts.default.exporter.pops // {
+        lib = libPops;
       };
 
-      lib = lib';
+      inherit lib;
 
       templates.default = {
         path = ./templates/nixos;

@@ -3,7 +3,7 @@
     self: super:
     let
       selfInputs = omnibus.pops.loadInputs.setInitInputs ../__lock;
-      local = omnibus.pops.loadInputs.setInitInputs (self'.outPath + "/local");
+      local = omnibus.pops.loadInputs.setInitInputs (inputs.self.outPath + "/local");
     in
     {
       inputs = {

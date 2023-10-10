@@ -6,7 +6,7 @@
     in
     {
       inputs = {
-        nixpkgs = inputs.nixpkgs.legacyPackages;
+        inputs.nixpkgs = inputs.nixpkgs.legacyPackages;
       } // selfInputs.outputs;
     }
   )

@@ -1,6 +1,6 @@
 { omnibus }:
 {
-  imports = [ omnibus.srvos.layouts.default.common.openssh ];
+  imports = [ omnibus.srvos.common.openssh ];
   services.openssh = {
     enable = true;
   };

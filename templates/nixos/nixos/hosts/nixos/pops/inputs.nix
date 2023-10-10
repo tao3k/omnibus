@@ -1,4 +1,4 @@
-(self'.lib.inputs.addInputsExtender (
+(inputs.self.lib.inputs.addInputsExtender (
   POP.extendPop flops.flake.pops.inputsExtender (
     self: super:
     let

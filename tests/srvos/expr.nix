@@ -12,6 +12,8 @@ in
     (exporter.layouts.nixosConfiguration [
       exporter.layouts.exporter.nixosProfiles.default.presets.boot
       exporter.layouts.exporter.nixosProfiles.default.presets.openssh
+      # -- suites profile --
+      (exporter.layouts.exporter.nixosProfiles.default.cloud { }).default
     ]).config.services.openssh.settings.KexAlgorithms;
 }
 // lib.optionalAttrs trace { }

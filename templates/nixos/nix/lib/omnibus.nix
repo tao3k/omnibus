@@ -7,7 +7,7 @@
 
   loadNixOSModules = (omnibus.pops.loadNixOSModules.addLoadExtender { });
 
-  lib = omnibus.lib.addLoadExtender {
+  lib = omnibus.pops.lib.addLoadExtender {
     load.inputs = {
       home-manager = inputs.home;
     };

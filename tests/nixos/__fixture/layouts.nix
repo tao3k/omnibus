@@ -21,7 +21,7 @@ in
     # exporter.nixosProfiles.customProfiles.presets.boot
     exporter.srvos.default.common.nix
 
-    (omnibus.lib.layouts.default.mkHome
+    (omnibus.lib.mkHome
       {
         admin = {
           uid = 1000;

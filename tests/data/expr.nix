@@ -4,7 +4,7 @@ let
     (omnibus.pops.lib.addLoadExtender {
       load = {
         inputs = {
-          nixpkgs = inputs'.nixpkgs.legacyPackages.x86_64-linux;
+          inputs.nixpkgs = inputs'.nixpkgs.legacyPackages.x86_64-linux;
         };
       };
     }).layouts.default.loadDataAll;

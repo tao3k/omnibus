@@ -10,9 +10,9 @@ in
   hosts =
     (inputs.omnibus.pops.exporter.addLoadExtender {
       load = {
-        src = self'.outPath + "/nixos/hosts";
+        src = inputs.self.outPath + "/nixos/hosts";
         inputs = inputs // {
-          self'.lib = super;
+          inputs.self.lib = super;
           omnibus = inputs.omnibus // {
             lib = super.omnibus.lib.layouts.default;
           };
@@ -29,18 +29,19 @@ in
     let
       inputs = (super.inputs.setSystem system).outputs;
       loadDataAll =
-        (omnibus.lib.addLoadExtender {
+        (omnibus.pops.lib.addLoadExtender {
           load = {
             inputs = {
-              nixpkgs = inputs.nixpkgs.legacyPackages.${system};
+              inputs.nixpkgs = inputs.nixpkgs.legacyPackages.${system};
             };
           };
         }).layouts.default.loadDataAll;
     in
     {
       data =
-        (loadDataAll.addLoadExtender { load.src = self'.outPath + "/local/data"; })
-        .layouts.default;
+        (loadDataAll.addLoadExtender {
+          load.src = inputs.self.outPath + "/local/data";
+        }).layouts.default;
     }
   );
 

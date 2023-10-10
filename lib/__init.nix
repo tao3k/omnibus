@@ -3,7 +3,6 @@ let
   inherit (inputs)
     flops
     haumea
-    dmerge
     POP
     self
   ;
@@ -13,13 +12,12 @@ flops.lib.haumea.pops.default.setInit {
   loader = haumea.lib.loaders.scoped;
   inputs = {
     lib = flops.inputs.nixlib.lib // builtins;
-    self' = self;
     haumea = haumea.lib;
     POP = POP.lib;
     flops = flops.lib;
     inherit omnibus;
-    inputs = {
-      dmerge = inputs.flops.inputs.dmerge;
+    inputs = inputs // {
+      dmerge = flops.inputs.dmerge;
       home-manager = omnibus.pops.loadInputs.outputs.home-manager;
     };
   };

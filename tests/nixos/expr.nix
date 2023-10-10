@@ -23,6 +23,6 @@ in
 }
 // lib.optionalAttrs trace {
   nixosConfiguration = exporter.layouts.nixosConfiguration [
-    exporter.layouts.exporter.nixosProfiles.customProfiles.presets.boot
+    exporter.layouts.exporter.nixosProfiles.default.presets.boot
   ];
 }

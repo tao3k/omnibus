@@ -1,4 +1,4 @@
-(self'.lib.nixos.loadHomeProfiles.addLoadExtender { load.inputs = { }; })
+(inputs.self.lib.nixos.loadHomeProfiles.addLoadExtender { load.inputs = { }; })
 .addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
