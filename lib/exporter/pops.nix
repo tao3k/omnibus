@@ -23,7 +23,6 @@
     type = "nixosModules";
     inputs = {
       omnibus = self;
-      dotfiles = self.dotfiles;
     };
   };
   loadHomeProfiles = self.loadHomeModules.addLoadExtender {
@@ -40,9 +39,7 @@
     };
   };
   srvos = flops.haumea.pops.default.setInit {
-    src = builtins.unsafeDiscardStringContext (
-      self.loadInputs.outputs.srvos + "/nixos"
-    );
+    src = self.loadInputs.outputs.srvos + "/nixos";
     type = "nixosProfiles";
     # reset the transformer to the default
     transformer = [ (_: _: _) ];
@@ -91,8 +88,10 @@
         haumea
         flops
         lib
-        dmerge
       ;
+      inputs = {
+        inherit (inputs) dmerge;
+      };
     };
   };
 }

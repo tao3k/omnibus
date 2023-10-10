@@ -1,3 +1,6 @@
+let
+  inherit (inputs) dmerge;
+in
 (omnibus.pops.loadNixOSModules.addLoadExtender {
   load.inputs = super.inputs.outputs // { };
 }).addExporters

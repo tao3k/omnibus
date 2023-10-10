@@ -1,6 +1,6 @@
 {
   programs.dircolors = {
     enable = true;
-    extraConfig = builtins.readFile (dotfiles + "/dircolors/LS_COLORS");
+    extraConfig = builtins.readFile (omnibus.dotfiles + "/dircolors/LS_COLORS");
   };
 }

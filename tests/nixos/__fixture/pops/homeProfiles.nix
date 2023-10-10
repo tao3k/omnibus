@@ -1,3 +1,6 @@
+let
+  inherit (inputs) dmerge;
+in
 (omnibus.pops.loadHomeProfiles.addLoadExtender {
   load.inputs = super.inputs.outputs // {
     omnibus = {

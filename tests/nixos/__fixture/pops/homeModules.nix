@@ -1,3 +1,6 @@
+let
+  inherit (inputs) dmerge;
+in
 (omnibus.pops.loadHomeModules.addLoadExtender {
   load.inputs = {
     __misc__ = {

@@ -1,6 +1,13 @@
-{ lib, home-manager }:
+{
+  lib,
+  inputs,
+  root,
+}:
 userSet: shell: suites:
+assert lib.assertMsg (inputs ? home-manager) (root.errors.msg "home-manager");
 let
+
+  inherit (inputs) home-manager;
   user = lib.head (lib.attrNames userSet);
   pathsToLinkShell = lib.elem shell [
     "fish"
