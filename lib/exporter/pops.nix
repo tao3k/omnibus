@@ -35,10 +35,12 @@ in
       type = "nixosProfiles";
     };
   };
+
   loadNixOSProfiles = self.loadNixOSModules.addLoadExtender {
     load = {
       src = inputs.self.outPath + "/nixos/nixosProfiles";
       type = "nixosProfiles";
+      transformer = [ (_: _: _) ];
     };
   };
 

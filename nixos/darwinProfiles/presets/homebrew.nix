@@ -14,13 +14,13 @@ in
   homebrew = {
     enable = true;
     # onActivation.cleanup = "zap";
-    onActivation.upgrade = true;
+    onActivation.upgrade = lib.mkDefault true;
     # Use the nix-darwin brewfile when invoking `brew bundle` imperatively.
-    global.brewfile = true;
-    global.lockfiles = false;
+    global.brewfile = lib.mkDefault true;
+    global.lockfiles = lib.mkDefault false;
     __profiles__ = {
-      readers = true;
-      shell = true;
+      readers = lib.mkDefault true;
+      shell = lib.mkDefault true;
       casks.removePackagesFromProfiles = [ ];
       brews.removePackagesFromProfiles = [ ];
     };
