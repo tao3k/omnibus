@@ -23,6 +23,9 @@ in
   nixosModules = outputs.loadNixOSModules;
   nixosProfiles = outputs.loadNixOSProfiles;
 
+  darwinModules = outputs.loadDarwinModules;
+  darwinProfiles = outputs.loadDarwinProfiles;
+
   homeProfiles = outputs.loadHomeProfiles;
   homeModules = outputs.loadHomeModules;
 }

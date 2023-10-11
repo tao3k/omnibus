@@ -1,0 +1,35 @@
+#pretty
+{
+  darwinFontProfile = [
+    {
+      args = null;
+      brewfileLine = "cask \"koodo-reader\"";
+      greedy = null;
+      name = "koodo-reader";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"skim\"";
+      greedy = null;
+      name = "skim";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"wez/wezterm/wezterm-nightly\"";
+      greedy = null;
+      name = "wez/wezterm/wezterm-nightly";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"font-fantasque-sans-mono\"";
+      greedy = null;
+      name = "font-fantasque-sans-mono";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"font-fontawesome\"";
+      greedy = null;
+      name = "font-fontawesome";
+    }
+  ];
+}

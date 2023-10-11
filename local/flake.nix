@@ -3,6 +3,9 @@
 
   inputs.std.follows = "std-ext/std";
   inputs.nixpkgs.follows = "std-ext/nixpkgs";
+  inputs.darwin.url = "github:LnL7/nix-darwin";
+  inputs.darwin.inputs.nixpkgs.follows = "nixpkgs";
+
   inputs.std-ext.url = "github:gtrunsec/std-ext";
   inputs.std-ext.inputs.org-roam-book-template.follows = "";
   inputs.call-flake.url = "github:divnix/call-flake";

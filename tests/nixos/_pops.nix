@@ -9,6 +9,7 @@
     inputs = {
       data = root.data;
       nixpkgs = inputs'.nixpkgs;
+      darwin = inputs'.darwin;
     };
   };
 })

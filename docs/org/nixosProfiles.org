@@ -24,7 +24,6 @@
   inputs,
 }:
 let
-  inherit (inputs) dmerge;
   srvosCustom =
     (omnibus.pops.srvos.addExporters [
       (POP.extendPop flops.haumea.pops.exporter (

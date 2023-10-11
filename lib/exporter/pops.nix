@@ -40,6 +40,17 @@ in
       type = "nixosProfiles";
     };
   };
+
+  loadDarwinProfiles = self.loadNixOSProfiles.addLoadExtender {
+    load = {
+      src = inputs.self.outPath + "/nixos/darwinProfiles";
+    };
+  };
+
+  loadDarwinModules = self.loadNixOSModules.addLoadExtender {
+    load.src = inputs.self.outPath + "/nixos/darwinModules";
+  };
+
   srvos = flops.haumea.pops.default.setInit {
     src = self.loadInputs.outputs.srvos + "/nixos";
     type = "nixosProfiles";

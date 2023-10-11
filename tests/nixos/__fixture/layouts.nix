@@ -52,4 +52,11 @@ in
         module
       ];
     };
+
+  darwinConfiguration =
+    module:
+    darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = lib.flatten [ module ];
+    };
 }
