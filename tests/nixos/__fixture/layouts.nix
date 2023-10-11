@@ -1,4 +1,5 @@
 let
+  inherit (inputs) nixpkgs darwin;
   exporter = lib.mapAttrs (_: v: v.layouts) (
     lib.removeAttrs super.pops [ "inputs" ]
   );

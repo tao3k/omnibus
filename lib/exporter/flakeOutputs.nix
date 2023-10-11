@@ -12,6 +12,8 @@ let
 in
 {
   inherit (outputs) srvos;
+  __inputs__ = super.pops.loadInputs.outputs;
+
   dotfiles = inputs.self.outPath + "/dotfiles";
 
   devshellModules = outputs.devshell.loadModules;

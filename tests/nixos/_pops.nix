@@ -1,15 +1,12 @@
-{
-  omnibus,
-  root,
-  inputs',
-}:
+{ omnibus, root }:
 (omnibus.pops.exporter.addLoadExtender {
   load = {
     src = ./__fixture;
     inputs = {
       data = root.data;
-      nixpkgs = inputs'.nixpkgs;
-      darwin = inputs'.darwin;
+      inputs = {
+        inherit (omnibus.__inputs__) darwin nixpkgs;
+      };
     };
   };
 })

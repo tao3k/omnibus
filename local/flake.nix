@@ -3,8 +3,6 @@
 
   inputs.std.follows = "std-ext/std";
   inputs.nixpkgs.follows = "std-ext/nixpkgs";
-  inputs.darwin.url = "github:LnL7/nix-darwin";
-  inputs.darwin.inputs.nixpkgs.follows = "nixpkgs";
 
   inputs.std-ext.url = "github:gtrunsec/std-ext";
   inputs.std-ext.inputs.org-roam-book-template.follows = "";
@@ -39,18 +37,16 @@
         eval = inputs.haumea.lib.load {
           src = ../tests;
           inputs = omnibus.inputs // {
-            omnibus = omnibus;
+            inherit omnibus inputs;
             lib = inputs.nixpkgs.lib // builtins;
-            inputs' = inputs;
             trace = true;
           };
         };
         checks = inputs.namaka.lib.load {
           src = ../tests;
           inputs = omnibus.inputs // {
-            omnibus = omnibus;
+            inherit omnibus inputs;
             lib = inputs.nixpkgs.lib // builtins;
-            inputs' = inputs;
             trace = false;
           };
         };

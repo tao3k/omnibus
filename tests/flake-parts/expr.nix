@@ -3,11 +3,11 @@
   POP,
   flops,
   lib,
-  inputs',
+  inputs,
 }:
 let
   system = "x86_64-linux";
-  inputs =
+  inputs' =
     let
       loadInputs = omnibus.pops.loadInputs.setInitInputs ./__lock;
     in
@@ -27,25 +27,25 @@ let
     (omnibus.pops.flake-parts.loadProfiles.addLoadExtender {
       load = {
         inputs = {
-          inherit (inputs) nixpkgs;
+          inherit (inputs') nixpkgs;
           inputs = {
-            inherit (inputs) chinookDb;
+            inherit (inputs') chinookDb;
           };
         };
       };
     }).layouts.default.process-compose;
 
   mkFlake =
-    inputs.flake-parts.lib.mkFlake
+    inputs'.flake-parts.lib.mkFlake
       {
-        inputs = inputs // {
+        inputs = inputs' // {
           # fake self argument to make sure that the flake is
-          self = inputs'.self;
+          self = inputs.self;
         };
       }
       {
         systems = [ system ];
-        imports = [ inputs.process-compose-flake.flakeModule ];
+        imports = [ inputs'.process-compose-flake.flakeModule ];
         perSystem =
           { selfModule', ... }: { imports = [ flakePartsProfiles.sqlite-example ]; };
       };

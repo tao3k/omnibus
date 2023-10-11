@@ -1,10 +1,11 @@
-{ omnibus, inputs' }:
+{ omnibus }:
 let
+  inherit (omnibus.__inputs__) nixpkgs;
   loadDataAll =
     (omnibus.pops.lib.addLoadExtender {
       load = {
         inputs = {
-          inputs.nixpkgs = inputs'.nixpkgs.legacyPackages.x86_64-linux;
+          inputs.nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
         };
       };
     }).layouts.default.loadDataAll;

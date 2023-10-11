@@ -11,6 +11,7 @@ in
   loadInputs = flops.flake.pops.default.setInitInputs (
     inputs.self.outPath + "/local/lock"
   );
+
   loadData = flops.haumea.pops.default.setInit {
     loader = with haumea; [
       matchers.json
