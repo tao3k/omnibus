@@ -32,4 +32,8 @@
       name = "font-fontawesome";
     }
   ];
+  darwinNixProfile = ''
+    # https://plutus-community.readthedocs.io/en/latest/#Environment/Build/Mac_M1/
+    extra-sandbox-paths = /System/Library/Frameworks /System/Library/PrivateFrameworks /usr/lib /private/tmp /private/var/tmp /usr/bin/env
+  '';
 }
