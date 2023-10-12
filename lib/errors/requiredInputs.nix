@@ -33,7 +33,7 @@ in
 assert lib.assertMsg fondInputs ''
   please, add the these inputs into
 
-      omnibus.${unit}.addLoadExtender {
+      omnibus.pops.${unit}.addLoadExtender {
         load.inputs =
          inputs = {
            ${msg}
@@ -44,7 +44,7 @@ assert lib.assertMsg fondInputs ''
 '';
 assert lib.assertMsg noSysNixpkgs ''
   please, add the following inputs into
-      omnibus.lib.addLoadExtender {
+      omnibus.pops.${unit}.addLoadExtender {
         load.inputs = {
           nixpkgs = inputs.nixpkgs.legacyPackages.''${system} or (import inputs.nixpkgs.path);
         };

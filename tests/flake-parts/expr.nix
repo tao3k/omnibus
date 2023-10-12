@@ -7,7 +7,7 @@
 }:
 let
   system = "x86_64-linux";
-  inputs' =
+  __inputs__ =
     let
       loadInputs = omnibus.pops.loadInputs.setInitInputs ./__lock;
     in
@@ -27,27 +27,26 @@ let
     (omnibus.pops.flake-parts.loadProfiles.addLoadExtender {
       load = {
         inputs = {
-          inherit (inputs') nixpkgs;
           inputs = {
-            inherit (inputs') chinookDb;
+            inherit (__inputs__) chinookDb;
           };
         };
       };
     }).layouts.default.process-compose;
 
   mkFlake =
-    inputs'.flake-parts.lib.mkFlake
+    __inputs__.flake-parts.lib.mkFlake
       {
-        inputs = inputs' // {
+        inputs = __inputs__ // {
           # fake self argument to make sure that the flake is
           self = inputs.self;
         };
       }
       {
         systems = [ system ];
-        imports = [ inputs'.process-compose-flake.flakeModule ];
+        imports = [ __inputs__.process-compose-flake.flakeModule ];
         perSystem =
-          { selfModule', ... }: { imports = [ flakePartsProfiles.sqlite-example ]; };
+          { self', ... }: { imports = [ flakePartsProfiles.sqlite-example ]; };
       };
 in
 lib.mapAttrs (_: builtins.unsafeDiscardStringContext) {

@@ -1,4 +1,17 @@
+{
+  inputs,
+  omnibus,
+  lib,
+  pkgs,
+}:
 let
+  inherit
+    (omnibus.lib.errors.requiredInputs inputs "pops.flake-parts.loadProfiles" [
+      "chinookDb"
+    ])
+    chinookDb
+  ;
+
   port = 8213;
   dataFile = "data.sqlite";
 in
@@ -23,7 +36,7 @@ in
           echo "$(date): Importing Chinook database (${dataFile}) ..."
           ${
             lib.getExe pkgs.sqlite
-          } "${dataFile}" < ${inputs.chinookDb}/ChinookDatabase/DataSources/Chinook_Sqlite.sql
+          } "${dataFile}" < ${chinookDb}/ChinookDatabase/DataSources/Chinook_Sqlite.sql
           echo "$(date): Done."
         '';
 
