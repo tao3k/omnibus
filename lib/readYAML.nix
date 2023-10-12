@@ -1,6 +1,7 @@
-{ inputs }: # source from std
+{ inputs, root }: # source from std
 let
-  inherit (inputs) nixpkgs;
+  inherit (root.errors.requiredInputs inputs "lib" [ "nixpkgs" ]) nixpkgs;
+
   inherit (builtins) fromJSON;
   inherit (nixpkgs) runCommand yq-go;
   inherit (nixpkgs.lib) readFile;

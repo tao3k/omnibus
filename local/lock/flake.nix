@@ -17,6 +17,9 @@
 
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
+
+    makes.url = "github:fluidattacks/makes";
+    makes.flake = false;
   };
   outputs = _: { };
 }

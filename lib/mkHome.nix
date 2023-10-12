@@ -4,10 +4,10 @@
   root,
 }:
 userSet: shell: suites:
-assert lib.assertMsg (inputs ? home-manager) (root.errors.msg "home-manager");
 let
-
-  inherit (inputs) home-manager;
+  inherit (root.errors.requiredInputs inputs "lib" [ "home-manager" ])
+    home-manager
+  ;
   user = lib.head (lib.attrNames userSet);
   pathsToLinkShell = lib.elem shell [
     "fish"

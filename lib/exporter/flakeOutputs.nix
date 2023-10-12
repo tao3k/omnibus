@@ -12,6 +12,11 @@ let
 in
 {
   inherit (outputs) srvos;
+
+  units = {
+    inherit (outputs) configs;
+  };
+
   __inputs__ = super.pops.loadInputs.outputs;
 
   dotfiles = inputs.self.outPath + "/dotfiles";

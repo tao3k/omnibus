@@ -54,6 +54,11 @@ in
     load.src = inputs.self.outPath + "/nixos/darwinModules";
   };
 
+  configs = flops.haumea.pops.default.setInit {
+    src = inputs.self.outPath + "/units/configs";
+    inputs = baseInputs;
+  };
+
   srvos = flops.haumea.pops.default.setInit {
     src = self.loadInputs.outputs.srvos + "/nixos";
     type = "nixosProfiles";
@@ -62,24 +67,24 @@ in
   };
   flake-parts = {
     loadModules = self.loadNixOSModules.addLoadExtender {
-      load.src = inputs.self.outPath + "/evalModules/flake-parts/modules";
+      load.src = inputs.self.outPath + "/units/flake-parts/modules";
     };
     loadProfiles = self.loadNixOSProfiles.addLoadExtender {
       load = {
-        src = inputs.self.outPath + "/evalModules/flake-parts/profiles";
+        src = inputs.self.outPath + "/units/flake-parts/profiles";
       };
     };
   };
   devshell = rec {
     loadModules = self.loadNixOSModules.addLoadExtender {
       load = {
-        src = inputs.self.outPath + "/evalModules/devshell/modules";
+        src = inputs.self.outPath + "/units/devshell/modules";
         type = "nixosModules";
       };
     };
     loadProfiles = self.loadNixOSProfiles.addLoadExtender {
       load = {
-        src = inputs.self.outPath + "/evalModules/devshell/profiles";
+        src = inputs.self.outPath + "/units/devshell/profiles";
         type = "nixosProfiles";
       };
     };

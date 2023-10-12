@@ -1,5 +1,20 @@
+{
+  omnibus,
+  inputs,
+  config,
+  extraModulesPath,
+}:
 let
-  pkgs' = nixpkgs.appendOverlays [ config.language.rust.overlays.default ];
+  inherit
+    (omnibus.lib.errors.requiredInputs inputs "devshellProfiles" [
+      "nixpkgs"
+      "fenix"
+    ])
+    fenix
+    nixpkgs
+  ;
+
+  pkgs' = nixpkgs.appendOverlays [ fenix.overlay ];
   cfg = config.language.rust;
 in
 {
@@ -9,7 +24,6 @@ in
   ];
 
   language.rust = {
-    overlays = fenix.overlays;
     rustSrc = pkgs'.fenix.complete.rust-src;
     packageSet = pkgs'.fenix.default;
     enableDefaultToolchain = true;

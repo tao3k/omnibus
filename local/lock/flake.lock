@@ -82,6 +82,22 @@
         "type": "github"
       }
     },
+    "makes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696868671,
+        "narHash": "sha256-4SGTcJ+E3wZXhtcvxZROCGam7371THcPYtmdyV9JzVo=",
+        "owner": "fluidattacks",
+        "repo": "makes",
+        "rev": "380ecfa979898ab283874ca44f76a75a551834b6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fluidattacks",
+        "repo": "makes",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1696879762,
@@ -104,6 +120,7 @@
         "devshell": "devshell",
         "fenix": "fenix",
         "home-manager": "home-manager",
+        "makes": "makes",
         "nixpkgs": "nixpkgs",
         "srvos": "srvos"
       }

@@ -13,8 +13,8 @@ let
       POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
         self: super: {
           inputs = {
-            nixpkgs = loadInputs.outputs.nixpkgs.legacyPackages;
             devshell = loadInputs.outputs.devshell.legacyPackages;
+            nixpkgs = loadInputs.outputs.nixpkgs.legacyPackages;
           };
         }
       )
@@ -25,7 +25,9 @@ let
   devshellProfiles =
     (omnibus.pops.devshell.loadProfiles.addLoadExtender {
       load.inputs = {
-        inherit (inputs) fenix nixpkgs;
+        inputs = {
+          inherit (inputs) fenix nixpkgs;
+        };
       };
     }).layouts.default;
 
