@@ -1,0 +1,8 @@
+#+TITLE: yubikey
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2023-10-11 Wed 14:37
+
+
+* discussions
+- https://discourse.nixos.org/t/yubikey-udev-rules-and-group-permissions/34034/2

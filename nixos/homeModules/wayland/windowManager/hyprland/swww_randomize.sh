@@ -13,11 +13,11 @@ if [[ $# -lt 1 ]] || [[ ! -d $1 ]]; then
 fi
 
 # Edit bellow to control the images transition
-export SWWW_TRANSITION_FPS=60
-export SWWW_TRANSITION_STEP=2
+# export SWWW_TRANSITION_FPS=60
+# export SWWW_TRANSITION_STEP=2
 
 # This controls (in seconds) when to switch to the next image
-INTERVAL=3000
+# INTERVAL=3000
 
 if swww query; then
   swww kill

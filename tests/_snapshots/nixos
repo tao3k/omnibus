@@ -10,4 +10,15 @@
     };
   };
   customModuleBootTimeOut = 10;
+  hyprland = {
+    autoLogin = {
+      enable = true;
+      shell = "zsh";
+    };
+    nvidia = true;
+    swww = {
+      enable = true;
+      runtimeEnv = { };
+    };
+  };
 }

@@ -2,18 +2,21 @@
   imports = [ omnibus.homeModules.wayland.windowManager.hyprland ];
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
+    systemdIntegration = lib.mkDefault true;
     # extraConfig = builtins.readFile "${src}/hyprland.conf";
     xwayland = {
       enable = true;
     };
     __profiles__ = {
-      nvidia = false;
+      nvidia = lib.mkDefault false;
       autoLogin = {
-        enable = true;
-        shell = "zsh";
+        enable = lib.mkDefault true;
+        shell = lib.mkDefault "zsh";
       };
-      swww = true;
+      swww = {
+        enable = lib.mkDefault true;
+        runtimeEnv = { };
+      };
     };
   };
 }

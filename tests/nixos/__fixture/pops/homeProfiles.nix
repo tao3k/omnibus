@@ -14,17 +14,19 @@ in
         exports.customProfiles = self.outputs [ {
           value =
             { selfModule' }:
+            with dmerge;
             selfModule' (
               m:
               dmerge m {
                 wayland.windowManager.hyprland.__profiles__ = {
-                  nvidia = true;
+                  nvidia.content = true;
                 };
               }
             );
           path = [
             "presets"
             "hyprland"
+            "default"
           ];
         } ];
       }

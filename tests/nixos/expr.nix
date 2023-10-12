@@ -4,25 +4,37 @@
   lib,
 }:
 let
-  exporter = super.pops.layouts.default;
+  out = super.pops.layouts.default.layouts;
+  extraHomeModule = m: {
+    home-manager.users.admin = {
+      imports = lib.flatten m;
+    };
+  };
 in
 {
   bootProfile =
-    (exporter.layouts.nixosConfiguration [
-      exporter.layouts.exporter.nixosProfiles.customProfiles.presets.boot
+    (out.nixosConfiguration [
+      out.exporter.nixosProfiles.customProfiles.presets.boot
     ]).config.boot.__profiles__;
 
   customModuleBootTimeOut =
-    (exporter.layouts.nixosConfiguration [
-      exporter.layouts.exporter.nixosModules.customModules.boot
+    (out.nixosConfiguration [
+      out.exporter.nixosModules.customModules.boot
       {
         config.boot.__profiles__.speedup = true;
         config.boot.__profiles__.systemd-boot.enable = true;
       }
     ]).config.boot.loader.timeout;
+
+  hyprland =
+    (out.nixosConfiguration [
+      out.exporter.nixosModules.customModules.boot
+      (extraHomeModule [ out.exporter.homeProfiles.customProfiles.presets.hyprland ])
+    ])
+    .config.home-manager.users.admin.wayland.windowManager.hyprland.__profiles__;
 }
 // lib.optionalAttrs trace {
-  nixosConfiguration = exporter.layouts.nixosConfiguration [
-    exporter.layouts.exporter.nixosProfiles.default.presets.boot
+  nixosConfiguration = out.nixosConfiguration [
+    out.exporter.nixosProfiles.default.presets.boot
   ];
 }
