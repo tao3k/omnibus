@@ -33,6 +33,7 @@ in
       src = inputs.self.outPath + "/nixos/homeProfiles";
       loader = haumea.loaders.scoped;
       type = "nixosProfiles";
+      transformer = [ (_: _: _) ];
     };
   };
 

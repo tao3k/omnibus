@@ -6,6 +6,9 @@ in
     omnibus = {
       homeModules = super.homeModules.layouts.nixosModules;
     };
+    inputs = {
+      inherit (omnibus.__inputs__) nur;
+    };
   };
 }).addExporters
   [

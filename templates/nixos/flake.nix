@@ -49,8 +49,8 @@
     in
     {
       inherit lib;
-      pop = libPops;
-      inherit (self.lib.exporter)
+      pops = libPops;
+      inherit (self.lib.exporter.flakeOutputs)
         darwinConfigurations
         nixosConfigurations
         packages

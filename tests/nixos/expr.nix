@@ -29,7 +29,10 @@ in
   hyprland =
     (out.nixosConfiguration [
       out.exporter.nixosModules.customModules.boot
-      (extraHomeModule [ out.exporter.homeProfiles.customProfiles.presets.hyprland ])
+      (extraHomeModule [
+        out.exporter.homeProfiles.customProfiles.presets.hyprland.default
+        out.exporter.homeProfiles.default.presets.firefox
+      ])
     ])
     .config.home-manager.users.admin.wayland.windowManager.hyprland.__profiles__;
 }
@@ -37,4 +40,13 @@ in
   nixosConfiguration = out.nixosConfiguration [
     out.exporter.nixosProfiles.default.presets.boot
   ];
+
+  homeConfiguration =
+    (out.nixosConfiguration [
+      out.exporter.nixosProfiles.default.presets.boot
+      (extraHomeModule [
+        out.exporter.homeProfiles.customProfiles.presets.hyprland.default
+        out.exporter.homeProfiles.default.presets.firefox
+      ])
+    ]).config.home-manager.users.admin;
 }

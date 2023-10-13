@@ -12,9 +12,9 @@ in
       load = {
         src = inputs.self.outPath + "/nixos/hosts";
         inputs = inputs // {
-          inputs.self.lib = super;
+          inputs.self.lib = root;
           omnibus = inputs.omnibus // {
-            lib = super.omnibus.lib.layouts.default;
+            self = root.omnibus.lib.layouts.default;
           };
         };
       };
@@ -52,7 +52,7 @@ in
     in
     (
       (flops.haumea.pops.default.setInit {
-        src = ../packages;
+        src = ../../packages;
         loader = _: path: inputs.nixpkgs.callPackage path { };
         transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
       })

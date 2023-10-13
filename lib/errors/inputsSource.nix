@@ -21,4 +21,8 @@ lib.filter (pair: lib.elem pair.name list) [
     name = "topiary";
     url = "github:github:tweag/topiary";
   }
+  {
+    name = "nur";
+    url = "github:nix-community/NUR";
+  }
 ]

@@ -20,6 +20,8 @@
 
     makes.url = "github:fluidattacks/makes";
     makes.flake = false;
+
+    nur.url = "github:nix-community/NUR";
   };
   outputs = _: { };
 }

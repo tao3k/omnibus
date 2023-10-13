@@ -24,7 +24,7 @@
     in
     lib.exporter.flakeOutputs
     // {
-      pops = libPops.layouts.default.exporter.pops // {
+      pops = lib.exporter.pops // {
         lib = libPops;
       };
 
