@@ -5,7 +5,7 @@
     inputs = {
       data = root.data;
       inputs = {
-        inherit (omnibus.__inputs__) darwin nixpkgs;
+        inherit (omnibus.__inputs__) darwin nixpkgs home-manager;
       };
     };
   };

@@ -1,1 +1,1 @@
-(omnibus.pops.loadHomeProfiles.addLoadExtender { })
+(omnibus.pops.loadHomeProfiles.addLoadExtender { load = { }; })

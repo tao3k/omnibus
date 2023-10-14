@@ -1,28 +1,29 @@
 let
   inherit (inputs) nixpkgs darwin;
-  exporter = lib.mapAttrs (_: v: v.layouts) (
-    lib.removeAttrs super.pops [ "inputs" ]
-  );
+  # layouts.default to be default
+  outputs = omnibus.lib.mapPopsLayouts' super.pops;
+  # with multi-layout
+  outputs' = omnibus.lib.mapPopsLayouts super.pops;
 in
 {
   system = "x86_64-linux";
 
-  inherit data exporter;
+  inherit data outputs outputs';
 
   nixosSuites = lib.flatten [
-    exporter.selfNixOSProfiles.default.bootstrap
+    outputs.selfNixOSProfiles.default.bootstrap
 
     # self.nixosProfiles.default.presets.boot
-    exporter.nixosModules.default.programs.git
+    outputs.nixosModules.default.programs.git
     # load a suite profile from audio
     # (outputs.nixosProfiles.default.audio {}).default
 
     # # --custom profiles
-    exporter.nixosProfiles.customProfiles.presets.nix
-    # exporter.nixosProfiles.customProfiles.presets.boot
-    exporter.srvos.default.common.nix
+    outputs.nixosProfiles.customProfiles.presets.nix
+    # # exporter.nixosProfiles.customProfiles.presets.boot
+    # outputs.srvos.default.common.nix
 
-    (omnibus.lib.mkHome
+    (outputs'.omnibus.lib.mkHome
       {
         admin = {
           uid = 1000;

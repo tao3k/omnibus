@@ -18,7 +18,6 @@ flops.lib.haumea.pops.default.setInit {
     inherit omnibus;
     inputs = inputs // {
       dmerge = flops.inputs.dmerge;
-      home-manager = omnibus.pops.loadInputs.outputs.home-manager;
     };
   };
 }

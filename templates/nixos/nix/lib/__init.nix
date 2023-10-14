@@ -4,6 +4,7 @@
     src = ./.;
     inputs = {
       inherit inputs eachSystem;
+      projectDir = ../..;
     };
   };
 })

@@ -16,16 +16,15 @@ in
   local = eachSystem (
     system:
     let
-      inputs = (super.inputs.setSystem system).outputs;
+      inputs' = (super.inputs.setSystem system).outputs;
       loadDataAll =
-        (super.omnibus.lib.addLoadExtender { load.inputs = inputs; })
+        (super.pops.omnibus.lib.addLoadExtender { load.inputs.inputs = inputs'; })
         .layouts.default.loadDataAll;
     in
     {
       data =
-        (loadDataAll.addLoadExtender {
-          load.src = inputs.self.outPath + "/local/data";
-        }).layouts.default;
+        (loadDataAll.addLoadExtender { load.src = projectDir + "/local/data"; })
+        .layouts.default;
     }
   );
 

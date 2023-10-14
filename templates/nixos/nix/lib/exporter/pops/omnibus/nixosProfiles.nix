@@ -1,11 +1,11 @@
-(omnibus.pops.loadNixOSProfiles.addLoadExtender { }).addExporters [
+(omnibus.pops.loadNixOSProfiles.addLoadExtender { load = { }; }).addExporters [
   (POP.extendPop flops.haumea.pops.exporter (
     self: super: {
       exports.customModules = self.outputs [ {
         value = {
           enable = false;
-          customList = with dmerge; append [ "1" ];
-          imports = with dmerge; append [ ];
+          customList = with inputs.dmerge; append [ "1" ];
+          imports = with inputs.dmerge; append [ ];
         };
         path = [
           "services"
