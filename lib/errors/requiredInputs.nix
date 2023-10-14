@@ -46,9 +46,10 @@ assert lib.assertMsg noSysNixpkgs ''
   please, add the following inputs into
       omnibus.pops.${unit}.addLoadExtender {
         load.inputs = {
-          nixpkgs = inputs.nixpkgs.legacyPackages.''${system} or (import inputs.nixpkgs.path);
+          inputs = {
+            nixpkgs = inputs.nixpkgs.legacyPackages.''${system} or (import inputs.nixpkgs.path);
+          };
         };
      };
-  }
 '';
 inputs'

@@ -1,7 +1,6 @@
 let
-  outputs = lib.mapAttrs (_: v: v.layouts) (
-    lib.removeAttrs super.pops [ "inputs" ]
-  );
+  outputs = inputs.self;
+  host = inputs.self.hosts.nixos;
 in
 {
   system = "x86_64-linux";
@@ -9,9 +8,9 @@ in
   data = outputs.data.default;
 
   nixosSuites = lib.flatten [
-    outputs.selfNixOSProfiles.default.bootstrap
+    host.nixosProfiles.bootstrap
 
-    outputs.nixosProfiles.default.presets.boot
+    outputs.nixosProfiles.presets.boot
     # outputs.nixosModules.default.programs.git
 
     # # # --custom profiles
@@ -35,7 +34,7 @@ in
   ];
 
   homeSuites = [
-    outputs.homeProfiles.default.presets.emacs
+    outputs.homeProfiles.presets.emacs
     # outputs.homeProfiles.default.presets.bat
     # # # The parent directory of "presets" is categorized as a list type of "suites"
     # (outputs.homeProfiles.default.shell { }).default

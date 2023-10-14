@@ -1,25 +1,14 @@
 let
   filterConfigs =
     config:
-    lib.pipe self.hosts [
+    lib.pipe super.hosts [
       (lib.filterAttrs (_: v: v ? "${config}"))
       (lib.mapAttrs (_: v: v.${config}))
     ];
+  inherit (omnibus.lib) mapPopsLayouts;
 in
-{
-  hosts =
-    (inputs.omnibus.pops.exporter.addLoadExtender {
-      load = {
-        src = inputs.self.outPath + "/nixos/hosts";
-        inputs = inputs // {
-          inputs.self.lib = root;
-          omnibus = inputs.omnibus // {
-            self = root.omnibus.lib.layouts.default;
-          };
-        };
-      };
-    }).layouts.default;
-
+(mapPopsLayouts super.pops)
+// {
   nixosConfigurations = filterConfigs "nixosConfiguration";
 
   darwinConfigurations = filterConfigs "darwinConfiguration";
@@ -29,13 +18,8 @@ in
     let
       inputs = (super.inputs.setSystem system).outputs;
       loadDataAll =
-        (omnibus.pops.lib.addLoadExtender {
-          load = {
-            inputs = {
-              inputs.nixpkgs = inputs.nixpkgs.legacyPackages.${system};
-            };
-          };
-        }).layouts.default.loadDataAll;
+        (super.omnibus.lib.addLoadExtender { load.inputs = inputs; })
+        .layouts.default.loadDataAll;
     in
     {
       data =

@@ -47,14 +47,10 @@
       libPops = import ./nix/lib/__init.nix { inherit inputs eachSystem; };
       lib = libPops.layouts.default;
     in
-    {
+    lib.exporter.flakeOutputs
+    // {
       inherit lib;
-      pops = libPops;
-      inherit (self.lib.exporter.flakeOutputs)
-        darwinConfigurations
-        nixosConfigurations
-        packages
-        local
-      ;
-    };
+      pops = lib.exporter.pops;
+    }
+  ;
 }
