@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       fdd55059-5f5c-4407-b4c3-c5366cd6a898
+:header-args: :noweb tangle :comments noweb :exports both
+:PRJ-DIR: .
+:END:
+#+TITLE: README
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2023-10-13 Fri 21:41
+
+
+
+#+BEGIN_SRC d2 :file images/kubernetes_on_premise.png :flags --theme 200 :exports both :tangle (concat (org-entry-get nil "PRJ-DIR" t) "/kubernetes_on_premise.d2")
+# !/usr/bin/env d2 --theme 200
+
+system1 -> system2
+
+
+pops: extension system {
+
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:images/kubernetes_on_premise.png]]

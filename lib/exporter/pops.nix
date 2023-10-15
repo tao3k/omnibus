@@ -19,18 +19,18 @@ in
     ];
   };
   loadNixOSModules = flops.haumea.pops.default.setInit {
-    src = inputs.self.outPath + "/nixos/nixosModules";
+    src = inputs.self.outPath + "/units/nixos/nixosModules";
     type = "nixosModules";
     inputs = baseInputs;
   };
   loadHomeModules = flops.haumea.pops.default.setInit {
-    src = inputs.self.outPath + "/nixos/homeModules";
+    src = inputs.self.outPath + "/units/nixos/homeModules";
     type = "nixosModules";
     inputs = baseInputs;
   };
   loadHomeProfiles = self.loadHomeModules.addLoadExtender {
     load = {
-      src = inputs.self.outPath + "/nixos/homeProfiles";
+      src = inputs.self.outPath + "/units/nixos/homeProfiles";
       loader = haumea.loaders.scoped;
       type = "nixosProfiles";
       transformer = [ (_: _: _) ];
@@ -39,7 +39,7 @@ in
 
   loadNixOSProfiles = self.loadNixOSModules.addLoadExtender {
     load = {
-      src = inputs.self.outPath + "/nixos/nixosProfiles";
+      src = inputs.self.outPath + "/units/nixos/nixosProfiles";
       type = "nixosProfiles";
       transformer = [ (_: _: _) ];
     };
@@ -47,12 +47,12 @@ in
 
   loadDarwinProfiles = self.loadNixOSProfiles.addLoadExtender {
     load = {
-      src = inputs.self.outPath + "/nixos/darwinProfiles";
+      src = inputs.self.outPath + "/units/nixos/darwinProfiles";
     };
   };
 
   loadDarwinModules = self.loadNixOSModules.addLoadExtender {
-    load.src = inputs.self.outPath + "/nixos/darwinModules";
+    load.src = inputs.self.outPath + "/units/nixos/darwinModules";
   };
 
   configs = flops.haumea.pops.default.setInit {

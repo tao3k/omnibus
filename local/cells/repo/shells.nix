@@ -5,10 +5,10 @@
 { inputs, cell }:
 let
   inherit (inputs.std) lib;
+  inherit (inputs) nixpkgs;
   devshellProfiles =
     let
-      __inptus__ =
-        (inputs.omnibus.pops.loadInputs.setSystem inputs.nixpkgs.system).outputs;
+      __inptus__ = (inputs.omnibus.pops.loadInputs.setSystem nixpkgs.system).outputs;
     in
     (inputs.omnibus.devshell.loadProfiles.addLoadExtender {
       inputs = {
@@ -31,6 +31,8 @@ in
       (inputs.std-ext.presets.nixago.treefmt)
       (inputs.std-ext.presets.nixago.lefthook)
     ];
+
+    packages = [ nixpkgs.d2 ];
 
     commands = [ ];
   };
