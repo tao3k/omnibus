@@ -5,14 +5,27 @@ let
 in
 with presets; {
   minimal = [ shell.default ];
+
   default = [
     self.minimal
     self.mathematic
     coding.nickel
-    coding.yaml
+    coding.conf
     coding.bash
     coding.d2
     coding.nix
+  ];
+
+  coding = [
+    self.default
+    {
+      config.omnibus.coding = {
+        bash.lsp = true;
+        nickel.lsp = true;
+        typst.lsp = true;
+        conf.lsp = true;
+      };
+    }
   ];
 
   mathematic = [ coding.typst ];

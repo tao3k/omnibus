@@ -2,6 +2,8 @@
   pkgs,
   inputs,
   omnibus,
+  config,
+  lib,
 }:
 let
   inherit
@@ -10,10 +12,13 @@ let
     ])
     nickel
   ;
+  cfg = config.omnibus.coding.nickel;
 in
 {
-  environment.systemPackages = [
-    (nickel.packages.${pkgs.system}.default or inputs.nickel.default)
-    (nickel.packages.${pkgs.system}.lsp-nls or inputs.nickel.lsp-nls)
-  ];
+  imports = [ omnibus.nixosModules.omnibus.coding.nickel ];
+  environment.systemPackages =
+    [ (nickel.packages.${pkgs.system}.default or inputs.nickel.default) ]
+    ++ lib.optionals cfg.lsp [
+      (nickel.packages.${pkgs.system}.lsp-nls or inputs.nickel.lsp-nls)
+    ];
 }

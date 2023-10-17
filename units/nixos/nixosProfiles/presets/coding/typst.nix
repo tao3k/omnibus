@@ -2,6 +2,8 @@
   pkgs,
   inputs,
   omnibus,
+  lib,
+  config,
 }:
 let
   inherit
@@ -11,10 +13,11 @@ let
     typst
   ;
   pkgs' = pkgs.appendOverlays [ typst.overlays.default ];
+  cfg = config.omnibus.coding.typst;
 in
 {
-  environment.systemPackages = [
-    pkgs'.typst-lsp
-    pkgs'.typst
-  ];
+  imports = [ omnibus.nixosModules.omnibus.coding.typst ];
+  environment.systemPackages =
+    [ pkgs'.typst ]
+    ++ lib.optionals cfg.lsp [ pkgs'.typst-lsp ];
 }
