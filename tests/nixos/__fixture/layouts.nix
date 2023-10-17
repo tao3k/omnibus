@@ -14,7 +14,6 @@ in
     outputs.selfNixOSProfiles.default.bootstrap
 
     # self.nixosProfiles.default.presets.boot
-    outputs.nixosModules.default.programs.git
     # load a suite profile from audio
     # (outputs.nixosProfiles.default.audio {}).default
 

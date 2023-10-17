@@ -63,18 +63,15 @@ with presets; {
 ** coding
 
 #+begin_src nix :tangle (concat (org-entry-get nil "PRJ-DIR" t) "/dev.nix")
-{ root, self}:
+{ root, self }:
 let
   presets = root.presets;
-  self' = self {};
 in
 with presets; {
-  minimal = [
-    shell.default
-  ];
+  minimal = [ shell.default ];
   default = [
-    self'.minimal
-    self'.mathematic
+    self.minimal
+    self.mathematic
     coding.nickel
     coding.yaml
     coding.bash
@@ -82,9 +79,7 @@ with presets; {
     coding.nix
   ];
 
-  mathematic = [
-    coding.typst
-  ];
+  mathematic = [ coding.typst ];
 }
 #+end_src
 
@@ -96,7 +91,6 @@ with presets; {
 { root, self }:
 let
   presets = root.presets;
-  self' = self { };
 in
 with presets; {
   default = [

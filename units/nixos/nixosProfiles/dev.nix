@@ -2,13 +2,12 @@
 { root, self }:
 let
   presets = root.presets;
-  self' = self { };
 in
 with presets; {
   minimal = [ shell.default ];
   default = [
-    self'.minimal
-    self'.mathematic
+    self.minimal
+    self.mathematic
     coding.nickel
     coding.yaml
     coding.bash

@@ -2,7 +2,6 @@
 { root, self }:
 let
   presets = root.presets;
-  self' = self { };
 in
 with presets; {
   default = [
