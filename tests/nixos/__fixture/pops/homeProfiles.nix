@@ -2,12 +2,12 @@ let
   inherit (inputs) dmerge;
 in
 (omnibus.pops.homeProfiles.addLoadExtender {
-  load.inputs = super.inputs.outputs // {
+  load.inputs = super.inputs.inputs // {
     omnibus = {
       homeModules = super.homeModules.layouts.nixosModules;
     };
     inputs = {
-      inherit (omnibus.__inputs__) nur;
+      inherit (omnibus.flake.inputs) nur;
     };
   };
 }).addExporters

@@ -1,13 +1,13 @@
-(omnibus.pops.loadInputs.addInputsExtender (
+(omnibus.pops.flake.addInputsExtender (
   POP.extendPop flops.flake.pops.inputsExtender (
     self: super:
     let
-      selfInputs = omnibus.pops.loadInputs.setInitInputs ../__lock;
+      selfInputs = omnibus.pops.flake.setInitInputs ../../__lock;
     in
     {
       inputs = {
         nixpkgs = inputs.nixpkgs.legacyPackages;
-      } // selfInputs.outputs;
+      } // selfInputs.inputs;
     }
   )
 ))

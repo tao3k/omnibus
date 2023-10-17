@@ -1,6 +1,5 @@
 { lib }:
 pops:
-lib.mapAttrsRecursiveCond
-  ((as: !(as ? "layouts" && as.layouts ? "default" || as ? "outputs")))
-  (_: v: v.layouts.default or v.outputs)
+lib.mapAttrsRecursiveCond ((as: !(as ? "layouts" && as.layouts ? "default")))
+  (_: v: v.layouts.default or v)
   pops

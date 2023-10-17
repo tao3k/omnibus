@@ -1,6 +1,6 @@
 { omnibus, lib }:
 let
-  inherit (omnibus.__inputs__) nixpkgs makes;
+  inherit (omnibus.flake.inputs) nixpkgs makes;
   makesLib =
     (omnibus.pops.lib.addLoadExtender {
       load = {

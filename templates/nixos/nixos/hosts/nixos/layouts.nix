@@ -1,6 +1,6 @@
 let
   outputs = inputs.self;
-  host = inputs.self.hosts.nixos;
+  self' = inputs.self.hosts.nixos;
 in
 {
   system = "x86_64-linux";
@@ -8,7 +8,7 @@ in
   data = outputs.data.default;
 
   nixosSuites = lib.flatten [
-    host.nixosProfiles.bootstrap
+    self'.nixosProfiles.bootstrap
 
     outputs.nixosProfiles.presets.boot
     # outputs.nixosModules.default.programs.git

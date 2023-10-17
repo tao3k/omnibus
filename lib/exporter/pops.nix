@@ -8,7 +8,7 @@ let
   };
 in
 {
-  loadInputs = flops.flake.pops.default.setInitInputs (
+  flake = flops.flake.pops.default.setInitInputs (
     inputs.self.outPath + "/local/lock"
   );
 
@@ -73,7 +73,7 @@ in
   };
 
   srvos = flops.haumea.pops.default.setInit {
-    src = self.loadInputs.outputs.srvos + "/nixos";
+    src = self.flake.inputs.srvos + "/nixos";
     type = "nixosProfiles";
     # reset the transformer to the default
     transformer = [ (_: _: _) ];

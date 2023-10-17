@@ -1,7 +1,7 @@
 { lib, root }:
 src: dir:
 let
-  inherit (root.exporter.inputs.outputs) nix-filter;
+  inherit (root.exporter.pops.flake.inputs) nix-filter;
   popsDirs = lib.attrNames (
     lib.removeAttrs root.exporter.pops [
       "hosts"

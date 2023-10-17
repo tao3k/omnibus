@@ -1,5 +1,5 @@
 (omnibus.pops.srvos.addLoadExtender {
-  load.inputs = super.inputs.outputs // { };
+  load.inputs = super.inputs.inputs // { };
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (

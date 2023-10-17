@@ -8,7 +8,7 @@ let
   inherit (inputs) nixpkgs;
   devshellProfiles =
     let
-      __inptus__ = (inputs.omnibus.pops.loadInputs.setSystem nixpkgs.system).outputs;
+      __inptus__ = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
     in
     (inputs.omnibus.devshell.loadProfiles.addLoadExtender {
       inputs = {

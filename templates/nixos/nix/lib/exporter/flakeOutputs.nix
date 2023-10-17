@@ -1,3 +1,9 @@
+{
+  lib,
+  super,
+  omnibus,
+  eachSystem,
+}:
 let
   filterConfigs =
     config:
@@ -17,13 +23,13 @@ in
     system:
     let
       inputs' = (super.inputs.setSystem system).outputs;
-      loadDataAll =
+      dataAll =
         (super.pops.omnibus.lib.addLoadExtender { load.inputs.inputs = inputs'; })
-        .layouts.default.loadDataAll;
+        .layouts.default.exporter.pops.loadDataAll;
     in
     {
       data =
-        (loadDataAll.addLoadExtender { load.src = projectDir + "/local/data"; })
+        (dataAll.addLoadExtender { load.src = projectDir + "/local/data"; })
         .layouts.default;
     }
   );

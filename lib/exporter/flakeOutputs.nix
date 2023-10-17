@@ -12,6 +12,7 @@ in
     homeModules
     devshellModules
     devshellProfiles
+    flake
   ;
 
   units = {
@@ -36,7 +37,6 @@ in
   dotfiles = inputs.self.outPath + "/dotfiles";
 
   # aliases
-  __inputs__ = outputs.loadInputs;
   flakeModules = outputs.flake-parts.profiles;
   flakeProfiles = outputs.flake-parts.modules;
 }

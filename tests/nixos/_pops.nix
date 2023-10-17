@@ -5,7 +5,7 @@
     inputs = {
       data = root.data;
       inputs = {
-        inherit (omnibus.__inputs__) darwin nixpkgs home-manager;
+        inherit (omnibus.flake.inputs) darwin nixpkgs home-manager;
       };
     };
   };

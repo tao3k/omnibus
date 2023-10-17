@@ -3,7 +3,7 @@ let
 in
 (omnibus.pops.nixosProfiles.addLoadExtender {
   load = {
-    inputs = super.inputs.outputs // {
+    inputs = super.inputs.inputs // {
       omnibus = {
         nixosModules = super.nixosModules.layouts.nixosModules;
       };

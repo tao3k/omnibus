@@ -7,44 +7,44 @@
 }:
 let
   system = "x86_64-linux";
-  __inputs__ =
+  flake.inputs =
     let
-      loadInputs = omnibus.pops.loadInputs.setInitInputs ./__lock;
+      flake = omnibus.pops.flake.setInitInputs ./__lock;
     in
-    ((loadInputs.addInputsExtender (
+    ((flake.addInputsExtender (
       POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
         self: super: {
           inputs = {
-            nixpkgs = loadInputs.outputs.nixpkgs.legacyPackages;
+            nixpkgs = flake.inputs.nixpkgs.legacyPackages;
           };
         }
       )
     )).setSystem
       system
-    ).outputs;
+    ).inputs;
 
   flakeProfiles =
     (omnibus.pops.flake-parts.profiles.addLoadExtender {
       load = {
         inputs = {
           inputs = {
-            inherit (__inputs__) chinookDb;
+            inherit (flake.inputs) chinookDb;
           };
         };
       };
     }).layouts.default.process-compose;
 
   mkFlake =
-    __inputs__.flake-parts.lib.mkFlake
+    flake.inputs.flake-parts.lib.mkFlake
       {
-        inputs = __inputs__ // {
+        inputs = flake.inputs // {
           # fake self argument to make sure that the flake is
           self = inputs.self;
         };
       }
       {
         systems = [ system ];
-        imports = [ __inputs__.process-compose-flake.flakeModule ];
+        imports = [ flake.inputs.process-compose-flake.flakeModule ];
         perSystem = { self', ... }: { imports = [ flakeProfiles.sqlite-example ]; };
       };
 in

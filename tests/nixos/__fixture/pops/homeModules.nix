@@ -4,7 +4,7 @@ in
 (omnibus.pops.homeModules.addLoadExtender {
   load.inputs = {
     __misc__ = {
-      inherit (super.inputs.outputs) catppuccin-bat;
+      inherit (super.inputs.inputs) catppuccin-bat;
     };
   };
 }).addExporters

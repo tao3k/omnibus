@@ -1,10 +1,6 @@
-{
-  omnibus,
-  root,
-  inputs,
-}:
+{ root, inputs }:
 name:
-(omnibus.pops.homeModules.addLoadExtender {
+(root.exporter.pops.homeModules.addLoadExtender {
   load = {
     src =
       root.filterPopsSrc (inputs.self.outPath + "/nixos/hosts/${name}")

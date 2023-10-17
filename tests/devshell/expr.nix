@@ -7,20 +7,20 @@
 let
   inputs =
     let
-      baseInputs = omnibus.pops.loadInputs.setInitInputs ./__lock;
+      baseInputs = omnibus.pops.flake.setInitInputs ./__lock;
     in
     ((baseInputs.addInputsExtender (
       POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
         self: super: {
           inputs = {
-            devshell = baseInputs.outputs.devshell.legacyPackages;
-            nixpkgs = baseInputs.outputs.nixpkgs.legacyPackages;
+            devshell = baseInputs.inputs.devshell.legacyPackages;
+            nixpkgs = baseInputs.inputs.nixpkgs.legacyPackages;
           };
         }
       )
     )).setSystem
       "x86_64-linux"
-    ).outputs;
+    ).inputs;
 
   devshellProfiles =
     (omnibus.pops.devshellProfiles.addLoadExtender {
