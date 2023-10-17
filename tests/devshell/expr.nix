@@ -7,14 +7,14 @@
 let
   inputs =
     let
-      loadInputs = omnibus.pops.loadInputs.setInitInputs ./__lock;
+      baseInputs = omnibus.pops.loadInputs.setInitInputs ./__lock;
     in
-    ((loadInputs.addInputsExtender (
+    ((baseInputs.addInputsExtender (
       POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
         self: super: {
           inputs = {
-            devshell = loadInputs.outputs.devshell.legacyPackages;
-            nixpkgs = loadInputs.outputs.nixpkgs.legacyPackages;
+            devshell = baseInputs.outputs.devshell.legacyPackages;
+            nixpkgs = baseInputs.outputs.nixpkgs.legacyPackages;
           };
         }
       )
@@ -23,7 +23,7 @@ let
     ).outputs;
 
   devshellProfiles =
-    (omnibus.pops.devshell.loadProfiles.addLoadExtender {
+    (omnibus.pops.devshellProfiles.addLoadExtender {
       load.inputs = {
         inputs = {
           inherit (inputs) fenix nixpkgs;

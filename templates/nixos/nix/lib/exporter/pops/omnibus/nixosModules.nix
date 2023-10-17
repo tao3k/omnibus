@@ -1,1 +1,1 @@
-(omnibus.pops.loadNixOSModules.addLoadExtender { load = { }; })
+(omnibus.pops.nixosModules.addLoadExtender { load = { }; })

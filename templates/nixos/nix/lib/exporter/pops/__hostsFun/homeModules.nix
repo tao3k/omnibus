@@ -4,7 +4,7 @@
   inputs,
 }:
 name:
-(omnibus.pops.loadHomeModules.addLoadExtender {
+(omnibus.pops.homeModules.addLoadExtender {
   load = {
     src =
       root.filterPopsSrc (inputs.self.outPath + "/nixos/hosts/${name}")

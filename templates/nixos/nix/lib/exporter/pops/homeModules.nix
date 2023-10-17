@@ -1,4 +1,4 @@
-(omnibus.pops.loadHomeModules.addLoadExtender {
+(omnibus.pops.homeModules.addLoadExtender {
   load = {
     src = inputs.self.outPath + "/nixos/homeModules";
     inputs = {

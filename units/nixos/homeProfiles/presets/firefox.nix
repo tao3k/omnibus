@@ -5,9 +5,7 @@
   config,
 }:
 let
-  inherit (omnibus.lib.errors.requiredInputs inputs "loadHomeProfiles" [ "nur" ])
-    nur
-  ;
+  inherit (omnibus.lib.errors.requiredInputs inputs "homeProfiles" [ "nur" ]) nur;
   cfg = config.programs.firefox;
 in
 {

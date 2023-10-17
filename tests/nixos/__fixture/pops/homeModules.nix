@@ -1,7 +1,7 @@
 let
   inherit (inputs) dmerge;
 in
-(omnibus.pops.loadHomeModules.addLoadExtender {
+(omnibus.pops.homeModules.addLoadExtender {
   load.inputs = {
     __misc__ = {
       inherit (super.inputs.outputs) catppuccin-bat;

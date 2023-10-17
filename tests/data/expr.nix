@@ -1,16 +1,16 @@
 { omnibus }:
 let
   inherit (omnibus.__inputs__) nixpkgs;
-  loadDataAll =
+  dataAll =
     (omnibus.pops.lib.addLoadExtender {
       load = {
         inputs = {
           inputs.nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
         };
       };
-    }).layouts.default.loadDataAll;
+    }).layouts.default.exporter.pops.dataAll;
 in
-(loadDataAll.addLoadExtender {
+(dataAll.addLoadExtender {
   load = {
     src = ./__fixture;
   };

@@ -1,7 +1,7 @@
 let
   inherit (inputs) dmerge;
 in
-(omnibus.pops.loadNixOSModules.addLoadExtender {
+(omnibus.pops.nixosModules.addLoadExtender {
   load.inputs = super.inputs.outputs // { };
 }).addExporters
   [

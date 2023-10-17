@@ -12,23 +12,35 @@ in
     inputs.self.outPath + "/local/lock"
   );
 
-  loadData = flops.haumea.pops.default.setInit {
+  data = flops.haumea.pops.default.setInit {
     loader = with haumea; [
       matchers.json
       matchers.toml
     ];
   };
-  loadNixOSModules = flops.haumea.pops.default.setInit {
+  dataAll =
+    (self.data.addLoadExtender {
+      load = {
+        loader = with haumea; [
+          (matchers.regex "^(.+)\\.(yaml|yml)$" (
+            _: _: path:
+            root.readYAML path
+          ))
+        ];
+      };
+    });
+
+  nixosModules = flops.haumea.pops.default.setInit {
     src = inputs.self.outPath + "/units/nixos/nixosModules";
     type = "nixosModules";
     inputs = baseInputs;
   };
-  loadHomeModules = flops.haumea.pops.default.setInit {
+  homeModules = flops.haumea.pops.default.setInit {
     src = inputs.self.outPath + "/units/nixos/homeModules";
     type = "nixosModules";
     inputs = baseInputs;
   };
-  loadHomeProfiles = self.loadHomeModules.addLoadExtender {
+  homeProfiles = self.homeModules.addLoadExtender {
     load = {
       src = inputs.self.outPath + "/units/nixos/homeProfiles";
       loader = haumea.loaders.scoped;
@@ -37,7 +49,7 @@ in
     };
   };
 
-  loadNixOSProfiles = self.loadNixOSModules.addLoadExtender {
+  nixosProfiles = self.nixosModules.addLoadExtender {
     load = {
       src = inputs.self.outPath + "/units/nixos/nixosProfiles";
       type = "nixosProfiles";
@@ -45,13 +57,13 @@ in
     };
   };
 
-  loadDarwinProfiles = self.loadNixOSProfiles.addLoadExtender {
+  darwinProfiles = self.nixosProfiles.addLoadExtender {
     load = {
       src = inputs.self.outPath + "/units/nixos/darwinProfiles";
     };
   };
 
-  loadDarwinModules = self.loadNixOSModules.addLoadExtender {
+  darwinModules = self.nixosModules.addLoadExtender {
     load.src = inputs.self.outPath + "/units/nixos/darwinModules";
   };
 
@@ -67,27 +79,26 @@ in
     transformer = [ (_: _: _) ];
   };
   flake-parts = {
-    loadModules = self.loadNixOSModules.addLoadExtender {
+    modules = self.nixosModules.addLoadExtender {
       load.src = inputs.self.outPath + "/units/flake-parts/modules";
     };
-    loadProfiles = self.loadNixOSProfiles.addLoadExtender {
+    profiles = self.nixosProfiles.addLoadExtender {
       load = {
         src = inputs.self.outPath + "/units/flake-parts/profiles";
       };
     };
   };
-  devshell = rec {
-    loadModules = self.loadNixOSModules.addLoadExtender {
-      load = {
-        src = inputs.self.outPath + "/units/devshell/modules";
-        type = "nixosModules";
-      };
+
+  devshellModules = self.nixosModules.addLoadExtender {
+    load = {
+      src = inputs.self.outPath + "/units/devshell/modules";
+      type = "nixosModules";
     };
-    loadProfiles = self.loadNixOSProfiles.addLoadExtender {
-      load = {
-        src = inputs.self.outPath + "/units/devshell/profiles";
-        type = "nixosProfiles";
-      };
+  };
+  devshellProfiles = self.nixosProfiles.addLoadExtender {
+    load = {
+      src = inputs.self.outPath + "/units/devshell/profiles";
+      type = "nixosProfiles";
     };
   };
 

@@ -23,8 +23,8 @@ let
       system
     ).outputs;
 
-  flakePartsProfiles =
-    (omnibus.pops.flake-parts.loadProfiles.addLoadExtender {
+  flakeProfiles =
+    (omnibus.pops.flake-parts.profiles.addLoadExtender {
       load = {
         inputs = {
           inputs = {
@@ -45,8 +45,7 @@ let
       {
         systems = [ system ];
         imports = [ __inputs__.process-compose-flake.flakeModule ];
-        perSystem =
-          { self', ... }: { imports = [ flakePartsProfiles.sqlite-example ]; };
+        perSystem = { self', ... }: { imports = [ flakeProfiles.sqlite-example ]; };
       };
 in
 lib.mapAttrs (_: builtins.unsafeDiscardStringContext) {
