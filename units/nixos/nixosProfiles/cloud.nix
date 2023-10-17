@@ -1,4 +1,4 @@
-# [[file:../../docs/org/nixosProfiles.org::*cloud][cloud:1]]
+# [[file:../../../docs/org/nixosProfiles.org::*cloud][cloud:1]]
 {
   root,
   omnibus,
