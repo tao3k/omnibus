@@ -1,7 +1,7 @@
 { inputs, omnibus }:
 let
   inherit
-    (omnibus.lib.errors.requiredInputs inputs "units.configs" [
+    (omnibus.lib.errors.requiredInputs inputs "omnibus.pops.configs" [
       "nixpkgs"
       "topiary"
     ])

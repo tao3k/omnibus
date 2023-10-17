@@ -3,8 +3,8 @@ let
 in
 (omnibus.pops.homeModules.addLoadExtender {
   load.inputs = {
-    __misc__ = {
-      inherit (super.inputs.inputs) catppuccin-bat;
+    inputs = {
+      inherit (super.flake.inputs) catppuccin-bat;
     };
   };
 }).addExporters

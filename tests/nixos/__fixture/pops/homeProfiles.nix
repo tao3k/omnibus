@@ -2,7 +2,7 @@ let
   inherit (inputs) dmerge;
 in
 (omnibus.pops.homeProfiles.addLoadExtender {
-  load.inputs = super.inputs.inputs // {
+  load.inputs = {
     omnibus = {
       homeModules = super.homeModules.layouts.nixosModules;
     };

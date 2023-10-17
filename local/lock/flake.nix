@@ -26,5 +26,12 @@
     topiary.url = "github:tweag/topiary";
     topiary.inputs.nixpkgs.follows = "nixpkgs";
   };
+
+  inputs = {
+    nickel.url = "github:tweag/nickel";
+    nickel.inputs.nixpkgs.follows = "nixpkgs";
+    nickel.inputs.topiary.follows = "topiary";
+  };
+
   outputs = _: { };
 }

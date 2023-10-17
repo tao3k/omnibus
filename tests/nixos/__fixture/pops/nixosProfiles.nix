@@ -3,7 +3,8 @@ let
 in
 (omnibus.pops.nixosProfiles.addLoadExtender {
   load = {
-    inputs = super.inputs.inputs // {
+    inputs = {
+      inputs = super.flake.inputs;
       omnibus = {
         nixosModules = super.nixosModules.layouts.nixosModules;
       };

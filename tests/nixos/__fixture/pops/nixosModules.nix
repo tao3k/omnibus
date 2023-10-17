@@ -2,7 +2,9 @@ let
   inherit (inputs) dmerge;
 in
 (omnibus.pops.nixosModules.addLoadExtender {
-  load.inputs = super.inputs.inputs // { };
+  load.inputs = {
+    inputs = super.flake.inputs;
+  };
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (

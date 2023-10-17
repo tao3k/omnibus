@@ -6,7 +6,7 @@
 }:
 let
   inherit
-    (omnibus.lib.errors.requiredInputs inputs "pops.flake-parts.loadProfiles" [
+    (omnibus.lib.errors.requiredInputs inputs "omnibus.pops.flake-parts.profiles" [
       "chinookDb"
     ])
     chinookDb

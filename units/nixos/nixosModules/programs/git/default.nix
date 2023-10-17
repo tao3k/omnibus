@@ -3,7 +3,7 @@
   imports = [ ({
     environment.systemPackages = [
       pkgs.git
-      nixpkgs.gh
+      inputs.nixpkgs.gh
     ];
   }) ];
 }

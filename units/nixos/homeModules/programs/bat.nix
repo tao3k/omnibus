@@ -1,3 +1,10 @@
+let
+  inherit
+    (omnibus.lib.errors.requiredInputs inputs "omnibus.pops.homeModules" [
+      "catppuccin-bat"
+    ])
+  ;
+in
 {
   config =
     with lib;
@@ -10,7 +17,7 @@
         # bat cache --build
         themes = {
           Catppuccin-mocha = builtins.readFile (
-            __misc__.catppuccin-bat
+            catppuccin-bat
             + "/Catppuccin-${cfg.__profiles__.catppuccin-themes.name}.tmTheme"
           );
         };
