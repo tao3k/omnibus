@@ -22,10 +22,10 @@ in
   local = eachSystem (
     system:
     let
-      inputs' = (super.inputs.setSystem system).outputs;
+      inputs' = (super.pops.flake.setSystem system).inputs;
       dataAll =
         (super.pops.omnibus.lib.addLoadExtender { load.inputs.inputs = inputs'; })
-        .layouts.default.exporter.pops.loadDataAll;
+        .layouts.default.exporter.pops.dataAll;
     in
     {
       data =
@@ -37,7 +37,7 @@ in
   packages = eachSystem (
     system:
     let
-      inputs = (super.inputs.setSystem system).outputs;
+      inputs = (super.pops.flake.setSystem system).inputs;
     in
     (
       (flops.haumea.pops.default.setInit {

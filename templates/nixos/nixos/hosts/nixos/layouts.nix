@@ -1,22 +1,22 @@
 let
   outputs = inputs.self;
-  self' = inputs.self.hosts.nixos;
 in
+# self' = inputs.self.hosts.nixos;
 {
   system = "x86_64-linux";
 
-  data = outputs.data.default;
+  data = outputs.local.${self.system}.data;
 
   nixosSuites = lib.flatten [
-    self'.nixosProfiles.bootstrap
+    outputs.hosts.nixos.nixosProfiles.bootstrap
 
     outputs.nixosProfiles.presets.boot
     # outputs.nixosModules.default.programs.git
 
     # # # --custom profiles
-    # outputs.nixosProfiles.customProfiles.presets.nix
-    # outputs.nixosProfiles.customProfiles.presets.boot
-    # outputs.nixosModules.customModules.boot
+    # outputs.pops.nixosProfiles.layouts.customProfiles.presets.nix
+    # outputs.pops.nixosProfiles.layouts.customProfiles.presets.boot
+    # outputs.pops.nixosModules.layouts.customModules.boot
 
     # outputs.srvos.default.common.nix
     (outputs.omnibus.lib.mkHome
@@ -35,9 +35,8 @@ in
 
   homeSuites = [
     outputs.homeProfiles.presets.emacs
-    # outputs.homeProfiles.default.presets.bat
+    # outputs.homeProfiles.presets.bat
     # # # The parent directory of "presets" is categorized as a list type of "suites"
-    # (outputs.homeProfiles.default.shell { }).default
-    # super.pops.homeModules.layouts.default.wayland.windowManager.hyprland
+    # (outputs.homeProfiles.shell { }).default
   ];
 }

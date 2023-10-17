@@ -403,11 +403,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1697524438,
-        "narHash": "sha256-6tNE9XlJOMriM+bideQwXWDTK57ppAp7jTWChnEngBk=",
+        "lastModified": 1697527137,
+        "narHash": "sha256-dtoK7XELC939mhO7BRAZA7t0gaJW/M3KXpoybs+SrM0=",
         "owner": "gtrunsec",
         "repo": "omnibus",
-        "rev": "90b76ff1b6bf1cdc1c431e1947b230d8fa7dc34e",
+        "rev": "d37cbf233c7f84ade00dc9a96dee596043cd2ccd",
         "type": "github"
       },
       "original": {
