@@ -22,6 +22,9 @@
     makes.flake = false;
 
     nur.url = "github:nix-community/NUR";
+
+    topiary.url = "github:tweag/topiary";
+    topiary.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = _: { };
 }
