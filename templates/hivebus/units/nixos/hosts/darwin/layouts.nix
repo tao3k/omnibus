@@ -3,16 +3,22 @@ let
 in
 # self' = inputs.self.hosts.nixos;
 {
-  system = "x86_64-linux";
+  system = "aarch64-linux";
 
   data = outputs.local.${self.system}.data;
 
-  nixosSuites = lib.flatten [
+  hive = {
+    bee.system = self.system;
+    bee.home = inputs.home-manager;
+    bee.darwin = inputs.darwin;
+    bee.pkgs = import inputs.nixpkgs { inherit (self) system; };
+    imports = lib.flatten self.darwinSuites;
+  };
+
+  darwinSuites = lib.flatten [
     outputs.hosts.nixos.nixosProfiles.bootstrap
 
-    outputs.nixosProfiles.presets.boot
-    # outputs.nixosModules.default.programs.git
-
+    outputs.darwinModules.layouts.default.homebrew
     # # # --custom profiles
     # outputs.pops.nixosProfiles.layouts.customProfiles.presets.nix
     # outputs.pops.nixosProfiles.layouts.customProfiles.presets.boot

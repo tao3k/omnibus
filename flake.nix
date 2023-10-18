@@ -30,12 +30,21 @@
 
       inherit lib;
 
-      templates.default = {
-        path = ./templates/nixos;
-        description = "Omnibus & nixos";
-        welcomeText = ''
-          You have created an Omnibus.nixos template!
-        '';
+      templates = {
+        nixos = {
+          path = ./templates/nixos;
+          description = "Omnibus & nixos";
+          welcomeText = ''
+            You have created an Omnibus.nixos template!
+          '';
+        };
+        hivebus = {
+          path = ./templates/hivebus;
+          description = "Omnibus & hive";
+          welcomeText = ''
+            You have created an hivebus template!
+          '';
+        };
       };
     }
   ;
