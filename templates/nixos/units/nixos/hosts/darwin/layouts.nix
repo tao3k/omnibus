@@ -16,16 +16,14 @@ in
   };
 
   darwinSuites = lib.flatten [
-    outputs.hosts.nixos.nixosProfiles.bootstrap
-
-    outputs.darwinModules.layouts.default.homebrew
+    # outputs.darwinModules.layouts.default.homebrew
     # # # --custom profiles
     # outputs.pops.nixosProfiles.layouts.customProfiles.presets.nix
     # outputs.pops.nixosProfiles.layouts.customProfiles.presets.boot
     # outputs.pops.nixosModules.layouts.customModules.boot
 
     # outputs.srvos.default.common.nix
-    (outputs.omnibus.lib.mkHome
+    (outputs.omnibus.lib.mkHome inputs.home.darwinModule
       {
         admin = {
           uid = 1000;
@@ -39,10 +37,11 @@ in
     )
   ];
 
-  homeSuites = [
-    outputs.homeProfiles.presets.emacs
-    # outputs.homeProfiles.presets.bat
-    # # # The parent directory of "presets" is categorized as a list type of "suites"
-    # (outputs.homeProfiles.shell { }).default
-  ];
+  homeSuites =
+    [
+      # outputs.homeProfiles.presets.emacs
+      # outputs.homeProfiles.presets.bat
+      # # # The parent directory of "presets" is categorized as a list type of "suites"
+      # (outputs.homeProfiles.shell { }).default
+    ];
 }

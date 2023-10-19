@@ -3,11 +3,8 @@
   inputs,
   root,
 }:
-userSet: shell: suites:
+homeModule: userSet: shell: suites:
 let
-  inherit (root.errors.requiredInputs inputs "lib" [ "home-manager" ])
-    home-manager
-  ;
   user = lib.head (lib.attrNames userSet);
   pathsToLinkShell = lib.elem shell [
     "fish"
@@ -18,7 +15,7 @@ in
 {
   imports =
     [
-      home-manager.nixosModules.default
+      homeModule
       { users.users = userSet; }
       (
         { pkgs, lib, ... }:

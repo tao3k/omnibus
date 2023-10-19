@@ -2,6 +2,7 @@
   lib,
   inputs,
   super,
+  root,
 }:
 let
   hostsDir = lib.attrNames (
@@ -12,7 +13,17 @@ lib.listToAttrs (
   map
     (name: {
       inherit name;
-      value = lib.mapAttrs (_: v: v name) super.hostsFun;
+      value =
+        lib.mapAttrs
+          (
+            n: v:
+            v.addLoadExtender {
+              load.src =
+                root.filterPopsSrc (inputs.self.outPath + "/units/nixos/hosts/${name}")
+                  n;
+            }
+          )
+          super.hostsLoad;
     })
     hostsDir
 )

@@ -26,7 +26,7 @@ in
     # outputs.pops.nixosModules.layouts.customModules.boot
 
     # outputs.srvos.default.common.nix
-    (outputs.omnibus.lib.mkHome
+    (outputs.omnibus.lib.mkHome inputs.home.nixosModule
       {
         admin = {
           uid = 1000;

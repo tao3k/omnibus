@@ -22,7 +22,7 @@ in
     # # exporter.nixosProfiles.customProfiles.presets.boot
     # outputs.srvos.default.common.nix
 
-    (outputs'.omnibus.lib.mkHome
+    (outputs'.omnibus.lib.mkHome inputs.home-manager.nixosModule
       {
         admin = {
           uid = 1000;
