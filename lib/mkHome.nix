@@ -20,8 +20,8 @@ in
       (
         { pkgs, lib, ... }:
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+          home-manager.useGlobalPkgs = lib.mkDefault true;
+          home-manager.useUserPackages = lib.mkDefault true;
 
           home-manager.users.${user} = {
             imports = lib.flatten suites;

@@ -30,6 +30,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.paisano.follows = "paisano";
       inputs.std.follows = "std";
+      inputs.colmena.follows = "colmena";
+    };
+
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      # keep the cache
+      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "";
     };
   };
 

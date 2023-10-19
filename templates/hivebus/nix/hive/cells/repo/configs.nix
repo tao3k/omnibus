@@ -7,16 +7,7 @@
       (3) potentially share / re-use configuration data - keeping it in sync
 */
 { inputs, cell }:
-with inputs.std.inputs.dmerge; {
-  conform.data = {
-    commit.conventional.scopes = append [
-      "nixosModules"
-      "nixosProfiles"
-      "homeProfiles"
-      "homeModules"
-      "darwinModules"
-      "darwinProfiles"
-      ".*."
-    ];
-  };
-}
+(inputs.repo.inputs.omnibus.pops.exporter.addLoadExtender {
+  load.src = ./configs;
+}).outputs
+  { }

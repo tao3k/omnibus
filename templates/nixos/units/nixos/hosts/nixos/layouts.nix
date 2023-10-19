@@ -9,7 +9,8 @@ in
 
   hive = {
     bee.system = self.system;
-    bee.home = inputs.home-manager;
+    # use the mkHome function to create a home-manager profile
+    # bee.home = inputs.home-manager;
     bee.pkgs = import inputs.nixpkgs { inherit (self) system; };
     imports = lib.flatten self.nixosSuites;
   };
