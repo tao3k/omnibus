@@ -37,7 +37,7 @@ in
   packages = eachSystem (
     system:
     let
-      inputs = (super.pops.flake.setSystem system).inputs;
+      inputs = (super.pops.subflake.setSystem system).inputs;
     in
     (
       (flops.haumea.pops.default.setInit {

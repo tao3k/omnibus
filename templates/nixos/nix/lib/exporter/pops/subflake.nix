@@ -2,12 +2,12 @@
   POP.extendPop flops.flake.pops.inputsExtender (
     self: super:
     let
-      selfInputs = omnibus.pops.flake.setInitInputs ../../__lock;
+      subflake = omnibus.pops.flake.setInitInputs ../../../lock;
     in
     {
-      inputs = {
-        nixpkgs = inputs.nixpkgs.legacyPackages;
-      } // selfInputs.inputs;
+      inputs = subflake.inputs // {
+        nixpkgs = subflake.inputs.nixpkgs.legacyPackages;
+      };
     }
   )
 ))
