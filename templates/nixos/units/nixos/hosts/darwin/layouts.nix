@@ -28,8 +28,6 @@ in
         admin = {
           uid = 1000;
           description = "default manager";
-          isNormalUser = true;
-          extraGroups = [ "wheel" ];
         };
       }
       "zsh"
