@@ -14,8 +14,7 @@
       extraPortals =
         with pkgs;
         [ xdg-desktop-portal-gtk ]
-        ++ (lib.optionals config.hive.display.wayland) [ xdg-desktop-portal-wlr ]
-      ;
+        ++ (lib.optionals config.hive.display.wayland) [ xdg-desktop-portal-wlr ];
     };
   };
   environment.systemPackages = with pkgs; [ xdg-utils ];

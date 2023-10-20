@@ -8,8 +8,7 @@
         pass-secret-service
         gcr
       ]
-      ++ lib.optionals config.programs.dconf.enable [ dconf ]
-    ;
+      ++ lib.optionals config.programs.dconf.enable [ dconf ];
   };
   services.passSecretService = {
     enable = true;

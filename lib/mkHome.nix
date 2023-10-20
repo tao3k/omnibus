@@ -36,7 +36,7 @@ in
         }
       )
     ]
-    ++ lib.optionals pathsToLinkShell [ {
-      environment.pathsToLink = [ "/share/${shell}" ];
-    } ];
+    ++ lib.optionals pathsToLinkShell [
+      { environment.pathsToLink = [ "/share/${shell}" ]; }
+    ];
 }

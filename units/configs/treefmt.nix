@@ -4,14 +4,23 @@ let
     (omnibus.lib.errors.requiredInputs inputs "omnibus.pops.configs" [
       "nixpkgs"
       "topiary"
+      "nixfmt"
+      "dmerge"
     ])
     dmerge
     topiary
     nixpkgs
+    nixfmt
   ;
 in
 with dmerge; {
   default = {
+    packages = [
+      nixfmt.packages.default
+      nixpkgs.nodePackages.prettier
+      nixpkgs.shfmt
+      nixpkgs.nodePackages.prettier-plugin-toml
+    ];
     data = {
       formatter = {
         nix = {

@@ -53,8 +53,7 @@
                     )
                   )}
                 ''
-                + lib.fileContents ./swww_randomize.sh
-              ;
+                + lib.fileContents ./swww_randomize.sh;
             })
           ];
         })

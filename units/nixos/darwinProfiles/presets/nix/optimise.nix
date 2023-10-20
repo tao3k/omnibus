@@ -13,10 +13,12 @@
           exec ${config.nix.package}/bin/nix store optimise
       ''
     ];
-    StartCalendarInterval = [ {
-      Hour = 2;
-      Minute = 0;
-    } ];
+    StartCalendarInterval = [
+      {
+        Hour = 2;
+        Minute = 0;
+      }
+    ];
     StandardErrorPath = "/var/log/nix-store.log";
     StandardOutPath = "/var/log/nix-store.log";
   };

@@ -17,7 +17,7 @@ let
 in
 {
   imports = [ omnibus.nixosModules.omnibus.coding.typst ];
-  environment.systemPackages =
-    [ pkgs'.typst ]
-    ++ lib.optionals cfg.lsp [ pkgs'.typst-lsp ];
+  environment.systemPackages = [
+    pkgs'.typst
+  ] ++ lib.optionals cfg.lsp [ pkgs'.typst-lsp ];
 }

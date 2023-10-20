@@ -49,6 +49,10 @@
 
     sops-nix.url = "github:Mic92/sops-nix"; # sops-template
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixfmt.url = "github:serokell/nixfmt/?ref=refs/pull/118/head";
+    # nixfmt.inputs.nixpkgs.follows = "nixpkgs";
+    nixfmt.inputs.flake-compat.follows = "";
   };
   outputs = _: { };
 }

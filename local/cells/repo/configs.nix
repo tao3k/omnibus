@@ -7,7 +7,20 @@
       (3) potentially share / re-use configuration data - keeping it in sync
 */
 { inputs, cell }:
-with inputs.std.inputs.dmerge; {
+with inputs.std.inputs.dmerge;
+let
+  inherit (inputs) nixpkgs;
+  configs =
+    let
+      inputs' = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
+    in
+    inputs.omnibus.pops.configs.addLoadExtender {
+      load.inputs.inputs = inputs' // {
+        inherit nixpkgs;
+      };
+    };
+in
+{
   conform.data = {
     commit.conventional.scopes = append [
       "nixosModules"
@@ -19,4 +32,5 @@ with inputs.std.inputs.dmerge; {
       ".*."
     ];
   };
+  treefmt = configs.layouts.default.treefmt;
 }

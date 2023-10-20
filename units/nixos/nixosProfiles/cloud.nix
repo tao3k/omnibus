@@ -11,13 +11,15 @@ let
     (omnibus.pops.srvos.addExporters [
       (POP.extendPop flops.haumea.pops.exporter (
         self: super: {
-          exports.srvosCustom = self.outputs [ {
-            value = { selfModule }: removeAttrs selfModule [ "imports" ];
-            path = [
-              "common"
-              "default"
-            ];
-          } ];
+          exports.srvosCustom = self.outputs [
+            {
+              value = { selfModule }: removeAttrs selfModule [ "imports" ];
+              path = [
+                "common"
+                "default"
+              ];
+            }
+          ];
         }
       ))
     ]).layouts.srvosCustom;

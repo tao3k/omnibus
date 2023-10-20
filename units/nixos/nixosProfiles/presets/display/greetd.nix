@@ -2,9 +2,11 @@
 {
   config =
     with lib;
-    mkMerge [ {
-      services.greetd = {
-        enable = true;
-      };
-    } ];
+    mkMerge [
+      {
+        services.greetd = {
+          enable = true;
+        };
+      }
+    ];
 }

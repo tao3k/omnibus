@@ -105,10 +105,12 @@
           ];
       }
       {
-        devShells = std.harvest inputs.self [ [
-          "repo"
-          "shells"
-        ] ];
+        devShells = std.harvest inputs.self [
+          [
+            "repo"
+            "shells"
+          ]
+        ];
       }
       # soil - the first (and only) layer implements adapters for tooling
       {

@@ -14,13 +14,12 @@
         "aarch64-linux"
         "aarch64-darwin"
       ];
-      libPops = import ./nix/lib/__init.nix { inherit inputs eachSystem; };
-      lib = libPops.layouts.default;
+      library = import ./nix/lib/__init.nix { inherit inputs eachSystem; };
+      lib = library.layouts.default;
     in
     lib.exporter.flakeOutputs
     // {
       inherit lib;
       pops = lib.exporter.pops;
-    }
-  ;
+    };
 }

@@ -1,7 +1,11 @@
+{
+  inputs,
+  self,
+  lib,
+}:
 let
   outputs = inputs.self;
 in
-# self' = inputs.self.hosts.nixos;
 {
   system = "aarch64-linux";
 

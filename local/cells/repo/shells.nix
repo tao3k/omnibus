@@ -5,7 +5,7 @@
 { inputs, cell }:
 let
   inherit (inputs.std) lib;
-  inherit (inputs) nixpkgs;
+  inherit (inputs) nixpkgs std;
   devshellProfiles =
     let
       __inptus__ = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
@@ -28,8 +28,9 @@ in
     # It runs the startup hook when entering the shell.
     nixago = [
       (inputs.std-ext.presets.nixago.conform cell.configs.conform)
-      (inputs.std-ext.presets.nixago.treefmt)
+      # (inputs.std-ext.presets.nixago.treefmt)
       (inputs.std-ext.presets.nixago.lefthook)
+      (std.lib.dev.mkNixago std.lib.cfg.treefmt cell.configs.treefmt.default)
     ];
 
     packages = [ nixpkgs.d2 ];

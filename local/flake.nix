@@ -28,10 +28,12 @@
         ];
       }
       {
-        devShells = std.harvest inputs.self [ [
-          "repo"
-          "shells"
-        ] ];
+        devShells = std.harvest inputs.self [
+          [
+            "repo"
+            "shells"
+          ]
+        ];
       }
       {
         eval = inputs.haumea.lib.load {

@@ -19,13 +19,13 @@
         inherit lib;
       } // lib.exporter.flakeOutputs;
 
-      libPops = import ./lib/__init.nix { inherit inputs omnibus; };
-      lib = libPops.layouts.default;
+      library = import ./lib/__init.nix { inherit inputs omnibus; };
+      lib = library.layouts.default;
     in
     lib.exporter.flakeOutputs
     // {
       pops = lib.exporter.pops // {
-        lib = libPops;
+        lib = library;
       };
 
       inherit lib;
@@ -46,6 +46,5 @@
           '';
         };
       };
-    }
-  ;
+    };
 }

@@ -2,7 +2,7 @@
 # !/usr/bin/env d2 --theme 200
 
 flake: Flake {
-  libPops: lib(pops) {
+  library: lib(pops) {
     library
     exporter: {
       pops
@@ -16,9 +16,9 @@ flake: Flake {
     packages
   }
 
-  libPops.flakeOutputs -> outputs
-  libPops.exporter.library -> outputs.lib: without pops interface
-  libPops.exporter.pops -> outputs.pops
+  library.flakeOutputs -> outputs
+  library.exporter.library -> outputs.lib: without pops interface
+  library.exporter.pops -> outputs.pops
 }
 
 units: units {
@@ -73,8 +73,8 @@ user: User {shape: person}
 extensions <-> user
 flops -> extensions
 flake.outputs.pops -> extensions
-units -> flake.libPops.exporter.pops: loading
-flake.libPops.exporter.pops <- flops.haumea: loader
+units -> flake.library.exporter.pops: loading
+flake.library.exporter.pops <- flops.haumea: loader
 flops.haumea -> extensions.APIs.addLoadExtender
 flops.haumea -> extensions.APIs.addLoadExtenders
 

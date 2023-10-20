@@ -61,6 +61,5 @@ in
       pythonEnv
       poetry
     ]
-    ++ lib.optionals pkgs.stdenv.isLinux [ ]
-  ;
+    ++ lib.optionals pkgs.stdenv.isLinux [ ];
 }

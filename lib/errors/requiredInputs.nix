@@ -9,8 +9,7 @@ let
     then
       true
     else
-      false
-  ;
+      false;
   msg =
     (lib.concatMapStringsSep "\n         "
       (
@@ -27,8 +26,7 @@ let
     if (lib.elem "nixpkgs" listNames) then
       if (lib.hasAttr "path" inputs'.nixpkgs) then true else false
     else
-      true
-  ;
+      true;
 in
 assert lib.assertMsg fondInputs ''
   please, add the these inputs into
