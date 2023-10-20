@@ -7,7 +7,7 @@ let
   outputs = inputs.self;
 in
 {
-  system = "aarch64-linux";
+  system = "aarch64-aarch";
 
   data = outputs.local.${self.system}.data;
 

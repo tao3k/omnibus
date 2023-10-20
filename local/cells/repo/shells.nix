@@ -6,16 +6,6 @@
 let
   inherit (inputs.std) lib;
   inherit (inputs) nixpkgs std;
-  devshellProfiles =
-    let
-      __inptus__ = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
-    in
-    (inputs.omnibus.devshell.loadProfiles.addLoadExtender {
-      inputs = {
-        inherit (__inptus__) fenix;
-        nixpkgs = __inptus__.nixpkgs.legacyPackages;
-      };
-    }).exports.default;
 in
 {
   # Tool Homepage: https://numtide.github.io/devshell/
@@ -23,13 +13,15 @@ in
     name = "omnibus devshell";
 
     # imports = [ devshellProfiles.rust ];
+
     # Tool Homepage: https://nix-community.github.io/nixago/
     # This is Standard's devshell integration.
     # It runs the startup hook when entering the shell.
     nixago = [
-      (inputs.std-ext.presets.nixago.conform cell.configs.conform)
-      # (inputs.std-ext.presets.nixago.treefmt)
-      (inputs.std-ext.presets.nixago.lefthook)
+      (std.lib.dev.mkNixago std.lib.cfg.conform cell.configs.conform.default
+        cell.configs.conform'
+      )
+      (std.lib.dev.mkNixago std.lib.cfg.lefthook cell.configs.lefthook.default)
       (std.lib.dev.mkNixago std.lib.cfg.treefmt cell.configs.treefmt.default)
     ];
 

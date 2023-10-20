@@ -1,4 +1,8 @@
-{ omnibus, root }:
+{
+  omnibus,
+  root,
+  flops,
+}:
 (omnibus.pops.exporter.addLoadExtender {
   load = {
     src = ./__fixture;

@@ -1,4 +1,8 @@
-{ pkgs, omnibus }:
+{
+  pkgs,
+  omnibus,
+  inputs,
+}:
 let
   inherit
     (omnibus.lib.errors.requiredInputs inputs "omnibus.pops.nixosProfiles" [

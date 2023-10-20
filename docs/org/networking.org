@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       b965ba06-6f21-4058-8929-3d3936388087
+:END:
+#+TITLE: networking
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2023-10-08 Sun 21:22
+
+* avahi :dns:

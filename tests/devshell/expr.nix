@@ -12,9 +12,8 @@ let
     ((baseInputs.addInputsExtender (
       POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
         self: super: {
-          inputs = {
+          inputs = baseInputs.inputs // {
             devshell = baseInputs.inputs.devshell.legacyPackages;
-            nixpkgs = baseInputs.inputs.nixpkgs.legacyPackages;
           };
         }
       )

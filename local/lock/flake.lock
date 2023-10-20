@@ -943,6 +943,9 @@
         "nickel": "nickel",
         "nil": "nil",
         "nixfmt": "nixfmt",
+        "nixos": [
+          "nixpkgs"
+        ],
         "nixpkgs": "nixpkgs_4",
         "nur": "nur",
         "ragenix": "ragenix",

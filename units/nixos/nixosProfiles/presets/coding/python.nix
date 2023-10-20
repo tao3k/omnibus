@@ -2,7 +2,7 @@
 let
   cfg = config.omnibus.coding.python;
   pythonEnv =
-    (pkgs.python3.withPackages (
+    (cfg.python.withPackages (
       ps:
       with ps;
       (lib.optionals cfg.emacs-eaf [
@@ -30,26 +30,7 @@ let
         paramiko
         rapidfuzz
       ])
-      ++ [
-        pytest
-        #orgparse
-        pytest
-        jupyter
-        #voila
-        pygments
-        # orgbabelhelper
-        # jupyterlab
-        pdftotext
-        openai
-      ]
-      ++ lib.optionals pkgs.stdenv.isLinux [
-        # pyqt6
-        # pyqt6-webengine
-        pyinotify
-        pymupdf
-        # eaf depencencies
-        lxml
-      ]
+      ++ [ ]
     ));
 in
 #.override (args: {ignoreCollisions = true;});

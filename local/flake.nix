@@ -25,6 +25,7 @@
           # Development Environments
           (nixago "configs")
           (devshells "shells")
+          (functions "devshellProfiles")
         ];
       }
       {

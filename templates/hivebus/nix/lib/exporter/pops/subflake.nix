@@ -5,9 +5,7 @@
       subflake = omnibus.pops.flake.setInitInputs ../../../lock;
     in
     {
-      inputs = subflake.inputs // {
-        nixpkgs = subflake.inputs.nixpkgs.legacyPackages;
-      };
+      inputs = subflake.inputs;
     }
   )
 ))

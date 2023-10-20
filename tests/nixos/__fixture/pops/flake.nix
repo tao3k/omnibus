@@ -8,7 +8,6 @@
     {
       inputs = {
         std = local.outputs.std;
-        nixpkgs = omnibus.pops.flake.inputs.nixpkgs.legacyPackages;
       } // selfInputs.inputs;
     }
   )

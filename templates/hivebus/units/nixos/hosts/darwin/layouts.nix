@@ -3,7 +3,7 @@ let
 in
 # self' = inputs.self.hosts.nixos;
 {
-  system = "aarch64-linux";
+  system = "aarch64-darwin";
 
   data = outputs.local.${self.system}.data;
 
