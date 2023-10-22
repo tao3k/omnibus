@@ -1,9 +1,13 @@
+{
+  inputs,
+  self,
+  lib,
+}:
 let
   outputs = inputs.self;
 in
-# self' = inputs.self.hosts.nixos;
 {
-  system = "aarch64-darwin";
+  system = "aarch64-aarch";
 
   data = outputs.local.${self.system}.data;
 

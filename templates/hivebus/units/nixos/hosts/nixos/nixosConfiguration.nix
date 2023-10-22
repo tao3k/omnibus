@@ -1,5 +1,5 @@
 let
-  inherit (inputs) nixos;
+  inherit (inputs) nixpkgs;
 in
 nixpkgs.lib.nixosSystem rec {
   system = super.layouts.system;

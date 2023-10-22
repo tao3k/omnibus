@@ -15,18 +15,24 @@ let
       inputs' = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
     in
     inputs.omnibus.pops.configs.addLoadExtender { load.inputs.inputs = inputs'; };
+  inherit (configs.layouts.default) treefmt lefthook conform;
 in
 {
-  conform'.data = {
-    commit.conventional.scopes = append [
-      "nixosModules"
-      "nixosProfiles"
-      "homeProfiles"
-      "homeModules"
-      "darwinModules"
-      "darwinProfiles"
-      ".*."
-    ];
+  inherit treefmt lefthook;
+  conform = {
+    inherit (conform) default;
+    custom = {
+      data = {
+        commit.conventional.scopes = append [
+          "nixosModules"
+          "nixosProfiles"
+          "homeProfiles"
+          "homeModules"
+          "darwinModules"
+          "darwinProfiles"
+          ".*."
+        ];
+      };
+    };
   };
-  inherit (configs.layouts.default) treefmt lefthook conform;
 }
