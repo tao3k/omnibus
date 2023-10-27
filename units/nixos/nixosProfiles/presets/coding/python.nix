@@ -5,32 +5,36 @@ let
     (cfg.python.withPackages (
       ps:
       with ps;
-      (lib.optionals cfg.emacs-eaf [
-        #emacs-eaf
-        shapely
-        dbus-python
-        qrcode
-        xlib
-        grip
-        black
-        keyring
-        # pyqt5
-        # pyqtwebengine
-        markdown
-        feedparser
-        retrying
-      ])
-      ++ (lib.optionals cfg.lsp-bridge [
-        epc
-        orjson
-        ###
-        pypinyin
-        sexpdata
-        six
-        paramiko
-        rapidfuzz
-      ])
-      ++ [ ]
+      (
+        lib.unique (
+          lib.optionals cfg.emacs-eaf [
+            #emacs-eaf
+            shapely
+            dbus-python
+            qrcode
+            xlib
+            grip
+            black
+            keyring
+            # pyqt5
+            # pyqtwebengine
+            markdown
+            feedparser
+            retrying
+          ]
+        )
+        ++ (lib.optionals cfg.lsp-bridge [
+          epc
+          orjson
+          ###
+          pypinyin
+          sexpdata
+          six
+          paramiko
+          rapidfuzz
+        ])
+        ++ [ ]
+      )
     ));
 in
 #.override (args: {ignoreCollisions = true;});

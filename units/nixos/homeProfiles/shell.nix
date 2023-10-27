@@ -14,6 +14,7 @@ with presets; {
     direnv
     git
   ];
+
   default = [
     self.minimal
     self.modernTools

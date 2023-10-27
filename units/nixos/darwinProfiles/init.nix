@@ -9,6 +9,6 @@ in
 with presets; {
   default = [
     bootstrap
-    { omnibus.bootstrap.minimal = true; }
+    { omnibus.bootstrap.default = true; }
   ];
 }
