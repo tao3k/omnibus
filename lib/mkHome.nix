@@ -24,15 +24,15 @@ in
           home-manager.useUserPackages = lib.mkDefault true;
 
           home-manager.users.${user} = {
-            imports = lib.flatten suites;
+            imports = lib.flatten [ suites ];
             home.stateVersion =
               if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "23.11";
           };
+          programs.${shell}.enable = true;
           users.users.${user} = {
             shell = pkgs."${shell}";
             home = if pkgs.stdenv.isDarwin then "/Users/${user}" else "/home/${user}";
           };
-          programs.${shell}.enable = true;
         }
       )
     ]

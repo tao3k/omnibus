@@ -80,7 +80,7 @@ with presets; {
     coding.nix
   ];
 
-  full = [
+  coding = [
     self.default
     {
       config.omnibus.coding = {

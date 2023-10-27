@@ -3,21 +3,39 @@
   darwinFontProfile = [
     {
       args = null;
-      brewfileLine = "cask \"koodo-reader\"";
-      greedy = null;
-      name = "koodo-reader";
-    }
-    {
-      args = null;
-      brewfileLine = "cask \"skim\"";
-      greedy = null;
-      name = "skim";
-    }
-    {
-      args = null;
       brewfileLine = "cask \"wez/wezterm/wezterm-nightly\"";
       greedy = null;
       name = "wez/wezterm/wezterm-nightly";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"telegram-desktop\"";
+      greedy = null;
+      name = "telegram-desktop";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"signal-desktop\"";
+      greedy = null;
+      name = "signal-desktop";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"element-desktop\"";
+      greedy = null;
+      name = "element-desktop";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"secretive\"";
+      greedy = null;
+      name = "secretive";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"docker\"";
+      greedy = null;
+      name = "docker";
     }
     {
       args = null;

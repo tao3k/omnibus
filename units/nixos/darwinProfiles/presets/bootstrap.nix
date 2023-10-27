@@ -9,7 +9,7 @@ let
   cfg = config.omnibus.bootstrap;
 in
 {
-  imports = [ omnibus.darwinModules.bootstrap ];
+  imports = [ omnibus.nixosModules.omnibus.bootstrap ];
   config = {
     omnibus.bootstrap.PATH = lib.mkBefore [
       "/run/current-system/sw/bin"

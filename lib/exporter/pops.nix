@@ -1,9 +1,13 @@
 let
   baseInputs = {
-    inherit omnibus POP flops;
+    inherit
+      omnibus
+      POP
+      flops
+      lib
+    ;
     inputs = {
       inherit (inputs) dmerge;
-      inherit lib;
     };
   };
 in
@@ -43,7 +47,6 @@ in
   homeProfiles = self.homeModules.addLoadExtender {
     load = {
       src = inputs.self.outPath + "/units/nixos/homeProfiles";
-      loader = haumea.loaders.scoped;
       type = "nixosProfiles";
       transformer = [ (_: _: _) ];
     };
