@@ -34,16 +34,21 @@
             src = ./data;
           };
         };
+        omnibus = eachSystem (
+          system:
+          inputs.omnibus.pops.lib.addLoadExtender {
+            load.inputs = {
+              inputs = {
+                nixpkgs = inputs.nixos-unstable.legacyPackages.${system};
+              };
+            };
+          }
+        );
         allData = eachSystem (
           system:
-          inputs.omnibus.pops.allData.addLoadExtender {
+          (pops.omnibus.${system}.outputs { }).exporter.pops.allData.addLoadExtender {
             load = {
               src = ./data;
-              inputs = {
-                inputs = {
-                  nixpkgs = inputs.nixos-unstable.legacyPackages.${system};
-                };
-              };
             };
           }
         );

@@ -194,11 +194,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1698727888,
-        "narHash": "sha256-KCMQsGXm0SVfDroy4SOHY9MBzsrFx2Wdm5UaCJw3aI8=",
+        "lastModified": 1698728020,
+        "narHash": "sha256-yl/TGq+hoHsGTLmYj9M5gmhGEoS0X7Jqi/SyHXuYylE=",
         "owner": "gtrunsec",
         "repo": "omnibus",
-        "rev": "9b8a9ed9df1f2aea721115ae8d256def7f78822c",
+        "rev": "1e55d470bc262209d71e712220bf834f3c8d04b6",
         "type": "github"
       },
       "original": {
