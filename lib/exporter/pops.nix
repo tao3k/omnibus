@@ -24,7 +24,7 @@ in
       matchers.toml
     ];
   };
-  dataAll =
+  allData =
     (self.data.addLoadExtender {
       load = {
         loader = with haumea; [

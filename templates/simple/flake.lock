@@ -1,0 +1,246 @@
+{
+  "nodes": {
+    "POP": {
+      "inputs": {
+        "flake-compat": [
+          "omnibus",
+          "flops"
+        ],
+        "nixlib": "nixlib",
+        "nixpkgs": [
+          "omnibus",
+          "flops"
+        ]
+      },
+      "locked": {
+        "lastModified": 1655410953,
+        "narHash": "sha256-Er0zdhu7QwpWvVKfauqZqTnxDz6THTWOTVWLoz+Opmw=",
+        "owner": "divnix",
+        "repo": "POP",
+        "rev": "8babe4c9126298d05ebb5ab04727d741b51c022e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "divnix",
+        "repo": "POP",
+        "type": "github"
+      }
+    },
+    "call-flake": {
+      "locked": {
+        "lastModified": 1697332845,
+        "narHash": "sha256-bmhE1TmrJG4ba93l9WQTLuYM53kwGQAjYHRvHOeuxWU=",
+        "owner": "divnix",
+        "repo": "call-flake",
+        "rev": "088f8589c7f3ee59bea1858a89f5125d284c3c4a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "divnix",
+        "repo": "call-flake",
+        "type": "github"
+      }
+    },
+    "dmerge": {
+      "inputs": {
+        "haumea": [
+          "omnibus",
+          "flops",
+          "haumea"
+        ],
+        "nixlib": [
+          "omnibus",
+          "flops",
+          "nixlib"
+        ],
+        "yants": [
+          "omnibus",
+          "flops",
+          "yants"
+        ]
+      },
+      "locked": {
+        "lastModified": 1686862774,
+        "narHash": "sha256-ojGtRQ9pIOUrxsQEuEPerUkqIJEuod9hIflfNkY+9CE=",
+        "owner": "divnix",
+        "repo": "dmerge",
+        "rev": "9f7f7a8349d33d7bd02e0f2b484b1f076e503a96",
+        "type": "github"
+      },
+      "original": {
+        "owner": "divnix",
+        "repo": "dmerge",
+        "type": "github"
+      }
+    },
+    "flops": {
+      "inputs": {
+        "POP": "POP",
+        "call-flake": "call-flake",
+        "dmerge": "dmerge",
+        "haumea": "haumea",
+        "nixlib": "nixlib_2",
+        "yants": "yants"
+      },
+      "locked": {
+        "lastModified": 1697778846,
+        "narHash": "sha256-QDgGaC67LbnnhRV/CpLomSz7UFs+pRnZsyU6xJcQIas=",
+        "owner": "gtrunsec",
+        "repo": "flops",
+        "rev": "5adeb160bf489b042951dd1bf89840ca14288cfb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gtrunsec",
+        "repo": "flops",
+        "type": "github"
+      }
+    },
+    "haumea": {
+      "inputs": {
+        "nixpkgs": [
+          "omnibus",
+          "flops",
+          "nixlib"
+        ]
+      },
+      "locked": {
+        "lastModified": 1697205539,
+        "narHash": "sha256-gHEy0Q+eEQJkWl6/DpFxXPOlTx/lMU7Pvs/bwoq4OhI=",
+        "owner": "nix-community",
+        "repo": "haumea",
+        "rev": "fc119c500189f739fec7ad33d111f9c92910eccf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "haumea",
+        "type": "github"
+      }
+    },
+    "nixlib": {
+      "locked": {
+        "lastModified": 1653180592,
+        "narHash": "sha256-sVGwmxTj7CY1D4ioy7E+iJE+1/yHqQlxjnTpar3ap/E=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "42c5f5785b70cd64b4afd830dc31d0b08461abd5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixlib_2": {
+      "locked": {
+        "lastModified": 1697331025,
+        "narHash": "sha256-a5LJWWHfEvnq9tBd9UyNVdtzLXc2ehu5MCp//Bex/0E=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "05c07c73de74725ec7efa6609011687035a92c0f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixos-unstable": {
+      "locked": {
+        "lastModified": 1698610559,
+        "narHash": "sha256-i8vFNXJz9VcH05oNe/3Jm5f+CtE3g5uOUvF/dobTMUQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "4e43dd49630303b00120c11d00d4fb01bb40188d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1660438583,
+        "narHash": "sha256-rJUTYxFKlWUJI3njAwEc1pKAVooAViZGJvsgqfh/q/E=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "bbd8f7cd87d0b29294ef3072ffdbd61d60f05da4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "omnibus": {
+      "inputs": {
+        "POP": [
+          "omnibus",
+          "flops",
+          "POP"
+        ],
+        "flops": "flops",
+        "haumea": [
+          "omnibus",
+          "flops",
+          "haumea"
+        ]
+      },
+      "locked": {
+        "lastModified": 1698727834,
+        "narHash": "sha256-VwE2Y4EaLMrE7j7f8CA/VG0Arx5ao4oXrf8gRs9HHw8=",
+        "owner": "gtrunsec",
+        "repo": "omnibus",
+        "rev": "421a90d0713ff384c96751ecf367d9c3e4c99d7d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gtrunsec",
+        "repo": "omnibus",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flops": [
+          "omnibus",
+          "flops"
+        ],
+        "haumea": [
+          "omnibus",
+          "flops",
+          "haumea"
+        ],
+        "nixos-unstable": "nixos-unstable",
+        "omnibus": "omnibus"
+      }
+    },
+    "yants": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1686863218,
+        "narHash": "sha256-kooxYm3/3ornWtVBNHM3Zh020gACUyFX2G0VQXnB+mk=",
+        "owner": "divnix",
+        "repo": "yants",
+        "rev": "8f0da0dba57149676aa4817ec0c880fbde7a648d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "divnix",
+        "repo": "yants",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
