@@ -9,6 +9,11 @@ in
 with presets; {
   default = [
     bootstrap
+    nix.default
     { omnibus.bootstrap.default = true; }
+  ];
+  full = [
+    self.default
+    { omnibus.bootstrap.full = true; }
   ];
 }

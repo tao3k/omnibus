@@ -26,6 +26,7 @@ with dmerge; {
         nix = {
           includes = [ "*.nix" ];
           command = "nixfmt";
+          excludes = [ ];
         };
         prettier = {
           command = "prettier";

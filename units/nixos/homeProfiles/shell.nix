@@ -21,6 +21,7 @@ with presets; {
     self.utils
     # ------------------------------
     zoxide
+    atuin
     fzf
     starship.default
     dircolors.default

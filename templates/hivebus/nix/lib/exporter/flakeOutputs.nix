@@ -3,6 +3,8 @@
   super,
   omnibus,
   eachSystem,
+  flops,
+  projectDir,
 }:
 let
   filterConfigs =

@@ -30,7 +30,10 @@ in
                 home-manager.useUserPackages = lib.mkDefault true;
 
                 home-manager.users.${user} = {
-                  imports = lib.flatten [ suites ];
+                  imports = lib.flatten [
+                    suites
+                    { programs.${shell}.enable = true; }
+                  ];
                   home.stateVersion =
                     if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "23.11";
                 };
