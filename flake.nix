@@ -42,7 +42,14 @@
           path = ./templates/hivebus;
           description = "Omnibus & hive";
           welcomeText = ''
-            You have created an hivebus template!
+            You have created a hivebus template!
+          '';
+        };
+        simple = {
+          path = ./templates/simple;
+          description = "Omnibus & simple case";
+          welcomeText = ''
+            You have created a simple case template!
           '';
         };
       };
