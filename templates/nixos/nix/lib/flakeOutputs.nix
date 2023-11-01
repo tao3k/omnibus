@@ -25,7 +25,7 @@ in
       inputs' = (super.pops.flake.setSystem system).inputs;
       allData =
         (super.pops.omnibus.lib.addLoadExtender { load.inputs.inputs = inputs'; })
-        .layouts.default.exporter.pops.allData;
+        .layouts.default.pops.allData;
     in
     {
       data =
@@ -41,7 +41,7 @@ in
     in
     (
       (flops.haumea.pops.default.setInit {
-        src = ../../packages;
+        src = ../packages;
         loader = _: path: inputs.nixpkgs.callPackage path { };
         transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
       })

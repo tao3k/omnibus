@@ -46,7 +46,7 @@
         );
         allData = eachSystem (
           system:
-          (pops.omnibus.${system}.outputs { }).exporter.pops.allData.addLoadExtender {
+          (pops.omnibus.${system}.outputs { }).pops.allData.addLoadExtender {
             load = {
               src = ./data;
             };

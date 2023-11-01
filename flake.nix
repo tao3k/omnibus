@@ -17,14 +17,14 @@
       omnibus = {
         inherit (self) pops;
         inherit lib;
-      } // lib.exporter.flakeOutputs;
+      } // lib.flakeOutputs;
 
       library = import ./lib/__init.nix { inherit inputs omnibus; };
       lib = library.layouts.default;
     in
-    lib.exporter.flakeOutputs
+    lib.flakeOutputs
     // {
-      pops = lib.exporter.pops // {
+      pops = lib.pops // {
         lib = library;
       };
 

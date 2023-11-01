@@ -17,9 +17,9 @@
       library = import ./nix/lib/__init.nix { inherit inputs eachSystem; };
       lib = library.layouts.default;
     in
-    lib.exporter.flakeOutputs
+    lib.flakeOutputs
     // {
       inherit lib;
-      pops = lib.exporter.pops;
+      pops = lib.pops;
     };
 }

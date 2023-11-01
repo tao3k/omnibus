@@ -1,5 +1,5 @@
 { root, inputs }:
-(root.exporter.pops.nixosModules.addLoadExtender {
+(root.pops.nixosModules.addLoadExtender {
   load = {
     inputs = {
       # only for host

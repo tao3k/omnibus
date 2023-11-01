@@ -8,7 +8,7 @@ let
           inputs.nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
         };
       };
-    }).layouts.default.exporter.pops.allData;
+    }).layouts.default.pops.allData;
 in
 (allData.addLoadExtender {
   load = {

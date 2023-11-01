@@ -1,9 +1,9 @@
 { lib, root }:
 src: dir:
 let
-  inherit (root.exporter.pops.subflake.inputs) nix-filter;
+  inherit (root.pops.subflake.inputs) nix-filter;
   popsDirs = lib.attrNames (
-    lib.removeAttrs root.exporter.pops [
+    lib.removeAttrs root.pops [
       "hosts"
       "omnibus"
     ]
@@ -13,7 +13,7 @@ in
 #   let
 #     srcDirs = lib.attrNames (lib.readDir src);
 #     popsDirs = lib.attrNames (
-#       lib.removeAttrs root.exporter.pops [
+#       lib.removeAttrs root.pops [
 #         "hosts"
 #         "omnibus"
 #       ]

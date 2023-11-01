@@ -18,7 +18,7 @@ flake: Flake {
 
   library.flakeOutputs -> outputs
   library.exporter.library -> outputs.lib: without pops interface
-  library.exporter.pops -> outputs.pops
+  library.pops -> outputs.pops
 }
 
 units: units {
@@ -73,8 +73,8 @@ user: User {shape: person}
 extensions <-> user
 flops -> extensions
 flake.outputs.pops -> extensions
-units -> flake.library.exporter.pops: loading
-flake.library.exporter.pops <- flops.haumea: loader
+units -> flake.library.pops: loading
+flake.library.pops <- flops.haumea: loader
 flops.haumea -> extensions.APIs.addLoadExtender
 flops.haumea -> extensions.APIs.addLoadExtenders
 
