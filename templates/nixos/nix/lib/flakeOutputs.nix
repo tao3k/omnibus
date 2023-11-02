@@ -11,9 +11,9 @@ let
       (lib.filterAttrs (_: v: v ? "${config}"))
       (lib.mapAttrs (_: v: v.${config}))
     ];
-  inherit (omnibus.lib) mapPopsLayouts;
+  inherit (omnibus.lib) mapPopsExports;
 in
-(mapPopsLayouts super.pops)
+(mapPopsExports super.pops)
 // {
   nixosConfigurations = filterConfigs "nixosConfiguration";
 

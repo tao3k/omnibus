@@ -23,6 +23,6 @@ in
 #   lib.foldl' (a: b: a // b) { } (
 #     map (attr: f attr set.${attr}) (lib.attrNames set)
 #   );
-lib.mapAttrsRecursiveCond ((as: !(as ? "layouts" && as.layouts ? "default")))
+lib.mapAttrsRecursiveCond ((as: !(as ? "exports" && as.exports ? "default")))
   (_: v: v.exports.default or v)
   pops

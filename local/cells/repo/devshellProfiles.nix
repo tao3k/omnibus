@@ -1,1 +1,1 @@
-cell.pops.devshellProfiles.exports.self.exports.default
+cell.pops.devshellProfiles.exports.self

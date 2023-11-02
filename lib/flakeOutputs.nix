@@ -1,5 +1,5 @@
 let
-  outputs = root.mapPopsLayouts super.pops;
+  outputs = root.mapPopsExports super.pops;
 in
 {
   inherit (outputs)

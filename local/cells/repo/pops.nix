@@ -8,8 +8,9 @@ in
       load.inputs.inputs = inputs';
     }).addExporter
       {
-        exports = {
-          self =
+        exports = rec {
+          self = pops.self.exports.default;
+          pops.self =
             (inputs.omnibus.pops.devshellProfiles.addLoadExtender {
               load.inputs = {
                 inputs = inputs';

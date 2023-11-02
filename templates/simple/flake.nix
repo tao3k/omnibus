@@ -53,9 +53,9 @@
           }
         );
       };
-      inherit (inputs.omnibus.lib) mapPopsLayouts;
+      inherit (inputs.omnibus.lib) mapPopsExports;
     in
-    mapPopsLayouts pops
+    mapPopsExports pops
     // {
       inherit pops;
       nixosConfigurations.simple = inputs.nixos-unstable.lib.nixosSystem {
