@@ -10,7 +10,7 @@ let
       baseInputs = omnibus.pops.flake.setInitInputs ./__lock;
     in
     ((baseInputs.addInputsExtender (
-      POP.lib.extendPop flops.lib.flake.pops.inputsExtender (
+      POP.extendPop flops.flake.pops.inputsExtender (
         self: super: {
           inputs = baseInputs.inputs // {
             devshell = baseInputs.inputs.devshell.legacyPackages;

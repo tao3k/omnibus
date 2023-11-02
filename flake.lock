@@ -159,15 +159,7 @@
     },
     "root": {
       "inputs": {
-        "POP": [
-          "flops",
-          "POP"
-        ],
-        "flops": "flops",
-        "haumea": [
-          "flops",
-          "haumea"
-        ]
+        "flops": "flops"
       }
     },
     "yants": {

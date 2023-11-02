@@ -22,12 +22,25 @@ in
       extraPolicies = {
         PasswordManagerEnabled = false;
         DisableFirefoxAccounts = true;
+        NoDefaultBookmarks = true;
         DisablePocket = true;
         EnableTrackingProtection = {
           Value = true;
           Locked = true;
           Cryptomining = true;
           Fingerprinting = true;
+        };
+        FirefoxHome = {
+          Search = true;
+          Pocket = false;
+          Snippets = false;
+          TopSites = false;
+          Highlights = false;
+        };
+
+        UserMessaging = {
+          ExtensionRecommendations = false;
+          SkipOnboarding = true;
         };
         Preferences = {
           "browser.newtabpage.activity-stream.feeds.topsites" = false;
@@ -43,6 +56,9 @@ in
         vimium
         darkreader
         privacy-badger
+        decentraleyes
+        theater-mode-for-youtube
+        clearurls
       ];
   };
 }

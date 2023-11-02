@@ -598,11 +598,11 @@
     "makes": {
       "flake": false,
       "locked": {
-        "lastModified": 1696868671,
-        "narHash": "sha256-4SGTcJ+E3wZXhtcvxZROCGam7371THcPYtmdyV9JzVo=",
+        "lastModified": 1698774087,
+        "narHash": "sha256-L/kuYmUryxS3YdmwOMpYQx0Pgqy0KSaUh0ao8kXA8m4=",
         "owner": "fluidattacks",
         "repo": "makes",
-        "rev": "380ecfa979898ab283874ca44f76a75a551834b6",
+        "rev": "a3691097c615867e10d596e0910b66aa93a796f9",
         "type": "github"
       },
       "original": {
@@ -865,11 +865,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1697169875,
-        "narHash": "sha256-jqxWaylVCWWpL91kj5RQtM6JS7VHPvRAHkqfcHZ+w+U=",
+        "lastModified": 1698900326,
+        "narHash": "sha256-L544+qU8nC7qqNQP9hyJOM9lepnuIo9/F8CSPi4/+1Q=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "e00ff7e3f2bf100614f63ae3d8a8c84fd3b0a11a",
+        "rev": "8fd7f7a16e7f613043c39f0613c7200fa4e6f2d9",
         "type": "github"
       },
       "original": {

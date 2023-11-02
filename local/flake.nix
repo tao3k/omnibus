@@ -39,17 +39,15 @@
       {
         eval = inputs.haumea.lib.load {
           src = ../tests;
-          inputs = omnibus.inputs // {
-            inherit omnibus inputs;
-            lib = inputs.nixpkgs.lib // builtins;
+          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.pops.lib.load.inputs {
+            inherit inputs;
             trace = true;
           };
         };
         checks = inputs.namaka.lib.load {
           src = ../tests;
-          inputs = omnibus.inputs // {
-            inherit omnibus inputs;
-            lib = inputs.nixpkgs.lib // builtins;
+          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.pops.lib.load.inputs {
+            inherit inputs;
             trace = false;
           };
         };

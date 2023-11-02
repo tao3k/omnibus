@@ -1,18 +1,11 @@
 {
   inputs = {
     flops.url = "github:gtrunsec/flops";
-    POP.follows = "flops/POP";
-    haumea.follows = "flops/haumea";
   };
+  # engltish
 
   outputs =
-    {
-      self,
-      flops,
-      POP,
-      haumea,
-      ...
-    }@inputs:
+    { self, flops, ... }@inputs:
     let
       omnibus = {
         inherit (self) pops;
