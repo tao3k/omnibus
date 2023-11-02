@@ -20,7 +20,7 @@ in
   };
 
   darwinSuites = lib.flatten [
-    # outputs.darwinModules.layouts.default.homebrew
+    # outputs.darwinModules.exports.default.homebrew
     # # # --custom profiles
     # outputs.pops.nixosProfiles.layouts.customProfiles.presets.nix
     # outputs.pops.nixosProfiles.layouts.customProfiles.presets.boot

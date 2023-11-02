@@ -15,7 +15,7 @@
         "aarch64-darwin"
       ];
       library = import ./nix/lib/__init.nix { inherit inputs eachSystem; };
-      lib = library.layouts.default;
+      lib = library.exports.default;
     in
     lib.flakeOutputs
     // {

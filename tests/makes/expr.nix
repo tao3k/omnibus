@@ -11,7 +11,7 @@ let
           };
         };
       };
-    }).layouts.default.makes;
+    }).exports.default.makes;
 
   inherit (makesLib) makeScript;
 in

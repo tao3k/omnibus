@@ -6,7 +6,7 @@
     inputs = {
       omnibus = {
         nixosProfiles = super.nixosProfiles.outputs.nixosProfiles;
-        data = super.data.layouts.default;
+        data = super.data.exports.default;
       };
     };
   };

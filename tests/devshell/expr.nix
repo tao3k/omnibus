@@ -28,7 +28,7 @@ let
           inherit (inputs) fenix nixpkgs;
         };
       };
-    }).layouts.default;
+    }).exports.default;
 
   shell = inputs.devshell.mkShell {
     name = "rust";

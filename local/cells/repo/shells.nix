@@ -12,7 +12,7 @@ in
   default = lib.dev.mkShell {
     name = "omnibus devshell";
 
-    # imports = [ devshellProfiles.rust ];
+    imports = [ cell.pops.devshellProfiles.exports.default.nickel ];
 
     # Tool Homepage: https://nix-community.github.io/nixago/
     # This is Standard's devshell integration.
@@ -22,7 +22,9 @@ in
         cell.configs.conform.custom
       )
       (std.lib.dev.mkNixago std.lib.cfg.lefthook cell.configs.lefthook.default)
-      (std.lib.dev.mkNixago std.lib.cfg.treefmt cell.configs.treefmt.default)
+      (std.lib.dev.mkNixago std.lib.cfg.treefmt cell.configs.treefmt.default
+        cell.configs.treefmt.topiary
+      )
     ];
 
     packages = [ nixpkgs.d2 ];

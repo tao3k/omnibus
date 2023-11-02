@@ -32,7 +32,7 @@ let
           };
         };
       };
-    }).layouts.default.process-compose;
+    }).exports.default.process-compose;
 
   mkFlake =
     flake.inputs.flake-parts.lib.mkFlake

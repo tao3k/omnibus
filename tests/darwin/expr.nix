@@ -6,7 +6,7 @@
   omnibus,
 }:
 let
-  exporter = root.nixos.pops.layouts.default;
+  exporter = root.nixos.pops.exports.default;
 in
 {
   darwinFontProfile =

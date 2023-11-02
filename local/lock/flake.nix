@@ -25,12 +25,10 @@
     nur.url = "github:nix-community/NUR";
 
     topiary.url = "github:tweag/topiary";
-    topiary.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   inputs = {
     nickel.url = "github:tweag/nickel";
-    nickel.inputs.nixpkgs.follows = "nixpkgs";
     nickel.inputs.topiary.follows = "topiary";
 
     nil.url = "github:oxalica/nil";

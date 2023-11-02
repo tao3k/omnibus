@@ -1,6 +1,6 @@
 let
   inherit (inputs) nixpkgs darwin nixos;
-  # layouts.default to be default
+  # exports.default to be default
   outputs = omnibus.lib.mapPopsLayouts' super.pops;
   # with multi-layout
   outputs' = omnibus.lib.mapPopsLayouts super.pops;
@@ -41,7 +41,7 @@ in
       # exporter.homeProfiles.default.presets.bat
       # # The parent directory of "presets" is categorized as a list type of "suites"
       # (exporter.homeProfiles.default.shell { }).default
-      # super.pops.homeModules.layouts.default.wayland.windowManager.hyprland
+      # super.pops.homeModules.exports.default.wayland.windowManager.hyprland
     ];
 
   nixosConfiguration =

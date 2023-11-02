@@ -4,7 +4,7 @@
   lib,
 }:
 let
-  out = super.pops.layouts.default.layouts;
+  out = super.pops.exports.default.layouts;
   extraHomeModule = m: {
     home-manager.users.admin = {
       imports = lib.flatten m;

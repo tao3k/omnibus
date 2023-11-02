@@ -10,12 +10,8 @@
 with inputs.std.inputs.dmerge;
 let
   inherit (inputs) nixpkgs;
-  configs =
-    let
-      inputs' = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
-    in
-    inputs.omnibus.pops.configs.addLoadExtender { load.inputs.inputs = inputs'; };
-  inherit (configs.layouts.default) treefmt lefthook conform;
+
+  inherit (cell.pops.configs.exports.default) treefmt lefthook conform;
 in
 {
   inherit treefmt lefthook;

@@ -13,7 +13,7 @@
       } // lib.flakeOutputs;
 
       library = import ./lib/__init.nix { inherit inputs omnibus; };
-      lib = library.layouts.default;
+      lib = library.exports.default;
     in
     lib.flakeOutputs
     // {

@@ -25,12 +25,12 @@ in
       inputs' = (super.pops.flake.setSystem system).inputs;
       allData =
         (super.pops.omnibus.lib.addLoadExtender { load.inputs.inputs = inputs'; })
-        .layouts.default.pops.allData;
+        .exports.default.pops.allData;
     in
     {
       data =
         (allData.addLoadExtender { load.src = projectDir + "/local/data"; })
-        .layouts.default;
+        .exports.default;
     }
   );
 
@@ -45,6 +45,6 @@ in
         loader = _: path: inputs.nixpkgs.callPackage path { };
         transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
       })
-    ).layouts.default
+    ).exports.default
   );
 }

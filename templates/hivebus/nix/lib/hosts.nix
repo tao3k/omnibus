@@ -4,8 +4,8 @@
     inputs = {
       inputs = inputs // root.pops.subflake.inputs;
       omnibus = inputs.omnibus // {
-        self = root.omnibus.lib.layouts.default;
+        self = root.omnibus.lib.exports.default;
       };
     };
   };
-}).layouts.default
+}).exports.default

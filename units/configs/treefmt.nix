@@ -101,7 +101,7 @@ with dmerge; {
   topiary = {
     data.formatter.topiary = {
       command = "topiary";
-      options = [ "fmt" ];
+      options = [ "format" ];
       includes = [ "*.ncl" ];
     };
     packages = [ topiary.packages.default ];

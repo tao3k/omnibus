@@ -24,5 +24,5 @@ in
 #     map (attr: f attr set.${attr}) (lib.attrNames set)
 #   );
 lib.mapAttrsRecursiveCond ((as: !(as ? "layouts" && as.layouts ? "default")))
-  (_: v: v.layouts.default or v)
+  (_: v: v.exports.default or v)
   pops

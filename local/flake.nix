@@ -1,5 +1,16 @@
 {
-  description = "omnibus";
+  nixConfig = {
+    extra-substituters = [
+      "https://tweag-topiary.cachix.org"
+      "https://tweag-nickel.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "tweag-topiary.cachix.org-1:8TKqya43LAfj4qNHnljLpuBnxAY/YwEBfzo3kzXxNY0="
+      "tweag-nickel.cachix.org-1:GIthuiK4LRgnW64ALYEoioVUQBWs0jexyoYVeLDBwRA="
+    ];
+  };
+
+  description = "omnibus & std";
 
   inputs.std.follows = "std-ext/std";
   inputs.nixpkgs.follows = "std-ext/nixpkgs";
@@ -26,6 +37,7 @@
           (nixago "configs")
           (devshells "shells")
           (functions "devshellProfiles")
+          (functions "pops")
         ];
       }
       {
