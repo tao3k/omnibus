@@ -1,15 +1,5 @@
 let
-  baseInputs = {
-    inherit
-      omnibus
-      POP
-      flops
-      lib
-    ;
-    inputs = {
-      inherit (inputs) dmerge;
-    };
-  };
+  baseInputs = omnibus.pops.lib.load.inputs;
 in
 {
   flake = flops.flake.pops.default.setInitInputs (
