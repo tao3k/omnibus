@@ -28,7 +28,10 @@
   };
 
   inputs = {
-    nickel.url = "github:tweag/nickel";
+    organist.url = "github:nickel-lang/organist";
+
+    nickel.url = "github:tweag/nickel/1921c316ad81bca8100c3a0c6ae2e3da974cdd51";
+    # nickel.follows = "organist/nickel";
     nickel.inputs.topiary.follows = "topiary";
 
     nil.url = "github:oxalica/nil";

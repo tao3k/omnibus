@@ -13,7 +13,7 @@ in
     (exporter.layouts.darwinConfiguration [
       omnibus.darwinProfiles.presets.homebrew
       omnibus.darwinProfiles.presets.nix.default
-      { homebrew.__profiles__.fonts = true; }
+      { homebrew.__profiles__.enableFonts = true; }
     ]).config.homebrew.casks;
 
   darwinNixProfile =

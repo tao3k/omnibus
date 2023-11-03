@@ -16,7 +16,8 @@ in
     inputs.self.outPath + "/local/lock"
   );
 
-  load = flops.haumea.pops.default.setInit { load.inputs = baseInputs; };
+  load =
+    (flops.haumea.pops.default.setInit { inputs = baseInputs; }).addLoadExtender;
 
   data = flops.haumea.pops.default.setInit {
     loader = with haumea; [

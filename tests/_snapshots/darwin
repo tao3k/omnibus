@@ -39,15 +39,39 @@
     }
     {
       args = null;
+      brewfileLine = "cask \"fontconfig\"";
+      greedy = null;
+      name = "fontconfig";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"font-material-icons\"";
+      greedy = null;
+      name = "font-material-icons";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"font-3270-nerd-font\"";
+      greedy = null;
+      name = "font-3270-nerd-font";
+    }
+    {
+      args = null;
+      brewfileLine = "cask \"font-fira-mono-nerd-font\"";
+      greedy = null;
+      name = "font-fira-mono-nerd-font";
+    }
+    {
+      args = null;
       brewfileLine = "cask \"font-fantasque-sans-mono\"";
       greedy = null;
       name = "font-fantasque-sans-mono";
     }
     {
       args = null;
-      brewfileLine = "cask \"font-fontawesome\"";
+      brewfileLine = "cask \"font-fontaesome\"";
       greedy = null;
-      name = "font-fontawesome";
+      name = "font-fontaesome";
     }
   ];
   darwinNixProfile = ''

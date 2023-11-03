@@ -98,6 +98,12 @@ with dmerge; {
       excludes = prepend [ ".nix.toml" ];
     };
   };
+  nickel = {
+    data.formatter.nickel = {
+      command = "nickel";
+      options = [ "format" ];
+    };
+  };
   topiary = {
     data.formatter.topiary = {
       command = "topiary";

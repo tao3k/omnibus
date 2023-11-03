@@ -1,22 +1,28 @@
 let
   casks = lib.subtractLists cfg.__profiles__.casks.removePackagesFromProfiles (
-    lib.optionals cfg.__profiles__.readers [
+    lib.optionals cfg.__profiles__.enableReaders [
       "koodo-reader"
       "skim"
     ]
-    ++ (lib.optionals cfg.__profiles__.shell [ "wez/wezterm/wezterm-nightly" ])
-    ++ (lib.optionals cfg.__profiles__.chat [
+    ++ (lib.optionals cfg.__profiles__.enableShell [
+      "wez/wezterm/wezterm-nightly"
+    ])
+    ++ (lib.optionals cfg.__profiles__.enableChat [
       "telegram-desktop"
       "signal-desktop"
       "element-desktop"
     ])
-    ++ (lib.optionals cfg.__profiles__.security [ "secretive" ])
-    ++ (lib.optionals cfg.__profiles__.containers [ "docker" ])
-    ++ (lib.optionals cfg.__profiles__.chinese [ "squirrel" ])
-    ++ (lib.optionals cfg.__profiles__.customization [ "bartender" ])
-    ++ (lib.optionals cfg.__profiles__.fonts [
+    ++ (lib.optionals cfg.__profiles__.enableSecurity [ "secretive" ])
+    ++ (lib.optionals cfg.__profiles__.enableContainers [ "docker" ])
+    ++ (lib.optionals cfg.__profiles__.enableChinese [ "squirrel" ])
+    ++ (lib.optionals cfg.__profiles__.enableCustomization [ "bartender" ])
+    ++ (lib.optionals cfg.__profiles__.enableFonts [
+      "fontconfig"
+      "font-material-icons"
+      "font-3270-nerd-font"
+      "font-fira-mono-nerd-font"
       "font-fantasque-sans-mono"
-      "font-fontawesome"
+      "font-fontaesome"
     ])
   );
   brews = lib.subtractLists cfg.__profiles__.brews.removePackagesFromProfiles (
@@ -34,18 +40,21 @@ in
       default = true;
       description = "Whether to enable default profile";
     };
-    readers = mkEnableOption (lib.mdDoc "Whether to enable readers profile");
-    shell = mkEnableOption (lib.mdDoc "Whether to enable shell profile");
-    chat = mkEnableOption (lib.mdDoc "Whether to enable chat profile");
-    security = mkEnableOption (lib.mdDoc "Whether to enable security profile");
-    containers = mkEnableOption (lib.mdDoc "Whether to enable containers profile");
-    chinese = mkEnableOption (lib.mdDoc "Whether to enable chinese profile");
-    fonts = mkEnableOption (lib.mdDoc "Whether to enable fonts profile");
-    emacs = mkEnableOption (lib.mdDoc "Whether to enable emacs profile");
-    customization = mkEnableOption (
+    enableReaders = mkEnableOption (lib.mdDoc "Whether to enable readers profile");
+    enableShell = mkEnableOption (lib.mdDoc "Whether to enable shell profile");
+    enableChat = mkEnableOption (lib.mdDoc "Whether to enable chat profile");
+    enableSecurity = mkEnableOption (
+      lib.mdDoc "Whether to enable security profile"
+    );
+    enableContainers = mkEnableOption (
+      lib.mdDoc "Whether to enable containers profile"
+    );
+    enableChinese = mkEnableOption (lib.mdDoc "Whether to enable chinese profile");
+    enableFonts = mkEnableOption (lib.mdDoc "Whether to enable fonts profile");
+    enableEmacs = mkEnableOption (lib.mdDoc "Whether to enable emacs profile");
+    enableCustomization = mkEnableOption (
       lib.mdDoc "Whether to enable customization profile"
     );
-
     casks = {
       removePackagesFromProfiles = mkOption {
         type = types.listOf types.str;

@@ -20,6 +20,7 @@ in
         "aarch64-darwin"
       ];
       auto-optimise-store = false;
+      accept-flake-config = true;
       experimental-features = [
         "nix-command"
         "flakes"
