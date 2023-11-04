@@ -168,11 +168,11 @@
         "flops": "flops"
       },
       "locked": {
-        "lastModified": 1699008029,
-        "narHash": "sha256-RBBi5YWwJu8VgOcOXv9lEuMO6WTDZeJ2P5Mwpn9x8bg=",
+        "lastModified": 1699139498,
+        "narHash": "sha256-0CeTgbtImHBWzv0Fd1wSbJQWVD5c6D9kOT1ZOCxjIpk=",
         "owner": "gtrunsec",
         "repo": "omnibus",
-        "rev": "6c3c230ba2ee7bbf522a3f26646581992a994950",
+        "rev": "b057d85b45bc2e1d166bcafb92a6ef0a80c3d10f",
         "type": "github"
       },
       "original": {
@@ -183,15 +183,6 @@
     },
     "root": {
       "inputs": {
-        "flops": [
-          "omnibus",
-          "flops"
-        ],
-        "haumea": [
-          "omnibus",
-          "flops",
-          "haumea"
-        ],
         "omnibus": "omnibus"
       }
     },

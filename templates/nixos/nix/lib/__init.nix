@@ -1,10 +1,8 @@
 { inputs, eachSystem }:
-(inputs.omnibus.pops.exporter.addLoadExtender {
-  load = {
-    src = ./.;
-    inputs = {
-      inherit inputs eachSystem;
-      projectDir = ../..;
-    };
+(inputs.omnibus.pops.load {
+  src = ./.;
+  inputs = {
+    inherit inputs eachSystem;
+    projectDir = ../..;
   };
 })

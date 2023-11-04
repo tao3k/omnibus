@@ -1,6 +1,7 @@
 (super.load {
   inputs = {
     inherit (inputs) nixpkgs;
+    inherit (root) makes;
     inherit (root.makes) makeScript;
   };
   loader = with haumea; [ (matchers.nix loaders.scoped) ];

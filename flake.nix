@@ -2,7 +2,6 @@
   inputs = {
     flops.url = "github:gtrunsec/flops";
   };
-  # engltish
 
   outputs =
     { self, flops, ... }@inputs:
