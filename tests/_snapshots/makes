@@ -1,4 +1,7 @@
 #pretty
 {
   makeScript = <function, args: {aliases?, entrypoint, globalState?, help?, name, persistState?, replace?, searchPaths?}>;
+  scripts = {
+    example = <derivation runScriptWithEnv>;
+  };
 }

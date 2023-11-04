@@ -1,7 +1,7 @@
 { omnibus, lib }:
 let
   inherit (omnibus.flake.inputs) nixpkgs makes;
-  makesLib =
+  omnibusLib =
     (omnibus.pops.lib.addLoadExtender {
       load = {
         inputs = {
@@ -11,10 +11,17 @@ let
           };
         };
       };
-    }).exports.default.makes;
+    }).exports.default;
 
-  inherit (makesLib) makeScript;
+  inherit (omnibusLib.makes) makeScript;
 in
 {
-  makeScript = makeScript;
+  scripts =
+    (omnibusLib.pops.scripts.addLoadExtender {
+      load = {
+        src = ./__fixture;
+      };
+    }).exports.default;
+
+  inherit makeScript;
 }

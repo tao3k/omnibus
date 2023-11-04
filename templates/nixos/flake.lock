@@ -168,11 +168,11 @@
         "flops": "flops"
       },
       "locked": {
-        "lastModified": 1698920455,
-        "narHash": "sha256-VwNZFeYGUgG7Kz897r1lCmhsnKKtwIjkR1/RxPKoGzI=",
+        "lastModified": 1699008029,
+        "narHash": "sha256-RBBi5YWwJu8VgOcOXv9lEuMO6WTDZeJ2P5Mwpn9x8bg=",
         "owner": "gtrunsec",
         "repo": "omnibus",
-        "rev": "3a9d5ce4c4bbea24222bda5c9edb95b83f75ab56",
+        "rev": "6c3c230ba2ee7bbf522a3f26646581992a994950",
         "type": "github"
       },
       "original": {

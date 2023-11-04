@@ -1,16 +1,14 @@
 {
   omnibus,
   root,
-  flops,
+  haumea,
 }:
-(omnibus.pops.exporter.addLoadExtender {
-  load = {
-    src = ./__fixture;
+(omnibus.pops.load {
+  src = ./__fixture;
+  inputs = {
+    data = root.data;
     inputs = {
-      data = root.data;
-      inputs = {
-        inherit (omnibus.flake.inputs) darwin nixpkgs home-manager;
-      };
+      inherit (omnibus.flake.inputs) darwin nixpkgs home-manager;
     };
   };
 })

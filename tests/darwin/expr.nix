@@ -6,20 +6,19 @@
   omnibus,
 }:
 let
-  exporter = root.nixos.pops.exports.default;
+  out = root.nixos.pops.exports.default;
 in
 {
   darwinFontProfile =
-    (exporter.layouts.darwinConfiguration [
+    (out.layouts.darwinConfiguration [
       omnibus.darwinProfiles.presets.homebrew
       omnibus.darwinProfiles.presets.nix.default
       { homebrew.__profiles__.enableFonts = true; }
     ]).config.homebrew.casks;
 
   darwinNixProfile =
-    (exporter.layouts.darwinConfiguration [
-      omnibus.darwinProfiles.presets.nix.default
-    ]).config.nix.extraOptions;
+    (out.layouts.darwinConfiguration [ omnibus.darwinProfiles.presets.nix.default ])
+    .config.nix.extraOptions;
 }
 
 // lib.optionalAttrs trace { }
