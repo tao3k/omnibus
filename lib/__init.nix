@@ -1,4 +1,4 @@
-{ inputs, omnibus }:
+{ inputs }:
 let
   inherit (inputs) flops self;
   inherit (flops.inputs)
@@ -16,7 +16,7 @@ flops.lib.haumea.pops.default.setInit {
     haumea = haumea.lib;
     POP = POP.lib;
     flops = flops.lib;
-    inherit omnibus yants;
+    inherit yants;
     inputs = {
       inherit (inputs) self;
       dmerge = flops.inputs.dmerge;

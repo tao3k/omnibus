@@ -7,9 +7,7 @@
 }:
 let
   inherit
-    (omnibus.lib.errors.requiredInputs inputs "omnibus.pops.nixosProfiles" [
-      "nickel"
-    ])
+    (omnibus.errors.requiredInputs inputs "omnibus.pops.nixosProfiles" [ "nickel" ])
     nickel
   ;
   cfg = config.omnibus.coding.nickel;

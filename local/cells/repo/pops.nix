@@ -13,7 +13,7 @@ in
         POP.extendPop flops.haumea.pops.exporter (
           self: super: {
             exports = rec {
-              inherit (inputs.omnibus.lib.mapPopsExports pops) self;
+              inherit (inputs.omnibus.mapPopsExports pops) self;
               pops.self =
                 (self.layouts.default.addLoadExtender {
                   load.inputs = {

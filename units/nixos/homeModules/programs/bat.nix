@@ -1,6 +1,6 @@
 let
   inherit
-    (omnibus.lib.errors.requiredInputs inputs "omnibus.pops.homeModules" [
+    (omnibus.errors.requiredInputs inputs "omnibus.pops.homeModules" [
       "catppuccin-bat"
     ])
   ;

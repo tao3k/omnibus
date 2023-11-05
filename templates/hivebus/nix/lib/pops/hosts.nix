@@ -9,7 +9,7 @@ let
   hostsDir = lib.attrNames (
     lib.readDir (inputs.self.outPath + "/units/nixos/hosts")
   );
-  inherit (omnibus.lib) addLoadToPops;
+  inherit (omnibus) addLoadToPops;
 in
 addLoadToPops hostsDir super.hostsLoad (
   elm: n: v: {

@@ -6,7 +6,7 @@
 }:
 let
   inherit
-    (omnibus.lib.errors.requiredInputs inputs "omnibus.pops.homeProfiles" [ "nur" ])
+    (omnibus.errors.requiredInputs inputs "omnibus.pops.homeProfiles" [ "nur" ])
     nur
   ;
   cfg = config.programs.firefox;

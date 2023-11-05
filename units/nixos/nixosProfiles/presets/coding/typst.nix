@@ -7,9 +7,7 @@
 }:
 let
   inherit
-    (omnibus.lib.errors.requiredInputs inputs "omnibus.pops.nixosProfiles" [
-      "typst"
-    ])
+    (omnibus.errors.requiredInputs inputs "omnibus.pops.nixosProfiles" [ "typst" ])
     typst
   ;
   pkgs' = pkgs.appendOverlays [ typst.overlays.default ];

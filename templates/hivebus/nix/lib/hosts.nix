@@ -3,7 +3,7 @@
   inputs = {
     inputs = inputs // root.pops.subflake.inputs;
     omnibus = inputs.omnibus // {
-      self = root.omnibus.lib.exports.default;
+      self = root.omnibus.exports.default;
     };
   };
 }).exports.default

@@ -1,9 +1,9 @@
 let
   inherit (inputs) nixpkgs darwin nixos;
   # exports.default to be default
-  outputs = omnibus.lib.mapPopsExports' super.pops;
+  outputs = omnibus.mapPopsExports' super.pops;
   # with multi-layout
-  outputs' = omnibus.lib.mapPopsExports super.pops;
+  outputs' = omnibus.mapPopsExports super.pops;
 in
 {
   system = "x86_64-linux";
@@ -22,7 +22,7 @@ in
     # # exporter.nixosProfiles.customProfiles.presets.boot
     # outputs.srvos.default.common.nix
 
-    (outputs'.omnibus.lib.mkHome inputs.home-manager.nixosModule
+    (outputs'.omnibus.mkHome inputs.home-manager.nixosModule
       {
         admin = {
           uid = 1000;

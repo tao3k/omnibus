@@ -12,6 +12,7 @@ let
   };
 in
 {
+  # inherit out;
   bootProfile =
     (out.nixosConfiguration [
       out.outputs.nixosProfiles.customProfiles.presets.boot

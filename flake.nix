@@ -6,12 +6,7 @@
   outputs =
     { self, flops, ... }@inputs:
     let
-      omnibus = {
-        inherit (self) pops;
-        inherit lib;
-      } // lib.flakeOutputs;
-
-      library = import ./lib/__init.nix { inherit inputs omnibus; };
+      library = import ./lib/__init.nix { inherit inputs; };
       lib = library.exports.default;
     in
     lib.flakeOutputs

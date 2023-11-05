@@ -7,8 +7,8 @@
   outputs =
     { self, ... }@inputs:
     let
-      nixlib = inputs.omnibus.inputs.flops.inputs.nixlib.lib;
-      eachSystem = nixlib.genAttrs [
+      inherit (inputs.omnibus.inputs.flops.inputs.nixlib) lib;
+      eachSystem = lib.genAttrs [
         "x86_64-linux"
         "x86_64-darwin"
         "aarch64-linux"
@@ -52,7 +52,7 @@
           }
         );
       };
-      inherit (inputs.omnibus.lib) mapPopsExports;
+      inherit (inputs.omnibus) mapPopsExports;
     in
     mapPopsExports pops
     // {

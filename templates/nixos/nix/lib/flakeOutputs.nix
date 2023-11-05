@@ -3,6 +3,7 @@
   super,
   omnibus,
   eachSystem,
+  projectDir,
 }:
 let
   filterConfigs =
@@ -11,7 +12,7 @@ let
       (lib.filterAttrs (_: v: v ? "${config}"))
       (lib.mapAttrs (_: v: v.${config}))
     ];
-  inherit (omnibus.lib) mapPopsExports;
+  inherit (omnibus) mapPopsExports;
 in
 (mapPopsExports super.pops)
 // {

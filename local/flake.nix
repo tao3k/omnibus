@@ -53,14 +53,14 @@
       {
         eval = inputs.haumea.lib.load {
           src = ../tests;
-          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.pops.lib.load.inputs {
+          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.loaderInputs {
             inherit inputs;
             trace = true;
           };
         };
         checks = inputs.namaka.lib.load {
           src = ../tests;
-          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.pops.lib.load.inputs {
+          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.loaderInputs {
             inherit inputs;
             trace = false;
           };

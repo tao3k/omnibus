@@ -6,7 +6,7 @@
 }:
 let
   inherit
-    (omnibus.lib.errors.requiredInputs inputs "omnibus.pops.devshellProfiles" [
+    (omnibus.errors.requiredInputs inputs "omnibus.pops.devshellProfiles" [
       "nixpkgs"
       "fenix"
     ])
