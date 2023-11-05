@@ -17,6 +17,7 @@ flops.lib.haumea.pops.default.setInit {
     POP = POP.lib;
     flops = flops.lib;
     inherit yants;
+    projectDir = ../.;
     inputs = {
       inherit (inputs) self;
       dmerge = flops.inputs.dmerge;

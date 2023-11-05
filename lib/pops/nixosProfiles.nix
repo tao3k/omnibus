@@ -1,6 +1,6 @@
 super.nixosModules.addLoadExtender {
   load = {
-    src = inputs.self.outPath + "/units/nixos/nixosProfiles";
+    src = projectDir + "/units/nixos/nixosProfiles";
     type = "nixosProfiles";
     transformer = [ (_: _: _) ];
   };

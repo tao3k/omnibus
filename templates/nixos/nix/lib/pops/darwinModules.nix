@@ -1,6 +1,6 @@
 (omnibus.pops.nixosModules.addLoadExtender {
   load = {
-    src = inputs.self.outPath + "/units/nixos/darwinModules";
+    src = projectDir + "/units/nixos/darwinModules";
     inputs = {
       inputs = inputs;
     };

@@ -1,7 +1,7 @@
 super.nixosProfiles.addLoadExtender {
   load = {
-    src = inputs.self.outPath + "/units/devshell/profiles";
-    loaders =
+    src = projectDir + "/units/devshell/profiles";
+    loader =
       with haumea;
       [ (matchers.nix loaders.default) ]
       ++ lib.optionals (inputs ? devshell) [

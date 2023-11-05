@@ -6,15 +6,11 @@
   root,
 }:
 let
-  hostsDir = lib.attrNames (
-    lib.readDir (inputs.self.outPath + "/units/nixos/hosts")
-  );
+  hostsDir = lib.attrNames (lib.readDir (projectDir + "/units/nixos/hosts"));
   inherit (omnibus) addLoadToPops;
 in
 addLoadToPops hostsDir super.hostsLoad (
   elm: n: v: {
-    load.src =
-      root.filterPopsSrc (inputs.self.outPath + "/units/nixos/hosts/${elm}")
-        n;
+    load.src = root.filterPopsSrc (projectDir + "/units/nixos/hosts/${elm}") n;
   }
 )

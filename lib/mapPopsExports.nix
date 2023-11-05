@@ -1,7 +1,5 @@
 { lib }:
 pops:
-let
-in
 # mapAttrsRecursiveCond' =
 #   cond: f: set:
 #   let
@@ -23,6 +21,8 @@ in
 #   lib.foldl' (a: b: a // b) { } (
 #     map (attr: f attr set.${attr}) (lib.attrNames set)
 #   );
-lib.mapAttrsRecursiveCond ((as: !(as ? "exports" && as.exports ? "default")))
-  (_: v: v.exports.default or v)
-  pops
+let
+  cond = (as: !(as ? "exports" && as.exports ? "default"));
+  pops' = if !cond pops then pops.exports.default else pops;
+in
+lib.mapAttrsRecursiveCond cond (_: v: v.exports.default or v) pops'

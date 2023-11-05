@@ -1,6 +1,6 @@
 super.nixosModules.addLoadExtender {
   load = {
-    src = inputs.self.outPath + "/units/devshell/modules";
+    src = projectDir + "/units/devshell/modules";
     type = "nixosModules";
   };
 }

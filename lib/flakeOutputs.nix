@@ -2,6 +2,7 @@ let
   outputs = root.mapPopsExports super.pops;
 in
 {
+  inherit (super) load;
   inherit (outputs)
     srvos
     nixosModules
@@ -34,7 +35,7 @@ in
     };
   };
 
-  dotfiles = inputs.self.outPath + "/dotfiles";
+  dotfiles = projectDir + "/dotfiles";
 
   # aliases
   flakeModules = outputs.flake-parts.profiles;

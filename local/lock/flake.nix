@@ -56,5 +56,10 @@
     # nixfmt.inputs.nixpkgs.follows = "nixpkgs";
     nixfmt.inputs.flake-compat.follows = "";
   };
+
+  inputs = {
+    climod.url = "github:nixosbrasil/climod";
+    climod.flake = false;
+  };
   outputs = _: { };
 }

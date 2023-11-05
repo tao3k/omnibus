@@ -36,6 +36,22 @@
         "type": "github"
       }
     },
+    "climod": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1669486888,
+        "narHash": "sha256-BLvyAl+taQAd+bnkUYsAcEIB15pwtJ9zSZkg7od2RBA=",
+        "owner": "nixosbrasil",
+        "repo": "climod",
+        "rev": "64f6c5495db03185803105d5babd2906a3fdcd99",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixosbrasil",
+        "repo": "climod",
+        "type": "github"
+      }
+    },
     "crane": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -855,11 +871,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1697059129,
-        "narHash": "sha256-9NJcFF9CEYPvHJ5ckE8kvINvI84SZZ87PvqMbH6pro0=",
+        "lastModified": 1699099776,
+        "narHash": "sha256-X09iKJ27mGsGambGfkKzqvw5esP1L/Rf8H3u3fCqIiU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5e4c2ada4fcd54b99d56d7bd62f384511a7e2593",
+        "rev": "85f1ba3e51676fa8cc604a3d863d729026a6b8eb",
         "type": "github"
       },
       "original": {
@@ -1009,6 +1025,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "climod": "climod",
         "darwin": "darwin_2",
         "devshell": "devshell",
         "fenix": "fenix",

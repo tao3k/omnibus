@@ -1,5 +1,5 @@
 (inputs.omnibus.pops.load {
-  src = inputs.self.outPath + "/units/nixos/hosts";
+  src = projectDir + "/units/nixos/hosts";
   inputs = {
     inputs = inputs // root.pops.subflake.inputs;
     omnibus = inputs.omnibus // {

@@ -1,4 +1,4 @@
 flops.haumea.pops.default.setInit {
-  src = inputs.self.outPath + "/units/configs";
+  src = projectDir + "/units/configs";
   inputs = root.loaderInputs;
 }

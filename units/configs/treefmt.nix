@@ -12,8 +12,9 @@ let
     nixpkgs
     nixfmt
   ;
+  inherit (dmerge) prepend;
 in
-with dmerge; {
+{
   default = {
     packages = [
       nixfmt.packages.default

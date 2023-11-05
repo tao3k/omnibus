@@ -3,7 +3,7 @@
     self: super:
     let
       selfInputs = omnibus.pops.flake.setInitInputs ../__lock;
-      local = omnibus.pops.flake.setInitInputs (inputs.self.outPath + "/local");
+      local = omnibus.pops.flake.setInitInputs (projectDir + "/local");
     in
     {
       inputs = {

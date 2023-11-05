@@ -23,7 +23,7 @@ let
     );
 
   noSysNixpkgs =
-    if (lib.elem "nixpkgs" listNames) then
+    if (lib.elem "nixpkgs" listNames && inputs' ? nixpkgs) then
       if (lib.hasAttr "path" inputs'.nixpkgs) then true else false
     else
       true;
