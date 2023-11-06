@@ -1,0 +1,11 @@
+#pretty
+{
+  inputsToPaths = [
+    "<PATH-a.b>"
+    "<PATH-a.c>"
+    "<PATH-b.d>"
+    "<PATH-b.f>"
+    "<PATH-a>"
+    "<PATH-b>"
+  ];
+}

@@ -2,7 +2,7 @@
 let
   inherit (inputs) nixpkgs;
   inputs' = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
-  inherit (inputs.omnibus.pops.lib.load.inputs) POP flops;
+  inherit (inputs.omnibus.pops.self.load.inputs) POP flops;
 in
 {
   devshellProfiles =
@@ -13,7 +13,7 @@ in
         POP.extendPop flops.haumea.pops.exporter (
           self: super: {
             exports = rec {
-              inherit (inputs.omnibus.mapPopsExports pops) self;
+              inherit (inputs.omnibus.lib.mapPopsExports pops) self;
               pops.self =
                 (self.layouts.default.addLoadExtender {
                   load.inputs = {

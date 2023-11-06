@@ -1,4 +1,4 @@
-(omnibus.pops.lib.addLoadExtender {
+(omnibus.pops.self.addLoadExtender {
   load.inputs = {
     inputs = inputs;
   };

@@ -53,7 +53,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     nixfmt.url = "github:serokell/nixfmt/?ref=refs/pull/118/head";
-    # nixfmt.inputs.nixpkgs.follows = "nixpkgs";
+    # nixfmt.inputs.flake-compat.follows = "nixpkgs";
     nixfmt.inputs.flake-compat.follows = "";
   };
 

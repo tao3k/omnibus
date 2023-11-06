@@ -35,7 +35,7 @@
         };
         omnibus = eachSystem (
           system:
-          inputs.omnibus.pops.lib.addLoadExtender {
+          inputs.omnibus.pops.self.addLoadExtender {
             load.inputs = {
               inputs = {
                 nixpkgs = inputs.nixos-unstable.legacyPackages.${system};
@@ -52,7 +52,7 @@
           }
         );
       };
-      inherit (inputs.omnibus) mapPopsExports;
+      inherit (inputs.omnibus.lib) mapPopsExports;
     in
     mapPopsExports pops
     // {

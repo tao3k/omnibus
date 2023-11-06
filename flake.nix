@@ -6,16 +6,16 @@
   outputs =
     { self, flops, ... }@inputs:
     let
-      library = import ./lib/__init.nix { inherit inputs; };
-      lib = library.exports.default;
+      srcPops = import ./src/__init.nix { inherit inputs; };
+      src = srcPops.exports.default;
     in
-    lib.flakeOutputs
+    src.flakeOutputs
     // {
-      pops = lib.pops // {
-        lib = library;
+      pops = src.pops // {
+        self = srcPops;
       };
 
-      inherit lib;
+      inherit (src) lib;
 
       templates = {
         nixos = {

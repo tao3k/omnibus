@@ -7,7 +7,7 @@
 }:
 let
   hostsDir = lib.attrNames (lib.readDir (projectDir + "/units/nixos/hosts"));
-  inherit (omnibus) addLoadToPops;
+  inherit (omnibus.lib) addLoadToPops;
 in
 addLoadToPops hostsDir super.hostsLoad (
   elm: n: v: {

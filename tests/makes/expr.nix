@@ -2,7 +2,7 @@
 let
   inherit (omnibus.flake.inputs) nixpkgs makes;
   omnibusLib =
-    (omnibus.pops.lib.addLoadExtender {
+    (omnibus.pops.self.addLoadExtender {
       load = {
         inputs = {
           inputs = {
@@ -13,7 +13,7 @@ let
       };
     }).exports.default;
 
-  inherit (omnibusLib.makes) makeScript;
+  inherit (omnibusLib.ops.makes) makeScript;
 in
 {
   scripts =

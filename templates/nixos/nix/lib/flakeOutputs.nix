@@ -12,7 +12,7 @@ let
       (lib.filterAttrs (_: v: v ? "${config}"))
       (lib.mapAttrs (_: v: v.${config}))
     ];
-  inherit (omnibus) mapPopsExports;
+  inherit (omnibus.lib) mapPopsExports;
 in
 (mapPopsExports super.pops)
 // {

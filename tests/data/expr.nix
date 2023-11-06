@@ -2,7 +2,7 @@
 let
   inherit (omnibus.flake.inputs) nixpkgs;
   allData =
-    (omnibus.pops.lib.addLoadExtender {
+    (omnibus.pops.self.addLoadExtender {
       load = {
         inputs = {
           inputs.nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
