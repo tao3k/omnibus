@@ -6,16 +6,20 @@ in
 (super.load {
   inputs =
     {
-      inherit
-        nixpkgs
-        makes
-        makeScript
-        makeEnvVars
-      ;
+      inherit nixpkgs;
     }
     // lib.optionalAttrs (inputs ? climod) {
       climod = nixpkgs.callPackage inputs.climod { pkgs = nixpkgs; };
-    };
+    }
+    // lib.optionalAttrs (inputs ? makes) (
+      makes
+      // {
+        inputs = {
+          makesLib = makes;
+        };
+      }
+    );
+
   loader = with haumea; [ (matchers.nix loaders.scoped) ];
   transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
 })
