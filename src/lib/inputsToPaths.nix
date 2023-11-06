@@ -34,12 +34,27 @@ inputs:
 let
   l = lib;
 
+  getTopLevelPath =
+    pathString:
+    let
+      # Split the path into parts
+      parts = lib.splitString "/" pathString;
+      # Take the first four parts which constitute the Nix store path
+      # and the hash with the source name
+      topLevelParts = lib.take 4 parts;
+    in
+    # Recombine the parts back into a string path
+    if l.length parts > 4 then
+      lib.concatStringsSep "/" topLevelParts
+    else
+      pathString;
+
   extractAttrsFromInputs =
     inputs:
     l.pipe inputs [
       (l.filterAttrs (_: v: l.isAttrs v && (v ? sourceInfo.outPath || v ? outPath)))
       (l.mapAttrs (_: v: v.sourceInfo.outPath or v.outPath or v.path))
-      (l.mapAttrs (_: v: toString v))
+      (l.mapAttrs (_: v: getTopLevelPath (toString v)))
     ];
 
   attrsToPaths = i: lib.attrValues (extractAttrsFromInputs i);
