@@ -19,8 +19,8 @@
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    makes.url = "github:fluidattacks/makes";
-    makes.flake = false;
+    makesSrc.url = "github:fluidattacks/makes";
+    makesSrc.flake = false;
 
     nur.url = "github:nix-community/NUR";
 
@@ -58,8 +58,8 @@
   };
 
   inputs = {
-    climod.url = "github:nixosbrasil/climod";
-    climod.flake = false;
+    climodSrc.url = "github:nixosbrasil/climod";
+    climodSrc.flake = false;
   };
   outputs = _: { };
 }

@@ -15,7 +15,8 @@
         self = srcPops;
       };
 
-      inherit (src) lib;
+      inherit src;
+      inherit (src) lib ops errors;
 
       templates = {
         nixos = {

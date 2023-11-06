@@ -6,12 +6,12 @@
 let
   l = nixpkgs.lib // builtins;
   inherit
-    (root.errors.requiredInputs inputs "lib" [
+    (root.errors.requiredInputs inputs "omnibus.pops.self" [
       "nixpkgs"
-      "makes"
+      "makesSrc"
     ])
     nixpkgs
-    makes
+    makesSrc
   ;
 in
 l.fix (
@@ -22,6 +22,6 @@ l.fix (
       __nixpkgs__ = nixpkgs;
       __nixpkgsSrc__ = nixpkgs.path;
     })
-    (import (makes + /src/args/agnostic.nix) { inherit (nixpkgs) system; })
+    (import (makesSrc + /src/args/agnostic.nix) { inherit (nixpkgs) system; })
     .__unfix__
 )

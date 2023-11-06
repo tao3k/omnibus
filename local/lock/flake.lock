@@ -36,7 +36,7 @@
         "type": "github"
       }
     },
-    "climod": {
+    "climodSrc": {
       "flake": false,
       "locked": {
         "lastModified": 1669486888,
@@ -585,14 +585,14 @@
         "type": "github"
       }
     },
-    "makes": {
+    "makesSrc": {
       "flake": false,
       "locked": {
-        "lastModified": 1698774087,
-        "narHash": "sha256-L/kuYmUryxS3YdmwOMpYQx0Pgqy0KSaUh0ao8kXA8m4=",
+        "lastModified": 1699027612,
+        "narHash": "sha256-3Kj3K+qCSbm3jOqSc5/KWGA5ts1QiTZf4CnfeHhfSCE=",
         "owner": "fluidattacks",
         "repo": "makes",
-        "rev": "a3691097c615867e10d596e0910b66aa93a796f9",
+        "rev": "0999bb42f840e8a074b49b1560c6cfd136b61b1f",
         "type": "github"
       },
       "original": {
@@ -1025,12 +1025,12 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "climod": "climod",
+        "climodSrc": "climodSrc",
         "darwin": "darwin_2",
         "devshell": "devshell",
         "fenix": "fenix",
         "home-manager": "home-manager_2",
-        "makes": "makes",
+        "makesSrc": "makesSrc",
         "nickel": "nickel",
         "nil": "nil",
         "nixfmt": "nixfmt",

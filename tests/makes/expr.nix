@@ -1,13 +1,13 @@
 { omnibus, lib }:
 let
-  inherit (omnibus.flake.inputs) nixpkgs makes;
+  inherit (omnibus.flake.inputs) nixpkgs makesSrc;
   omnibusLib =
     (omnibus.pops.self.addLoadExtender {
       load = {
         inputs = {
           inputs = {
             nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
-            inherit makes;
+            inherit makesSrc;
           };
         };
       };

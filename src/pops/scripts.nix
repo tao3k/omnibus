@@ -8,14 +8,14 @@ in
     {
       inherit nixpkgs;
     }
-    // lib.optionalAttrs (inputs ? climod) {
-      climod = nixpkgs.callPackage inputs.climod { pkgs = nixpkgs; };
+    // lib.optionalAttrs (inputs ? climodSrc) {
+      climod = nixpkgs.callPackage inputs.climodSrc { pkgs = nixpkgs; };
     }
-    // lib.optionalAttrs (inputs ? makes) (
+    // lib.optionalAttrs (inputs ? makesSrc) (
       makes
       // {
         inputs = {
-          makesLib = makes;
+          inherit makes;
         };
       }
     );
