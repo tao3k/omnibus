@@ -1,6 +1,8 @@
 { inputs, root }: # source from std
 let
-  inherit (root.errors.requiredInputs inputs "lib" [ "nixpkgs" ]) nixpkgs;
+  inherit (root.errors.requiredInputs inputs "omnibus.pops.self" [ "nixpkgs" ])
+    nixpkgs
+  ;
 
   inherit (builtins) fromJSON;
   inherit (nixpkgs) runCommand yq-go;

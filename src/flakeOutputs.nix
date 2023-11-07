@@ -17,7 +17,7 @@ in
   ;
 
   units = {
-    inherit (outputs) configs;
+    inherit (outputs) configs std;
     nixos = {
       inherit (outputs) nixosProfiles nixosModules;
     };

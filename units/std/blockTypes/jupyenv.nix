@@ -1,0 +1,30 @@
+{ inputs, root }:
+/* Use the Runnables Blocktype for targets that you want to
+   make accessible with a 'run' action on the TUI.
+*/
+let
+  inherit (inputs.std) actions;
+  inherit (root) mkCommand;
+in
+name: {
+  inherit name;
+  type = "jupyenv";
+  actions =
+    {
+      currentSystem,
+      fragment,
+      fragmentRelPath,
+      target,
+      inputs,
+    }:
+    [
+      (actions.build currentSystem target.config.build)
+      (actions.run currentSystem target.config.build)
+      (mkCommand currentSystem "quarto" "pass any command to quarto" [ ]
+        ''
+          (cd "$PRJ_ROOT" && ${target.config.quartoEnv}/bin/quarto "$@")
+        ''
+        { }
+      )
+    ];
+}

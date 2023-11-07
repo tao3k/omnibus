@@ -26,6 +26,8 @@ in
           "homeModules"
           "darwinModules"
           "darwinProfiles"
+          "units"
+          "units/*"
           ".*."
         ];
       };
