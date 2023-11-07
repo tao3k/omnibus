@@ -2,6 +2,8 @@
   root,
   lib,
   super,
+  POP,
+  flops,
 }:
 load:
 let
@@ -18,7 +20,7 @@ let
   setJupyenvModule =
     module: mkJupyterlabEval { imports = lib.flatten [ module ]; };
 in
-(super.nixosProfiles.addLoadExtender {
+((super.nixosProfiles.addLoadExtender {
   load = {
     inputs = {
       inherit setJupyenvModule mkJupyterlabNew mkJupyterlabEval;
@@ -26,3 +28,18 @@ in
   };
 }).addLoadExtender
   { inherit load; }
+).addExporters
+  [
+    (POP.extendPop flops.haumea.pops.exporter (
+      self: super: {
+        exports = {
+          jupyenvModules =
+            lib.mapAttrsRecursive (_: v: setJupyenvModule v)
+              self.layouts.default;
+          jupyenvEnv =
+            lib.mapAttrsRecursive (_: v: (setJupyenvModule v).config.build)
+              self.layouts.default;
+        };
+      }
+    ))
+  ]
