@@ -1,10 +1,20 @@
+{
+  root,
+  haumea,
+  projectDir,
+}:
+load:
 let
-  inherit (root.errors.requiredInputs inputs "omnibus.pops.self" [ "std" ]) std;
+  inherit
+    (root.errors.requiredInputs load.inputs.inputs "omnibus.pops.std" [ "std" ])
+    std
+  ;
 in
-super.load {
+(super.load {
   loader = with haumea; [ (matchers.nix loaders.scoped) ];
   src = projectDir + "/units/std";
-  inputs.inputs = {
+  inpputs.inputs = {
     inherit std;
   };
-}
+}).addLoadExtender
+  { inherit load; }

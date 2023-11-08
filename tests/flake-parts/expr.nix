@@ -8,20 +8,7 @@
 let
   system = "x86_64-linux";
   flake.inputs =
-    let
-      flake = omnibus.pops.flake.setInitInputs ./__lock;
-    in
-    ((flake.addInputsExtender (
-      POP.extendPop flops.flake.pops.inputsExtender (
-        self: super: {
-          inputs = {
-            nixpkgs = flake.inputs.nixpkgs.legacyPackages;
-          };
-        }
-      )
-    )).setSystem
-      system
-    ).inputs;
+    ((omnibus.pops.flake.setInitInputs ./__lock).setSystem system).inputs;
 
   flakeProfiles =
     (omnibus.pops.flake-parts.profiles.addLoadExtender {
