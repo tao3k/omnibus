@@ -1,0 +1,8 @@
+#pretty
+{
+  jupyenvEvalModulesExampleBashKernel = "bash-omnibus kernel";
+  jupyenvModules = {
+    example = <function, args: {config?, options?}>;
+  };
+  jupyenvModulesExampleEnv = <derivation wrapper-chmod-python3-3.10.12-env>;
+}

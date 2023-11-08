@@ -33,7 +33,7 @@ in
     (POP.extendPop flops.haumea.pops.exporter (
       self: super: {
         exports = {
-          jupyenvModules =
+          jupyenvEvalModules =
             lib.mapAttrsRecursive (_: v: setJupyenvModule v)
               self.layouts.default;
           jupyenvEnv =
