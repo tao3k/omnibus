@@ -12,7 +12,7 @@ flops.lib.haumea.pops.default.setInit {
   src = ./.;
   loader = haumea.lib.loaders.scoped;
   inputs = {
-    lib = nixlib.lib // builtins;
+    lib = (nixlib.lib // builtins).extend (_: _: inputs.self.lib);
     haumea = haumea.lib;
     POP = POP.lib;
     flops = flops.lib;
