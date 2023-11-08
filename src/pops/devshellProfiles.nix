@@ -6,7 +6,7 @@ super.nixosProfiles.addLoadExtender {
       [ (matchers.nix loaders.default) ]
       ++ lib.optionals (inputs ? devshell) [
         (matchers.regex "^(.+)\\.(toml)$" (
-          matches: _: path:
+          _matches: _: path:
           inputs.devshell.lib.importTOML path
         ))
       ];

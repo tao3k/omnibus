@@ -1,6 +1,6 @@
 (omnibus.pops.nixosProfiles.addLoadExtender { load = { }; }).addExporters [
   (POP.extendPop flops.haumea.pops.exporter (
-    self: super: {
+    self: _super: {
       exports.customModules = self.outputs [
         {
           value = {

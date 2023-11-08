@@ -5,6 +5,6 @@
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
-      self: super: { exports.customProfiles = { }; }
+      _self: _super: { exports.customProfiles = { }; }
     ))
   ]

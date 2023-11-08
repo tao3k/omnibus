@@ -1,7 +1,5 @@
 {
   omnibus,
-  POP,
-  flops,
   lib,
   inputs,
 }:
@@ -32,7 +30,7 @@ let
       {
         systems = [ system ];
         imports = [ flake.inputs.process-compose-flake.flakeModule ];
-        perSystem = { self', ... }: { imports = [ flakeProfiles.sqlite-example ]; };
+        perSystem = { ... }: { imports = [ flakeProfiles.sqlite-example ]; };
       };
 in
 lib.mapAttrs (_: builtins.unsafeDiscardStringContext) {

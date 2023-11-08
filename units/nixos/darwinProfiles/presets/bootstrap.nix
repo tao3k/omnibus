@@ -5,7 +5,6 @@
   config,
 }:
 let
-  inherit (pkgs.stdenv.hostPlatform) isAarch64;
   cfg = config.omnibus.bootstrap;
 in
 {

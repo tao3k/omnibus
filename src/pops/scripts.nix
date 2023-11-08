@@ -1,7 +1,6 @@
 let
   inherit (inputs) nixpkgs;
   inherit (root.ops) makes;
-  inherit (makes) makeScript makeEnvVars;
 in
 (super.load {
   inputs =

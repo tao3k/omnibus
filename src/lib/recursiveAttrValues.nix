@@ -7,7 +7,7 @@ let
     lib.flatten (
       lib.mapAttrsToList
         (
-          name: value:
+          _name: value:
           if lib.isAttrs value && !(lib.isFunction value) then
             recursiveAttrValues value
           else

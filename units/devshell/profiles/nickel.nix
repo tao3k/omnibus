@@ -1,8 +1,4 @@
-{
-  omnibus,
-  inputs,
-  config,
-}:
+{ omnibus, inputs }:
 let
   inherit
     (omnibus.errors.requiredInputs inputs "omnibus.pops.devshellProfiles" [

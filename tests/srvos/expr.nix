@@ -1,5 +1,4 @@
 {
-  super,
   trace,
   lib,
   root,

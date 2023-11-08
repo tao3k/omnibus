@@ -9,7 +9,6 @@
 { inputs, cell }:
 with inputs.std.inputs.dmerge;
 let
-  inherit (inputs) nixpkgs;
 
   inherit (cell.pops.configs.exports.default) treefmt lefthook conform;
 in

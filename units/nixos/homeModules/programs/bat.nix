@@ -1,10 +1,3 @@
-let
-  inherit
-    (omnibus.errors.requiredInputs inputs "omnibus.pops.homeModules" [
-      "catppuccin-bat"
-    ])
-  ;
-in
 {
   config =
     with lib;

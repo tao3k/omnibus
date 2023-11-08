@@ -1,7 +1,4 @@
 { config, lib, ... }:
-let
-  l = lib // builtins;
-in
 {
   programs.navi = {
     enable = true;

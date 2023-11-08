@@ -10,7 +10,7 @@
         # "--use-gl=egl"
       ];
     }).overrideAttrs
-      (old: { })
+      (_old: { })
     )
   ];
 }

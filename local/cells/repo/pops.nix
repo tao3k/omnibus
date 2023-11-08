@@ -11,7 +11,7 @@ in
     }).addExporter
       (
         POP.extendPop flops.haumea.pops.exporter (
-          self: super: {
+          _self: _super: {
             exports = rec {
               inherit (inputs.omnibus.lib.mapPopsExports pops) self;
               pops.self =

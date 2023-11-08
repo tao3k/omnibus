@@ -1,10 +1,5 @@
 (
-  {
-    lib,
-    config,
-    options,
-    ...
-  }@args:
+  { lib, options, ... }:
   {
     options = {
       __test__ = lib.mkOption {

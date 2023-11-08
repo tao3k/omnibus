@@ -49,7 +49,6 @@
     {
       self,
       std,
-      nixpkgs,
       hive,
       call-flake,
       ...

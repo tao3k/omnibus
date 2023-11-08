@@ -4,13 +4,12 @@
   omnibus,
   POP,
   flops,
-  inputs,
 }:
 let
   srvosCustom =
     (omnibus.pops.srvos.addExporters [
       (POP.extendPop flops.haumea.pops.exporter (
-        self: super: {
+        self: _super: {
           exports.srvosCustom = self.outputs [
             {
               value = { selfModule }: removeAttrs selfModule [ "imports" ];

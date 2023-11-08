@@ -1,8 +1,4 @@
-{
-  lib,
-  inputs,
-  root,
-}:
+{ lib }:
 homeModule: userSet: shell: suites:
 let
   user = lib.head (lib.attrNames userSet);

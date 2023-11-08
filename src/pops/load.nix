@@ -1,6 +1,5 @@
 {
   flops,
-  omnibus,
   haumea,
   root,
 }:

@@ -14,11 +14,26 @@
 
   description = "omnibus & std";
 
-  inputs.std.follows = "std-ext/std";
-  inputs.nixpkgs.follows = "std-ext/nixpkgs";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    std = {
+      url = "github:divnix/std";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.devshell.follows = "devshell";
+      inputs.nixago.follows = "nixago";
+    };
 
-  inputs.std-ext.url = "github:gtrunsec/std-ext";
-  inputs.std-ext.inputs.org-roam-book-template.follows = "";
+    nixago = {
+      url = "github:nix-community/nixago";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixago-exts.follows = "";
+    };
+
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
   inputs.call-flake.url = "github:divnix/call-flake";
   inputs.namaka.url = "github:nix-community/namaka";
   inputs.haumea.follows = "namaka/haumea";

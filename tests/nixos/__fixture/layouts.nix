@@ -1,5 +1,5 @@
 let
-  inherit (inputs) nixpkgs darwin nixos;
+  inherit (inputs) nixpkgs darwin;
   # exports.default to be default
   outputs = omnibus.lib.mapPopsExports' super.pops;
   # with multi-layout

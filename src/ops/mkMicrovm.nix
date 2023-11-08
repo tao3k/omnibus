@@ -1,9 +1,5 @@
 # credit: https://github.com/divnix/std/blob/main/src/lib/ops/mkMicrovm.nix#
-{
-  inputs,
-  lib,
-  root,
-}:
+{ inputs, root }:
 let
   inherit
     (root.errors.requiredInputs inputs "lib" [

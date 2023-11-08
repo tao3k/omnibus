@@ -1,4 +1,4 @@
-{ inputs, cell }:
+{ cell }:
 {
   example = {
     deployment = {

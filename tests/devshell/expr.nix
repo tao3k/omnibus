@@ -11,7 +11,7 @@ let
     in
     ((baseInputs.addInputsExtender (
       POP.extendPop flops.flake.pops.inputsExtender (
-        self: super: {
+        _self: _super: {
           inputs = baseInputs.inputs // {
             devshell = baseInputs.inputs.devshell.legacyPackages;
           };

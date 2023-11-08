@@ -13,7 +13,7 @@ in
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
-      self: super: {
+      self: _super: {
         exports.customProfiles = self.outputs [
           {
             value =

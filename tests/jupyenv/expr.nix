@@ -1,8 +1,4 @@
-{
-  super,
-  root,
-  omnibus,
-}:
+{ omnibus }:
 let
   system = "x86_64-linux";
   loadedInputs =

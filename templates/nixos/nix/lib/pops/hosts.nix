@@ -1,6 +1,5 @@
 {
   lib,
-  inputs,
   super,
   omnibus,
   root,
@@ -10,7 +9,7 @@ let
   inherit (omnibus.lib) addLoadToPops;
 in
 addLoadToPops hostsDir super.hostsLoad (
-  elm: n: v: {
+  elm: n: _v: {
     load.src = root.filterPopsSrc (projectDir + "/units/nixos/hosts/${elm}") n;
   }
 )

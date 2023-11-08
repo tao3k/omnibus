@@ -1,5 +1,5 @@
 { root, inputs }:
-name:
+_name:
 (root.pops.nixosModules.addLoadExtender {
   load = {
     inputs = { };

@@ -27,7 +27,11 @@ in
       )
     ];
 
-    packages = [ nixpkgs.d2 ];
+    packages = [
+      nixpkgs.d2
+      nixpkgs.statix
+      nixpkgs.deadnix
+    ];
 
     commands = [ ];
   };

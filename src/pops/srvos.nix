@@ -6,7 +6,7 @@
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
-      self: super: {
+      self: _super: {
         exports = {
           exportModulesRecursive = lib.recursiveAttrValues self.layouts.default;
         };

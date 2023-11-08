@@ -2,12 +2,6 @@
 src: dir:
 let
   inherit (root.pops.subflake.inputs) nix-filter;
-  popsDirs = lib.attrNames (
-    lib.removeAttrs root.pops [
-      "hosts"
-      "omnibus"
-    ]
-  );
 in
 # include =
 #   let

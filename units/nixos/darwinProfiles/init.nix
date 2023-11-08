@@ -1,8 +1,4 @@
-{
-  root,
-  self,
-  super,
-}:
+{ self, super }:
 let
   presets = super.presets;
 in
