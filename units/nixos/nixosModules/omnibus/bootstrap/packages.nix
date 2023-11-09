@@ -25,6 +25,7 @@ in
           unzip
           gzip
           clang
+          coreutils
           nixpkgs-fmt
           pkg-config
           (pkgs.writeShellScriptBin "nrepl" ''

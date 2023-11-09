@@ -14,7 +14,7 @@ let
     nixpkgs
   ;
 
-  pkgs' = nixpkgs.appendOverlays [ fenix.overlay ];
+  pkgs' = nixpkgs.appendOverlays [ fenix.overlays.default ];
   cfg = config.language.rust;
 in
 {
@@ -25,7 +25,7 @@ in
 
   language.rust = {
     rustSrc = pkgs'.fenix.complete.rust-src;
-    packageSet = pkgs'.fenix.default;
+    packageSet = pkgs'.fenix.stable;
     enableDefaultToolchain = true;
     tools = [ "toolchain" ];
   };

@@ -14,10 +14,7 @@ let
 in
 {
   default = {
-    packages = [
-      languagetool-code-comments
-      nixpkgs.jq
-    ];
+    packages = [ nixpkgs.jq ];
     data = {
       commit-msg = {
         commands = {
@@ -53,5 +50,8 @@ in
         };
       };
     };
+  };
+  languagetool-code-comments = {
+    packages = [ languagetool-code-comments ];
   };
 }
