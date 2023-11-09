@@ -25,6 +25,8 @@
     nur.url = "github:nix-community/NUR";
 
     topiary.url = "github:tweag/topiary";
+
+    std.url = "github:divnix/std";
   };
 
   inputs = {

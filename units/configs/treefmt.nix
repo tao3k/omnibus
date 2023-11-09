@@ -105,6 +105,13 @@ in
       options = [ "format" ];
     };
   };
+  deadnix = {
+    packages = [ nixpkgs.deadnix ];
+    data.formatter.deadnix = {
+      command = "deadnix";
+      options = [ "--edit" ];
+    };
+  };
   topiary = {
     data.formatter.topiary = {
       command = "topiary";

@@ -1,15 +1,11 @@
 { lib, super }:
 inputs': object: listNames:
 let
-  fondInputs =
-    if
-      (lib.length (
-        lib.filter (pair: pair == true) (map (v: lib.hasAttr v inputs') listNames)
-      )) > 0
-    then
-      true
-    else
-      false;
+  notFoundInputs =
+    (lib.filter (pair: pair != true) (
+      map (v: if (lib.hasAttr v inputs') then true else v) listNames
+    ));
+  isFound = (lib.length notFoundInputs == 0);
   msg =
     (lib.concatMapStringsSep "\n         "
       (
@@ -19,16 +15,18 @@ let
                    ${name} = inputs.${name};
         ''
       )
-      (super.inputsSource listNames)
+      (super.inputsSource notFoundInputs)
     );
 
   noSysNixpkgs =
     if (lib.elem "nixpkgs" listNames && inputs' ? nixpkgs) then
       if (lib.hasAttr "path" inputs'.nixpkgs) then true else false
+    else if (lib.elem "nixpkgs" listNames && !inputs' ? nixpkgs) then
+      false
     else
       true;
 in
-assert lib.assertMsg fondInputs ''
+assert lib.assertMsg isFound ''
   please, add the these inputs into
 
       ${object}.addLoadExtender {

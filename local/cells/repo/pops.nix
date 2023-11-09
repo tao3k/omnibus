@@ -26,7 +26,13 @@ in
         )
       );
 
-  configs = inputs.omnibus.pops.configs.addLoadExtender {
-    load.inputs.inputs = inputs';
+  configs = inputs.omnibus.pops.configs {
+    inputs = {
+      inputs = {
+        inherit (inputs') nixfmt topiary nur;
+        inherit (inputs) std;
+        inherit nixpkgs;
+      };
+    };
   };
 }
