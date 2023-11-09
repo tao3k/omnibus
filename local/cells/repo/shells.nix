@@ -18,13 +18,9 @@ in
     # This is Standard's devshell integration.
     # It runs the startup hook when entering the shell.
     nixago = [
-      (std.lib.dev.mkNixago std.lib.cfg.conform cell.configs.conform.default
-        cell.configs.conform.custom
-      )
-      (std.lib.dev.mkNixago std.lib.cfg.lefthook cell.configs.lefthook.default)
-      (std.lib.dev.mkNixago std.lib.cfg.treefmt cell.configs.treefmt.default
-        cell.configs.treefmt.topiary
-      )
+      cell.configs.conform.default
+      cell.configs.lefthook.default
+      cell.configs.treefmt.default
     ];
 
     packages = [

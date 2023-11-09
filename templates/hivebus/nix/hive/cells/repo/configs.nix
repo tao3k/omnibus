@@ -7,7 +7,4 @@
       (3) potentially share / re-use configuration data - keeping it in sync
 */
 { inputs, cell }:
-(inputs.repo.inputs.omnibus.pops.configs.addLoadExtender {
-  load.src = ./configs;
-}).outputs
-  { }
+(inputs.repo.inputs.omnibus.pops.configs { src = ./configs; }).exports.default
