@@ -2,6 +2,7 @@
   inputs = {
     omnibus.url = "github:gtrunsec/omnibus";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    home-manager.url = "github:nix-community/home-manager";
   };
 
   outputs =
@@ -23,6 +24,14 @@
         nixosProfiles = inputs.omnibus.pops.nixosProfiles.addLoadExtender {
           load = {
             src = ./units/nixos/nixosProfiles;
+            inputs = {
+              inherit inputs;
+            };
+          };
+        };
+        homeProfiles = inputs.omnibus.pops.homeProfiles.addLoadExtender {
+          load = {
+            src = ./units/nixos/homeProfiles;
             inputs = {
               inherit inputs;
             };
@@ -60,6 +69,10 @@
       nixosConfigurations.simple = inputs.nixos-unstable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ self.nixosProfiles.presets.boot ];
+      };
+      homeConfigurations.simple = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = inputs.nixos-unstable.legacyPackages.x86_64-linux;
+        modules = [ self.homeProfiles.presets.home-user1 ];
       };
     };
 }
