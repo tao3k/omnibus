@@ -27,6 +27,7 @@ in
       nixpkgs.d2
       nixpkgs.statix
       nixpkgs.deadnix
+      nixpkgs.tree
     ];
 
     commands = [ ];

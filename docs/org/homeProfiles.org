@@ -12,6 +12,9 @@
 
 * Suites
 ** shell
+:PROPERTIES:
+:ID:       cbe34da3-ffbb-423c-aee4-d0cd71af51e4
+:END:
 
 #+begin_src nix :tangle (concat (org-entry-get nil "PRJ-DIR" t) "/shell.nix")
 {
@@ -36,6 +39,7 @@ with presets; {
     self.utils
     # ------------------------------
     zoxide
+    atuin
     fzf
     starship.default
     dircolors.default

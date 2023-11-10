@@ -36,13 +36,12 @@ in
     )
   ];
 
-  homeSuites =
-    [
-      # exporter.homeProfiles.default.presets.bat
-      # # The parent directory of "presets" is categorized as a list type of "suites"
-      # (exporter.homeProfiles.default.shell { }).default
-      # super.pops.homeModules.exports.default.wayland.windowManager.hyprland
-    ];
+  homeSuites = [
+    # exporter.homeProfiles.default.presets.bat
+    # # The parent directory of "presets" is categorized as a list type of "suites"
+    outputs.homeProfiles.omnibus.shell.default
+    # super.pops.homeModules.exports.default.wayland.windowManager.hyprland
+  ];
 
   nixosConfiguration =
     module:

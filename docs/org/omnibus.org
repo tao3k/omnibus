@@ -1,0 +1,50 @@
+:PROPERTIES:
+:ID:       4fc2b30f-8b6a-4cbc-a04f-24140296639b
+:END:
+#+title: Omnibus
+
+
+
+
+
+
+
+* POPS Interface
+
+** [[id:55e5de92-922e-4e91-aa8c-c8121545aac8][nixosProfiles]] :style:
+
+In the style of nixos/homeProfiles in OmniBus, the "toplevel" directory is used to store the categorized suites, while the "presets" folder is to store the themes, Each theme is named based on the *file name/folder name* for configuration purposes. The *folders/files* within this theme folder can contain one or more profiles associated with that theme. These profiles are then collected and further categorized within the attributes of the "toplevel" directory.
+
+
+
+#+begin_src sh :exports both
+tree $PRJ_ROOT/units/nixos/nixosProfiles -L 1
+#+end_src
+
+#+RESULTS:
+| /home/guangtao/ghq/github.com/GTrunSec/omnibus/units/nixos/nixosProfiles |               |   |       |
+| ├──                                                                      | bootstrap.nix |   |       |
+| ├──                                                                      | cloud.nix     |   |       |
+| ├──                                                                      | dev.nix       |   |       |
+| ├──                                                                      | hardware.nix  |   |       |
+| └──                                                                      | presets       |   |       |
+|                                                                          |               |   |       |
+| 2                                                                        | directories,  | 4 | files |
+
+
+- layouts
+  - suites: [[id:cbe34da3-ffbb-423c-aee4-d0cd71af51e4][shell]]
+
+- exports
+  - omnibus (outputs the profiles with our style principle)
+  - default (vanilla nixosProfiles layouts)
+
+#+begin_src nix
+# theme-related profile
+homeProfiles.default.presets.bat
+# can be stored more than one profiles under this topic/theme
+homeProfiles.default.presets.bat.default
+homeProfiles.default.presets.bat."<custom>"
+# suite type
+homeProfiles.exports.omnibus.shell.default
+#+end_src
