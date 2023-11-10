@@ -10,6 +10,9 @@
 
     darwin.url = "github:LnL7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    audioNix.url = "github:polygon/audio.nix";
+    audioNix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   inputs = {
@@ -27,6 +30,8 @@
     topiary.url = "github:tweag/topiary";
 
     std.url = "github:divnix/std";
+
+    microvm.url = "github:astro/microvm.nix";
   };
 
   inputs = {

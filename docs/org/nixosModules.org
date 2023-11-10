@@ -1,0 +1,15 @@
+:PROPERTIES:
+:header-args: :noweb tangle :comments noweb :exports both
+:PRJ-DIR: ../../units/nixos/nixosModules
+:ID:       90622778-0b10-4a46-96b9-49b213379746
+:END:
+#+TITLE: nixosModules
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2023-10-08 Sun 22:00
+
+
+* Audio
+
+** audio.nix
+- https://discourse.nixos.org/t/audio-nix-packages-for-music-production/35262

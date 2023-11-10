@@ -18,6 +18,8 @@ in
           wget
           curl
           gnumake
+          cmake
+          coreutils
         ];
       })
       (mkIf cfg.default {
@@ -25,7 +27,6 @@ in
           unzip
           gzip
           clang
-          coreutils
           nixpkgs-fmt
           pkg-config
           (pkgs.writeShellScriptBin "nrepl" ''

@@ -1,0 +1,5 @@
+#pretty
+{
+  exampleModule = <function, args: {config?, options?}>;
+  exampleRunner = "/nix/store/xghw8lqyqwmbrpv7jvjbyizly3y912xj-microvm-qemu-microvms-host";
+}

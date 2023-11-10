@@ -99,7 +99,6 @@ with presets; {
 ** hardware
 
 
-
 #+begin_src nix :tangle (concat (org-entry-get nil "PRJ-DIR" t) "/hardware.nix")
 { root, self }:
 let
