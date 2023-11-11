@@ -16,7 +16,7 @@ in
       "/opt/homebrew/bin"
       "/bin/"
       "/usr/bin"
-      "/usr/bin/sbin"
+      "/usr/sbin"
       "/usr/local/bin"
       "/usr/sbin"
       "/sbin"

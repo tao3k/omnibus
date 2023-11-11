@@ -85,3 +85,4 @@ with presets; {
 :ID:       8cb3750b-c465-4674-8d38-7a3b4cf6d1dc
 :END:
 
+** https://github.com/rsteube/carapace-bin :shell:

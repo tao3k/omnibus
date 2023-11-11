@@ -103,6 +103,7 @@ in
     data.formatter.nickel = {
       command = "nickel";
       options = [ "format" ];
+      includes = [ "*.ncl" ];
     };
   };
   deadnix = {

@@ -22,6 +22,7 @@ with presets; {
     # ------------------------------
     zoxide
     atuin
+    carapace
     fzf
     starship.default
     dircolors.default
