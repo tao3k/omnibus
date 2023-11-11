@@ -9,16 +9,15 @@
       inherit (inputs.omnibus.inputs.flops.inputs.nixlib) lib;
       eachSystem = lib.genAttrs [
         "x86_64-linux"
-        "x86_64-darwin"
         "aarch64-linux"
         "aarch64-darwin"
       ];
-      library = import ./nix/lib/__init.nix { inherit inputs eachSystem; };
-      libraryOutputs = library.exports.default;
+      srcPops = import ./nix/src/__init.nix { inherit inputs eachSystem; };
+      src = srcPops.exports.default;
     in
-    libraryOutputs.flakeOutputs
+    src.flakeOutputs
     // {
-      lib = libraryOutputs;
-      pops = libraryOutputs.pops;
+      inherit (src) lib;
+      pops = srcPops;
     };
 }

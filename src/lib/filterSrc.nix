@@ -1,8 +1,9 @@
 { lib, root }:
-src: dir:
+src:
 let
-  inherit (root.pops.subflake.inputs) nix-filter;
+  inherit (root.pops.flake.inputs) nix-filter;
 in
+nix-filter.lib.filter { root = src; }
 # include =
 #   let
 #     srcDirs = lib.attrNames (lib.readDir src);
@@ -29,4 +30,3 @@ in
 #       list
 #     )
 #     srcDirs;
-nix-filter.lib.filter { root = src + "/${dir}"; }

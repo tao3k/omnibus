@@ -1,4 +1,4 @@
-(inputs.omnibus.pops.load {
+(inputs.omnibus.load {
   src = projectDir + "/units/nixos/hosts";
   loader = with haumea; [ (matchers.nix loaders.scoped) ];
   inputs = {
@@ -7,4 +7,4 @@
       self = root.omnibus.exports.default;
     };
   };
-}).exports.default
+})

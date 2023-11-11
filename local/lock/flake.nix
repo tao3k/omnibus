@@ -13,6 +13,8 @@
 
     audioNix.url = "github:polygon/audio.nix";
     audioNix.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-filter.url = "github:numtide/nix-filter";
   };
 
   inputs = {
