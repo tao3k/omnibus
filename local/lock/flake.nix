@@ -73,6 +73,9 @@
     nix-fast-build.url = "github:Mic92/nix-fast-build";
     nix-fast-build.inputs.nixpkgs.follows = "nixpkgs";
     nix-fast-build.inputs.treefmt-nix.follows = "";
+
+    navi-tldr-pages.url = "github:denisidoro/navi-tldr-pages";
+    navi-tldr-pages.flake = false;
   };
   outputs = _: { };
 }

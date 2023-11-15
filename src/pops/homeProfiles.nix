@@ -7,9 +7,9 @@
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
-      _self: _super: {
+      selfPop: _super: {
         exports = {
-          omnibus = super.exportsOmnibusProfiles self;
+          omnibus = super.exportsOmnibusProfiles selfPop.layouts.default;
         };
       }
     ))

@@ -24,6 +24,7 @@ with presets; {
     atuin
     carapace
     fzf
+    navi
     starship.default
     dircolors.default
   ];

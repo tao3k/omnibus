@@ -7,7 +7,7 @@ in
       homeModules = super.homeModules.layouts.nixosModules;
     };
     inputs = {
-      inherit (omnibus.flake.inputs) nur;
+      inherit (omnibus.flake.inputs) nur nix-filter navi-tldr-pages;
     };
   };
 }).addExporters

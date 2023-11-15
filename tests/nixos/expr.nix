@@ -46,9 +46,9 @@ in
   homeConfiguration =
     (out.nixosConfiguration [
       out.outputs.nixosProfiles.default.presets.boot
-      # (extraHomeModule [
-      #   out.outputs.homeProfiles.customProfiles.presets.hyprland.default
-      #   out.outputs.homeProfiles.default.presets.firefox
-      # ])
+      (extraHomeModule [
+        out.outputs.homeProfiles.customProfiles.presets.hyprland.default
+        out.outputs.homeProfiles.default.presets.firefox
+      ])
     ]).config.home-manager.users.admin;
 }
