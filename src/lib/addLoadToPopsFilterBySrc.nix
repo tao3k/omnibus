@@ -1,5 +1,5 @@
 { lib, super }:
-dir: pops: load:
+dir: pops: ext:
 let
   list = lib.attrNames (lib.readDir dir);
   getDirs = host: lib.attrNames (lib.readDir (dir + "/${host}"));
@@ -14,9 +14,12 @@ let
             src = (dir + "/${name}/${n}");
           in
           if (v ? addLoadExtender && (lib.pathExists src) && (lib.elem n dirs)) then
-            ((v.addLoadExtender { inherit load; }).addLoadExtender {
-              load.src = super.filterSrc src;
-            })
+            if lib.isFunction ext then
+              ext v
+            else if lib.isAttrs ext then
+              (v.addLoadExtender { load.src = src; }).addLoadExtender { load = ext; }
+            else
+              v
           else
             { }
         )

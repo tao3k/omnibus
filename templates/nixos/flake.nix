@@ -17,7 +17,8 @@
     in
     src.flakeOutputs
     // {
+      inherit src;
       inherit (src) lib;
-      pops = srcPops;
+      pops = src.pops;
     };
 }

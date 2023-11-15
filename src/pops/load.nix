@@ -18,4 +18,13 @@ load:
     }
     load
   ]
-))
+)).addExporters
+  [
+    (POP.extendPop flops.haumea.pops.exporter (
+      self: _super: {
+        exports = {
+          derivations = lib.attrsets.filterDerivations self.layouts.default;
+        };
+      }
+    ))
+  ]

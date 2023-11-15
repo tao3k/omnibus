@@ -69,6 +69,10 @@
   inputs = {
     climodSrc.url = "github:nixosbrasil/climod";
     climodSrc.flake = false;
+
+    nix-fast-build.url = "github:Mic92/nix-fast-build";
+    nix-fast-build.inputs.nixpkgs.follows = "nixpkgs";
+    nix-fast-build.inputs.treefmt-nix.follows = "";
   };
   outputs = _: { };
 }
