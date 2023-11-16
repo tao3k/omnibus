@@ -158,7 +158,7 @@
     },
     "crane_3": {
       "inputs": {
-        "flake-compat": "flake-compat_6",
+        "flake-compat": "flake-compat_7",
         "flake-utils": "flake-utils_8",
         "nixpkgs": [
           "topiary",
@@ -410,6 +410,22 @@
         "type": "github"
       }
     },
+    "flake-compat_7": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673956053,
+        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -429,6 +445,27 @@
       }
     },
     "flake-parts_2": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "snapshotter",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1690933134,
+        "narHash": "sha256-ab989mN63fQZBFrkk4Q8bYxQCktuHmBIBqUG1jl6/FQ=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "59cf3f1447cfc75087e7273b04b31e689a8599fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib_2"
       },
@@ -781,11 +818,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1699214123,
-        "narHash": "sha256-0vo6if/3dDTia6NJJT5zFjBuXFnMfPFUJxgjaWZRH24=",
+        "lastModified": 1699578541,
+        "narHash": "sha256-QwO4L8EwZZhFTJic6KUq2qixnZZWZwq3Pvhj+U6SBuI=",
         "owner": "astro",
         "repo": "microvm.nix",
-        "rev": "4caeec0f24d416ce19c76754cae572f1e1882ffe",
+        "rev": "fb78ecd4e5b42bb5c4f57f36a80f99bbf3e0d010",
         "type": "github"
       },
       "original": {
@@ -823,17 +860,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1698331902,
-        "narHash": "sha256-BEqUDYIy9YCgdz0WPg6BTf88hRzW/hq9K7iqogQBpbs=",
+        "lastModified": 1700158255,
+        "narHash": "sha256-j4Tnhef9C+cXQb82bazpYbI4lNE+aTXcb6FrKkcn76o=",
         "owner": "tweag",
         "repo": "nickel",
-        "rev": "1921c316ad81bca8100c3a0c6ae2e3da974cdd51",
+        "rev": "8d7725da772599a65874a827aa02feb8306852ed",
         "type": "github"
       },
       "original": {
         "owner": "tweag",
         "repo": "nickel",
-        "rev": "1921c316ad81bca8100c3a0c6ae2e3da974cdd51",
         "type": "github"
       }
     },
@@ -1266,11 +1302,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1698947885,
-        "narHash": "sha256-xvIXF7RC0wg/pLWcLT3LYegXZ34lZLia4vRfSkTZASg=",
+        "lastModified": 1700141884,
+        "narHash": "sha256-r9gsWqKSDYl5+94Ti502ZtJWaq9KQkWnxm7M20kS8Rc=",
         "owner": "nickel-lang",
         "repo": "organist",
-        "rev": "1ab0558196905778c8e21961c4e7bd62ad08c164",
+        "rev": "29255e6bc712530d9ab3b0b397cb0b58ee34407c",
         "type": "github"
       },
       "original": {
@@ -1401,6 +1437,7 @@
         "nur": "nur",
         "organist": "organist",
         "ragenix": "ragenix",
+        "snapshotter": "snapshotter",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
         "std": "std",
@@ -1570,6 +1607,28 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "snapshotter": {
+      "inputs": {
+        "flake-compat": "flake-compat_6",
+        "flake-parts": "flake-parts_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1694527390,
+        "narHash": "sha256-YQOUBhwFlx2UX7RzhM2F19wrZUTQn8vURNcQ4ObwToc=",
+        "owner": "pdtpartners",
+        "repo": "nix-snapshotter",
+        "rev": "6eb21bd3429535646da4aa396bb0c1f81a9b72c6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pdtpartners",
+        "repo": "nix-snapshotter",
         "type": "github"
       }
     },
@@ -1859,7 +1918,7 @@
     "typst": {
       "inputs": {
         "crane": "crane_4",
-        "flake-parts": "flake-parts_2",
+        "flake-parts": "flake-parts_3",
         "nixpkgs": [
           "nixpkgs"
         ],

@@ -8,7 +8,10 @@
 let
   inherit (pkgs.stdenv) isLinux isDarwin;
   inherit
-    (omnibus.errors.requiredInputs inputs "omnibus.pops.homeProfiles" [ "nur" ])
+    (omnibus.errors.requiredInputs inputs "omnibus.pops.homeProfiles" [
+      "nur"
+      "navi-tldr-pages"
+    ])
     navi-tldr-pages
     nix-filter
   ;

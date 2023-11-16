@@ -39,7 +39,7 @@
   inputs = {
     organist.url = "github:nickel-lang/organist";
 
-    nickel.url = "github:tweag/nickel/1921c316ad81bca8100c3a0c6ae2e3da974cdd51";
+    nickel.url = "github:tweag/nickel";
     # nickel.follows = "organist/nickel";
     nickel.inputs.topiary.follows = "topiary";
 
@@ -51,6 +51,9 @@
   };
 
   inputs = {
+    snapshotter.url = "github:pdtpartners/nix-snapshotter";
+    snapshotter.inputs.nixpkgs.follows = "nixpkgs";
+
     ragenix.url = "github:yaxitech/ragenix";
     ragenix.inputs.nixpkgs.follows = "nixpkgs";
     ragenix.inputs.agenix.follows = "agenix";
