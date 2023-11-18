@@ -1,9 +1,11 @@
 {
   options = with lib; {
-    lsp-bridge =
+    enableLspBridge =
       mkEnableOption
         "Enable the language server protocol bridge support";
-    emacs-eaf = mkEnableOption "Enable the Emacs Application Framework support";
+    enableEmacsEaf =
+      mkEnableOption
+        "Enable the Emacs Application Framework support";
     python = mkOption {
       type = types.package;
       default = pkgs.python3;

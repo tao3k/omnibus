@@ -7,7 +7,7 @@ let
       with ps;
       (
         lib.unique (
-          lib.optionals cfg.emacs-eaf [
+          lib.optionals cfg.enableEmacsEaf [
             #emacs-eaf
             shapely
             dbus-python
@@ -23,7 +23,7 @@ let
             retrying
           ]
         )
-        ++ (lib.optionals cfg.lsp-bridge [
+        ++ (lib.optionals cfg.enableLspBridge [
           epc
           orjson
           ###

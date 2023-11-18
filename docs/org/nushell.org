@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       86931df8-cf18-4f01-9323-6cb1e19bed52
+:END:
+#+TITLE: nushell
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2023-11-18 Sat 00:17

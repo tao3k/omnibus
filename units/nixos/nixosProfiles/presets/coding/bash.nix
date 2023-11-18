@@ -11,5 +11,6 @@ in
   imports = [ omnibus.nixosModules.omnibus.coding.bash ];
   environment.systemPackages =
     with pkgs;
-    [ shellcheck ] ++ lib.optionals cfg.lsp [ nodePackages.bash-language-server ];
+    [ shellcheck ]
+    ++ lib.optionals cfg.enableLsp [ nodePackages.bash-language-server ];
 }

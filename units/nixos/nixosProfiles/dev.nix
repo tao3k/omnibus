@@ -20,10 +20,10 @@ with presets; {
     self.default
     {
       config.omnibus.coding = {
-        bash.lsp = true;
-        nickel.lsp = true;
-        typst.lsp = true;
-        conf.lsp = true;
+        bash.enableLsp = true;
+        nickel.enableLsp = true;
+        typst.enableLsp = true;
+        conf.enableLsp = true;
       };
     }
   ];

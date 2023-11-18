@@ -27,6 +27,8 @@ with presets; {
     navi
     starship.default
     dircolors.default
+    # ------------------------------
+    zellij
   ];
 
   fileManager = [
