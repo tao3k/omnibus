@@ -15,5 +15,17 @@ makeScope newScope (
   in
   ((super.load load).addLoadExtender {
     load.loader = _: path: callPackage path { };
-  })
+  }).addExporters
+    [
+      (POP.extendPop flops.haumea.pops.exporter (
+        self: _super: {
+          exports = {
+            overlay =
+              selfPop: final: prev:
+              (selfPop.addLoadExtender { load.inputs.inputs.nixpkgs = final; })
+              .exports.default;
+          };
+        }
+      ))
+    ]
 )
