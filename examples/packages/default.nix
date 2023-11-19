@@ -1,4 +1,8 @@
-{ omnibus, inputs }:
+{
+  omnibus,
+  inputs,
+  self,
+}:
 omnibus.pops.packages {
   src = ./__fixture;
   inputs = {

@@ -2,6 +2,7 @@
   lib,
   stdenv,
   runtimeShell,
+  __inputs__,
 }:
 
 stdenv.mkDerivation {
@@ -19,6 +20,9 @@ stdenv.mkDerivation {
     chmod +x $out/bin/hello-unfree
   '';
 
+  passthru = {
+    test = __inputs__;
+  };
   meta = {
     description = "An example package with unfree license (for testing)";
     maintainers = [ lib.maintainers.oxij ];
