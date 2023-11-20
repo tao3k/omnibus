@@ -1,4 +1,4 @@
-# [[file:../../../docs/org/homeProfiles.org::*shell][shell:1]]
+# [[id:cbe34da3-ffbb-423c-aee4-d0cd71af51e4][shell:1]]
 {
   root,
   self,

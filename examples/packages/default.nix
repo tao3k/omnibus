@@ -1,3 +1,4 @@
+# [[file:../../docs/org/pops-packages.org::*Example][Example:1]]
 {
   omnibus,
   inputs,
@@ -9,3 +10,5 @@ omnibus.pops.packages {
     nixpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
   };
 }
+# => out.exports { default = {...}, packages = {...}; }
+# Example:1 ends here

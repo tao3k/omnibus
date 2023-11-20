@@ -992,11 +992,11 @@
         "nixpkgs-stable": "nixpkgs-stable_2"
       },
       "locked": {
-        "lastModified": 1697635498,
-        "narHash": "sha256-jWkdNqeSoIVG2o2ajj/93CxCRRrigWmPbBU10woabsU=",
+        "lastModified": 1700348034,
+        "narHash": "sha256-j28MwKtP+W8jFi6OHE/8TqhRZr9rIZTJKXxjN58Fc8E=",
         "owner": "serokell",
         "repo": "nixfmt",
-        "rev": "7649a1b5626d87219904350295ca77593aff1349",
+        "rev": "4ef4c39acd501a9a1b06b3a151b36be5daebcef3",
         "type": "github"
       },
       "original": {

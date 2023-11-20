@@ -34,9 +34,7 @@ in
         # Create .sqlite database from chinook database.
         sqlite-init.command = ''
           echo "$(date): Importing Chinook database (${dataFile}) ..."
-          ${
-            lib.getExe pkgs.sqlite
-          } "${dataFile}" < ${chinookDb}/ChinookDatabase/DataSources/Chinook_Sqlite.sql
+          ${lib.getExe pkgs.sqlite} "${dataFile}" < ${chinookDb}/ChinookDatabase/DataSources/Chinook_Sqlite.sql
           echo "$(date): Done."
         '';
 

@@ -1,3 +1,4 @@
+# [[id:f7adb0ad-2cc1-4723-a796-bf608682456a][No heading:1]]
 { super, root }:
 load:
 let
@@ -9,15 +10,15 @@ let
   inherit (nixpkgs.lib) makeScope;
 in
 makeScope newScope (
-  selfScope
-    ((super.load load).addLoadExtender {
-      load = {
-        loader =
-          __inputs__: path:
-          (selfScope.overrideScope (_: _: { inherit __inputs__; })).callPackage path { };
-        transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
-      };
-    }).addExporters
+  selfScope:
+  ((super.load load).addLoadExtender {
+    load = {
+      loader =
+        __inputs__: path:
+        (selfScope.overrideScope (_: _: { inherit __inputs__; })).callPackage path { };
+      transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
+    };
+  }).addExporters
     [
       (POP.extendPop flops.haumea.pops.exporter (
         self: _super: {
@@ -39,3 +40,4 @@ makeScope newScope (
       ))
     ]
 )
+# No heading:1 ends here

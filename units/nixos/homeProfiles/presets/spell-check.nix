@@ -10,12 +10,10 @@ let
   );
 in
 {
-  home.file.".config/enchant/enenchant.ordering".source =
-    pkgs.writeText "enenchant.ordering"
-      ''
-        *:${ordering}
-        en_US:${ordering}
-      '';
+  home.file.".config/enchant/enenchant.ordering".source = pkgs.writeText "enenchant.ordering" ''
+    *:${ordering}
+    en_US:${ordering}
+  '';
   home.packages = with pkgs; [
     (hunspellWithDicts [ hunspellDicts.en-us ])
     (aspellWithDicts (

@@ -1,6 +1,6 @@
 :PROPERTIES:
 :header-args: :noweb tangle :comments noweb :exports both
-:PRJ-DIR: ../../nixos/homeProfiles
+:PRJ-DIR: ../../units/nixos/homeProfiles
 :ID:       6bb7d46d-7358-4110-a848-f68fffda5b4d
 :END:
 #+TITLE: homeProfiles

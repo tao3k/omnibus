@@ -27,6 +27,7 @@ in
         nix = {
           includes = [ "*.nix" ];
           command = "nixfmt";
+          options = [ "--width=80" ];
           excludes = [ ];
         };
         prettier = {
