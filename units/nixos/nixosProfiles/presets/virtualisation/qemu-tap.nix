@@ -1,4 +1,9 @@
-{ }
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
+{
+}
 # {...}: {
 #   boot = {
 #     kernelParams = ["intel_iommu=on"];

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 { lib }:
 self:
 lib.mapAttrs (n: v: (if lib.isAttrs v then v else v { })) self

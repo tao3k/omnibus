@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 (omnibus.pops.flake.addInputsExtender (
   POP.extendPop flops.flake.pops.inputsExtender (
     _self: _super:

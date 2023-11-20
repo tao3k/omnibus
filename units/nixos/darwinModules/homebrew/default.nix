@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 let
   casks = lib.subtractLists cfg.__profiles__.casks.removePackagesFromProfiles (
     lib.optionals cfg.__profiles__.enableReaders [

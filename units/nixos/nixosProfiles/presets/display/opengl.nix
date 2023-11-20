@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 { pkgs, ... }:
 {
   # hardware.opengl.extraPackages = with pkgs; [

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 # credit: https://github.com/divnix/std/blob/main/src/lib/ops/mkMicrovm.nix#
 { inputs, root }:
 let

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 { pkgs, ... }:
 {
   # FIXME: dropox missing module named 'gi'  https://github.com/NixOS/nixpkgs/issues/235345

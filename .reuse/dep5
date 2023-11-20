@@ -1,0 +1,13 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: omnibus
+Upstream-Contact: guangtao zhang <gtrunsec@hardenedlinux.org>
+Source: https://github.com/GTrunSec/omnibus
+
+# Sample paragraph, commented out:
+#
+# Files: src/*
+# Copyright: $YEAR $NAME <$CONTACT>
+# License: ...
+Files: src/*
+Copyright: 2023 The Omnibus Authors
+License: MIT

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 with lib; {
   # do we need to import the submodules automatically in imports?
   imports = [

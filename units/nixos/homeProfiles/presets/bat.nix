@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 {
   imports = [ omnibus.homeModules.programs.bat ];
   programs.bat = {

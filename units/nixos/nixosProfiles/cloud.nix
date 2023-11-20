@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 # [[file:../../../docs/org/nixosProfiles.org::*cloud][cloud:1]]
 {
   root,

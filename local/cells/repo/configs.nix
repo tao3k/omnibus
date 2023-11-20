@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 /* This file holds configuration data for repo dotfiles.
 
    Q: Why not just put the put the file there?

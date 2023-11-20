@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 /* This file holds reproducible shells with commands in them.
 
    They conveniently also generate config files in their startup hook.
@@ -28,6 +32,8 @@ in
       nixpkgs.statix
       nixpkgs.deadnix
       nixpkgs.tree
+
+      nixpkgs.reuse
     ];
 
     commands = [ ];

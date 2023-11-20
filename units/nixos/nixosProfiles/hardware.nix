@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 # [[file:../../../docs/org/nixosProfiles.org::*hardware][hardware:1]]
 { root, self }:
 let

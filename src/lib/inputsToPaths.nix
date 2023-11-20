@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 { lib, flops }:
 # let
 #   # Helper function to collect outPath attributes recursively

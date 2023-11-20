@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 let
   ordering = lib.concatStringsSep "," (
     (lib.optionals pkgs.stdenv.isDarwin [ "AppleSpell" ])

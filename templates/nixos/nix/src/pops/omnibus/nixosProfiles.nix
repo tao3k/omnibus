@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 (omnibus.pops.nixosProfiles.addLoadExtender { load = { }; }).addExporters [
   (POP.extendPop flops.haumea.pops.exporter (
     self: _super: {

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 (flops.haumea.pops.default.setInit {
   src = super.flake.inputs.srvos + "/nixos";
   type = "nixosProfiles";

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 (flops.haumea.pops.default.setInit {
   src = projectDir + "/units/nixos/nixosModules";
   type = "nixosModules";

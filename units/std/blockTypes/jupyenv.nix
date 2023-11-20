@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 { inputs, root }:
 /* Use the Runnables Blocktype for targets that you want to
    make accessible with a 'run' action on the TUI.

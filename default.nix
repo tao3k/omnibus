@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 let
   lock = builtins.fromJSON (builtins.readFile ./flake.lock);
   call-flake = import (

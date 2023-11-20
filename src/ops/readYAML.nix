@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 { inputs, root }: # source from std
 let
   inherit (root.errors.requiredInputs inputs "omnibus.pops.self" [ "nixpkgs" ])

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 {
   options = with lib; {
     enableLspBridge = mkEnableOption "Enable the language server protocol bridge support";

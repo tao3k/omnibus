@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 # credit: https://github.com/montchr/dotfield/blob/68f6c9c3f6cc67c5c775b8a2a3f93cae6a76b3a5/profiles/darwinProfiles/core/nix-optimizations-darwin.nix#L9
 { config }:
 {
