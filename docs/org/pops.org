@@ -10,7 +10,7 @@
 #+DATE: 2023-11-19 Sun 15:16
 
 #+begin_quote
-Please note that in Pops, the outputs/results should not be directly printed, but instead, they wll be exported through the exports property under the pop object.
+Please note that in Pops, the outputs/results should not be directly printed, but instead, they will be exported through the exports property under the pop object.
 #+end_quote
 
 * Loaders
