@@ -2,6 +2,13 @@
 #
 # SPDX-License-Identifier: MIT
 
+{
+  super,
+  projectDir,
+  POP,
+  flops,
+  haumea,
+}:
 (super.homeModules.addLoadExtender {
   load = {
     src = projectDir + "/units/nixos/homeProfiles";

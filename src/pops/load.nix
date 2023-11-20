@@ -6,6 +6,8 @@
   flops,
   haumea,
   root,
+  POP,
+  lib,
 }:
 let
   inherit (flops) recursiveMerge';

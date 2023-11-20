@@ -2,6 +2,11 @@
 #
 # SPDX-License-Identifier: MIT
 
+{
+  super,
+  root,
+  projectDir,
+}:
 let
   outputs = root.lib.mapPopsExports super.pops;
 in

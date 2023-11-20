@@ -2,6 +2,11 @@
 #
 # SPDX-License-Identifier: MIT
 
+{
+  super,
+  projectDir,
+  flops,
+}:
 super.nixosProfiles.addLoadExtender {
   load = {
     src = projectDir + "/units/nixos/darwinProfiles";

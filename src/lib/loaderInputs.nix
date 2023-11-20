@@ -2,6 +2,11 @@
 #
 # SPDX-License-Identifier: MIT
 
+{
+  inputs,
+  root,
+  lib,
+}:
 inputs.self.pops.self.load.inputs
 // {
   omnibus =

@@ -2,6 +2,14 @@
 #
 # SPDX-License-Identifier: MIT
 
+{
+  super,
+  POP,
+  flops,
+  inputs,
+  lib,
+  haumea,
+}:
 (flops.haumea.pops.default.setInit {
   src = super.flake.inputs.srvos + "/nixos";
   type = "nixosProfiles";

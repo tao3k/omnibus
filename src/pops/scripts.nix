@@ -2,6 +2,13 @@
 #
 # SPDX-License-Identifier: MIT
 
+{
+  super,
+  root,
+  inputs,
+  lib,
+  haumea,
+}:
 let
   inherit (inputs) nixpkgs;
   inherit (root.ops) makes;

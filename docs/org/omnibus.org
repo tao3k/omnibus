@@ -13,7 +13,7 @@
 
 ** [[id:55e5de92-922e-4e91-aa8c-c8121545aac8][nixosProfiles]] :style:
 
-In the style of nixos/homeProfiles in OmniBus, the "toplevel" directory is used to store the categorized suites, while the "presets" folder is to store the themes, Each theme is named based on the *file name/folder name* for configuration purposes. The *folders/files* within this theme folder can contain one or more profiles associated with that theme. These profiles are then collected and further categorized within the attributes of the "toplevel" directory.
+In the layout of nixos/homeProfiles in OmniBus, the "toplevel" directory is used to store the categorized suites, while the "presets" folder is to store the themes, Each theme is named based on the *file name/folder name* for configuration purposes. The *folders/files* within this theme folder can contain one or more profiles associated with that theme. These profiles are then collected and further categorized within the attributes of the "toplevel" directory.
 
 
 
@@ -32,11 +32,12 @@ tree $PRJ_ROOT/units/nixos/nixosProfiles -L 1
 | 2                                                                        | directories,  | 4 | files |
 
 
-- layouts
-  - suites: [[id:cbe34da3-ffbb-423c-aee4-d0cd71af51e4][shell]]
+- omnibusLayout
+  - suites: [[id:cbe34da3-ffbb-423c-aee4-d0cd71af51e4][shell]] (on the toplevel)
+  - profiles: (in the presets, on the second level dir)
 
 - exports
-  - omnibus (outputs the profiles with our style principle)
+  - omnibus (outputs the profiles with our layout principle)
   - default (vanilla nixosProfiles layouts)
 
 #+begin_src nix

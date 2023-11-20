@@ -2,6 +2,12 @@
 #
 # SPDX-License-Identifier: MIT
 
+{
+  super,
+  projectDir,
+  POP,
+  flops,
+}:
 (super.nixosModules.addLoadExtender {
   load = {
     src = projectDir + "/units/nixos/nixosProfiles";
@@ -11,9 +17,9 @@
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
-      _self: _super: {
+      selfExp: _super: {
         exports = {
-          omnibus = super.exportsOmnibusProfiles self;
+          omnibusLayout = super.exportsOmnibusProfiles selfExp.layouts.default;
         };
       }
     ))

@@ -2,6 +2,13 @@
 #
 # SPDX-License-Identifier: MIT
 
+{
+  root,
+  lib,
+  projectDir,
+  POP,
+  flops,
+}:
 (flops.haumea.pops.default.setInit {
   src = projectDir + "/units/nixos/nixosModules";
   type = "nixosModules";

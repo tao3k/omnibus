@@ -2,6 +2,13 @@
 #
 # SPDX-License-Identifier: MIT
 
+{
+  super,
+  projectDir,
+  haumea,
+  lib,
+  inputs,
+}:
 super.nixosProfiles.addLoadExtender {
   load = {
     src = projectDir + "/units/devshell/profiles";

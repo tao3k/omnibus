@@ -14,7 +14,6 @@ let
 in
 flops.lib.haumea.pops.default.setInit {
   src = ./.;
-  loader = haumea.lib.loaders.scoped;
   inputs = {
     lib = (nixlib.lib.recursiveUpdate nixlib.lib inputs.self.lib) // builtins;
     haumea = haumea.lib;

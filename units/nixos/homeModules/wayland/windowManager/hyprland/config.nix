@@ -1,7 +1,6 @@
 # SPDX-FileCopyrightText: 2023 The omnibus Authors
 #
 # SPDX-License-Identifier: MIT
-
 {
   config =
     with lib;
@@ -45,16 +44,17 @@
               runtimeInputs = [ pkgs.swww ];
               text =
                 ''
-                  ${l.concatStringsSep "\n" (
-                    l.mapAttrsToList (n: v: "export ${n}=${''"$''}{${n}:-${toString v}}${''"''}") (
-                      {
-                        # Edit bellow to control the images transition
-                        SWWW_TRANSITION_FPS = 60;
-                        SWWW_TRANSITION_STEP = 2;
-                        INTERVAL = 3000;
-                      }
-                      // cfg.__profiles__.swww.runtimeEnv
-                    )
+                  ${lib.concatStringsSep "\n" (
+                    lib.mapAttrsToList (n: v: "export ${n}=${''"$''}{${n}:-${toString v}}${''"''}")
+                      (
+                        {
+                          # Edit bellow to control the images transition
+                          SWWW_TRANSITION_FPS = 60;
+                          SWWW_TRANSITION_STEP = 2;
+                          INTERVAL = 3000;
+                        }
+                        // cfg.__profiles__.swww.runtimeEnv
+                      )
                   )}
                 ''
                 + lib.fileContents ./swww_randomize.sh;

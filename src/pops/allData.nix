@@ -2,6 +2,12 @@
 #
 # SPDX-License-Identifier: MIT
 
+{
+  super,
+  root,
+  haumea,
+  flops,
+}:
 (super.data.addLoadExtender {
   load = {
     loader = with haumea; [

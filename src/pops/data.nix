@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
+{ haumea, flops }:
 flops.haumea.pops.default.setInit {
   loader = with haumea; [
     matchers.json
