@@ -3,11 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 # [[file:../../docs/org/pops-packages.org::*Example][Example:1]]
-{
-  omnibus,
-  inputs,
-  self,
-}:
+{ omnibus, inputs }:
 omnibus.pops.packages {
   src = ./__fixture;
   inputs = {

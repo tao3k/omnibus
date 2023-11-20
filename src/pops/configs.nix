@@ -21,7 +21,7 @@ let
   applyRecursive =
     mkFunc: layoutData:
     lib.mapAttrsRecursiveCond (as: !(lib.isAttrs as && as ? data)) # Condition to check
-      (n: v: mkFunc v) # Function to apply
+      (_n: v: mkFunc v) # Function to apply
       layoutData;
 
   # Function to process each layout

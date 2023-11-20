@@ -14,10 +14,7 @@ load:
 (flops.haumea.pops.default.setInit (
   recursiveMerge' [
     {
-      loader = with haumea; [
-        (matchers.nix loaders.scoped)
-        (matchers.nix loaders.default)
-      ];
+      loader = with haumea; [ (matchers.nix loaders.default) ];
       inputs = root.lib.loaderInputs;
     }
     load

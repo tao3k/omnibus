@@ -9,7 +9,7 @@ let
   getDirs = host: lib.attrNames (lib.readDir (dir + "/${host}"));
   processPops =
     name:
-    lib.filterAttrs (n: v: v != { }) (
+    lib.filterAttrs (_n: v: v != { }) (
       lib.mapAttrs
         (
           n: v:

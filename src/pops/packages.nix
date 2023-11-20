@@ -28,7 +28,7 @@ makeScope newScope (
         self: _super: {
           exports = {
             overlay =
-              final: prev:
+              final: _prev:
               (self.layouts.self.addLoadExtender {
                 load = {
                   inputs.inputs.nixpkgs = final;

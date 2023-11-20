@@ -4,7 +4,7 @@
 
 { lib }:
 self:
-lib.mapAttrs (n: v: (if lib.isAttrs v then v else v { })) self
+lib.mapAttrs (_n: v: (if lib.isAttrs v then v else v { })) self
 # (self.addLoadExtender {
 #   load = {
 #     transformer = [

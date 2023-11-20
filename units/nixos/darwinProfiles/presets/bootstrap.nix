@@ -4,7 +4,6 @@
 
 {
   omnibus,
-  pkgs,
   lib,
   config,
 }:

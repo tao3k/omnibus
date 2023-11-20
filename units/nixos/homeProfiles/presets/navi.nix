@@ -31,7 +31,7 @@ let
           "sunos"
           (if isLinux then "osx" else "linux")
           (
-            root: path: type:
+            _root: path: _type:
             if
               (builtins.match "[^/]*(rpm|yum|apt).*.cheat" (builtins.baseNameOf path)) == null
             then

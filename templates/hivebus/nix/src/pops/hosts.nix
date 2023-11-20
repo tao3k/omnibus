@@ -6,7 +6,6 @@
   lib,
   super,
   omnibus,
-  root,
   projectDir,
 }:
 let

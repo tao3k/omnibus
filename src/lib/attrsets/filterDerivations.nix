@@ -4,5 +4,5 @@
 
 { super, lib }:
 super.filterAttrsOnlyRecursive (
-  n: attrs: lib.isDerivation attrs || attrs.recurseForDerivations or false
+  _n: attrs: lib.isDerivation attrs || attrs.recurseForDerivations or false
 )

@@ -6,11 +6,9 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 let
-  inherit (inputs) nixpkgs;
   inherit (pkgs) system;
 in
 {
