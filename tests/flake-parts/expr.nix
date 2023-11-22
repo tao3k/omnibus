@@ -6,6 +6,7 @@
   omnibus,
   lib,
   inputs,
+  trace,
 }:
 let
   system = "x86_64-linux";
@@ -21,7 +22,7 @@ let
           };
         };
       };
-    }).exports.default.process-compose;
+    }).exports.default;
 
   mkFlake =
     flake.inputs.flake-parts.lib.mkFlake
@@ -34,9 +35,11 @@ let
       {
         systems = [ system ];
         imports = [ flake.inputs.process-compose-flake.flakeModule ];
-        perSystem = { ... }: { imports = [ flakeProfiles.sqlite-example ]; };
+        perSystem =
+          { ... }: { imports = [ flakeProfiles.process-compose.sqlite-example ]; };
       };
 in
 lib.mapAttrs (_: builtins.unsafeDiscardStringContext) {
   example = mkFlake.packages.${system}.sqlite-example;
 }
+// lib.optionalAttrs trace { inherit flakeProfiles; }

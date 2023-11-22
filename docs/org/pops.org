@@ -14,5 +14,8 @@ Please note that in Pops, the outputs/results should not be directly printed, bu
 #+end_quote
 
 * Loaders
+:PROPERTIES:
+:ID:       ad6e2605-7cf2-46e4-b828-493f950b58d8
+:END:
 
 - [[id:f7adb0ad-2cc1-4723-a796-bf608682456a][pops-packages]] (loading the packages into nixpkgs from a directory)

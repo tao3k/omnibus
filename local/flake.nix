@@ -32,7 +32,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixago-exts.follows = "";
     };
-
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";

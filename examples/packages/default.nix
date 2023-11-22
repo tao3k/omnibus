@@ -4,11 +4,16 @@
 
 # [[file:../../docs/org/pops-packages.org::*Example][Example:1]]
 { omnibus, inputs }:
-omnibus.pops.packages {
+let
+  nixpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+in
+(omnibus.pops.packages {
   src = ./__fixture;
   inputs = {
-    nixpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    inputs = {
+      inherit nixpkgs;
+    };
   };
-}
+})
 # => out.exports { default = {...}, packages = {...}; }
 # Example:1 ends here

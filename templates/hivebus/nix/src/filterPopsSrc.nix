@@ -5,7 +5,7 @@
 { lib, root }:
 src: dir:
 let
-  inherit (root.pops.subflake.inputs) nix-filter;
+  inherit (root.pops.flake.inputs) nix-filter;
 in
 # include =
 #   let

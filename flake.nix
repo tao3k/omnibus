@@ -22,6 +22,10 @@
       inherit src;
       inherit (src) lib ops errors;
 
+      nixci.default = {
+        dir1.dir = "./local";
+      };
+
       templates = {
         nixos = {
           path = ./templates/nixos;

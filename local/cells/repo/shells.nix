@@ -34,6 +34,7 @@ in
       nixpkgs.tree
 
       nixpkgs.reuse
+      nixpkgs.nixci
     ];
 
     commands = [ ];
