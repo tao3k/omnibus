@@ -87,6 +87,11 @@ in
             overlays = {
               default =
                 final: prev:
+                (self.exports.packages.packages (
+                  final // { overrideScope = self.exports.packages.overrideScope; }
+                ));
+              composeOverlay =
+                final: prev:
                 ((self.exports.packages.overrideScope (
                   _: scopeSuper: {
                     python3 = prev.python3.override (
