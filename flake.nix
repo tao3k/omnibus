@@ -23,7 +23,7 @@
       inherit (src) lib ops errors;
 
       nixci.default = {
-        dir1.dir = "./local";
+        dir1.dir = "./local/ci";
       };
 
       templates = {
