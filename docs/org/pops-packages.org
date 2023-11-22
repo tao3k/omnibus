@@ -143,17 +143,26 @@ in
 ** Example
 
 #+begin_src nix :tangle (concat (org-entry-get nil "EXP-DIR" t) "/packages/default.nix")
-{
-  omnibus,
-  inputs,
-  self,
-}:
-omnibus.pops.packages {
+{ omnibus, inputs }:
+let
+  nixpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+in
+(omnibus.pops.packages {
   src = ./__fixture;
   inputs = {
-    nixpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    inputs = {
+      inherit nixpkgs;
+      source = import ./_sources/generated.nix {
+        inherit (nixpkgs)
+          fetchgit
+          fetchurl
+          fetchFromGitHub
+          dockerTools
+        ;
+      };
+    };
   };
-}
+})
 # => out.exports { default = {...}, packages = {...}; }
 #+end_src
 

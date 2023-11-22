@@ -6,6 +6,7 @@
   super,
   root,
   projectDir,
+  inputs,
 }:
 let
   outputs = root.lib.mapPopsExports super.pops;
@@ -24,6 +25,16 @@ in
     devshellProfiles
     flake
   ;
+
+  scripts =
+    (super.pops.scripts.addLoadExtender {
+      load.inputs = {
+        inputs = {
+          nixpkgs = super.pops.flake.inputs.nixpkgs.legacyPackages.x86_64-linux;
+          inherit (super.pops.flake.inputs) makesSrc;
+        };
+      };
+    }).exports.default;
 
   units = {
     inherit (outputs) configs std;

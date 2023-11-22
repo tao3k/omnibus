@@ -3,3 +3,6 @@ deadnix:
 
 justfmt:
     just --fmt --unstable
+
+exmaples-nvfetcher:
+    nix run .\#scripts.nvfetch-update ./examples/packages/source.toml

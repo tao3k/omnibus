@@ -8,27 +8,44 @@
   inputs,
   lib,
   haumea,
+  projectDir,
+  POP,
 }:
-let
-  inherit (inputs) nixpkgs;
-  inherit (root.ops) makes;
-in
 (super.load {
-  inputs =
-    {
-      inherit nixpkgs;
-    }
-    // lib.optionalAttrs (inputs ? climodSrc) {
-      climod = nixpkgs.callPackage inputs.climodSrc { pkgs = nixpkgs; };
-    }
-    // lib.optionalAttrs (inputs ? makesSrc) (
-      makes
+  src = projectDir + "/units/scripts";
+  inputsTransformer = [
+    (
+      x:
+      let
+        makes =
+          (inputs.self.pops.self.addLoadExtender {
+            load.inputs.inputs = {
+              inherit nixpkgs makesSrc;
+            };
+          }).exports.default.ops.makes;
+        inherit
+          (root.errors.requiredInputs x.inputs "omnibus.pops.scripts" [ "nixpkgs" ])
+          nixpkgs
+          makesSrc
+        ;
+      in
+      x
       // {
-        inputs = {
-          inherit makes;
-        };
+        inherit nixpkgs;
       }
-    );
+      // lib.optionalAttrs (x.inputs ? climodSrc) {
+        climod = nixpkgs.callPackage inputs.climodSrc { pkgs = nixpkgs; };
+      }
+      // lib.optionalAttrs (x.inputs ? makesSrc) (
+        makes
+        // {
+          inputs = {
+            inherit makes;
+          };
+        }
+      )
+    )
+  ];
 
   loader = with haumea; [ (matchers.nix loaders.scoped) ];
   transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];

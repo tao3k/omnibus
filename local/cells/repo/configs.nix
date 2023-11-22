@@ -23,7 +23,7 @@ in
     inherit (lefthook) default;
   };
   treefmt = {
-    default = (treefmt.default cfg.treefmt.topiary);
+    default = (treefmt.default cfg.treefmt.topiary cfg.treefmt.nvfetcher);
   };
   conform = rec {
     default = conform.default custom;

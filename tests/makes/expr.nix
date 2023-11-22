@@ -21,9 +21,15 @@ let
 in
 {
   scripts =
-    (omnibusLib.pops.scripts.addLoadExtender {
+    (omnibus.pops.scripts.addLoadExtender {
       load = {
         src = ./__fixture;
+        inputs = {
+          inputs = {
+            nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
+            inherit makesSrc;
+          };
+        };
       };
     }).exports.default;
 

@@ -6,6 +6,7 @@
   root,
   haumea,
   projectDir,
+  super,
 }:
 load:
 let

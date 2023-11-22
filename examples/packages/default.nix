@@ -12,6 +12,14 @@ in
   inputs = {
     inputs = {
       inherit nixpkgs;
+      source = import ./_sources/generated.nix {
+        inherit (nixpkgs)
+          fetchgit
+          fetchurl
+          fetchFromGitHub
+          dockerTools
+        ;
+      };
     };
   };
 })
