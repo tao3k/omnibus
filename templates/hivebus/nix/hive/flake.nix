@@ -60,7 +60,7 @@
     std.growOn
       {
         inputs = inputs // {
-          repo = call-flake ../..;
+          hivebus = call-flake ../..;
         };
         systems = [
           "aarch64-darwin"
