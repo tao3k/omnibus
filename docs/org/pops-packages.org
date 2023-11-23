@@ -119,7 +119,7 @@ in
                     );
                     python3Packages = prev.python3Packages.override (
                       old: {
-                        overrides = prev.lib.composeExtensions (old.packageOverrides or (_: _: { })) (
+                        overrides = prev.lib.composeExtensions (old.overrides or (_: _: { })) (
                           pythonSelf: _:
                           if scopeSuper ? py then scopeSuper.py.packages pythonSelf else { }
                         );
@@ -192,13 +192,17 @@ let
   nixos-23_05 = omnibus.flake.inputs.nixos-23_05;
 in
 nixos-23_05.legacyPackages.x86_64-linux.appendOverlays [
-  # super.packages.exports.overlays.composeOverlay
-  super.packages.exports.overlays.default
+  super.packages.exports.overlays.composeOverlay
+  # super.packages.exports.overlays.default
   (final: prev: {
     python3Packages = prev.python3Packages.override (
       old: {
-        overrides = prev.lib.composeExtensions (old.packageOverrides or (_: _: { })) (
-          selfP: _: super.packages.exports.packages.py.packages selfP
+        overrides = prev.lib.composeExtensions (old.overrides or (_: _: { })) (
+          selfP: _:
+          # can be either super.packages.exports.packages.py.packages selfP
+          {
+            a = "1";
+          }
         );
       }
     );

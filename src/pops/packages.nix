@@ -106,7 +106,7 @@ in
                     );
                     python3Packages = prev.python3Packages.override (
                       old: {
-                        overrides = prev.lib.composeExtensions (old.packageOverrides or (_: _: { })) (
+                        overrides = prev.lib.composeExtensions (old.overrides or (_: _: { })) (
                           pythonSelf: _:
                           if scopeSuper ? py then scopeSuper.py.packages pythonSelf else { }
                         );
