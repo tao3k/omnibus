@@ -103,7 +103,7 @@ in
                 (self.exports.packages.packages (
                   final // { overrideScope = self.exports.packages.overrideScope; }
                 ));
-              composeOverlay =
+              compose =
                 final: prev:
                 ((self.exports.packages.overrideScope (
                   _: scopeSuper: {
@@ -192,7 +192,7 @@ let
   nixos-23_05 = omnibus.flake.inputs.nixos-23_05;
 in
 nixos-23_05.legacyPackages.x86_64-linux.appendOverlays [
-  super.packages.exports.overlays.composeOverlay
+  super.packages.exports.overlays.compose
   # super.packages.exports.overlays.default
   (final: prev: {
     python3Packages = prev.python3Packages.override (

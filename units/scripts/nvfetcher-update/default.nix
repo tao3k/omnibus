@@ -1,6 +1,5 @@
-makeScript {
+writeShellApplication {
   name = "nvfetcher-update";
-  searchPaths.bin = [ nixpkgs.nvfetcher ];
-  searchPaths.source = [ ];
-  entrypoint = ./entrypoint.sh;
+  runtimeInputs = [ nixpkgs.nvfetcher ];
+  text = nixpkgs.lib.fileContents ./entrypoint.sh;
 }

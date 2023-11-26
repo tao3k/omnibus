@@ -90,7 +90,7 @@ in
                 (self.exports.packages.packages (
                   final // { overrideScope = self.exports.packages.overrideScope; }
                 ));
-              composeOverlay =
+              compose =
                 final: prev:
                 ((self.exports.packages.overrideScope (
                   _: scopeSuper: {

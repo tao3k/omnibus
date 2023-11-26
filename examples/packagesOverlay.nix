@@ -8,7 +8,7 @@ let
   nixos-23_05 = omnibus.flake.inputs.nixos-23_05;
 in
 nixos-23_05.legacyPackages.x86_64-linux.appendOverlays [
-  super.packages.exports.overlays.composeOverlay
+  super.packages.exports.overlays.compose
   # super.packages.exports.overlays.default
   (final: prev: {
     python3Packages = prev.python3Packages.override (
