@@ -53,6 +53,7 @@ in
       (extraHomeModule [
         out.outputs.homeProfiles.customProfiles.presets.hyprland.default
         out.outputs.homeProfiles.default.presets.firefox
+        out.outputs.homeProfiles.default.presets.foliate
       ])
     ]).config.home-manager.users.admin;
 }

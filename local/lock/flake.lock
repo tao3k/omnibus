@@ -86,6 +86,22 @@
         "type": "github"
       }
     },
+    "catppuccin-foliate": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1675229524,
+        "narHash": "sha256-tpZj1/gV2TEdcequ+0EFz/3Hv4UN2dcdbJvT8a/i+hs=",
+        "owner": "catppuccin",
+        "repo": "foliate",
+        "rev": "40ae4528569d864cba8f4e64716c3361f7244209",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "foliate",
+        "type": "github"
+      }
+    },
     "climodSrc": {
       "flake": false,
       "locked": {
@@ -1433,6 +1449,7 @@
       "inputs": {
         "agenix": "agenix",
         "audioNix": "audioNix",
+        "catppuccin-foliate": "catppuccin-foliate",
         "climodSrc": "climodSrc",
         "darwin": "darwin_2",
         "devshell": "devshell",

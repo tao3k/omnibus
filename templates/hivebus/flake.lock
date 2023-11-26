@@ -83,11 +83,11 @@
         "yants": "yants"
       },
       "locked": {
-        "lastModified": 1700659340,
-        "narHash": "sha256-CKi6aZ69f8jREzfRYq1h8UTcFry99IsRb6Xww7TzEsQ=",
+        "lastModified": 1700993790,
+        "narHash": "sha256-0m5x3YysUPYR2rtgtpRCRW7hP5YqEebwkGvhDmvG0Zo=",
         "owner": "gtrunsec",
         "repo": "flops",
-        "rev": "ce1f931ba43ee94873f98cea7291ea90ad22b7c1",
+        "rev": "a3fb5306c5d30baf7b9bc743d09665604e80ed69",
         "type": "github"
       },
       "original": {
@@ -168,11 +168,11 @@
         "flops": "flops"
       },
       "locked": {
-        "lastModified": 1700659639,
-        "narHash": "sha256-jQu9x3Z2B4zvU11ARfwQhqdKwjzvhLU98IdQijbG0R4=",
+        "lastModified": 1700994623,
+        "narHash": "sha256-6DPHf9j1iLQ1Z429jR8gtmEiWHHBpr7thjhcYNGVSq0=",
         "owner": "gtrunsec",
         "repo": "omnibus",
-        "rev": "b0d1d683554202acd9286d9fc8d3b39c54c888ba",
+        "rev": "51504c677d92be63d0eeb1964fee22d04f2440f2",
         "type": "github"
       },
       "original": {

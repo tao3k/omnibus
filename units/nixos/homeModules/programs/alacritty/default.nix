@@ -12,10 +12,8 @@ in
   };
   config = mkMerge [
     (mkIf (cfg.enable && pkgs.stdenv.isLinux) {
-      programs.alacritty = {
-        settings = {
-          key_bindings = mkIf cfg.CSIuSupport CSIuKeyBindings;
-        };
+      settings = {
+        key_bindings = mkIf cfg.CSIuSupport CSIuKeyBindings;
       };
     })
   ];

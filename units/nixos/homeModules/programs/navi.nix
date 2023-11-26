@@ -28,12 +28,12 @@
   config =
     with lib;
     mkMerge [
-      {
+      (mkModulePath {
         settings = {
           cheats = {
             paths = config.programs.navi.__profiles__.navi-tldr-pages.paths;
           };
         };
-      }
+      })
     ];
 }

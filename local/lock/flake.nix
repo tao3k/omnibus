@@ -84,6 +84,9 @@
 
     navi-tldr-pages.url = "github:denisidoro/navi-tldr-pages";
     navi-tldr-pages.flake = false;
+
+    catppuccin-foliate.url = "github:catppuccin/foliate";
+    catppuccin-foliate.flake = false;
   };
   outputs = _: { };
 }

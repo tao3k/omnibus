@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2023 The omnibus Authors
 #
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: MIT'
 
 {
   config =

@@ -30,8 +30,8 @@ let
     ])
   );
   brews = lib.subtractLists cfg.__profiles__.brews.removePackagesFromProfiles (
-    lib.optionals cfg.__profiles__.emacs [ "emacs-plus@29" ]
-    ++ (lib.optionals cfg.__profiles__.fonts [
+    lib.optionals cfg.__profiles__.enableEmacs [ "emacs-plus@29" ]
+    ++ (lib.optionals cfg.__profiles__.enableFonts [
       "fontconfig"
       "rxvt-unicode"
     ])
@@ -78,20 +78,28 @@ in
   config =
     with lib;
     mkMerge [
-      { inherit casks brews; }
-      (mkIf cfg.__profiles__.default {
-        taps = [
-          "homebrew/bundle"
-          "homebrew/core"
-        ];
-      })
-      (mkIf (cfg.casks != [ ]) {
-        taps = [
-          "homebrew/cask"
-          "homebrew/cask-versions"
-        ];
-      })
-      (mkIf cfg.__profiles__.fonts { taps = [ "homebrew/cask-fonts" ]; })
-      (mkIf cfg.__profiles__.emacs { taps = [ "d12frosted/emacs-plus" ]; })
+      (mkModulePath { inherit casks brews; })
+      (mkIf cfg.__profiles__.default (
+        mkModulePath {
+          taps = [
+            "homebrew/bundle"
+            "homebrew/core"
+          ];
+        }
+      ))
+      (mkIf (cfg.casks != [ ]) (
+        mkModulePath {
+          taps = [
+            "homebrew/cask"
+            "homebrew/cask-versions"
+          ];
+        }
+      ))
+      (mkIf cfg.__profiles__.fonts (
+        mkModulePath { taps = [ "homebrew/cask-fonts" ]; }
+      ))
+      (mkIf cfg.__profiles__.emacs (
+        mkModulePath { taps = [ "d12frosted/emacs-plus" ]; }
+      ))
     ];
 }
