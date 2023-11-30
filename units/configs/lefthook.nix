@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ inputs, omnibus }:
+{inputs, omnibus}:
 let
   inherit
     (omnibus.errors.requiredInputs inputs "omnibus.pops.configs" [
@@ -11,14 +11,14 @@ let
     ])
     nixpkgs
     nur
-  ;
+    ;
   languagetool-code-comments =
     (nixpkgs.extend nur.overlay)
     .nur.repos.dustinblackman.languagetool-code-comments;
 in
 {
   default = {
-    packages = [ nixpkgs.jq ];
+    packages = [nixpkgs.jq];
     data = {
       commit-msg = {
         commands = {
@@ -56,6 +56,6 @@ in
     };
   };
   languagetool-code-comments = {
-    packages = [ languagetool-code-comments ];
+    packages = [languagetool-code-comments];
   };
 }

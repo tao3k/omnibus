@@ -21,10 +21,10 @@ in
       loader =
         __inputs__: path:
         #  without the scope loader
-        (__inputs__.inputs.nixpkgs.extend (_: _: { inherit __inputs__; })).callPackage
+        (__inputs__.inputs.nixpkgs.extend (_: _: {inherit __inputs__;})).callPackage
           path
-          { };
-      transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
+          {};
+      transformer = [(_cursor: dir: if dir ? default then dir.default else dir)];
     }
     load
   ]
@@ -37,10 +37,10 @@ in
             inherit
               (root.errors.requiredInputs self.layouts.self.load.inputs.inputs
                 "omnibus.pops.packages"
-                [ "nixpkgs" ]
+                ["nixpkgs"]
               )
               nixpkgs
-            ;
+              ;
             inherit (nixpkgs) newScope;
             inherit (nixpkgs.lib) makeScope;
           in
@@ -58,23 +58,22 @@ in
                 load = {
                   loader =
                     __inputs__: path:
-                    (selfScope.overrideScope (_: _: { inherit __inputs__; })).callPackage path { };
+                    (selfScope.overrideScope (_: _: {inherit __inputs__;})).callPackage path {};
                   inputs = {
                     callPackagesWithOmnibus =
                       selfScope: src:
                       (super.load {
                         loader =
                           _: path:
-                          (selfScope.overrideScope (
-                            _: _: { __inputs__ = self.layouts.self.load.inputs; }
-                          )).callPackage
+                          (selfScope.overrideScope (_: _: {__inputs__ = self.layouts.self.load.inputs;}))
+                          .callPackage
                             path
-                            { };
+                            {};
                         src = nix-filter.lib.filter {
                           root = src;
-                          exclude = [ "default.nix" ];
+                          exclude = ["default.nix"];
                         };
-                        transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
+                        transformer = [(_cursor: dir: if dir ? default then dir.default else dir)];
                       }).exports.default;
                   };
                 };
@@ -88,7 +87,7 @@ in
               default =
                 final: prev:
                 (self.exports.packages.packages (
-                  final // { overrideScope = self.exports.packages.overrideScope; }
+                  final // {overrideScope = self.exports.packages.overrideScope;}
                 ));
               compose =
                 final: prev:
@@ -97,24 +96,22 @@ in
                     python3 = prev.python3.override (
                       old: {
                         packageOverrides =
-                          prev.lib.composeExtensions (old.packageOverrides or (_: _: { }))
+                          prev.lib.composeExtensions (old.packageOverrides or (_: _: {}))
                             (
-                              pythonSelf: _:
-                              if scopeSuper ? py then scopeSuper.py.packages pythonSelf else { }
+                              pythonSelf: _: if scopeSuper ? py then scopeSuper.py.packages pythonSelf else {}
                             );
                       }
                     );
                     python3Packages = prev.python3Packages.override (
                       old: {
-                        overrides = prev.lib.composeExtensions (old.overrides or (_: _: { })) (
-                          pythonSelf: _:
-                          if scopeSuper ? py then scopeSuper.py.packages pythonSelf else { }
+                        overrides = prev.lib.composeExtensions (old.overrides or (_: _: {})) (
+                          pythonSelf: _: if scopeSuper ? py then scopeSuper.py.packages pythonSelf else {}
                         );
                       }
                     );
                   }
                 )).packages
-                  (final // { overrideScope = self.exports.packages.overrideScope; })
+                  (final // {overrideScope = self.exports.packages.overrideScope;})
                 );
             };
           };

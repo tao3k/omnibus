@@ -2,8 +2,8 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ yants, self }:
+{yants, self}:
 with yants; {
-  a = struct "test" { name = string; };
-  b = either self.a (struct { age = int; });
+  a = struct "test" {name = string;};
+  b = either self.a (struct {age = int;});
 }

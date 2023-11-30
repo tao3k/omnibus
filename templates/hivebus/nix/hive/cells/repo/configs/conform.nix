@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ inputs }:
+{inputs}:
 with inputs.dmerge; {
   data = {
     commit.conventional.scopes = append [

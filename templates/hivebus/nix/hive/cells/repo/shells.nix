@@ -6,7 +6,7 @@
 
    They conveniently also generate config files in their startup hook.
 */
-{ inputs, cell }:
+{inputs, cell}:
 let
   inherit (inputs.std) lib;
   inherit (inputs) std;
@@ -28,8 +28,8 @@ in
       # (inputs.std-ext.presets.nixago.lefthook)
     ];
 
-    packages = [ inputs.colmena.packages.colmena ];
+    packages = [inputs.colmena.packages.colmena];
 
-    commands = [ ];
+    commands = [];
   };
 }

@@ -8,18 +8,16 @@ let
       "koodo-reader"
       "skim"
     ]
-    ++ (lib.optionals cfg.__profiles__.enableShell [
-      "wez/wezterm/wezterm-nightly"
-    ])
+    ++ (lib.optionals cfg.__profiles__.enableShell ["wez/wezterm/wezterm-nightly"])
     ++ (lib.optionals cfg.__profiles__.enableChat [
       "telegram-desktop"
       "signal-desktop"
       "element-desktop"
     ])
-    ++ (lib.optionals cfg.__profiles__.enableSecurity [ "secretive" ])
-    ++ (lib.optionals cfg.__profiles__.enableContainers [ "docker" ])
-    ++ (lib.optionals cfg.__profiles__.enableChinese [ "squirrel" ])
-    ++ (lib.optionals cfg.__profiles__.enableCustomization [ "bartender" ])
+    ++ (lib.optionals cfg.__profiles__.enableSecurity ["secretive"])
+    ++ (lib.optionals cfg.__profiles__.enableContainers ["docker"])
+    ++ (lib.optionals cfg.__profiles__.enableChinese ["squirrel"])
+    ++ (lib.optionals cfg.__profiles__.enableCustomization ["bartender"])
     ++ (lib.optionals cfg.__profiles__.enableFonts [
       "fontconfig"
       "font-material-icons"
@@ -30,7 +28,7 @@ let
     ])
   );
   brews = lib.subtractLists cfg.__profiles__.brews.removePackagesFromProfiles (
-    lib.optionals cfg.__profiles__.enableEmacs [ "emacs-plus@29" ]
+    lib.optionals cfg.__profiles__.enableEmacs ["emacs-plus@29"]
     ++ (lib.optionals cfg.__profiles__.enableFonts [
       "fontconfig"
       "rxvt-unicode"
@@ -62,14 +60,14 @@ in
     casks = {
       removePackagesFromProfiles = mkOption {
         type = types.listOf types.str;
-        default = [ ];
+        default = [];
         description = "List of packages to remove from cask profiles";
       };
     };
     brews = {
       removePackagesFromProfiles = mkOption {
         type = types.listOf types.str;
-        default = [ ];
+        default = [];
         description = "List of packages to remove from brew profiles";
       };
     };
@@ -78,7 +76,7 @@ in
   config =
     with lib;
     mkMerge [
-      (mkModulePath { inherit casks brews; })
+      (mkModulePath {inherit casks brews;})
       (mkIf cfg.__profiles__.default (
         mkModulePath {
           taps = [
@@ -87,7 +85,7 @@ in
           ];
         }
       ))
-      (mkIf (cfg.casks != [ ]) (
+      (mkIf (cfg.casks != []) (
         mkModulePath {
           taps = [
             "homebrew/cask"
@@ -95,11 +93,7 @@ in
           ];
         }
       ))
-      (mkIf cfg.__profiles__.fonts (
-        mkModulePath { taps = [ "homebrew/cask-fonts" ]; }
-      ))
-      (mkIf cfg.__profiles__.emacs (
-        mkModulePath { taps = [ "d12frosted/emacs-plus" ]; }
-      ))
+      (mkIf cfg.__profiles__.fonts (mkModulePath {taps = ["homebrew/cask-fonts"];}))
+      (mkIf cfg.__profiles__.emacs (mkModulePath {taps = ["d12frosted/emacs-plus"];}))
     ];
 }

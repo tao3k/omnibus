@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ inputs, omnibus }:
+{inputs, omnibus}:
 let
   inherit
     (omnibus.errors.requiredInputs inputs "omnibus.pops.configs" [
@@ -15,7 +15,7 @@ let
     topiary
     nixpkgs
     nixfmt
-  ;
+    ;
   inherit (dmerge) prepend;
 in
 {
@@ -29,10 +29,10 @@ in
     data = {
       formatter = {
         nix = {
-          includes = [ "*.nix" ];
+          includes = ["*.nix"];
           command = "nixfmt";
-          options = [ "--width=80" ];
-          excludes = [ ];
+          options = ["--width=80"];
+          excludes = [];
         };
         prettier = {
           command = "prettier";
@@ -63,14 +63,14 @@ in
             "-s"
             "-w"
           ];
-          includes = [ "*.sh" ];
+          includes = ["*.sh"];
         };
       };
     };
   };
   julia = {
     data.formatter.prettier = {
-      includes = prepend [ "" ];
+      includes = prepend [""];
       excludes = prepend [
         "Manifest.toml"
         "Project.toml"
@@ -81,49 +81,49 @@ in
   rust = {
     data.formatter.rust = {
       command = "rustfmt";
-      includes = [ "*.rs" ];
+      includes = ["*.rs"];
       options = [
         "--edition"
         "2021"
       ];
     };
     data.formatter.prettier = {
-      includes = prepend [ ".rustfmt.toml" ];
+      includes = prepend [".rustfmt.toml"];
     };
   };
   nvfetcher = {
     data.formatter.prettier = {
-      excludes = prepend [ "generated.json" ];
+      excludes = prepend ["generated.json"];
     };
     data.formatter.nix = {
-      excludes = prepend [ "generated.nix" ];
+      excludes = prepend ["generated.nix"];
     };
   };
   nix = {
     data.formatter.prettier = {
-      excludes = prepend [ ".nix.toml" ];
+      excludes = prepend [".nix.toml"];
     };
   };
   nickel = {
     data.formatter.nickel = {
       command = "nickel";
-      options = [ "format" ];
-      includes = [ "*.ncl" ];
+      options = ["format"];
+      includes = ["*.ncl"];
     };
   };
   deadnix = {
-    packages = [ nixpkgs.deadnix ];
+    packages = [nixpkgs.deadnix];
     data.formatter.deadnix = {
       command = "deadnix";
-      options = [ "--edit" ];
+      options = ["--edit"];
     };
   };
   topiary = {
     data.formatter.topiary = {
       command = "topiary";
-      options = [ "format" ];
-      includes = [ "*.ncl" ];
+      options = ["format"];
+      includes = ["*.ncl"];
     };
-    packages = [ topiary.packages.default ];
+    packages = [topiary.packages.default];
   };
 }

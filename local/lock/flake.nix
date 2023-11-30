@@ -88,5 +88,5 @@
     catppuccin-foliate.url = "github:catppuccin/foliate";
     catppuccin-foliate.flake = false;
   };
-  outputs = _: { };
+  outputs = _: {};
 }

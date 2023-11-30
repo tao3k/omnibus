@@ -21,7 +21,7 @@
           "style"
           "test"
         ];
-        scopes = [ ];
+        scopes = [];
       };
     };
   };

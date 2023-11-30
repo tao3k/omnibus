@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ omnibus }:
+{omnibus}:
 let
   inherit (omnibus.lib) inputsToPaths;
 in

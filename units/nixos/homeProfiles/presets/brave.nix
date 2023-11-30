@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ pkgs, ... }:
+{pkgs, ...}:
 {
   home.packages = with pkgs; [
     ((brave.override {
@@ -14,7 +14,7 @@
         # "--use-gl=egl"
       ];
     }).overrideAttrs
-      (_old: { })
+      (_old: {})
     )
   ];
 }

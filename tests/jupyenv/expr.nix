@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ omnibus }:
+{omnibus}:
 let
   system = "x86_64-linux";
   loadedInputs =

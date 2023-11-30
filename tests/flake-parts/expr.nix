@@ -33,13 +33,12 @@ let
         };
       }
       {
-        systems = [ system ];
-        imports = [ flake.inputs.process-compose-flake.flakeModule ];
-        perSystem =
-          { ... }: { imports = [ flakeProfiles.process-compose.sqlite-example ]; };
+        systems = [system];
+        imports = [flake.inputs.process-compose-flake.flakeModule];
+        perSystem = {...}: {imports = [flakeProfiles.process-compose.sqlite-example];};
       };
 in
 lib.mapAttrs (_: builtins.unsafeDiscardStringContext) {
   example = mkFlake.packages.${system}.sqlite-example;
 }
-// lib.optionalAttrs trace { inherit flakeProfiles; }
+// lib.optionalAttrs trace {inherit flakeProfiles;}

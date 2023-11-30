@@ -25,6 +25,6 @@ stdenv.mkDerivation {
 
   meta = {
     description = "An example package with unfree license (for testing)";
-    maintainers = [ lib.maintainers.oxij ];
+    maintainers = [lib.maintainers.oxij];
   };
 }

@@ -6,9 +6,19 @@
   super,
   projectDir,
   flops,
+  POP,
 }:
-super.nixosProfiles.addLoadExtender {
+(super.nixosProfiles.addLoadExtender {
   load = {
     src = projectDir + "/units/nixos/darwinProfiles";
   };
-}
+}).addExporters
+  [
+    (POP.extendPop flops.haumea.pops.exporter (
+      selfPop: _super: {
+        exports = {
+          omnibus = super.exportsOmnibusProfiles selfPop.layouts.default;
+        };
+      }
+    ))
+  ]

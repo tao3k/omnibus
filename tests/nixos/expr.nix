@@ -18,9 +18,8 @@ in
 {
   # inherit out;
   bootProfile =
-    (out.nixosConfiguration [
-      out.outputs.nixosProfiles.customProfiles.presets.boot
-    ]).config.boot.__profiles__;
+    (out.nixosConfiguration [out.outputs.nixosProfiles.customProfiles.presets.boot])
+    .config.boot.__profiles__;
 
   customModuleBootTimeOut =
     (out.nixosConfiguration [
@@ -44,7 +43,7 @@ in
 // lib.optionalAttrs trace {
   nixosConfiguration = out.nixosConfiguration [
     out.outputs.nixosProfiles.default.presets.boot
-    (out.outputs.nixosProfiles.default.dev { }).coding
+    (out.outputs.nixosProfiles.default.dev {}).coding
   ];
 
   homeConfiguration =

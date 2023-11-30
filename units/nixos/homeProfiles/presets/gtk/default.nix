@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ config, pkgs, ... }:
+{config, pkgs, ...}:
 {
   home.packages = with pkgs; [
     gnome.adwaita-icon-theme

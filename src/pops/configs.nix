@@ -12,9 +12,9 @@
 load:
 let
   inherit
-    (root.errors.requiredInputs load.inputs.inputs "omnibus.pops.configs" [ "std" ])
+    (root.errors.requiredInputs load.inputs.inputs "omnibus.pops.configs" ["std"])
     std
-  ;
+    ;
   inherit (std.lib.dev) mkNixago;
   inherit (std.lib) cfg;
 
@@ -41,7 +41,7 @@ in
   src = projectDir + "/units/configs";
   inputs = root.lib.loaderInputs;
 }).addLoadExtender
-  { inherit load; }
+  {inherit load;}
 ).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (

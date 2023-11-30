@@ -24,7 +24,7 @@ in
     devshellModules
     devshellProfiles
     flake
-  ;
+    ;
 
   scripts =
     (super.pops.scripts.addLoadExtender {

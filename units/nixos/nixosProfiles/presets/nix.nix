@@ -8,8 +8,8 @@
     optimise.automatic = true;
     nrBuildUsers = 0;
     settings = {
-      nix-path = [ "nixpkgs=${pkgs.path}" ];
-      allowed-users = [ "@wheel" ];
+      nix-path = ["nixpkgs=${pkgs.path}"];
+      allowed-users = ["@wheel"];
       trusted-users = [
         "root"
         "@wheel"

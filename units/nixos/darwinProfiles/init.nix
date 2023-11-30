@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ self, super }:
+{self, super}:
 let
   presets = super.presets;
 in
@@ -10,10 +10,10 @@ with presets; {
   default = [
     bootstrap
     nix.default
-    { omnibus.bootstrap.default = true; }
+    {omnibus.bootstrap.default = true;}
   ];
   full = [
     self.default
-    { omnibus.bootstrap.full = true; }
+    {omnibus.bootstrap.full = true;}
   ];
 }

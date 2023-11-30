@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ servcies.yabai.enable = true; }
+{servcies.yabai.enable = true;}

@@ -24,7 +24,7 @@ let
     )
     microvms
     default
-  ;
+    ;
 in
 lib.mapAttrs
   (_: v: if !lib.isFunction v then builtins.unsafeDiscardStringContext v else v)

@@ -42,7 +42,7 @@
   inputs.haumea.follows = "namaka/haumea";
 
   outputs =
-    { std, self, ... }@inputs:
+    {std, self, ...}@inputs:
     let
       omnibus = inputs.call-flake ../.;
     in
@@ -71,7 +71,7 @@
       {
         examples = omnibus.load {
           src = ../examples;
-          transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
+          transformer = [(_cursor: dir: if dir ? default then dir.default else dir)];
           inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.loaderInputs {
             inherit inputs;
             trace = true;

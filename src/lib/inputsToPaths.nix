@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ lib, flops }:
+{lib, flops}:
 # let
 #   # Helper function to collect outPath attributes recursively
 #   collectPaths =
@@ -64,7 +64,7 @@ let
   attrsToPaths = i: lib.attrValues (extractAttrsFromInputs i);
 
   inherit (flops) recursiveMerge;
-  updatedInputs = (recursiveMerge (l.flatten [ inputs ]));
+  updatedInputs = (recursiveMerge (l.flatten [inputs]));
 in
 l.pipe updatedInputs [
   (

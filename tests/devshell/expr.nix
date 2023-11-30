@@ -36,7 +36,7 @@ let
 
   shell = inputs.devshell.mkShell {
     name = "rust";
-    imports = [ devshellProfiles.rust ];
+    imports = [devshellProfiles.rust];
   };
 in
-lib.mapAttrs (_: builtins.unsafeDiscardStringContext) { rust = shell; }
+lib.mapAttrs (_: builtins.unsafeDiscardStringContext) {rust = shell;}

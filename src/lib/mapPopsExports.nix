@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ lib }:
+{lib}:
 pops:
 # mapAttrsRecursiveCond' =
 #   cond: f: set:

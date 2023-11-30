@@ -43,5 +43,5 @@
       flake = false;
     };
   };
-  outputs = _: { };
+  outputs = _: {};
 }

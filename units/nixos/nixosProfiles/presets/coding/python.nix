@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ pkgs, lib, ... }:
+{pkgs, lib, ...}:
 let
   cfg = config.omnibus.coding.python;
   pythonEnv =
@@ -37,18 +37,18 @@ let
           paramiko
           rapidfuzz
         ])
-        ++ [ ]
+        ++ []
       )
     ));
 in
 #.override (args: {ignoreCollisions = true;});
 {
-  imports = [ omnibus.nixosModules.omnibus.coding.python ];
+  imports = [omnibus.nixosModules.omnibus.coding.python];
   environment.systemPackages =
     with pkgs;
     [
       pythonEnv
       poetry
     ]
-    ++ lib.optionals pkgs.stdenv.isLinux [ ];
+    ++ lib.optionals pkgs.stdenv.isLinux [];
 }

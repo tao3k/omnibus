@@ -30,12 +30,12 @@ in
     let
       inputs' = (super.pops.flake.setSystem system).inputs;
       allData =
-        (super.pops.omnibus.lib.addLoadExtender { load.inputs.inputs = inputs'; })
+        (super.pops.omnibus.lib.addLoadExtender {load.inputs.inputs = inputs';})
         .exports.default.pops.allData;
     in
     {
       data =
-        (allData.addLoadExtender { load.src = projectDir + "/local/data"; })
+        (allData.addLoadExtender {load.src = projectDir + "/local/data";})
         .exports.default;
     }
   );
@@ -48,8 +48,8 @@ in
     (
       (flops.haumea.pops.default.setInit {
         src = ../packages;
-        loader = _: path: inputs.nixpkgs.callPackage path { };
-        transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
+        loader = _: path: inputs.nixpkgs.callPackage path {};
+        transformer = [(_cursor: dir: if dir ? default then dir.default else dir)];
       })
     ).exports.default
   );

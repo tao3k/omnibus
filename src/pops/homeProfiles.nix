@@ -13,7 +13,7 @@
   load = {
     src = projectDir + "/units/nixos/homeProfiles";
     type = "nixosProfiles";
-    transformer = [ (_: _: _) ];
+    transformer = [(_: _: _)];
   };
 }).addExporters
   [

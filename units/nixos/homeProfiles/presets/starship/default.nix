@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ config, lib }:
+{config, lib}:
 {
   programs.starship = {
     enable = true;

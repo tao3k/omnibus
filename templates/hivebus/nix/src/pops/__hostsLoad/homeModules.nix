@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ root, inputs }: _name: (root.pops.homeModules.addLoadExtender { load = { }; })
+{root, inputs}: _name: (root.pops.homeModules.addLoadExtender {load = {};})

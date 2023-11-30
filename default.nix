@@ -12,4 +12,4 @@ let
     + "/flake.nix"
   );
 in
-call-flake.outputs { } ./.
+call-flake.outputs {} ./.

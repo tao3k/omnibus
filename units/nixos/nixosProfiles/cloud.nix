@@ -16,7 +16,7 @@ let
         self: _super: {
           exports.srvosCustom = self.outputs [
             {
-              value = { selfModule }: removeAttrs selfModule [ "imports" ];
+              value = {selfModule}: removeAttrs selfModule ["imports"];
               path = [
                 "common"
                 "default"

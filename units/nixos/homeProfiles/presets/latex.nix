@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ pkgs, ... }:
+{pkgs, ...}:
 {
   home.packages = with pkgs; [
     (texlive.combine {
@@ -29,7 +29,7 @@
         roboto
         lato
         sourcesanspro
-      ;
+        ;
     })
   ];
 }

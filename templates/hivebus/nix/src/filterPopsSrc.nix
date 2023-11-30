@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ lib, root }:
+{lib, root}:
 src: dir:
 let
   inherit (root.pops.flake.inputs) nix-filter;
@@ -33,4 +33,4 @@ in
 #       list
 #     )
 #     srcDirs;
-nix-filter.lib.filter { root = src + "/${dir}"; }
+nix-filter.lib.filter {root = src + "/${dir}";}

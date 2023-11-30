@@ -14,5 +14,5 @@
     chinookDb.url = "github:lerocha/chinook-database";
     chinookDb.flake = false;
   };
-  outputs = _: { };
+  outputs = _: {};
 }

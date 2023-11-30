@@ -2,10 +2,10 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ pkgs }:
+{pkgs}:
 {
   kernel.bash.omnibus = {
     enable = true;
-    runtimePackages = [ pkgs.git ];
+    runtimePackages = [pkgs.git];
   };
 }

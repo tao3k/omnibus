@@ -21,7 +21,7 @@ in
         exports.customProfiles = self.outputs [
           {
             value =
-              { selfModule' }:
+              {selfModule'}:
               selfModule' (
                 m:
                 dmerge m {
@@ -38,8 +38,8 @@ in
           {
             # boot.__profiles__.systemd-initrd.enable = true;
             value =
-              { selfModule' }:
-              selfModule' (m: dmerge m { boot.__profiles__.systemd-boot.enable = true; });
+              {selfModule'}:
+              selfModule' (m: dmerge m {boot.__profiles__.systemd-boot.enable = true;});
             path = [
               "presets"
               "boot"

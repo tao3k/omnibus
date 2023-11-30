@@ -13,7 +13,7 @@
     };
     extraPackages = mkOption {
       type = types.functionTo (types.listOf types.package);
-      default = [ ];
+      default = [];
       description = "The language server package to use";
     };
   };

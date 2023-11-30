@@ -11,15 +11,15 @@
 }:
 let
   inherit
-    (omnibus.errors.requiredInputs inputs "omnibus.pops.nixosProfiles" [ "typst" ])
+    (omnibus.errors.requiredInputs inputs "omnibus.pops.nixosProfiles" ["typst"])
     typst
-  ;
-  pkgs' = pkgs.appendOverlays [ typst.overlays.default ];
+    ;
+  pkgs' = pkgs.appendOverlays [typst.overlays.default];
   cfg = config.omnibus.coding.typst;
 in
 {
-  imports = [ omnibus.nixosModules.omnibus.coding.typst ];
+  imports = [omnibus.nixosModules.omnibus.coding.typst];
   environment.systemPackages = [
     pkgs'.typst
-  ] ++ lib.optionals cfg.enableLsp [ pkgs'.typst-lsp ];
+  ] ++ lib.optionals cfg.enableLsp [pkgs'.typst-lsp];
 }

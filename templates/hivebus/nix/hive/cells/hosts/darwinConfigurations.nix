@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ inputs, cell }:
+{inputs, cell}:
 let
   inherit (inputs.nixpkgs) lib;
   layouts = lib.pipe inputs.repo.lib.exporter.hosts [

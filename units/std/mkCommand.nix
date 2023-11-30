@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ inputs }:
+{inputs}:
 currentSystem: name: description: deps: command: args:
 let
   inherit (inputs.std.inputs) nixpkgs;
@@ -13,7 +13,7 @@ let
     haskell
     shellcheck
     runtimeShell
-  ;
+    ;
   inherit (pkgs.haskell.lib.compose) justStaticExecutables;
 in
 args
@@ -46,7 +46,7 @@ args
 
         # Action Code follows ...
       ''
-      + lib.optionalString (deps != [ ]) ''
+      + lib.optionalString (deps != []) ''
         # Be optionally reproducible due to potential overhead to load some
         # quaasi-ubiquitous dependencies that are already generally available
         export PATH="${lib.makeBinPath deps}:$PATH"

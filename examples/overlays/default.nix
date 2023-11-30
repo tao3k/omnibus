@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ omnibus }: omnibus.pops.overlays { src = ./__fixture; }
+{omnibus}: omnibus.pops.overlays {src = ./__fixture;}

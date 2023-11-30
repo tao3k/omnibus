@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ inputs }:
+{inputs}:
 let
   inherit (inputs) flops self;
   inherit (flops.inputs)
@@ -10,7 +10,7 @@ let
     yants
     haumea
     nixlib
-  ;
+    ;
 in
 flops.lib.haumea.pops.default.setInit {
   src = ./.;

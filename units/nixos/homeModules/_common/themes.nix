@@ -1,7 +1,7 @@
-{ lib, inputs }:
+{lib, inputs}:
 with lib; {
   themes = mkOption {
-    default = { };
+    default = {};
     type = types.attrsOf (
       types.submodule (
         {
@@ -22,7 +22,7 @@ with lib; {
             };
           };
           config = mkMerge [
-            (mkIf (hasAttr name inputs) { src = inputs.${name}.outPath or inputs.${name}; })
+            (mkIf (hasAttr name inputs) {src = inputs.${name}.outPath or inputs.${name};})
           ];
         }
       )

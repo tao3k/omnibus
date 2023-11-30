@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ lib }:
+{lib}:
 list: pops: load:
 lib.listToAttrs (
   map

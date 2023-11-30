@@ -2,11 +2,11 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ lib, loadSubmodule }:
+{lib, loadSubmodule}:
 {
   options = with lib; {
     PATH = lib.mkOption {
-      default = [ ];
+      default = [];
       type = types.listOf types.str;
       apply = x: lib.concatStringsSep ":" x;
       description = ''
@@ -34,5 +34,5 @@
       description = "Whether to use contabo init configuration";
     };
   };
-  imports = [ (loadSubmodule ./packages.nix) ];
+  imports = [(loadSubmodule ./packages.nix)];
 }

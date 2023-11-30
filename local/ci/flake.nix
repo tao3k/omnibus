@@ -4,7 +4,7 @@
   inputs.call-flake.url = "github:divnix/call-flake";
 
   outputs =
-    { self, call-flake }:
+    {self, call-flake}:
     let
       local = call-flake ../.;
       inherit (local) examples;

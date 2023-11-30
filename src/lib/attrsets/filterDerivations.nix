@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ super, lib }:
+{super, lib}:
 super.filterAttrsOnlyRecursive (
   _n: attrs: lib.isDerivation attrs || attrs.recurseForDerivations or false
 )

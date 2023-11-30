@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ lib, super }:
+{lib, super}:
 pred: set:
 lib.listToAttrs (
   lib.concatMap
@@ -21,7 +21,7 @@ lib.listToAttrs (
           ))
         ]
       else
-        [ ]
+        []
     )
     (lib.attrNames set)
 )

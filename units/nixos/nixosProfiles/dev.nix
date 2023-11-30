@@ -3,12 +3,12 @@
 # SPDX-License-Identifier: MIT
 
 # [[file:../../../docs/org/nixosProfiles.org::*coding][coding:1]]
-{ root, self }:
+{root, self}:
 let
   presets = root.presets;
 in
 with presets; {
-  minimal = [ shell.default ];
+  minimal = [shell.default];
 
   default = [
     self.minimal
@@ -32,6 +32,6 @@ with presets; {
     }
   ];
 
-  mathematic = [ coding.typst ];
+  mathematic = [coding.typst];
 }
 # coding:1 ends here

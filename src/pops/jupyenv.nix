@@ -18,11 +18,10 @@ let
     ])
     nixpkgs
     jupyenv
-  ;
+    ;
   inherit (jupyenv.lib.${nixpkgs.system}) mkJupyterlabNew mkJupyterlabEval;
 
-  setJupyenvModule =
-    module: mkJupyterlabEval { imports = lib.flatten [ module ]; };
+  setJupyenvModule = module: mkJupyterlabEval {imports = lib.flatten [module];};
 in
 ((super.nixosProfiles.addLoadExtender {
   load = {
@@ -31,7 +30,7 @@ in
     };
   };
 }).addLoadExtender
-  { inherit load; }
+  {inherit load;}
 ).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (

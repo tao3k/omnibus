@@ -32,6 +32,6 @@ buildPythonPackage rec {
     homepage = "https://github.com/zeek/btest";
     changelog = "https://github.com/zeek/btest/blob/${version}/CHANGES";
     license = licenses.bsd3;
-    maintainers = with maintainers; [ fab ];
+    maintainers = with maintainers; [fab];
   };
 }

@@ -8,9 +8,9 @@
   };
 
   outputs =
-    { self, ... }@inputs:
+    {self, ...}@inputs:
     let
-      srcPops = import ./src/__init.nix { inherit inputs; };
+      srcPops = import ./src/__init.nix {inherit inputs;};
       src = srcPops.exports.default;
     in
     src.flakeOutputs

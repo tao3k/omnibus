@@ -1,1 +1,1 @@
-{ super, ... }: { secrets = [ super.preset.sequoia-pgp ]; }
+{super, ...}: {secrets = [super.preset.sequoia-pgp];}

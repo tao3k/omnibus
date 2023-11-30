@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ root, inputs }:
+{root, inputs}:
 (root.pops.nixosModules.addLoadExtender {
   load = {
-    inputs = { };
+    inputs = {};
   };
 })

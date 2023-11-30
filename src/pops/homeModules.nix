@@ -17,7 +17,7 @@
   type = "nixosModules";
   inputs = root.lib.loaderInputs;
 }).addLoadExtender
-  { load.inputs.inputs = super.flake.inputs; }
+  {load.inputs.inputs = super.flake.inputs;}
 ).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (

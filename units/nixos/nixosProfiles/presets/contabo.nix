@@ -9,7 +9,7 @@
   ...
 }:
 {
-  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
+  imports = [(modulesPath + "/profiles/qemu-guest.nix")];
   config =
     with lib;
     mkMerge [

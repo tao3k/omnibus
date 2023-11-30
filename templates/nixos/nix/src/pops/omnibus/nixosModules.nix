@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-(omnibus.pops.nixosModules.addLoadExtender { load = { }; })
+(omnibus.pops.nixosModules.addLoadExtender {load = {};})

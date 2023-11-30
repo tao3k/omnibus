@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ pkgs, lib, ... }:
+{pkgs, lib, ...}:
 {
   i18n = {
     inputMethod = {
@@ -16,5 +16,5 @@
       ];
     };
   };
-  environment = lib.mkMerge [ { variables = { }; } ];
+  environment = lib.mkMerge [{variables = {};}];
 }

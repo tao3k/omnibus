@@ -20,7 +20,7 @@ let
     ])
     nixpkgs
     microvm
-  ;
+    ;
   inherit
     ((inputs.self.pops.self.addLoadExtender {
       load = {
@@ -31,9 +31,9 @@ let
     }).exports.default.ops
     )
     mkMicrovm
-  ;
+    ;
 in
-(super.nixosProfiles.addLoadExtender { inherit load; }).addExporters [
+(super.nixosProfiles.addLoadExtender {inherit load;}).addExporters [
   (POP.extendPop flops.haumea.pops.exporter (
     self: _super: {
       exports = {

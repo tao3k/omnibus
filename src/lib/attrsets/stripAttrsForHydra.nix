@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ super }:
+{super}:
 super.filterAttrsOnlyRecursive (
   n: _: n != "recurseForDerivations" && n != "dimension"
 )

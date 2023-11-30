@@ -14,7 +14,7 @@ let
       "chinookDb"
     ])
     chinookDb
-  ;
+    ;
 
   port = 8213;
   dataFile = "data.sqlite";
@@ -59,7 +59,7 @@ in
         test = {
           command = pkgs.writeShellApplication {
             name = "sqlite-web-test";
-            runtimeInputs = [ pkgs.curl ];
+            runtimeInputs = [pkgs.curl];
             text = ''
               curl -v http://localhost:${builtins.toString port}/
             '';

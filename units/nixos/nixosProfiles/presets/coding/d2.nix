@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ pkgs, ... }:
+{pkgs, ...}:
 {
   environment.variables.PLAYWRIGHT_BROWSERS_PATH =
     pkgs.playwright-driver.browsers.outPath;

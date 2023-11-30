@@ -3,10 +3,10 @@
 # SPDX-License-Identifier: MIT
 
 {
-  imports = [ omnibus.homeModules.programs.bat ];
+  imports = [omnibus.homeModules.programs.bat];
   programs.bat = {
     enable = true;
     __profiles__.catppuccin-themes.name = "mocha";
-    extraPackages = with pkgs.bat-extras; [ batman ];
+    extraPackages = with pkgs.bat-extras; [batman];
   };
 }

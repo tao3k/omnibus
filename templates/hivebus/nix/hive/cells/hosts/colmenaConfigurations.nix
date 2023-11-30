@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ cell }:
+{cell}:
 {
   example = {
     deployment = {

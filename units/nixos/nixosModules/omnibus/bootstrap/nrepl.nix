@@ -2,19 +2,21 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ flakePath }:
+{flakePath}:
 let
   Flake =
     if builtins.pathExists flakePath then
-      (import
+      (import (
         (fetchTarball {
-          url = "https://github.com/edolstra/flake-compat/archive/0f9255e01c2351cc7d116c072cb317785dd33b33.tar.gz";
-          sha256 = "0m9grvfsbwmvgwaxvdzv6cmyvjnlww004gfxjvcl806ndqaxzy4j";
+          url = "https://github.com/divnix/call-flake/archive/088f8589c7f3ee59bea1858a89f5125d284c3c4a.tar.gz";
+          sha256 = "";
         })
-        { src = toString flakePath; }
-      ).defaultNix
+        + "/flake.nix"
+      )).outputs
+        {}
+        flakePath
     else
-      { };
+      {};
 
   Channels = Flake.pkgs.${builtins.currentSystem} or <nixpkgs>;
 

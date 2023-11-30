@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 # credit: https://github.com/divnix/std/blob/main/src/lib/ops/mkMicrovm.nix#
-{ inputs, root }:
+{inputs, root}:
 let
   inherit
     (root.errors.requiredInputs inputs "lib" [
@@ -12,11 +12,11 @@ let
     ])
     nixpkgs
     microvm
-  ;
+    ;
   nixosSystem =
     args:
     import "${nixpkgs.path}/nixos/lib/eval-config.nix" (
-      args // { modules = args.modules; }
+      args // {modules = args.modules;}
     );
 in
 module:

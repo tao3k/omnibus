@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ ... }:
+{...}:
 {
   programs.nushell = {
     enable = true;
