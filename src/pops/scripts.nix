@@ -31,7 +31,7 @@
       x
       // {
         inherit nixpkgs;
-        writeShellApplication = super.misc.writeShellApplication {inherit nixpkgs;};
+        writeShellApplication = root.ops.writeShellApplication {inherit nixpkgs;};
       }
       // lib.optionalAttrs (x.inputs ? climodSrc) {
         climod = nixpkgs.callPackage inputs.climodSrc {pkgs = nixpkgs;};
