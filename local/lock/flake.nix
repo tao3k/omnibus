@@ -56,6 +56,10 @@
   };
 
   inputs = {
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
     snapshotter.url = "github:pdtpartners/nix-snapshotter";
     snapshotter.inputs.nixpkgs.follows = "nixpkgs";
 

@@ -20,7 +20,7 @@
           };
         };
         boot.loader.grub = {
-          device = "/dev/sda";
+          device = lib.mkDefault "/dev/sda";
           efiSupport = false;
           enable = true;
         };

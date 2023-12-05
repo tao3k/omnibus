@@ -41,9 +41,24 @@ with presets; {
     }
   ];
 
+  brtfs-base = [fileSystems.btrfs];
+
+  btrfs-boot = [
+    fileSystems.disko-btrfs-boot
+    self.brtfs-base
+  ];
+
   contabo = [
     self.default
     contabo
+    self.btrfs-boot
+    {
+      boot.loader.grub.device = "";
+      disko.devices.__profiles__ = {
+        name = "sda";
+        device = "/dev/sda";
+      };
+    }
   ];
 }
 # cloud:1 ends here

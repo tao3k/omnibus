@@ -15,7 +15,7 @@ in
   inherit data outputs outputs';
 
   nixosSuites = lib.flatten [
-    outputs.selfNixOSProfiles.default.bootstrap
+    # outputs.selfNixOSProfiles.default.bootstrap
 
     # self.nixosProfiles.default.presets.boot
     # load a suite profile from audio

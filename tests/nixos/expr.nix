@@ -43,6 +43,13 @@ in
 // lib.optionalAttrs trace {
   nixosConfiguration = out.nixosConfiguration [
     out.outputs.nixosProfiles.default.presets.boot
+    (out.outputs.nixosProfiles.default.presets.fileSystems.disko-btrfs-boot)
+    {
+      disko.devices.__profiles__ = {
+        name = "sda";
+        device = "/dev/sda";
+      };
+    }
     (out.outputs.nixosProfiles.default.dev {}).coding
   ];
 
