@@ -31,8 +31,10 @@ in
 with presets; {
   default = [
     srvosCustom.common.default
+    openssh
+    zswap
     {
-      boot.cleanTmpDir = true;
+      services.zswap.zpool = "z3fold";
       boot.tmp.cleanOnBoot = true;
       zramSwap.enable = true;
       documentation.enable = false;

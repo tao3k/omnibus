@@ -11,5 +11,6 @@ let
 in
 {
   imports = [ragenix.nixosModules.age];
+  age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   # age.secretsDir = "/run/keys";
 }

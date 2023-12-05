@@ -29,7 +29,7 @@ let
         self: _super: {
           exports.srvosCustom = self.outputs [
             {
-              value = { selfModule }: removeAttrs selfModule [ "imports" ];
+              value = {selfModule}: removeAttrs selfModule ["imports"];
               path = [
                 "common"
                 "default"
@@ -44,8 +44,10 @@ in
 with presets; {
   default = [
     srvosCustom.common.default
+    openssh
+    zswap
     {
-      boot.cleanTmpDir = true;
+      services.zswap.zpool = "z3fold";
       boot.tmp.cleanOnBoot = true;
       zramSwap.enable = true;
       documentation.enable = false;

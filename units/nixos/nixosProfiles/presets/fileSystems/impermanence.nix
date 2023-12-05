@@ -13,6 +13,7 @@ let
 in
 {
   imports = [impermanence.nixosModules.impermanence];
+  fileSystems."/persist".neededForBoot = true;
   environment.persistence."/persist" = {
     directories = [
       "/var"
