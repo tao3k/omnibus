@@ -10,7 +10,7 @@ in
     inputs = {
       inputs = super.flake.inputs;
       omnibus = {
-        nixosModules = super.nixosModules.layouts.nixosModules;
+        nixosModules = super.nixosModules.exports.default;
       };
     };
   };

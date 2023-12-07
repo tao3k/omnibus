@@ -7,20 +7,13 @@
   projectDir,
   POP,
   flops,
+  self,
 }:
 (super.nixosModules.addLoadExtender {
   load = {
     src = projectDir + "/units/nixos/nixosProfiles";
-    type = "nixosProfiles";
+    type = "nixosProfilesOmnibus";
     transformer = [(_: _: _)];
   };
 }).addExporters
-  [
-    (POP.extendPop flops.haumea.pops.exporter (
-      selfP: _super: {
-        exports = {
-          omnibus = super.exportsOmnibusProfiles selfP.layouts.default;
-        };
-      }
-    ))
-  ]
+  [(POP.extendPop flops.haumea.pops.exporter (selfP: _super: {exports = {};}))]

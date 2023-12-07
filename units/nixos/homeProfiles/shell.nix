@@ -8,6 +8,7 @@
   self,
   lib,
   inputs,
+  super,
 }:
 let
   presets = root.presets;
@@ -50,6 +51,7 @@ with presets; {
 
   modernTools = [
     pls
+    (lib.attrValues super.modernTools)
     # eza
   ];
 

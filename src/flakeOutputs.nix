@@ -39,7 +39,12 @@ in
   units = {
     inherit (outputs) configs std;
     nixos = {
-      inherit (outputs) nixosProfiles nixosModules;
+      inherit (outputs)
+        nixosProfiles
+        nixosModules
+        homeProfiles
+        homeModules
+        ;
     };
     darwin = {
       inherit (outputs) darwinProfiles darwinModules;

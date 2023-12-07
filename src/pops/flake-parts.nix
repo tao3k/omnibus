@@ -13,6 +13,7 @@
   };
   profiles = super.nixosProfiles.addLoadExtender {
     load = {
+      type = "nixosProfiles";
       src = projectDir + "/units/flake-parts/profiles";
     };
   };

@@ -43,7 +43,7 @@ in
   homeSuites = [
     # exporter.homeProfiles.default.presets.bat
     # # The parent directory of "presets" is categorized as a list type of "suites"
-    outputs.homeProfiles.omnibus.shell.default
+    outputs.homeProfiles.default.shell.default
     # super.pops.homeModules.exports.default.wayland.windowManager.hyprland
   ];
 

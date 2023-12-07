@@ -25,6 +25,7 @@ let
 in
 ((super.nixosProfiles.addLoadExtender {
   load = {
+    type = "nixosProfiles";
     inputs = {
       inherit setJupyenvModule mkJupyterlabNew mkJupyterlabEval;
     };

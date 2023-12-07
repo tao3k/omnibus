@@ -50,7 +50,7 @@ in
         device = "/dev/sda";
       };
     }
-    (out.outputs.nixosProfiles.default.dev {}).coding
+    out.outputs.nixosProfiles.default.dev.coding
   ];
 
   homeConfiguration =

@@ -54,11 +54,14 @@ with presets; {
     }
   ];
 
-  brtfs-base = [fileSystems.btrfs];
+  brtfs-base = [
+    fileSystems.btrfs
+    fileSystems.impermanence
+  ];
 
   btrfs-boot = [
-    fileSystems.disko-btrfs-boot
     self.brtfs-base
+    fileSystems.disko-btrfs-boot
   ];
 
   contabo = [

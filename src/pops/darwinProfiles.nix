@@ -10,15 +10,8 @@
 }:
 (super.nixosProfiles.addLoadExtender {
   load = {
+    type = "nixosProfilesOmnibus";
     src = projectDir + "/units/nixos/darwinProfiles";
   };
 }).addExporters
-  [
-    (POP.extendPop flops.haumea.pops.exporter (
-      selfPop: _super: {
-        exports = {
-          omnibus = super.exportsOmnibusProfiles selfPop.layouts.default;
-        };
-      }
-    ))
-  ]
+  [(POP.extendPop flops.haumea.pops.exporter (selfPop: _super: {exports = {};}))]

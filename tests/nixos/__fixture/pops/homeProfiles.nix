@@ -8,7 +8,7 @@ in
 (omnibus.pops.homeProfiles.addLoadExtender {
   load.inputs = {
     omnibus = {
-      homeModules = super.homeModules.layouts.nixosModules;
+      homeModules = super.homeModules.exports.default;
     };
     inputs = {
       inherit (omnibus.flake.inputs) nur nix-filter navi-tldr-pages;

@@ -17,6 +17,12 @@
     // {
       pops = src.pops // {
         self = srcPops;
+        nixosProfiles = src.pops.nixosProfiles.addLoadExtender {
+          load.type = "nixosProfiles";
+        };
+        homeProfiles = src.pops.nixosProfiles.addLoadExtender {
+          load.type = "nixosProfiles";
+        };
       };
 
       inherit src;
