@@ -1,8 +1,9 @@
 # SPDX-FileCopyrightText: 2023 The omnibus Authors
 #
 # SPDX-License-Identifier: MIT
-
+{omnibus, lib}:
 {
+  imports = [omnibus.homeModules.programs.alacritty];
   programs.alacritty = {
     enable = true;
     CSIuSupport = true;

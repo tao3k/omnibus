@@ -76,6 +76,9 @@
     nixfmt.url = "github:serokell/nixfmt/?ref=refs/pull/118/head";
     # nixfmt.inputs.flake-compat.follows = "nixpkgs";
     nixfmt.inputs.flake-compat.follows = "";
+
+    bird-nix-lib.url = "github:spikespaz/bird-nix-lib";
+    bird-nix-lib.flake = false;
   };
 
   inputs = {

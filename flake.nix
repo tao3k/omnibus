@@ -20,6 +20,9 @@
         nixosProfiles = src.pops.nixosProfiles.addLoadExtender {
           load.type = "nixosProfiles";
         };
+        darwinProfiles = src.pops.darwinProfiles.addLoadExtender {
+          load.type = "nixosProfiles";
+        };
         homeProfiles = src.pops.nixosProfiles.addLoadExtender {
           load.type = "nixosProfiles";
         };

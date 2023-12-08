@@ -10,11 +10,15 @@ in
   options = {
     CSIuSupport = lib.mkEnableOption "Enable CSIu support";
   };
-  config = mkMerge [
-    (mkIf (cfg.enable && pkgs.stdenv.isLinux) {
-      settings = {
-        key_bindings = mkIf cfg.CSIuSupport CSIuKeyBindings;
-      };
-    })
-  ];
+  config =
+    with lib;
+    mkMerge [
+      (mkIf (cfg.enable && pkgs.stdenv.isLinux) (
+        mkModulePath {
+          settings = {
+            key_bindings = mkIf cfg.CSIuSupport CSIuKeyBindings;
+          };
+        }
+      ))
+    ];
 }

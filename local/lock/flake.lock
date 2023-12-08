@@ -56,6 +56,22 @@
         "type": "github"
       }
     },
+    "bird-nix-lib": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1699609808,
+        "narHash": "sha256-4WzWvoO13BymPpAr5Z9UTwT+mT7z8FkrxwPk7Sr+yiI=",
+        "owner": "spikespaz",
+        "repo": "bird-nix-lib",
+        "rev": "d4c3f202d4a70f6962d7a0a6ce0868d32878bf4c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "spikespaz",
+        "repo": "bird-nix-lib",
+        "type": "github"
+      }
+    },
     "blank": {
       "locked": {
         "lastModified": 1625557891,
@@ -1484,6 +1500,7 @@
       "inputs": {
         "agenix": "agenix",
         "audioNix": "audioNix",
+        "bird-nix-lib": "bird-nix-lib",
         "catppuccin-foliate": "catppuccin-foliate",
         "climodSrc": "climodSrc",
         "darwin": "darwin_2",
