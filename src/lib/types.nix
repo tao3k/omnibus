@@ -7,6 +7,6 @@ with yants; {
   suiteProfile = struct "profile" {
     keywords = list string;
     knowledges = list string;
-    value = either function (list function);
+    profiles = list any;
   };
 }

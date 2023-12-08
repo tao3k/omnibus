@@ -8,7 +8,7 @@ mkSuites {
     {
       keywords = ["screenshot"];
       knowledges = ["https://github.com/gabm/satty"];
-      value = satty;
+      profiles = [satty];
     }
   ];
 }
