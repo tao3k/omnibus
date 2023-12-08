@@ -4,6 +4,9 @@
 
 {yants, self}:
 with yants; {
-  a = struct "test" {name = string;};
-  b = either self.a (struct {age = int;});
+  suiteProfile = struct "profile" {
+    keywords = list string;
+    knowledges = list string;
+    value = either function (list function);
+  };
 }
