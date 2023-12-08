@@ -15,7 +15,7 @@ in
   config = {
     omnibus.bootstrap.PATH = lib.mkBefore [
       "/run/current-system/sw/bin"
-      "/run/current-system/etc/profiles/per-user/$USER/bin"
+      "/etc/profiles/per-user/$USER/bin"
       "/opt/homebrew/bin"
       "/bin/"
       "/usr/bin"

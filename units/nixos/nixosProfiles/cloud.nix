@@ -47,6 +47,7 @@ mkSuites {
         srvosCustom.common.serial
         srvosCustom.common.sudo
         srvosCustom.common.upgrade-diff
+        srvosCustom.mixins.nix-experimental
         zswap
         openssh
         {
@@ -59,14 +60,10 @@ mkSuites {
     }
   ];
 
-  brtfs-base = [
+  btrfs = [
     fileSystems.btrfs
+    fileSystems.disko-btrfs
     fileSystems.impermanence
-  ];
-
-  btrfs-boot = [
-    self.brtfs-base
-    fileSystems.disko-btrfs-boot
   ];
 
   contabo = [
@@ -79,10 +76,11 @@ mkSuites {
       ];
       knowledges = [""];
       profiles = [
-        self.btrfs-boot
+        self.btrfs
         {
           boot.loader.grub.device = "";
           disko.devices.__profiles__ = {
+            boot = true;
             name = "sda";
             device = "/dev/sda";
           };

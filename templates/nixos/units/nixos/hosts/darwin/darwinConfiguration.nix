@@ -2,6 +2,11 @@
 #
 # SPDX-License-Identifier: MIT
 
+{
+  inputs,
+  super,
+  lib,
+}:
 let
   inherit (inputs) nixpkgs darwin;
 in

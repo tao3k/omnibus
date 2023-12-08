@@ -60,6 +60,9 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
+    impermanence.url = "github:nix-community/impermanence";
+    impermanence.inputs.nixpkgs.follows = "nixpkgs";
+
     snapshotter.url = "github:pdtpartners/nix-snapshotter";
     snapshotter.inputs.nixpkgs.follows = "nixpkgs";
 
