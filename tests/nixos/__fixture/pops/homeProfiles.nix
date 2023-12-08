@@ -26,7 +26,7 @@ in
               selfModule' (
                 m:
                 dmerge m {
-                  wayland.windowManager.hyprland.__profiles__ = {
+                  config.wayland.windowManager.hyprland.__profiles__ = {
                     nvidia.content = true;
                   };
                 }

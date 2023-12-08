@@ -25,7 +25,7 @@ in
               selfModule' (
                 m:
                 dmerge m {
-                  nix.extraOptions = ''
+                  config.nix.extraOptions = ''
                     allowed-uris = https://github.com/
                   '';
                 }
@@ -39,7 +39,9 @@ in
             # boot.__profiles__.systemd-initrd.enable = true;
             value =
               {selfModule'}:
-              selfModule' (m: dmerge m {boot.__profiles__.systemd-boot.enable = true;});
+              selfModule' (
+                m: dmerge m {config.boot.__profiles__.systemd-boot.enable = true;}
+              );
             path = [
               "presets"
               "boot"
