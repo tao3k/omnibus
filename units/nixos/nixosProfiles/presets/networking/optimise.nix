@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 The omnibus Authors
+#
+# SPDX-License-Identifier: MIT
+
 {
   boot.kernel.sysctl = {
     "net.ipv4.tcp_mtu_probing" = 1;
