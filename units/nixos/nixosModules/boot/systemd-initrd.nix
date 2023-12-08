@@ -21,7 +21,7 @@
         boot.initrd = {
           systemd = {
             enable = true;
-            # emergencyAccess = true;
+            emergencyAccess = true;
           };
         };
       })
