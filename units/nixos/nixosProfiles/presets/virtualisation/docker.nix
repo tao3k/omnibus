@@ -8,14 +8,15 @@
   lib,
   ...
 }:
-let
-  cfg' = config.virtualisation.hive;
-in
 {
-  environment.systemPackages =
-    with pkgs; (lib.optionals cfg'.dockerCompose [docker-compose]);
+  environment.systemPackages = with pkgs; [docker-compose];
   virtualisation.docker = {
     enable = true;
+    enableOnBoot = true;
+    autoPrune = {
+      enable = true;
+      dates = "weekly";
+    };
     rootless = {
       enable = true;
       setSocketVariable = true;

@@ -8,8 +8,10 @@
   omnibus,
   POP,
   flops,
+  lib,
 }:
 let
+  inherit (lib.omnibus) mkSuites;
   srvosCustom =
     (omnibus.pops.srvos.addExporters [
       (POP.extendPop flops.haumea.pops.exporter (
@@ -26,18 +28,34 @@ let
         }
       ))
     ]).layouts.srvosCustom;
+
   presets = root.presets;
 in
-with presets; {
+with presets;
+mkSuites {
   default = [
-    srvosCustom.common.default
-    openssh
-    zswap
     {
-      services.zswap.zpool = "z3fold";
-      boot.tmp.cleanOnBoot = true;
-      zramSwap.enable = true;
-      documentation.enable = false;
+      keywords = [
+        "srvos"
+        "server"
+        "presets"
+        "init"
+      ];
+      knowledges = ["https://github.com/nix-community/srvos"];
+      profiles = [
+        srvosCustom.common.default
+        srvosCustom.common.serial
+        srvosCustom.common.sudo
+        srvosCustom.common.upgrade-diff
+        zswap
+        openssh
+        {
+          services.zswap.zpool = "z3fold";
+          boot.tmp.cleanOnBoot = true;
+          zramSwap.enable = true;
+          documentation.enable = false;
+        }
+      ];
     }
   ];
 
@@ -54,13 +72,22 @@ with presets; {
   contabo = [
     self.default
     contabo
-    self.btrfs-boot
     {
-      boot.loader.grub.device = "";
-      disko.devices.__profiles__ = {
-        name = "sda";
-        device = "/dev/sda";
-      };
+      keywords = [
+        "disko"
+        "boot"
+      ];
+      knowledges = [""];
+      profiles = [
+        self.btrfs-boot
+        {
+          boot.loader.grub.device = "";
+          disko.devices.__profiles__ = {
+            name = "sda";
+            device = "/dev/sda";
+          };
+        }
+      ];
     }
   ];
 }

@@ -16,7 +16,10 @@
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
-    autoPrune.enable = true;
+    autoPrune = {
+      enable = true;
+      dates = "weekly";
+    };
     dockerSocket.enable = true;
     defaultNetwork.settings.dns_enabled = true;
   };
