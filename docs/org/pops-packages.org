@@ -60,9 +60,9 @@ in
           {
             derivations =
               lib.attrsets.filterDerivations self.exports.packages
-              // (lib.optionalAttrs (self.exports.packages ? omnibus)
+              // (lib.optionalAttrs (self.exports.packages ? by-loader)
                 lib.attrsets.filterDerivations
-                (lib.concatMapAttrs (_: v: v) self.exports.packages.omnibus)
+                (lib.concatMapAttrs (_: v: v) self.exports.packages.by-loader)
               );
 
             scopePackagesPop =
@@ -72,29 +72,50 @@ in
                   loader =
                     __inputs__: path:
                     (selfScope.overrideScope (_: _: {inherit __inputs__;})).callPackage path {};
-                  inputs = {
-                    callPackagesWithOmnibus =
-                      selfScope: src:
-                      (super.load {
-                        loader =
-                          _: path:
-                          (selfScope.overrideScope (_: _: {__inputs__ = self.layouts.self.load.inputs;}))
-                          .callPackage
-                            path
-                            {};
-                        src = nix-filter.lib.filter {
-                          root = src;
-                          exclude = ["default.nix"];
-                        };
-                        transformer = [(_cursor: dir: if dir ? default then dir.default else dir)];
-                      }).exports.default;
-                  };
+                  inputs = {};
                 };
               });
 
-            packages = makeScope newScope (
-              selfScope: (self.exports.scopePackagesPop selfScope).exports.default
-            );
+            packages =
+              (makeScope newScope (
+                selfScope: (self.exports.scopePackagesPop selfScope).exports.default
+              )).overrideScope
+                (
+                  selfScope: _:
+                  let
+                    checkPath =
+                      pathSuffix:
+                      if lib.pathExists (self.layouts.self.load.src + pathSuffix) then
+                        true
+                      else
+                        false;
+                  in
+                  {
+                    by-loader = lib.optionalAttrs (checkPath "/by-loader/python3Packages") {
+                      python3Packages =
+                        selfScope.callPackage lib.omnibus.mkPython3PackagesWithScope
+                          {};
+                    };
+                    __inputs__ = {
+                      __load__ = self.layouts.self.load;
+                      callPackagesWithLoader =
+                        selfScope: src:
+                        assert lib.assertMsg (!(lib.readDir src) ? "default.nix") ''
+                          The top-level of ${src} must not contain a file named "default.nix"
+                        '';
+                        (super.load {
+                          loader =
+                            _: path:
+                            (selfScope.overrideScope (_: _: {__inputs__ = self.layouts.self.load.inputs;}))
+                            .callPackage
+                              path
+                              {};
+                          inherit src;
+                          transformer = [(_cursor: dir: if dir ? default then dir.default else dir)];
+                        }).exports.default;
+                    };
+                  }
+                );
 
             overlays = {
               default =
@@ -112,8 +133,8 @@ in
                           prev.lib.composeExtensions (old.packageOverrides or (_: _: {}))
                             (
                               pythonSelf: _:
-                              if (scopeSuper ? omnibus && scopeSuper.omnibus ? python3Packages) then
-                                scopeSuper.omnibus.python3Packages.packages pythonSelf
+                              if (scopeSuper ? by-loader && scopeSuper.by-loader ? python3Packages) then
+                                scopeSuper.by-loader.python3Packages.packages pythonSelf
                               else
                                 {}
                             );
@@ -123,8 +144,8 @@ in
                       old: {
                         overrides = prev.lib.composeExtensions (old.overrides or (_: _: {})) (
                           pythonSelf: _:
-                          if (scopeSuper ? omnibus && scopeSuper.omnibus ? python3Packages) then
-                            scopeSuper.omnibus.python3Packages.packages pythonSelf
+                          if (scopeSuper ? by-loader && scopeSuper.by-loader ? python3Packages) then
+                            scopeSuper.by-loader.python3Packages.packages pythonSelf
                           else
                             {}
                         );
