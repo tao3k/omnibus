@@ -27,7 +27,7 @@ let
           ];
         }
       ))
-    ]).layouts.srvosCustom;
+    ]).exports.srvosCustom;
 
   presets = root.presets;
 in
@@ -69,6 +69,18 @@ mkSuites {
       ];
       knowledges = ["https://wiki.archlinux.org/title/zswap"];
       profiles = [zswap];
+    }
+    {
+      keywords = [
+        "allocators"
+        "memory"
+        "optimization"
+      ];
+      knowledges = ["https://github.com/microsoft/mimalloc#performance"];
+      profiles =
+        [
+          # mimalloc
+        ];
     }
   ];
 

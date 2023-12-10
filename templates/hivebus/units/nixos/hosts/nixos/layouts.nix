@@ -26,9 +26,9 @@ in
     # outputs.nixosModules.default.programs.git
 
     # # # --custom profiles
-    # outputs.pops.nixosProfiles.layouts.customProfiles.presets.nix
-    # outputs.pops.nixosProfiles.layouts.customProfiles.presets.boot
-    # outputs.pops.nixosModules.layouts.customModules.boot
+    # outputs.pops.nixosProfiles.exports.customProfiles.presets.nix
+    # outputs.pops.nixosProfiles.exports.customProfiles.presets.boot
+    # outputs.pops.nixosModules.exports.customModules.boot
 
     # outputs.srvos.default.common.nix
     (outputs.omnibus.lib.mkHome inputs.home.nixosModule
