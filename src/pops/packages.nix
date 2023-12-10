@@ -47,9 +47,9 @@ in
           {
             derivations =
               lib.attrsets.filterDerivations self.exports.packages
-              // (lib.optionalAttrs (self.exports.packages ? py)
+              // (lib.optionalAttrs (self.exports.packages ? omnibus)
                 lib.attrsets.filterDerivations
-                self.exports.packages.py
+                (lib.concatMapAttrs (_: v: v) self.exports.packages.omnibus)
               );
 
             scopePackagesPop =
@@ -98,14 +98,22 @@ in
                         packageOverrides =
                           prev.lib.composeExtensions (old.packageOverrides or (_: _: {}))
                             (
-                              pythonSelf: _: if scopeSuper ? py then scopeSuper.py.packages pythonSelf else {}
+                              pythonSelf: _:
+                              if (scopeSuper ? omnibus && scopeSuper.omnibus ? python3Packages) then
+                                scopeSuper.omnibus.python3Packages.packages pythonSelf
+                              else
+                                {}
                             );
                       }
                     );
                     python3Packages = prev.python3Packages.override (
                       old: {
                         overrides = prev.lib.composeExtensions (old.overrides or (_: _: {})) (
-                          pythonSelf: _: if scopeSuper ? py then scopeSuper.py.packages pythonSelf else {}
+                          pythonSelf: _:
+                          if (scopeSuper ? omnibus && scopeSuper.omnibus ? python3Packages) then
+                            scopeSuper.omnibus.python3Packages.packages pythonSelf
+                          else
+                            {}
                         );
                       }
                     );
