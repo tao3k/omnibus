@@ -22,7 +22,6 @@ in
     # (outputs.nixosProfiles.default.audio {}).default
 
     # # --custom profiles
-    outputs.nixosProfiles.customProfiles.presets.nix
     # # exporter.nixosProfiles.customProfiles.presets.boot
     # outputs.srvos.default.common.nix
 

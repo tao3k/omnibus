@@ -13,6 +13,7 @@
       allowed-users = ["@wheel"];
       trusted-users = [
         "root"
+        "@nixbld"
         "@wheel"
       ];
       # auto-optimise-store = true;

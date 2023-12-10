@@ -43,20 +43,32 @@ mkSuites {
       ];
       knowledges = ["https://github.com/nix-community/srvos"];
       profiles = [
+        nix
+        openssh
         srvosCustom.common.default
         srvosCustom.common.serial
         srvosCustom.common.sudo
         srvosCustom.common.upgrade-diff
         srvosCustom.mixins.nix-experimental
-        zswap
-        openssh
-        {
-          services.zswap.zpool = "z3fold";
-          boot.tmp.cleanOnBoot = true;
-          zramSwap.enable = true;
-          documentation.enable = false;
-        }
+        (
+          {pkgs, lib, ...}:
+          {
+            boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+            boot.tmp.cleanOnBoot = true;
+            documentation.enable = false;
+          }
+        )
       ];
+    }
+    {
+      keywords = [
+        "zswap"
+        "memory"
+        "optimization"
+        "compression"
+      ];
+      knowledges = ["https://wiki.archlinux.org/title/zswap"];
+      profiles = [zswap];
     }
   ];
 
@@ -68,7 +80,7 @@ mkSuites {
 
   contabo = [
     self.default
-    contabo
+    cloud.contabo
     {
       keywords = [
         "disko"
