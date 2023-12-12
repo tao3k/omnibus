@@ -5,9 +5,9 @@
 # [[file:../docs/org/pops-packages.org::*Example][Example:3]]
 {super, omnibus}:
 let
-  nixos-23_05 = omnibus.flake.inputs.nixos-23_05;
+  nixos-23_11 = omnibus.flake.inputs.nixos-23_11;
 in
-nixos-23_05.legacyPackages.x86_64-linux.appendOverlays [
+nixos-23_11.legacyPackages.x86_64-linux.appendOverlays [
   super.packages.exports.overlays.compose
   # super.packages.exports.overlays.default
   (final: prev: {

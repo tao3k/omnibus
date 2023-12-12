@@ -24,6 +24,13 @@ let
                 "default"
               ];
             }
+            {
+              value = {selfModule}: removeAttrs selfModule ["imports"];
+              path = [
+                "server"
+                "default"
+              ];
+            }
           ];
         }
       ))
@@ -45,6 +52,7 @@ mkSuites {
       profiles = [
         nix
         openssh
+        srvosCustom.server.default
         srvosCustom.common.default
         srvosCustom.common.serial
         srvosCustom.common.sudo
@@ -110,6 +118,16 @@ mkSuites {
           };
         }
       ];
+    }
+  ];
+
+  amazon = [
+    {
+      keywords = ["amazon"];
+      knowledges = [
+        "https://github.com/nix-community/srvos/blob/main/nixos/hardware/amazon/default.nix"
+      ];
+      profiles = [srvosCustom.hardware.amazon.default];
     }
   ];
 }

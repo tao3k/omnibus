@@ -8,7 +8,7 @@
   };
 
   outputs =
-    {self, ...}@inputs:
+    inputs:
     let
       srcPops = import ./src/__init.nix {inherit inputs;};
       src = srcPops.exports.default;

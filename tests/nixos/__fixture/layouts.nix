@@ -16,7 +16,7 @@ in
 
   nixosSuites = lib.flatten [
     # outputs.selfNixOSProfiles.default.bootstrap
-
+    {users.users.root.initialPassword = "nixos";}
     # self.nixosProfiles.default.presets.boot
     # load a suite profile from audio
     # (outputs.nixosProfiles.default.audio {}).default
