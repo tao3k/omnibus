@@ -11,6 +11,10 @@
 
 
 
+
+[[https://github.com/divnix/POP/blob/main/POP.md][What is POP: Pure Object Prototypes]]
+
+
 #+BEGIN_SRC d2 :file images/omnibus.png :flags --sketch --theme 200 :exports both :tangle (concat (org-entry-get nil "PRJ-DIR" t) "/omnibus.d2")
 # !/usr/bin/env d2 --theme 200
 
