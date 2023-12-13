@@ -41,6 +41,8 @@
     microvm.url = "github:astro/microvm.nix";
 
     jupyenv.url = "github:tweag/jupyenv/?ref=refs/pull/524/head";
+
+    system-manager.url = "github:numtide/system-manager";
   };
 
   inputs = {
