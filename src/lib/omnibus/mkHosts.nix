@@ -2,6 +2,6 @@
 {
   hostsDir,
   pops,
-  addLoadExtender ? {},
+  addLoadExtender ? {load = {};},
 }:
 super.addLoadToPopsFilterBySrc hostsDir pops addLoadExtender

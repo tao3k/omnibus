@@ -1,0 +1,11 @@
+#+TITLE: inputs
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2023-12-13 Wed 23:27
+
+
+
+
+
+* nixos
+** [[https://github.com/Janik-Haag/NixOS-DNS][Janik-Haag/NixOS-DNS: Manage your dns zones with NixOS]] :dns:nixos:

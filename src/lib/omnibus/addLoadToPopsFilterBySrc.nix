@@ -21,7 +21,7 @@ let
             if lib.isFunction ext then
               ext v
             else if lib.isAttrs ext then
-              (v.addLoadExtender {load.src = src;}).addLoadExtender {load = ext;}
+              (v.addLoadExtender {load.src = src;}).addLoadExtender ext
             else
               v
           else
