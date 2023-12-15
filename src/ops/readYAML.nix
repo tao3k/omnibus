@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
-{inputs, root}: # source from std
+{ inputs, root }: # source from std
 let
-  inherit (root.errors.requiredInputs inputs "omnibus.pops.self" ["nixpkgs"])
+  inherit (root.errors.requiredInputs inputs "omnibus.pops.self" [ "nixpkgs" ])
     nixpkgs
     ;
 
@@ -22,7 +22,7 @@ in
 path:
 let
   jsonOutputDrv =
-    runCommand "from-yaml" {nativeBuildInputs = [yq-go];}
+    runCommand "from-yaml" { nativeBuildInputs = [ yq-go ]; }
       ''yq -o=json "${path}" > "$out"'';
 in
 fromJSON (readFile jsonOutputDrv)

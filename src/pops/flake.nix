@@ -2,5 +2,5 @@
 #
 # SPDX-License-Identifier: MIT
 
-{projectDir, flops}:
+{ projectDir, flops }:
 flops.flake.pops.default.setInitInputs (projectDir + "/local/lock")

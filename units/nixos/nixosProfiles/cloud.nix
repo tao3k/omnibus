@@ -18,14 +18,14 @@ let
         self: _super: {
           exports.srvosCustom = self.outputs [
             {
-              value = {selfModule}: removeAttrs selfModule ["imports"];
+              value = { selfModule }: removeAttrs selfModule [ "imports" ];
               path = [
                 "common"
                 "default"
               ];
             }
             {
-              value = {selfModule}: removeAttrs selfModule ["imports"];
+              value = { selfModule }: removeAttrs selfModule [ "imports" ];
               path = [
                 "server"
                 "default"
@@ -48,7 +48,7 @@ mkSuites {
         "presets"
         "init"
       ];
-      knowledges = ["https://github.com/nix-community/srvos"];
+      knowledges = [ "https://github.com/nix-community/srvos" ];
       profiles = [
         nix
         openssh
@@ -59,7 +59,7 @@ mkSuites {
         srvosCustom.common.upgrade-diff
         srvosCustom.mixins.nix-experimental
         (
-          {pkgs, lib, ...}:
+          { pkgs, lib, ... }:
           {
             boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
             boot.tmp.cleanOnBoot = true;
@@ -75,8 +75,8 @@ mkSuites {
         "optimization"
         "compression"
       ];
-      knowledges = ["https://wiki.archlinux.org/title/zswap"];
-      profiles = [zswap];
+      knowledges = [ "https://wiki.archlinux.org/title/zswap" ];
+      profiles = [ zswap ];
     }
     {
       keywords = [
@@ -84,7 +84,7 @@ mkSuites {
         "memory"
         "optimization"
       ];
-      knowledges = ["https://github.com/microsoft/mimalloc#performance"];
+      knowledges = [ "https://github.com/microsoft/mimalloc#performance" ];
       profiles =
         [
           # mimalloc
@@ -106,7 +106,7 @@ mkSuites {
         "disko"
         "boot"
       ];
-      knowledges = [""];
+      knowledges = [ "" ];
       profiles = [
         self.btrfs
         {
@@ -123,11 +123,11 @@ mkSuites {
 
   amazon = [
     {
-      keywords = ["amazon"];
+      keywords = [ "amazon" ];
       knowledges = [
         "https://github.com/nix-community/srvos/blob/main/nixos/hardware/amazon/default.nix"
       ];
-      profiles = [srvosCustom.hardware.amazon.default];
+      profiles = [ srvosCustom.hardware.amazon.default ];
     }
   ];
 }

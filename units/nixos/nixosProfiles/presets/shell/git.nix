@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{pkgs, inputs}:
+{ pkgs, inputs }:
 {
   programs.git.enable = true;
   environment.systemPackages = [

@@ -19,7 +19,7 @@ in
     bee.system = self.system;
     bee.home = inputs.home-manager;
     bee.darwin = inputs.darwin;
-    bee.pkgs = import inputs.nixpkgs {inherit (self) system;};
+    bee.pkgs = import inputs.nixpkgs { inherit (self) system; };
     imports = lib.flatten self.darwinSuites;
   };
 

@@ -11,7 +11,7 @@ let
   cfg = config.omnibus.bootstrap;
 in
 {
-  imports = [omnibus.nixosModules.omnibus.bootstrap];
+  imports = [ omnibus.nixosModules.omnibus.bootstrap ];
   config = {
     omnibus.bootstrap.PATH = lib.mkBefore [
       "/run/current-system/sw/bin"
@@ -24,7 +24,7 @@ in
       "/usr/sbin"
       "/sbin"
     ];
-    environment.systemPath = [];
+    environment.systemPath = [ ];
     environment.variables.PATH = cfg.PATH;
   };
 }

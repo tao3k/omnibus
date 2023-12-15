@@ -27,7 +27,7 @@
 
   options.__profiles__ = with lib; {
     catppuccin-themes = mkOption {
-      default = {};
+      default = { };
       type = types.submodule {
         options = {
           name = mkOption {

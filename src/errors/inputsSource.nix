@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{lib}:
+{ lib }:
 list:
 let
   sources = (import ../../local/lock/flake.nix).inputs;

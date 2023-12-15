@@ -8,7 +8,7 @@
   lib,
 }:
 {
-  imports = [omnibus.nixosModules.hardware.bluetooth];
+  imports = [ omnibus.nixosModules.hardware.bluetooth ];
 
   services.blueman.enable = true;
 

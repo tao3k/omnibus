@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   services.yubikey-agent.enable = true;
 
@@ -11,5 +11,5 @@
     yubico-piv-tool
   ];
 
-  services.udev.packages = [pkgs.yubikey-personalization];
+  services.udev.packages = [ pkgs.yubikey-personalization ];
 }

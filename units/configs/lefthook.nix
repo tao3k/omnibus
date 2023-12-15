@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{inputs, omnibus}:
+{ inputs, omnibus }:
 let
   inherit
     (omnibus.errors.requiredInputs inputs "omnibus.pops.configs" [
@@ -18,7 +18,7 @@ let
 in
 {
   default = {
-    packages = [nixpkgs.jq];
+    packages = [ nixpkgs.jq ];
     data = {
       commit-msg = {
         commands = {
@@ -56,6 +56,6 @@ in
     };
   };
   languagetool-code-comments = {
-    packages = [languagetool-code-comments];
+    packages = [ languagetool-code-comments ];
   };
 }

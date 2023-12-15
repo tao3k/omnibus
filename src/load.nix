@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{root}:
+{ root }:
 let
   load = root.pops.load;
 in

@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{inputs, cell}:
+{ inputs, cell }:
 let
   inherit (inputs) nixpkgs;
   __inputs__ = (inputs.repo.flake.setSystem nixpkgs.system).inputs;

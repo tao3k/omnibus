@@ -15,7 +15,7 @@ in
     bee.system = self.system;
     # use the mkHome function to create a home-manager profile
     # bee.home = inputs.home-manager;
-    bee.pkgs = import inputs.nixpkgs {inherit (self) system;};
+    bee.pkgs = import inputs.nixpkgs { inherit (self) system; };
     imports = lib.flatten self.nixosSuites;
   };
 
@@ -37,7 +37,7 @@ in
           uid = 1000;
           description = "default manager";
           isNormalUser = true;
-          extraGroups = ["wheel"];
+          extraGroups = [ "wheel" ];
         };
       }
       "zsh"

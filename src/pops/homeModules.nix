@@ -12,12 +12,13 @@
   haumea,
   super,
 }:
-((flops.haumea.pops.default.setInit {
-  src = projectDir + "/units/nixos/homeModules";
-  type = "nixosModules";
-  inputs = root.lib.loaderInputs;
-}).addLoadExtender
-  {load.inputs.inputs = super.flake.inputs;}
+(
+  (flops.haumea.pops.default.setInit {
+    src = projectDir + "/units/nixos/homeModules";
+    type = "nixosModules";
+    inputs = root.lib.loaderInputs;
+  }).addLoadExtender
+  { load.inputs.inputs = super.flake.inputs; }
 ).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (

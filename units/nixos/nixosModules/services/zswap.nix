@@ -74,11 +74,11 @@ in
             Type = "oneshot";
             RemainAfterExit = true;
           };
-          wantedBy = ["multi-user.target"];
+          wantedBy = [ "multi-user.target" ];
         };
       })
       (lib.mkIf (cfg.enable && cfg.zpool == "zsmalloc") {
-        boot.initrd.availableKernelModules = ["zsmalloc"];
+        boot.initrd.availableKernelModules = [ "zsmalloc" ];
       })
       (lib.mkIf (cfg.enable && cfg.zpool == "z3fold") {
         services.zswap.compressor = "lz4";

@@ -1,4 +1,4 @@
-{root}:
+{ root }:
 let
   pkgs = root.pops.flake.inputs.nixpkgs.legacyPackages.x86_64-linux;
   overlay = final: prev: {
@@ -14,5 +14,5 @@ let
   };
 in
 (pkgs.emacs29.pkgs.overrideScope overlay).withPackages (
-  epkgs: [epkgs.typst-ts-mode]
+  epkgs: [ epkgs.typst-ts-mode ]
 )

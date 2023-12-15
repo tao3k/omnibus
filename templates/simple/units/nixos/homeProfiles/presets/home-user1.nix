@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{config}:
+{ config }:
 {
   home = {
     username = "your-username";

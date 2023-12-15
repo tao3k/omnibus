@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   programs.tmux = {
     enable = true;

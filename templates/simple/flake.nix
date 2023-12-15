@@ -10,7 +10,7 @@
   };
 
   outputs =
-    {self, ...}@inputs:
+    { self, ... }@inputs:
     let
       inherit (inputs.omnibus.inputs.flops.inputs.nixlib) lib;
       eachSystem = lib.genAttrs [
@@ -58,7 +58,7 @@
         );
         allData = eachSystem (
           system:
-          (pops.omnibus.${system}.outputs {}).pops.allData.addLoadExtender {
+          (pops.omnibus.${system}.outputs { }).pops.allData.addLoadExtender {
             load = {
               src = ./data;
             };
@@ -72,11 +72,11 @@
       inherit pops;
       nixosConfigurations.simple = inputs.nixos-unstable.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [self.nixosProfiles.presets.boot];
+        modules = [ self.nixosProfiles.presets.boot ];
       };
       homeConfigurations.simple = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixos-unstable.legacyPackages.x86_64-linux;
-        modules = [self.homeProfiles.presets.home-user1];
+        modules = [ self.homeProfiles.presets.home-user1 ];
       };
     };
 }

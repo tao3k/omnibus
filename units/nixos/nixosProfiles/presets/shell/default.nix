@@ -9,5 +9,6 @@
   ...
 }:
 {
-  config = with lib; mkMerge [{environment.systemPackages = with pkgs; [just];}];
+  config =
+    with lib; mkMerge [ { environment.systemPackages = with pkgs; [ just ]; } ];
 }

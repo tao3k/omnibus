@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{omnibus, inputs}:
+{ omnibus, inputs }:
 let
   inherit
     (omnibus.errors.requiredInputs inputs "omnibus.pops.devshellProfiles" [

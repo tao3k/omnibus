@@ -23,7 +23,8 @@
               inherit nixpkgs makesSrc;
             };
           }).exports.default.ops.makes;
-        inherit (root.errors.requiredInputs x.inputs "omnibus.pops.scripts" ["nixpkgs"])
+        inherit
+          (root.errors.requiredInputs x.inputs "omnibus.pops.scripts" [ "nixpkgs" ])
           nixpkgs
           makesSrc
           ;
@@ -31,10 +32,10 @@
       x
       // {
         inherit nixpkgs;
-        writeShellApplication = root.ops.writeShellApplication {inherit nixpkgs;};
+        writeShellApplication = root.ops.writeShellApplication { inherit nixpkgs; };
       }
       // lib.optionalAttrs (x.inputs ? climodSrc) {
-        climod = nixpkgs.callPackage inputs.climodSrc {pkgs = nixpkgs;};
+        climod = nixpkgs.callPackage inputs.climodSrc { pkgs = nixpkgs; };
       }
       // lib.optionalAttrs (x.inputs ? makesSrc) (
         makes
@@ -47,8 +48,8 @@
     )
   ];
 
-  loader = with haumea; [(matchers.nix loaders.scoped)];
-  transformer = [(_cursor: dir: if dir ? default then dir.default else dir)];
+  loader = with haumea; [ (matchers.nix loaders.scoped) ];
+  transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
 })
 
 /* (matchers.regex "^(default)\\.(nix)" (

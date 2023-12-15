@@ -13,15 +13,16 @@ let
     let
       baseInputs = omnibus.pops.flake.setInitInputs ./__lock;
     in
-    ((baseInputs.addInputsExtender (
-      POP.extendPop flops.flake.pops.inputsExtender (
-        _self: _super: {
-          inputs = baseInputs.inputs // {
-            devshell = baseInputs.inputs.devshell.legacyPackages;
-          };
-        }
-      )
-    )).setSystem
+    (
+      (baseInputs.addInputsExtender (
+        POP.extendPop flops.flake.pops.inputsExtender (
+          _self: _super: {
+            inputs = baseInputs.inputs // {
+              devshell = baseInputs.inputs.devshell.legacyPackages;
+            };
+          }
+        )
+      )).setSystem
       "x86_64-linux"
     ).inputs;
 
@@ -36,7 +37,7 @@ let
 
   shell = inputs.devshell.mkShell {
     name = "rust";
-    imports = [devshellProfiles.rust];
+    imports = [ devshellProfiles.rust ];
   };
 in
-lib.mapAttrs (_: builtins.unsafeDiscardStringContext) {rust = shell;}
+lib.mapAttrs (_: builtins.unsafeDiscardStringContext) { rust = shell; }

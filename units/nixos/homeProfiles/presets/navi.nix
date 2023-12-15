@@ -47,7 +47,7 @@ let
     };
 in
 {
-  imports = [omnibus.homeModules.programs.navi];
+  imports = [ omnibus.homeModules.programs.navi ];
   programs.navi = {
     enable = true;
     enableZshIntegration = lib.mkIf config.programs.zsh.enable true;

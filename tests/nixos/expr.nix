@@ -18,8 +18,9 @@ in
 {
   # inherit out;
   bootProfile =
-    (out.nixosConfiguration [out.outputs.nixosProfiles.customProfiles.presets.boot])
-    .config.boot.__profiles__;
+    (out.nixosConfiguration [
+      out.outputs.nixosProfiles.customProfiles.presets.boot
+    ]).config.boot.__profiles__;
 
   customModuleBootTimeOut =
     (out.nixosConfiguration [

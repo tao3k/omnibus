@@ -19,8 +19,8 @@ in
           {
             value = {
               enable = false;
-              customList = with dmerge; append ["1"];
-              imports = with dmerge; append [];
+              customList = with dmerge; append [ "1" ];
+              imports = with dmerge; append [ ];
             };
             path = [
               "services"

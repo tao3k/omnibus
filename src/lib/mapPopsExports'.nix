@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{lib}:
+{ lib }:
 pops:
 let
   cond = (as: !(as ? "exports" && as.exports ? "default"));

@@ -9,7 +9,7 @@
 }:
 (omnibus.pops.load {
   src = ./__fixture;
-  loader = with haumea; [(matchers.nix loaders.scoped)];
+  loader = with haumea; [ (matchers.nix loaders.scoped) ];
   inputs = {
     data = root.data;
     inputs = {

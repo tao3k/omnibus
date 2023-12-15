@@ -2,10 +2,10 @@
 #
 # SPDX-License-Identifier: MIT
 
-{omnibus, lib}:
+{ omnibus, lib }:
 {
   # zram
-  imports = [omnibus.nixosModules.services.zswap];
+  imports = [ omnibus.nixosModules.services.zswap ];
   zramSwap.enable = lib.mkForce false;
   services.zswap = {
     enable = true;

@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 # [[file:../../docs/org/pops-packages.org::*Example][Example:1]]
-{omnibus, inputs}:
+{ omnibus, inputs }:
 let
   nixpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
 in

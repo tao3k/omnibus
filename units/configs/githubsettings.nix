@@ -121,7 +121,7 @@ let
 in
 {
   default.data.labels =
-    []
+    [ ]
     ++ (l.attrValues labels.statuses)
     ++ (l.attrValues labels.types)
     ++ (l.attrValues labels.priorities)

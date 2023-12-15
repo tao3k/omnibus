@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{lib}:
+{ lib }:
 
 let
   # Recursive function to collect all attribute values
@@ -15,7 +15,7 @@ let
           if lib.isAttrs value && !(lib.isFunction value) then
             recursiveAttrValues value
           else
-            [value]
+            [ value ]
         )
         set
     );

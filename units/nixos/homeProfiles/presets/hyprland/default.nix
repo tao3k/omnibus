@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 {
-  imports = [omnibus.homeModules.wayland.windowManager.hyprland];
+  imports = [ omnibus.homeModules.wayland.windowManager.hyprland ];
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = lib.mkDefault true;
@@ -19,7 +19,7 @@
       };
       swww = {
         enable = lib.mkDefault true;
-        runtimeEnv = {};
+        runtimeEnv = { };
       };
     };
   };

@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-{inputs}: _final: _prev: {}
+{ inputs }: _final: _prev: { }

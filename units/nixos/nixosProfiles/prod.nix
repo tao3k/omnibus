@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{root, lib}:
+{ root, lib }:
 let
   presets = root.presets;
   inherit (lib.omnibus) mkSuites;
@@ -16,7 +16,7 @@ mkSuites {
         "networking"
         "tcp"
       ];
-      knowledges = ["https://wiki.archlinux.org/title/sysctl#Networking"];
+      knowledges = [ "https://wiki.archlinux.org/title/sysctl#Networking" ];
       profiles = [
         networking.bbr
         networking.optimise

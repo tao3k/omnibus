@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-(omnibus.pops.homeProfiles.addLoadExtender {load = {};})
+(omnibus.pops.homeProfiles.addLoadExtender { load = { }; })

@@ -10,13 +10,13 @@
 }:
 let
   inherit
-    (omnibus.errors.requiredInputs inputs "omnibus.pops.homeProfiles" ["nur"])
+    (omnibus.errors.requiredInputs inputs "omnibus.pops.homeProfiles" [ "nur" ])
     nur
     ;
   cfg = config.programs.firefox;
 in
 {
-  imports = [omnibus.homeModules.programs.firefox];
+  imports = [ omnibus.homeModules.programs.firefox ];
   programs.firefox = {
     enable = true;
     __profiles__ = {

@@ -9,3 +9,7 @@
 
 * nixos
 ** [[https://github.com/Janik-Haag/NixOS-DNS][Janik-Haag/NixOS-DNS: Manage your dns zones with NixOS]] :dns:nixos:
+
+
+* nix.lib
+  - [[https://noogle.dev/?selected=%22builtins.mapAttrs%22&term=%22map%22][noogle 🔊]]

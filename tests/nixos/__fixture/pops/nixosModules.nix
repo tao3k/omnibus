@@ -18,7 +18,7 @@ in
           self.outputs [
             ({
               value =
-                {selfModule'}:
+                { selfModule' }:
                 selfModule' (
                   m:
                   dmerge
@@ -29,7 +29,7 @@ in
                       ]
                     )
                     {
-                      config.contents = update [0] [
+                      config.contents = update [ 0 ] [
                         {
                           content = {
                             boot.loader.timeout.content = 10;
@@ -39,7 +39,7 @@ in
                       ];
                     }
                 );
-              path = ["boot"];
+              path = [ "boot" ];
             })
           ];
       }

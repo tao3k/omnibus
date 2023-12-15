@@ -18,7 +18,7 @@ let
     nixpkgs
     ;
 
-  pkgs' = nixpkgs.appendOverlays [fenix.overlays.default];
+  pkgs' = nixpkgs.appendOverlays [ fenix.overlays.default ];
   cfg = config.language.rust;
 in
 {
@@ -31,7 +31,7 @@ in
     rustSrc = pkgs'.fenix.complete.rust-src;
     packageSet = pkgs'.fenix.stable;
     enableDefaultToolchain = true;
-    tools = ["toolchain"];
+    tools = [ "toolchain" ];
   };
 
   devshell.startup.link-cargo-home =
@@ -40,10 +40,10 @@ in
         let
           packageSet = map (n: cfg.packageSet.${n}) cfg.tools;
         in
-        pkgs'.fenix.combine (packageSet ++ [cfg.rustSrc]);
+        pkgs'.fenix.combine (packageSet ++ [ cfg.rustSrc ]);
     in
     {
-      deps = [];
+      deps = [ ];
       text = ''
         # ensure CARGO_HOME is populated
         mkdir -p $PRJ_DATA_DIR/cargo

@@ -13,7 +13,9 @@
   load = {
     src = projectDir + "/units/nixos/homeProfiles";
     type = "nixosProfilesOmnibus";
-    transformer = [(_: _: _)];
+    transformer = [ (_: _: _) ];
   };
 }).addExporters
-  [(POP.extendPop flops.haumea.pops.exporter (selfPop: _super: {exports = {};}))]
+  [
+    (POP.extendPop flops.haumea.pops.exporter (selfPop: _super: { exports = { }; }))
+  ]

@@ -2,15 +2,17 @@
 #
 # SPDX-License-Identifier: MIT
 
-{inputs, omnibus}:
+{ inputs, omnibus }:
 let
   inherit
-    (omnibus.errors.requiredInputs inputs "omnibus.pops.nixosProfiles" ["ragenix"])
+    (omnibus.errors.requiredInputs inputs "omnibus.pops.nixosProfiles" [
+      "ragenix"
+    ])
     ragenix
     ;
 in
 {
-  imports = [ragenix.nixosModules.age];
-  age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+  imports = [ ragenix.nixosModules.age ];
+  age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   # age.secretsDir = "/run/keys";
 }

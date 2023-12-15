@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{lib}:
+{ lib }:
 {
   options.devices = with lib; {
     __profiles__ = {

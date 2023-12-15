@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
-{omnibus}:
+{ omnibus }:
 {
-  imports = [omnibus.srvos.common.openssh];
+  imports = [ omnibus.srvos.common.openssh ];
   services.openssh = {
     enable = true;
   };

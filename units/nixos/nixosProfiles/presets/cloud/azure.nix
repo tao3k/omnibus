@@ -1,1 +1,4 @@
-{modulesPath}: {imports = ["${modulesPath}/virtualisation/azure-common.nix"];}
+{ modulesPath }:
+{
+  imports = [ "${modulesPath}/virtualisation/azure-common.nix" ];
+}

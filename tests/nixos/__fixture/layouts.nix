@@ -16,7 +16,7 @@ in
 
   nixosSuites = lib.flatten [
     # outputs.selfNixOSProfiles.default.bootstrap
-    {users.users.root.initialPassword = "nixos";}
+    { users.users.root.initialPassword = "nixos"; }
     # self.nixosProfiles.default.presets.boot
     # load a suite profile from audio
     # (outputs.nixosProfiles.default.audio {}).default
@@ -31,7 +31,7 @@ in
           uid = 1000;
           description = "default manager";
           isNormalUser = true;
-          extraGroups = ["wheel"];
+          extraGroups = [ "wheel" ];
         };
       }
       "zsh"
@@ -60,6 +60,6 @@ in
     module:
     darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      modules = lib.flatten [module];
+      modules = lib.flatten [ module ];
     };
 }

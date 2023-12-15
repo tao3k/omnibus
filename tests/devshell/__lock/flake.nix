@@ -14,5 +14,5 @@
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = _: {};
+  outputs = _: { };
 }

@@ -21,17 +21,19 @@ let
     ;
   inherit (jupyenv.lib.${nixpkgs.system}) mkJupyterlabNew mkJupyterlabEval;
 
-  setJupyenvModule = module: mkJupyterlabEval {imports = lib.flatten [module];};
+  setJupyenvModule =
+    module: mkJupyterlabEval { imports = lib.flatten [ module ]; };
 in
-((super.nixosProfiles.addLoadExtender {
-  load = {
-    type = "nixosProfiles";
-    inputs = {
-      inherit setJupyenvModule mkJupyterlabNew mkJupyterlabEval;
+(
+  (super.nixosProfiles.addLoadExtender {
+    load = {
+      type = "nixosProfiles";
+      inputs = {
+        inherit setJupyenvModule mkJupyterlabNew mkJupyterlabEval;
+      };
     };
-  };
-}).addLoadExtender
-  {inherit load;}
+  }).addLoadExtender
+  { inherit load; }
 ).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (

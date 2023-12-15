@@ -14,11 +14,11 @@ with lib; {
     enable = mkEnableOption (lib.mdDoc "Whether to enable foliate");
     __profiles__ = {
       themes =
-        (import (loadSrc + "/_common/themes.nix") {inherit lib inputs;}).themes;
+        (import (loadSrc + "/_common/themes.nix") { inherit lib inputs; }).themes;
     };
   };
   config = mkMerge [
-    (mkIf cfg.enable {home.packages = [pkgs.foliate];})
+    (mkIf cfg.enable { home.packages = [ pkgs.foliate ]; })
     (mkIf
       (
         hasAttr "catppuccin-foliate" cfg.__profiles__.themes

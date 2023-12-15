@@ -12,22 +12,30 @@ let
   inherit (pkgs.stdenv.hostPlatform) isAarch64;
 in
 {
-  imports = [(loadSubmodule ./optimise.nix)];
+  imports = [ (loadSubmodule ./optimise.nix) ];
   nix = {
     package = pkgs.nixUnstable;
     configureBuildUsers = true;
     settings = {
       # Administrative users on Darwin systems are part of the admin group.
-      trusted-users = ["@admin"];
+      trusted-users = [ "@admin" ];
       extra-platforms = l.mkIf isAarch64 [
         "x86_64-darwin"
         "aarch64-darwin"
       ];
+      keep-derivations = true;
       auto-optimise-store = false;
       accept-flake-config = true;
+      auto-allocate-uids = true;
+      builders-use-substitutes = true;
       experimental-features = [
         "nix-command"
         "flakes"
+        "ca-derivations"
+        # Allow the use of the impure-env setting.
+        "configurable-impure-env"
+        "auto-allocate-uids"
+        # Allow derivation builders to call Nix, and thus build derivations recursively.
         "recursive-nix"
       ];
       sandbox = false;

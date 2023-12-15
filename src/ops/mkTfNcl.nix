@@ -2,10 +2,10 @@
 #
 # SPDX-License-Identifier: MIT
 
-{super}:
-{nixpkgs, tf-ncl}:
+{ super }:
+{ nixpkgs, tf-ncl }:
 let
-  writeShellApplication = super.writeShellApplication {inherit nixpkgs;};
+  writeShellApplication = super.writeShellApplication { inherit nixpkgs; };
 in
 name: nixpkgs: tfPlugins: git:
 let
@@ -45,7 +45,7 @@ writeShellApplication {
       (import "''${ENTRY}").renderable_config
     EOF
 
-    ${if git != {} then
+    ${if git != { } then
       ''
         ENTRY_DIR="$(dirname "$ENTRY")"
 

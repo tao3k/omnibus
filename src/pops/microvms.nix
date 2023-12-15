@@ -33,7 +33,7 @@ let
     mkMicrovm
     ;
 in
-(super.flake-parts.profiles.addLoadExtender {inherit load;}).addExporters [
+(super.flake-parts.profiles.addLoadExtender { inherit load; }).addExporters [
   (POP.extendPop flops.haumea.pops.exporter (
     self: _super: {
       exports = {

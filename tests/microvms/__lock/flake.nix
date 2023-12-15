@@ -8,5 +8,5 @@
     microvm.url = "github:astro/microvm.nix";
   };
 
-  outputs = _: {};
+  outputs = _: { };
 }

@@ -3,15 +3,15 @@
 # SPDX-License-Identifier: MIT
 
 _:
-{nixpkgs}:
+{ nixpkgs }:
 let
   l = nixpkgs.lib // builtins;
 in
 {
   name,
   text,
-  runtimeInputs ? [],
-  runtimeEnv ? {},
+  runtimeInputs ? [ ],
+  runtimeEnv ? { },
   runtimeShell ? nixpkgs.runtimeShell,
   checkPhase ? null,
 }:
@@ -36,10 +36,10 @@ nixpkgs.writeTextFile {
       set -o pipefail
 
     ''
-    + l.optionalString (runtimeInputs != []) ''
+    + l.optionalString (runtimeInputs != [ ]) ''
       export PATH="${l.makeBinPath runtimeInputs}:$PATH"
     ''
-    + l.optionalString (runtimeEnv != {}) ''
+    + l.optionalString (runtimeEnv != { }) ''
       ${l.concatStringsSep "\n" (
         l.mapAttrsToList (n: v: "export ${n}=${''"$''}{${n}:-${toString v}}${''"''}")
           runtimeEnv

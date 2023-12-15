@@ -3,12 +3,16 @@
 # SPDX-License-Identifier: MIT
 
 # [[file:../../../docs/org/nixosProfiles.org::*coding][coding:1]]
-{root, self}:
+{
+  root,
+  self,
+  lib,
+}:
 let
   presets = root.presets;
 in
 with presets; {
-  minimal = [shell.default];
+  minimal = [ shell.default ];
 
   default = [
     self.minimal
@@ -24,14 +28,14 @@ with presets; {
     self.default
     {
       config.omnibus.coding = {
-        bash.enableLsp = true;
-        nickel.enableLsp = true;
-        typst.enableLsp = true;
-        conf.enableLsp = true;
+        bash.enableLsp = lib.mkDefault true;
+        nickel.enableLsp = lib.mkDefault true;
+        typst.enableLsp = lib.mkDefault true;
+        conf.enableLsp = lib.mkDefault true;
       };
     }
   ];
 
-  mathematic = [coding.typst];
+  mathematic = [ coding.typst ];
 }
 # coding:1 ends here

@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{inputs}:
+{ inputs }:
 let
   inherit (inputs) flops self;
   inherit (flops.inputs)

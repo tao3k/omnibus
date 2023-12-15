@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-{programs.pls.enable = true;}
+{ programs.pls.enable = true; }

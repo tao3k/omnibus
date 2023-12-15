@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{omnibus, lib}:
+{ omnibus, lib }:
 let
   inherit (omnibus.flake.inputs) nixpkgs makesSrc;
   omnibusLib =

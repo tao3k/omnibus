@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{config, lib, ...}:
+{ config, lib, ... }:
 {
   # https://github.com/Canop/broot
   programs.broot = {

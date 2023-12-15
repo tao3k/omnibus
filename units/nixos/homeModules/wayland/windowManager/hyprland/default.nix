@@ -3,19 +3,19 @@
 # SPDX-License-Identifier: MIT
 
 {
-  imports = [(loadSubmodule ./config.nix)];
+  imports = [ (loadSubmodule ./config.nix) ];
 
   options.__profiles__ =
     with lib;
     mkOption {
-      default = {};
+      default = { };
       type = types.submodule {
         options = {
           swww = {
             enable = mkEnableOption (lib.mdDoc "Whether to enable swww wallpaper profile");
             runtimeEnv = mkOption {
               type = types.attrs;
-              default = {};
+              default = { };
               description = "The runtime environment to use for swww";
             };
           };

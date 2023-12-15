@@ -15,7 +15,7 @@ super.nixosProfiles.addLoadExtender {
     type = "nixosProfiles";
     loader =
       with haumea;
-      [(matchers.nix loaders.default)]
+      [ (matchers.nix loaders.default) ]
       ++ lib.optionals (inputs ? devshell) [
         (matchers.regex "^(.+)\\.(toml)$" (
           _matches: _: path:

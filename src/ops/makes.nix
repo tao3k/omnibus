@@ -26,6 +26,6 @@ l.fix (
       __nixpkgs__ = nixpkgs;
       __nixpkgsSrc__ = nixpkgs.path;
     })
-    (import (makesSrc + /src/args/agnostic.nix) {inherit (nixpkgs) system;})
+    (import (makesSrc + /src/args/agnostic.nix) { inherit (nixpkgs) system; })
     .__unfix__
 )

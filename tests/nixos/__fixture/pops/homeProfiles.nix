@@ -21,7 +21,7 @@ in
         exports.customProfiles = self.outputs [
           {
             value =
-              {selfModule'}:
+              { selfModule' }:
               with dmerge;
               selfModule' (
                 m:

@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{lib, super}:
+{ lib, super }:
 inputs': object: listNames:
 let
   notFoundInputs =
@@ -13,7 +13,7 @@ let
   msg =
     (lib.concatMapStringsSep "\n         "
       (
-        {name, url}:
+        { name, url }:
         ''
           # please get the input from `${name}.url = "${url}"`
                    ${name} = inputs.${name};

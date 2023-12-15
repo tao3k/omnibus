@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-{super}: super.flakeOutputs
+{ super }: super.flakeOutputs

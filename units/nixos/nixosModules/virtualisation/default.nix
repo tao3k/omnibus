@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
-{lib, loadSubmodule}:
+{ lib, loadSubmodule }:
 {
-  imports = [(loadSubmodule ./packages.nix)];
+  imports = [ (loadSubmodule ./packages.nix) ];
 
   options.__profiles__ = with lib; {
     gui = mkOption {

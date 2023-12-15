@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
-{omnibus, lib}:
+{ omnibus, lib }:
 {
-  imports = [omnibus.homeModules.programs.alacritty];
+  imports = [ omnibus.homeModules.programs.alacritty ];
   programs.alacritty = {
     enable = true;
     CSIuSupport = true;

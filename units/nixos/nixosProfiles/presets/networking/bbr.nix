@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 {
-  boot.kernelModules = ["tcp_bbr"];
+  boot.kernelModules = [ "tcp_bbr" ];
   boot.kernel.sysctl = {
     # Bufferbloat mitigations + slight improvements in throughput and latency.
     "net.ipv4.tcp_congestion_control" = "bbr";

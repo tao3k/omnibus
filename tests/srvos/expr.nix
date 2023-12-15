@@ -18,4 +18,4 @@ in
       exporter.layouts.outputs.nixosProfiles.default.cloud.default
     ]).config.services.openssh.settings.KexAlgorithms;
 }
-// lib.optionalAttrs trace {}
+// lib.optionalAttrs trace { }

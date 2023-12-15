@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{lib}:
+{ lib }:
 homeModule: userSet: shell: suites:
 let
   user = lib.head (lib.attrNames userSet);
@@ -12,15 +12,15 @@ let
     "bash"
   ];
   enableDefaultShellProgram =
-    if pathsToLinkShell then {programs.${shell}.enable = true;} else {};
+    if pathsToLinkShell then { programs.${shell}.enable = true; } else { };
 in
 {
   imports =
     [
       homeModule
-      {users.users = userSet;}
+      { users.users = userSet; }
       (
-        {pkgs, lib, ...}:
+        { pkgs, lib, ... }:
         {
           config =
             with lib;
@@ -32,7 +32,7 @@ in
                 home-manager.users.${user} = {
                   imports = lib.flatten [
                     suites
-                    {programs.${shell}.enable = true;}
+                    { programs.${shell}.enable = true; }
                   ];
                   home.stateVersion =
                     if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "23.11";
@@ -48,6 +48,6 @@ in
       )
     ]
     ++ lib.optionals pathsToLinkShell [
-      {environment.pathsToLink = ["/share/${shell}"];}
+      { environment.pathsToLink = [ "/share/${shell}" ]; }
     ];
 }

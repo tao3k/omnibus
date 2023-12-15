@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{root, lib}:
+{ root, lib }:
 let
   inherit (root.pops.flake.inputs) bird-nix-lib;
 in

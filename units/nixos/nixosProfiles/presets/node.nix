@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     yarn

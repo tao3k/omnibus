@@ -9,7 +9,7 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [docker-compose];
+  environment.systemPackages = with pkgs; [ docker-compose ];
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
