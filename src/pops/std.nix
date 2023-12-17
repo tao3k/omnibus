@@ -18,7 +18,7 @@ in
 (super.load {
   loader = with haumea; [ (matchers.nix loaders.scoped) ];
   src = projectRoot + "/units/std";
-  inpputs.inputs = {
+  inputs.inputs = {
     inherit std;
   };
 }).addLoadExtender

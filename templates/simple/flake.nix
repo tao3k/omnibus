@@ -65,7 +65,7 @@
           }
         );
       };
-      inherit (inputs.omnibus.lib) mapPopsExports;
+      inherit (inputs.omnibus.lib.omnibus) mapPopsExports;
     in
     mapPopsExports pops
     // {
