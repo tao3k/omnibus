@@ -4,12 +4,12 @@
 
 {
   super,
-  projectDir,
+  projectRoot,
   flops,
 }:
 super.nixosModules.addLoadExtender {
   load = {
-    src = projectDir + "/units/devshell/modules";
+    src = projectRoot + "/units/devshell/modules";
     type = "nixosModules";
   };
 }

@@ -4,14 +4,14 @@
 
 {
   super,
-  projectDir,
+  projectRoot,
   POP,
   flops,
   haumea,
 }:
 (super.homeModules.addLoadExtender {
   load = {
-    src = projectDir + "/units/nixos/homeProfiles";
+    src = projectRoot + "/units/nixos/homeProfiles";
     type = "nixosProfilesOmnibus";
     transformer = [ (_: _: _) ];
   };

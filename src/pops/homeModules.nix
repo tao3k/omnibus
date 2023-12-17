@@ -4,7 +4,7 @@
 
 {
   root,
-  projectDir,
+  projectRoot,
   POP,
   flops,
   inputs,
@@ -14,9 +14,9 @@
 }:
 (
   (flops.haumea.pops.default.setInit {
-    src = projectDir + "/units/nixos/homeModules";
+    src = projectRoot + "/units/nixos/homeModules";
     type = "nixosModules";
-    inputs = root.lib.loaderInputs;
+    inputs = root.lib.omnibus.loaderInputs;
   }).addLoadExtender
   { load.inputs.inputs = super.flake.inputs; }
 ).addExporters

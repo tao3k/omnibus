@@ -4,14 +4,14 @@
 
 {
   super,
-  projectDir,
+  projectRoot,
   POP,
   flops,
   self,
 }:
 (super.nixosModules.addLoadExtender {
   load = {
-    src = projectDir + "/units/nixos/nixosProfiles";
+    src = projectRoot + "/units/nixos/nixosProfiles";
     type = "nixosProfilesOmnibus";
     transformer = [ (_: _: _) ];
   };

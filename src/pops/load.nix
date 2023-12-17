@@ -17,7 +17,7 @@ load:
   recursiveMerge' [
     {
       loader = with haumea; [ (matchers.nix loaders.default) ];
-      inputs = root.lib.loaderInputs;
+      inputs = root.lib.omnibus.loaderInputs;
     }
     load
   ]

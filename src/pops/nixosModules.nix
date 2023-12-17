@@ -5,14 +5,14 @@
 {
   root,
   lib,
-  projectDir,
+  projectRoot,
   POP,
   flops,
 }:
 (flops.haumea.pops.default.setInit {
-  src = projectDir + "/units/nixos/nixosModules";
+  src = projectRoot + "/units/nixos/nixosModules";
   type = "nixosModules";
-  inputs = root.lib.loaderInputs;
+  inputs = root.lib.omnibus.loaderInputs;
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (

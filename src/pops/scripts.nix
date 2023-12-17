@@ -8,11 +8,11 @@
   inputs,
   lib,
   haumea,
-  projectDir,
+  projectRoot,
   POP,
 }:
 (super.load {
-  src = projectDir + "/units/scripts";
+  src = projectRoot + "/units/scripts";
   inputsTransformer = [
     (
       x:

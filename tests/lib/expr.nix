@@ -4,7 +4,7 @@
 
 { omnibus }:
 let
-  inherit (omnibus.lib) inputsToPaths;
+  inherit (omnibus.lib.omnibus) inputsToPaths;
 in
 {
   inputsToPaths = inputsToPaths {

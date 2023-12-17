@@ -5,9 +5,9 @@
 let
   inherit (inputs) nixpkgs darwin;
   # exports.default to be default
-  outputs = omnibus.lib.mapPopsExports' super.pops;
+  outputs = omnibus.lib.omnibus.mapPopsExports' super.pops;
   # with multi-layout
-  outputs' = omnibus.lib.mapPopsExports super.pops;
+  outputs' = omnibus.lib.omnibus.mapPopsExports super.pops;
 in
 {
   system = "x86_64-linux";

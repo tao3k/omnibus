@@ -4,9 +4,9 @@
 
 {
   super,
-  projectDir,
+  projectRoot,
   flops,
 }:
 super.nixosModules.addLoadExtender {
-  load.src = projectDir + "/units/nixos/darwinModules";
+  load.src = projectRoot + "/units/nixos/darwinModules";
 }

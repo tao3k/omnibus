@@ -74,21 +74,21 @@
         examples = omnibus.load {
           src = ../examples;
           transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
-          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.loaderInputs {
+          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.omnibus.loaderInputs {
             inherit inputs;
             trace = true;
           };
         };
         eval = omnibus.load {
           src = ../tests;
-          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.loaderInputs {
+          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.omnibus.loaderInputs {
             inherit inputs;
             trace = true;
           };
         };
         checks = inputs.namaka.lib.load {
           src = ../tests;
-          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.loaderInputs {
+          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.omnibus.loaderInputs {
             inherit inputs;
             trace = false;
           };

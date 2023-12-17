@@ -6,12 +6,12 @@
   lib,
   super,
   omnibus,
-  projectDir,
+  projectRoot,
 }:
 let
   inherit (omnibus.lib.omnibus) mkHosts;
 in
 mkHosts {
-  hostsDir = projectDir + "/units/nixos/hosts";
+  hostsDir = projectRoot + "/units/nixos/hosts";
   pops = super.hostsInterface;
 }

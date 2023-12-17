@@ -5,11 +5,11 @@
 {
   super,
   root,
-  projectDir,
+  projectRoot,
   inputs,
 }:
 let
-  outputs = root.lib.mapPopsExports super.pops;
+  outputs = root.lib.omnibus.mapPopsExports super.pops;
 in
 {
   inherit (super) load;
@@ -60,7 +60,7 @@ in
     };
   };
 
-  dotfiles = projectDir + "/dotfiles";
+  dotfiles = projectRoot + "/dotfiles";
 
   # aliases
   flakeModules = outputs.flake-parts.profiles;

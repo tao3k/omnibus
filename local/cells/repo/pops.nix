@@ -17,7 +17,7 @@ in
         POP.extendPop flops.haumea.pops.exporter (
           _self: _super: {
             exports = rec {
-              inherit (inputs.omnibus.lib.mapPopsExports pops) self;
+              inherit (inputs.omnibus.lib.omnibus.mapPopsExports pops) self;
               pops.self =
                 (self.layouts.default.addLoadExtender {
                   load.inputs = {

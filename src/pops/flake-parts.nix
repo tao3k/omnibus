@@ -4,17 +4,17 @@
 
 {
   super,
-  projectDir,
+  projectRoot,
   flops,
 }:
 {
   modules = super.nixosModules.addLoadExtender {
-    load.src = projectDir + "/units/flake-parts/modules";
+    load.src = projectRoot + "/units/flake-parts/modules";
   };
   profiles = super.nixosProfiles.addLoadExtender {
     load = {
       type = "nixosProfiles";
-      src = projectDir + "/units/flake-parts/profiles";
+      src = projectRoot + "/units/flake-parts/profiles";
     };
   };
 }

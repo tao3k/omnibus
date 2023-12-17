@@ -4,14 +4,14 @@
 
 {
   super,
-  projectDir,
+  projectRoot,
   flops,
   POP,
 }:
 (super.nixosProfiles.addLoadExtender {
   load = {
     type = "nixosProfilesOmnibus";
-    src = projectDir + "/units/nixos/darwinProfiles";
+    src = projectRoot + "/units/nixos/darwinProfiles";
   };
 }).addExporters
   [

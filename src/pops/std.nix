@@ -5,7 +5,7 @@
 {
   root,
   haumea,
-  projectDir,
+  projectRoot,
   super,
 }:
 load:
@@ -17,7 +17,7 @@ let
 in
 (super.load {
   loader = with haumea; [ (matchers.nix loaders.scoped) ];
-  src = projectDir + "/units/std";
+  src = projectRoot + "/units/std";
   inpputs.inputs = {
     inherit std;
   };

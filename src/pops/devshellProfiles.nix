@@ -4,14 +4,14 @@
 
 {
   super,
-  projectDir,
+  projectRoot,
   haumea,
   lib,
   inputs,
 }:
 super.nixosProfiles.addLoadExtender {
   load = {
-    src = projectDir + "/units/devshell/profiles";
+    src = projectRoot + "/units/devshell/profiles";
     type = "nixosProfiles";
     loader =
       with haumea;

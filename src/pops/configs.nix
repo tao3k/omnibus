@@ -6,7 +6,7 @@
   flops,
   lib,
   root,
-  projectDir,
+  projectRoot,
   POP,
 }:
 load:
@@ -39,8 +39,8 @@ let
 in
 (
   (flops.haumea.pops.default.setInit {
-    src = projectDir + "/units/configs";
-    inputs = root.lib.loaderInputs;
+    src = projectRoot + "/units/configs";
+    inputs = root.lib.omnibus.loaderInputs;
   }).addLoadExtender
   { inherit load; }
 ).addExporters
