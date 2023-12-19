@@ -12,7 +12,7 @@
 load:
 let
   inherit
-    (root.errors.requiredInputs load.inputs.inputs "omnibus.pops.jupyenv" [
+    (root.errors.requiredInputsLazily load.inputs.inputs "omnibus.pops.jupyenv" [
       "jupyenv"
       "nixpkgs"
     ])

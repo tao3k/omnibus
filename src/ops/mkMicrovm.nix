@@ -6,7 +6,7 @@
 { inputs, root }:
 let
   inherit
-    (root.errors.requiredInputs inputs "lib" [
+    (root.errors.requiredInputsLazily inputs "lib" [
       "nixpkgs"
       "microvm"
     ])

@@ -47,6 +47,7 @@ in
     out.outputs.nixosProfiles.default.cloud.contabo
     out.outputs.nixosProfiles.default.dev.coding
   ];
+  pop = super.pops;
 
   homeConfiguration =
     (out.nixosConfiguration [

@@ -5,7 +5,7 @@
 { inputs, omnibus }:
 let
   inherit
-    (omnibus.errors.requiredInputs inputs "omnibus.pops.configs" [
+    (omnibus.errors.requiredInputsLazily inputs "omnibus.pops.configs" [
       "nixpkgs"
       "nur"
     ])

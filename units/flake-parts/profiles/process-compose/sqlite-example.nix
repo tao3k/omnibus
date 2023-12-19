@@ -10,9 +10,9 @@
 }:
 let
   inherit
-    (omnibus.errors.requiredInputs inputs "omnibus.pops.flake-parts.profiles" [
-      "chinookDb"
-    ])
+    (omnibus.errors.requiredInputsLazily inputs "omnibus.pops.flake-parts.profiles"
+      [ "chinookDb" ]
+    )
     chinookDb
     ;
 

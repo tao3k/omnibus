@@ -5,7 +5,7 @@
 { omnibus, inputs }:
 let
   inherit
-    (omnibus.errors.requiredInputs inputs "omnibus.pops.devshellProfiles" [
+    (omnibus.errors.requiredInputsLazily inputs "omnibus.pops.devshellProfiles" [
       "nickel"
     ])
     nickel

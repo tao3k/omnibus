@@ -14,7 +14,7 @@
 load:
 let
   inherit
-    (root.errors.requiredInputs load.inputs.inputs "omnibus.pops.microvms" [
+    (root.errors.requiredInputsLazily load.inputs.inputs "omnibus.pops.microvms" [
       "nixpkgs"
       "microvm"
     ])

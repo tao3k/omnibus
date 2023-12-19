@@ -33,7 +33,7 @@ in
   configs = inputs.omnibus.pops.configs {
     inputs = {
       inputs = {
-        inherit (inputs') nixfmt topiary nur;
+        inherit (inputs') nixfmt nur;
         inherit (inputs) std;
         inherit nixpkgs;
       };

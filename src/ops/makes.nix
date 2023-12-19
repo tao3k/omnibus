@@ -10,7 +10,7 @@
 let
   l = nixpkgs.lib // builtins;
   inherit
-    (root.errors.requiredInputs inputs "omnibus.pops.self" [
+    (root.errors.requiredInputsLazily inputs "omnibus.pops.self" [
       "nixpkgs"
       "makesSrc"
     ])

@@ -4,7 +4,8 @@
 
 { inputs, root }: # source from std
 let
-  inherit (root.errors.requiredInputs inputs "omnibus.pops.self" [ "nixpkgs" ])
+  inherit
+    (root.errors.requiredInputsLazily inputs "omnibus.pops.self" [ "nixpkgs" ])
     nixpkgs
     ;
 

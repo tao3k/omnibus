@@ -2,19 +2,23 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ inputs, omnibus }:
+{
+  inputs,
+  lib,
+  omnibus,
+}:
 let
   inherit
-    (omnibus.errors.requiredInputs inputs "omnibus.pops.configs" [
+    (omnibus.errors.requiredInputsLazily inputs "omnibus.pops.configs" [
       "nixpkgs"
-      "topiary"
       "nixfmt"
       "dmerge"
+      "topiary"
     ])
     dmerge
+    nixfmt
     topiary
     nixpkgs
-    nixfmt
     ;
   inherit (dmerge) prepend;
 in

@@ -35,7 +35,7 @@ in
         exports =
           let
             inherit
-              (root.errors.requiredInputs self.layouts.self.load.inputs.inputs
+              (root.errors.requiredInputsLazily self.layouts.self.load.inputs.inputs
                 "omnibus.pops.packages"
                 [ "nixpkgs" ]
               )

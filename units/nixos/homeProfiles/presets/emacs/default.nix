@@ -7,7 +7,7 @@
 }:
 let
   inherit
-    (omnibus.errors.requiredInputs inputs "omnibus.pops.homeProfiles" [
+    (omnibus.errors.requiredInputsLazily inputs "omnibus.pops.homeProfiles" [
       "emacs-overlay"
     ])
     emacs-overlay
