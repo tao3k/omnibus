@@ -124,7 +124,7 @@ in
                 (self.exports.packages.packages (
                   final // { overrideScope = self.exports.packages.overrideScope; }
                 ));
-              compose =
+              composePackages =
                 final: prev:
                 (
                   (self.exports.packages.overrideScope (
@@ -217,10 +217,10 @@ nix-repl> :p Flake.examples.packages.exports.overlay
     #+begin_src nix :tangle (concat (org-entry-get nil "EXP-DIR" t) "/packagesOverlay.nix")
 { super, omnibus }:
 let
-  nixos-23_05 = omnibus.flake.inputs.nixos-23_05;
+  nixos-23_11 = omnibus.flake.inputs.nixos-23_11;
 in
-nixos-23_05.legacyPackages.x86_64-linux.appendOverlays [
-  super.packages.exports.overlays.compose
+nixos-23_11.legacyPackages.x86_64-linux.appendOverlays [
+  super.packages.exports.overlays.composePackages
   # super.packages.exports.overlays.default
   (final: prev: {
     python3Packages = prev.python3Packages.override (

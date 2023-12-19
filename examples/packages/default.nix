@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2023 The omnibus Authors
-#
-# SPDX-License-Identifier: MIT
-
 # [[file:../../docs/org/pops-packages.org::*Example][Example:1]]
 { omnibus, inputs }:
 let
