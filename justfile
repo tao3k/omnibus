@@ -28,7 +28,7 @@ examples-simple:
 examples-system-manager:
     nix flake lock --update-input omnibus ./examples/system-manager --override-input omnibus ./.
     (cd examples/system-manager && \
-    nix run 'github:numtide/system-manager' --extra-substituters https://cache.garnix.io \
+    nix run 'github:numtide/system-manager' --refresh --extra-substituters https://cache.garnix.io \
     --extra-trusted-public-keys cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= \
     -- build --flake ./#example \
     && git rm flake.lock -f && rm ./result)
@@ -40,5 +40,5 @@ nixci-examples-python:
 nixci-jupyenv +quarto:
     nix flake lock --update-input omnibus ./examples/jupyenv+quarto --override-input omnibus ./.
     (cd examples/jupyenv+quarto && nixci && \
-    nix run .#quartoSimple -- render ./quarto/simple.qmd --to html \
+    nix run .#quartoSimple -- render ./quarto --execute-daemon-restart \
     && git rm flake.lock -f)

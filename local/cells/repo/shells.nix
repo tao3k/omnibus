@@ -33,6 +33,7 @@ in
       nixpkgs.deadnix
       nixpkgs.tree
       nixpkgs.poetry
+      nixpkgs.tectonic
 
       nixpkgs.reuse
       nixpkgs.nixci

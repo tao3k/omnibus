@@ -19,7 +19,9 @@ jobs:
           SECRET_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: nixci-jupyenv-quarto
-        run: just nixci-jupyenv quarto
+        run: |
+          nix profile install nixpkgs#tectonic
+          just nixci-jupyenv quarto
 
   examples-packages:
     runs-on: ubuntu-latest
