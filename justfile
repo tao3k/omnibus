@@ -39,4 +39,6 @@ nixci-examples-python:
 
 nixci-jupyenv +quarto:
     nix flake lock --update-input omnibus ./examples/jupyenv+quarto --override-input omnibus ./.
-    (cd examples/jupyenv+quarto && nixci && git rm flake.lock -f)
+    (cd examples/jupyenv+quarto && nixci && \
+    nix run .#quartoSimple -- render ./quarto/simple.qmd --to html \
+    && git rm flake.lock -f)
