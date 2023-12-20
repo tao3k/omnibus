@@ -58,4 +58,20 @@ in
   languagetool-code-comments = {
     packages = [ languagetool-code-comments ];
   };
+  just = {
+    packages = [ nixpkgs.just ];
+    data = {
+      pre-commit = {
+        commands = {
+          justfmt = {
+            run = "just --fmt --unstable";
+            skip = [
+              "merge"
+              "rebase"
+            ];
+          };
+        };
+      };
+    };
+  };
 }

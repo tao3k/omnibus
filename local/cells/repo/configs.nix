@@ -20,7 +20,7 @@ let
 in
 {
   lefthook = {
-    inherit (lefthook) default;
+    default = cfg.lefthook.default lefthook.just;
   };
   treefmt = {
     default = (cfg.treefmt.default treefmt.nvfetcher);

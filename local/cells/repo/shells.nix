@@ -16,16 +16,7 @@ in
   default = lib.dev.mkShell {
     name = "omnibus devshell";
 
-    imports = [
-      cell.pops.devshellProfiles.exports.default.nickel
-      cell.pops.devshellProfiles.exports.default.git.hooks
-    ];
-
-    git.hooks = {
-      pre-commit.text = ''
-        just justfmt
-      '';
-    };
+    imports = [ cell.pops.devshellProfiles.exports.default.nickel ];
 
     # Tool Homepage: https://nix-community.github.io/nixago/
     # This is Standard's devshell integration.
