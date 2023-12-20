@@ -7,11 +7,13 @@ let
   system = "x86_64-linux";
   loadedInputs =
     ((omnibus.pops.flake.setInitInputs ./__lock).setSystem system).inputs;
-  jupyenvModules = omnibus.pops.jupyenv {
-    src = ./__fixture;
-    inputs = {
+  jupyenvModules = omnibus.pops.jupyenv.addLoadExtender {
+    load = {
+      src = ./__fixture;
       inputs = {
-        inherit (loadedInputs) jupyenv nixpkgs;
+        inputs = {
+          inherit (loadedInputs) jupyenv nixpkgs;
+        };
       };
     };
   };

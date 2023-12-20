@@ -24,6 +24,7 @@ in
     devshellModules
     devshellProfiles
     flake
+    jupyenv
     ;
 
   scripts =
@@ -37,7 +38,8 @@ in
     }).exports.default;
 
   units = {
-    inherit (outputs) configs std;
+    inherit (outputs) configs std jupenv;
+
     nixos = {
       inherit (outputs)
         nixosProfiles

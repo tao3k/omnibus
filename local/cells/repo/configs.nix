@@ -13,20 +13,20 @@
 { inputs, cell }:
 with inputs.std.inputs.dmerge;
 let
+  inherit (cell.pops.configs.exports.default) treefmt lefthook conform;
   cfg = {
-    inherit (cell.pops.configs.exports.default) treefmt lefthook conform;
+    inherit (cell.pops.configs.exports.stdNixago) treefmt lefthook conform;
   };
-  inherit (cell.pops.configs.exports.stdNixago) treefmt lefthook conform;
 in
 {
   lefthook = {
     inherit (lefthook) default;
   };
   treefmt = {
-    default = (treefmt.default cfg.treefmt.nvfetcher);
+    default = (cfg.treefmt.default treefmt.nvfetcher);
   };
   conform = rec {
-    default = conform.default custom;
+    default = cfg.conform.default custom;
     custom = {
       data = {
         commit.conventional.scopes = append [

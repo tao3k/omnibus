@@ -15,7 +15,7 @@
   src = projectRoot + "/units/scripts";
   inputsTransformer = [
     (
-      x:
+      self:
       let
         makes =
           (inputs.self.pops.self.addLoadExtender {
@@ -24,12 +24,12 @@
             };
           }).exports.default.ops.makes;
         inherit
-          (root.errors.requiredInputs x.inputs "omnibus.pops.scripts" [ "nixpkgs" ])
+          (root.errors.requiredInputs self.inputs "omnibus.pops.scripts" [ "nixpkgs" ])
           nixpkgs
           makesSrc
           ;
       in
-      x
+      self
       // {
         inherit nixpkgs;
         writeShellApplication = root.ops.writeShellApplication { inherit nixpkgs; };

@@ -8,44 +8,51 @@
   super,
   POP,
   flops,
+  projectRoot,
 }:
-load:
-let
-  inherit
-    (root.errors.requiredInputsLazily load.inputs.inputs "omnibus.pops.jupyenv" [
-      "jupyenv"
-      "nixpkgs"
-    ])
-    nixpkgs
-    jupyenv
-    ;
-  inherit (jupyenv.lib.${nixpkgs.system}) mkJupyterlabNew mkJupyterlabEval;
-
-  setJupyenvModule =
-    module: mkJupyterlabEval { imports = lib.flatten [ module ]; };
-in
-(
-  (super.nixosProfiles.addLoadExtender {
-    load = {
-      type = "nixosProfiles";
-      inputs = {
-        inherit setJupyenvModule mkJupyterlabNew mkJupyterlabEval;
-      };
+(super.nixosProfiles.addLoadExtender {
+  load = {
+    src = projectRoot + "/units/jupyenv";
+    type = "nixosProfiles";
+    inputsTransformer = [
+      (
+        self:
+        self
+        // rec {
+          inherit
+            (root.errors.requiredInputs self.inputs "omnibus.pops.jupyenv" [
+              "jupyenv"
+              "nixpkgs"
+            ])
+            nixpkgs
+            jupyenv
+            ;
+          inherit (jupyenv.lib.${nixpkgs.system}) mkJupyterlabNew mkJupyterlabEval;
+          setJupyenvModule =
+            module: mkJupyterlabEval { imports = lib.flatten [ module ]; };
+        }
+      )
+    ];
+    inputs = {
+      writeShellApplicationFn = root.ops.writeShellApplication;
     };
-  }).addLoadExtender
-  { inherit load; }
-).addExporters
+  };
+}).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: _super: {
-        exports = {
-          jupyenvEvalModules =
-            lib.mapAttrsRecursive (_: v: setJupyenvModule v)
-              self.layouts.default;
-          jupyenvEnv =
-            lib.mapAttrsRecursive (_: v: (setJupyenvModule v).config.build)
-              self.layouts.default;
-        };
+        exports =
+          let
+            setJupyenvModule = self.layouts.self.load.inputs.setJupyenvModule;
+          in
+          {
+            jupyenvEvalModules =
+              lib.mapAttrsRecursive (_: v: setJupyenvModule v)
+                self.layouts.default;
+            jupyenvEnv =
+              lib.mapAttrsRecursive (_: v: (setJupyenvModule v).config.build)
+                self.layouts.default;
+          };
       }
     ))
   ]
