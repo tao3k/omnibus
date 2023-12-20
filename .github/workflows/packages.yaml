@@ -11,10 +11,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          submodules: "recursive"
 
       - name: Setup
         uses: ./.github/actions/common-setup
         with:
           SECRET_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: nixci
+      - run: |
+          nix flake lock --update-input omnibus ./examples --override-input omnibus ./.
+          nixci ./examples

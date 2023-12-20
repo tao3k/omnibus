@@ -1,3 +1,0 @@
-[flake8-black]
-src.pypi = "flake8-black"
-fetch.pypi = "flake8-black"
