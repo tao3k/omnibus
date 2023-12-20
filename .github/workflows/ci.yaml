@@ -20,3 +20,19 @@ jobs:
 
       - name: nixci
         run: just nixci-examples
+
+  Examples-simple:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: "recursive"
+
+      - name: Setup
+        uses: ./.github/actions/common-setup
+        with:
+          SECRET_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Simple
+        run: just examples-simple

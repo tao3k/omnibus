@@ -18,3 +18,10 @@ local-nixos:
 nixci-examples:
     nix flake lock --update-input omnibus ./examples --override-input omnibus ./.
     (cd examples && nixci && git rm flake.lock -f)
+
+examples-simple:
+    nix flake lock --update-input omnibus ./examples/simple --override-input omnibus ./.
+    (cd examples/simple && \
+    nix build ./#nixosConfigurations.simple.config.system.build.toplevel \
+                                --dry-run --no-link \
+    && git rm flake.lock -f)
