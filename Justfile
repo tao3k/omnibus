@@ -14,7 +14,6 @@ template-nixos:
 local-nixos:
     nix build ./local#eval.nixos.expr.nixosConfiguration.config.system.build.toplevel --dry-run --no-link
 
-
 nixci-examples:
     nix flake lock --update-input omnibus ./examples --override-input omnibus ./.
     (cd examples && nixci && git rm flake.lock -f)

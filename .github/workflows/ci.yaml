@@ -21,7 +21,7 @@ jobs:
       - name: nixci
         run: just nixci-examples
 
-  Examples-simple:
+  examples-simple:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
