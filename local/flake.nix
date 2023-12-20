@@ -71,7 +71,7 @@
         ];
       }
       {
-       eval = omnibus.load {
+        eval = omnibus.load {
           src = ../tests;
           inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.omnibus.loaderInputs {
             inherit inputs;

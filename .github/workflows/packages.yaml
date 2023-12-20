@@ -18,6 +18,5 @@ jobs:
         with:
           SECRET_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: |
-          nix flake lock --update-input omnibus ./examples --override-input omnibus ./.
-          nixci ./examples
+      - name: nixci
+        run: just nixci-examples
