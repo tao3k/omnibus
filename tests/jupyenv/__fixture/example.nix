@@ -2,8 +2,10 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ pkgs }:
+{ pkgs, omnibus }:
 {
+  imports = [ omnibus.jupyenv.quarto ];
+  publishers.quarto.enable = true;
   kernel.bash.omnibus = {
     enable = true;
     runtimePackages = [ pkgs.git ];

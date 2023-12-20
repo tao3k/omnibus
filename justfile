@@ -36,3 +36,7 @@ examples-system-manager:
 nixci-examples-python:
     nix flake lock --update-input omnibus ./examples/python --override-input omnibus ./.
     (cd examples/python && nixci && git rm flake.lock -f)
+
+nixci-jupyenv +quarto:
+    nix flake lock --update-input omnibus ./examples/jupyenv+quarto --override-input omnibus ./.
+    (cd examples/jupyenv+quarto && nixci && git rm flake.lock -f)

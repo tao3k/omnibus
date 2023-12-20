@@ -5,6 +5,22 @@ on:
     branches:
       - main
 jobs:
+  examples-jupyenv-quarto:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: "recursive"
+
+      - name: Setup
+        uses: ./.github/actions/common-setup
+        with:
+          SECRET_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: nixci-jupyenv-quarto
+        run: just nixci-jupyenv quarto
+
   examples-packages:
     runs-on: ubuntu-latest
     steps:

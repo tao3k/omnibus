@@ -1,6 +1,6 @@
 { nixpkgs, writeShellApplicationFn }:
 let
-  writeShellApplication = writeShellApplicationFn nixpkgs;
+  writeShellApplication = writeShellApplicationFn { inherit nixpkgs; };
   l = nixpkgs.lib // builtins;
 in
 {
