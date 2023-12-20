@@ -18,11 +18,10 @@ in
 
     imports = [
       cell.pops.devshellProfiles.exports.default.nickel
-      ({ extraModulesPath, ... }: { imports = [ "${extraModulesPath}/git/hooks.nix" ]; })
+      cell.pops.devshellProfiles.exports.default.git.hooks
     ];
 
     git.hooks = {
-      enable = true;
       pre-commit.text = ''
         just justfmt
       '';

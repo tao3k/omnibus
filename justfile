@@ -24,3 +24,11 @@ examples-simple:
     nix build ./#nixosConfigurations.simple.config.system.build.toplevel \
                                 --dry-run --no-link \
     && git rm flake.lock -f)
+
+examples-system-manager:
+    nix flake lock --update-input omnibus ./examples/system-manager --override-input omnibus ./.
+    (cd examples/system-manager && \
+    nix run 'github:numtide/system-manager' --extra-substituters https://cache.garnix.io \
+    --extra-trusted-public-keys cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= \
+    -- build --flake ./#example \
+    && git rm flake.lock -f && rm ./result)

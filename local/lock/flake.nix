@@ -38,6 +38,8 @@
 
     std.url = "github:divnix/std";
 
+    # nuenv.url = "github:DeterminateSystems/nuenv";
+
     microvm.url = "github:astro/microvm.nix";
 
     jupyenv.url = "github:tweag/jupyenv/?ref=refs/pull/524/head";

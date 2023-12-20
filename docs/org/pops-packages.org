@@ -186,7 +186,7 @@ in
           fetchurl
           fetchFromGitHub
           dockerTools
-        ;
+          ;
       };
     };
   };
@@ -214,7 +214,7 @@ nix-repl> :p Flake.examples.packages.exports.overlay
 #+end_src
 
   - apply the overlay with nixpkgs
-    #+begin_src nix :tangle (concat (org-entry-get nil "EXP-DIR" t) "/packagesOverlay.nix")
+    #+begin_src nix :tangle (concat (org-entry-get nil "EXP-DIR" t) "/packages/packagesOverlay.nix")
 { super, omnibus }:
 let
   nixos-23_11 = omnibus.flake.inputs.nixos-23_11;

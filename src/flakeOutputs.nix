@@ -25,6 +25,7 @@ in
     devshellProfiles
     flake
     jupyenv
+    systemManagerProfiles
     ;
 
   scripts =

@@ -11,3 +11,7 @@ Source: https://github.com/GTrunSec/omnibus
 Files: src/*
 Copyright: 2023 The Omnibus Authors
 License: MIT
+
+Files: units/*
+Copyright: 2023 The Omnibus Authors
+License: MIT
