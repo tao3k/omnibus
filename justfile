@@ -14,7 +14,7 @@ template-nixos:
 local-nixos:
     nix build ./local#eval.nixos.expr.nixosConfiguration.config.system.build.toplevel --dry-run --no-link
 
-nixci-examples:
+nixci-examples-packages:
     nix flake lock --update-input omnibus ./examples --override-input omnibus ./.
     (cd examples && nixci && git rm flake.lock -f)
 
@@ -32,3 +32,7 @@ examples-system-manager:
     --extra-trusted-public-keys cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= \
     -- build --flake ./#example \
     && git rm flake.lock -f && rm ./result)
+
+nixci-examples-python:
+    nix flake lock --update-input omnibus ./examples/python --override-input omnibus ./.
+    (cd examples/python && nixci && git rm flake.lock -f)

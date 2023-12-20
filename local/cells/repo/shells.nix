@@ -32,6 +32,7 @@ in
       nixpkgs.statix
       nixpkgs.deadnix
       nixpkgs.tree
+      nixpkgs.poetry
 
       nixpkgs.reuse
       nixpkgs.nixci

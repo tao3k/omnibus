@@ -18,8 +18,8 @@ jobs:
         with:
           SECRET_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: nixci
-        run: just nixci-examples
+      - name: nixci-packages
+        run: just nixci-examples-packages
 
   examples-simple:
     runs-on: ubuntu-latest
@@ -52,3 +52,19 @@ jobs:
 
       - name: Build example
         run: just examples-system-manager
+
+  examples-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: "recursive"
+
+      - name: Setup
+        uses: ./.github/actions/common-setup
+        with:
+          SECRET_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: nixci-python
+        run: just nixci-examples-python
