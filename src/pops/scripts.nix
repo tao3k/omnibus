@@ -24,9 +24,14 @@
             };
           }).exports.default.ops.makes;
         inherit
-          (root.errors.requiredInputs self.inputs "omnibus.pops.scripts" [ "nixpkgs" ])
+          (root.errors.requiredInputsLazily self.inputs "omnibus.pops.scripts" [
+            "nixpkgs"
+            "makesSrc"
+            "nuenv"
+          ])
           nixpkgs
           makesSrc
+          nuenv
           ;
       in
       self
@@ -36,6 +41,9 @@
       }
       // lib.optionalAttrs (self.inputs ? climodSrc) {
         climod = nixpkgs.callPackage inputs.climodSrc { pkgs = nixpkgs; };
+      }
+      // lib.optionalAttrs (self.inputs ? nuenv) {
+        nuenv = nixpkgs.extend nuenv.overlays.nuenv;
       }
       // lib.optionalAttrs (self.inputs ? makesSrc) (
         makes

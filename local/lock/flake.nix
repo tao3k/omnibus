@@ -38,7 +38,8 @@
 
     std.url = "github:divnix/std";
 
-    # nuenv.url = "github:DeterminateSystems/nuenv";
+    nuenv.url = "github:DeterminateSystems/nuenv";
+    nuenv.inputs.nixpkgs.follows = "nixpkgs";
 
     microvm.url = "github:astro/microvm.nix";
 
