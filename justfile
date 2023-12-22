@@ -38,7 +38,8 @@ nixci-examples-python:
     (cd examples/python && nixci && git rm flake.lock -f)
 
 nixci-jupyenv +quarto:
+    # --execute-daemon-restart
     nix flake lock --update-input omnibus ./examples/jupyenv+quarto --override-input omnibus ./.
     (cd examples/jupyenv+quarto && nixci && \
-    nix run .#quartoSimple -- render ./quarto --execute-daemon-restart \
+    nix run .#quartoSimple -- render ./quarto \
     && git rm flake.lock -f)

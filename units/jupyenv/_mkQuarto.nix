@@ -6,6 +6,7 @@ in
   text ? "",
   runtimeInputs ? [ ],
   runtimeEnv ? { },
+  kernels ? { },
   package ? nixpkgs.quarto,
 }:
 (writeShellApplication {
@@ -23,6 +24,7 @@ in
     _old: {
       passthru = {
         quarto = package;
+        inherit kernels;
       };
     }
   )
