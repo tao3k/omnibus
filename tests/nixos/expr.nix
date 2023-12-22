@@ -4,7 +4,7 @@
 
 {
   super,
-  trace,
+  debug,
   lib,
 }:
 let
@@ -41,7 +41,7 @@ in
     ])
     .config.home-manager.users.admin.wayland.windowManager.hyprland.__profiles__;
 }
-// lib.optionalAttrs trace {
+// lib.optionalAttrs debug {
   nixosConfiguration = out.nixosConfiguration [
     # out.outputs.nixosProfiles.default.presets.boot
     out.outputs.nixosProfiles.default.cloud.contabo

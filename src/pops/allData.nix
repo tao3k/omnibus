@@ -6,7 +6,6 @@
   super,
   root,
   haumea,
-  flops,
 }:
 (super.data.addLoadExtender {
   load = {

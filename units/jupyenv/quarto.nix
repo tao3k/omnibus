@@ -6,10 +6,6 @@
 }:
 let
   types = lib.types;
-  getEnv =
-    k: x:
-    builtins.head
-      config.build.passthru.kernels."${config.kernel.${k}.${x}.name}-jupyter-kernel".kernelInstance.argv;
 
   mkQuarto = import ./_mkQuarto.nix {
     nixpkgs = pkgs;

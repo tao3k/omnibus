@@ -2,12 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [ docker-compose ];
   virtualisation.docker = {

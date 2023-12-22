@@ -2,11 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{
-  inputs,
-  lib,
-  omnibus,
-}:
+{ inputs, omnibus }:
 let
   inherit
     (omnibus.errors.requiredInputsLazily inputs "omnibus.pops.configs" [
@@ -113,6 +109,7 @@ in
       command = "nickel";
       options = [ "format" ];
       includes = [ "*.ncl" ];
+      excludes = [ "*.schema.ncl" ];
     };
   };
   deadnix = {

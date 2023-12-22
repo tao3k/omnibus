@@ -12,7 +12,6 @@
 }:
 let
   presets = root.presets;
-  inherit (inputs) nixpkgs;
 in
 with presets; {
   minimal = [

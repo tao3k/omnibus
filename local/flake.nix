@@ -75,14 +75,14 @@
           src = ../tests;
           inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.omnibus.loaderInputs {
             inherit inputs;
-            trace = true;
+            debug = true;
           };
         };
         checks = inputs.namaka.lib.load {
           src = ../tests;
           inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.omnibus.loaderInputs {
             inherit inputs;
-            trace = false;
+            debug = false;
           };
         };
       };

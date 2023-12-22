@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 {
   programs.emacs = {
     enable = true;
@@ -19,7 +14,7 @@
           telega = epkgs.melpaPackages.telega.override {
             # inherit (epkgs.melpaPackages) telega;
             tdlib = pkgs.tdlib.overrideAttrs (
-              old: rec {
+              _old: rec {
                 version = "1.8.0";
                 src = pkgs.fetchFromGitHub {
                   owner = "tdlib";

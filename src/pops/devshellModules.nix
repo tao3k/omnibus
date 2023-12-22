@@ -2,11 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{
-  super,
-  projectRoot,
-  flops,
-}:
+{ super, projectRoot }:
 super.nixosModules.addLoadExtender {
   load = {
     src = projectRoot + "/units/devshell/modules";

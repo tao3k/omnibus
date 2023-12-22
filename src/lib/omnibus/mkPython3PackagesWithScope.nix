@@ -1,7 +1,6 @@
 _:
 {
   python3Packages,
-  python3,
   lib,
   __inputs__,
 }:

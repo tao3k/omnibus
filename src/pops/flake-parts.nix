@@ -2,11 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{
-  super,
-  projectRoot,
-  flops,
-}:
+{ super, projectRoot }:
 {
   modules = super.nixosModules.addLoadExtender {
     load.src = projectRoot + "/units/flake-parts/modules";

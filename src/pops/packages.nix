@@ -9,7 +9,6 @@
 load:
 let
   inherit (flops) recursiveMerge';
-  inherit (root.pops.flake.inputs) nix-filter;
 in
 (super.load (
   recursiveMerge' [
@@ -103,7 +102,7 @@ in
 
             overlays = {
               default =
-                final: prev:
+                final: _prev:
                 (self.exports.packages.packages (
                   final // { overrideScope = self.exports.packages.overrideScope; }
                 ));

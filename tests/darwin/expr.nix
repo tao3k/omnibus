@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 {
-  trace,
+  debug,
   lib,
   root,
   omnibus,
@@ -24,4 +24,4 @@ in
     .config.nix.extraOptions;
 }
 
-// lib.optionalAttrs trace { }
+// lib.optionalAttrs debug { }

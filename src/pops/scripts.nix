@@ -9,7 +9,6 @@
   lib,
   haumea,
   projectRoot,
-  POP,
 }:
 (super.load {
   src = projectRoot + "/units/scripts";

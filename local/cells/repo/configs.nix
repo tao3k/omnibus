@@ -23,7 +23,7 @@ in
     default = cfg.lefthook.default lefthook.just;
   };
   treefmt = {
-    default = (cfg.treefmt.default treefmt.nvfetcher) {
+    default = (cfg.treefmt.default treefmt.nvfetcher treefmt.nickel) {
       data.global = {
         excludes = append [ "./examples/jupyenv+quarto/quarto/*" ];
       };

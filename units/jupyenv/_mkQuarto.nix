@@ -1,13 +1,11 @@
 { nixpkgs, writeShellApplicationFn }:
 let
   writeShellApplication = writeShellApplicationFn { inherit nixpkgs; };
-  l = nixpkgs.lib // builtins;
 in
 {
   text ? "",
   runtimeInputs ? [ ],
   runtimeEnv ? { },
-  kernels ? { },
   package ? nixpkgs.quarto,
 }:
 (writeShellApplication {
@@ -22,7 +20,7 @@ in
   inherit text;
 }).overrideAttrs
   (
-    old: {
+    _old: {
       passthru = {
         quarto = package;
       };

@@ -6,7 +6,7 @@
   omnibus,
   lib,
   inputs,
-  trace,
+  debug,
 }:
 let
   system = "x86_64-linux";
@@ -42,4 +42,4 @@ in
 lib.mapAttrs (_: builtins.unsafeDiscardStringContext) {
   example = mkFlake.packages.${system}.sqlite-example;
 }
-// lib.optionalAttrs trace { inherit flakeProfiles; }
+// lib.optionalAttrs debug { inherit flakeProfiles; }
