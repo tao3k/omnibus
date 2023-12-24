@@ -79,6 +79,10 @@ in
                       ];
                       mountpoint = "/persist";
                     };
+                    "/swap" = {
+                      mountpoint = "/swap";
+                      swap.swapfile.size = "2G";
+                    };
                   };
                 };
               };
