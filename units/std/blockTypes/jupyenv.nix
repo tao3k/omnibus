@@ -8,7 +8,7 @@
 */
 let
   inherit (inputs.std) actions;
-  inherit (root) mkCommand;
+  inherit (root) mkCommand run;
 in
 name: {
   inherit name;
@@ -23,7 +23,7 @@ name: {
     }:
     [
       (actions.build currentSystem target.config.build)
-      (actions.run currentSystem target.config.build)
+      (run currentSystem target.config.build)
       (mkCommand currentSystem "quarto" "pass any command to quarto" [ ]
         ''
           (cd "$PRJ_ROOT" && ${target.config.quartoEnv}/bin/quarto "$@")
