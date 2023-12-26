@@ -67,6 +67,8 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixos-hardware.url = "github:nixos/nixos-hardware";
+
     impermanence.url = "github:nix-community/impermanence";
 
     snapshotter.url = "github:pdtpartners/nix-snapshotter";

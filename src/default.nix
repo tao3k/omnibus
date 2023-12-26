@@ -14,6 +14,15 @@ let
 in
 flops.lib.haumea.pops.default.setInit {
   src = ./.;
+  transformer = [
+    (
+      cursor: dir:
+      if (builtins.length cursor == 0 && (dir ? default)) then
+        removeAttrs dir [ "default" ]
+      else
+        dir
+    )
+  ];
   inputs = {
     lib = (nixlib.lib.recursiveUpdate nixlib.lib inputs.self.lib) // builtins;
     haumea = haumea.lib;
