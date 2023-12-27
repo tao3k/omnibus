@@ -39,6 +39,11 @@ in
               defaultText = "pkgs.quarto";
               description = "Quarto package to use.";
             };
+            runtimeInputs = lib.mkOption {
+              type = types.listOf types.package;
+              default = [ ];
+              description = "Packages to add to the runtime environment.";
+            };
             runtimeEnv = lib.mkOption {
               type = types.attrs;
               default = { };
@@ -53,7 +58,7 @@ in
     (lib.mkIf cfg.quarto.enable {
       quartoEnv = mkQuarto {
         kernels = config.build.passthru.kernels;
-        inherit (config.publishers.quarto) runtimeEnv package;
+        inherit (config.publishers.quarto) runtimeEnv package runtimeInputs;
         text =
           let
             syncKernels =
