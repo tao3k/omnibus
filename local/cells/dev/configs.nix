@@ -13,9 +13,9 @@
 { inputs, cell }:
 with inputs.std.inputs.dmerge;
 let
-  inherit (cell.pops.configs.exports.default) treefmt lefthook conform;
+  inherit (cell.pops.omnibus.configs.exports.default) treefmt lefthook conform;
   cfg = {
-    inherit (cell.pops.configs.exports.stdNixago) treefmt lefthook conform;
+    inherit (cell.pops.omnibus.configs.exports.stdNixago) treefmt lefthook conform;
   };
 in
 {

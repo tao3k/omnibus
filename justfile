@@ -1,14 +1,13 @@
 override-omnibus := "nix flake lock --override-input omnibus"
 remove-flake-lock := "git rm flake.lock -f"
 
-
 std-standard:
     nix develop ./local\#std --command bash -c "(cd examples/stdStandard \
     && {{ override-omnibus }} ../.. \
     && std //dev/scripts/hello:run \
     && {{ remove-flake-lock }})"
 
-std-default:
+std-default: std-default-sync
     nix develop ./local\#std --command bash -c "(cd examples/stdDefault \
     && {{ override-omnibus }} ../.. \
     && std //dev/scripts/hello:run \

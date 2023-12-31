@@ -1,1 +1,1 @@
-cell.pops.scripts.exports.default or { }
+cell.pops.scripts.exports.default

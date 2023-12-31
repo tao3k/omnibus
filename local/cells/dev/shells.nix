@@ -16,7 +16,7 @@ in
   default = lib.dev.mkShell {
     name = "omnibus devshell";
 
-    imports = [ cell.pops.devshellProfiles.exports.default.nickel ];
+    imports = [ cell.pops.omnibus.devshellProfiles.exports.default.nickel ];
 
     # Tool Homepage: https://nix-community.github.io/nixago/
     # This is Standard's devshell integration.

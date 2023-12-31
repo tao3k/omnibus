@@ -17,6 +17,12 @@ omnibusStd.mkCells.pops commonArgs (
     devshellProfiles = {
       src = cellsFrom + /${cellName}/devshellProfiles;
     };
+    shells = {
+      src = cellsFrom + /${cellName}/shells;
+    };
+    pops = {
+      src = cellsFrom + /${cellName}/pops;
+    };
   }
   // _pops
 )

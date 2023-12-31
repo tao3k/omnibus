@@ -1,1 +1,1 @@
-cell.pops.tasks.exports.default or { }
+cell.pops.tasks.exports.default

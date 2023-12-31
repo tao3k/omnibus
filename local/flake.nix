@@ -28,7 +28,6 @@
       inputs.devshell.follows = "devshell";
       inputs.nixago.follows = "nixago";
     };
-
     nixago = {
       url = "github:nix-community/nixago";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,25 +46,24 @@
     { std, self, ... }@inputs:
     let
       omnibus = inputs.call-flake ../.;
+      omnibusStd =
+        (omnibus.pops.std {
+          inputs.inputs = {
+            inherit std;
+          };
+        }).exports.default;
     in
-    std.growOn
+    omnibusStd.mkDefaultStd
       {
         inputs = inputs // {
-          inherit omnibus;
+          inherit omnibus omnibusStd;
         };
         cellsFrom = ./cells;
-        cellBlocks = with std.blockTypes; [
-          # Development Environments
-          (nixago "configs")
-          (devshells "shells")
-          (functions "devshellProfiles")
-          (functions "pops")
-        ];
       }
       {
         devShells = std.harvest inputs.self [
           [
-            "repo"
+            "dev"
             "shells"
           ]
         ];
