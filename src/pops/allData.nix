@@ -11,8 +11,14 @@
   load = {
     loader = with haumea; [
       (matchers.regex "^(.+)\\.(yaml|yml)$" (
-        _: _: path:
-        root.ops.readYAML path
+        _: inputs: path:
+        let
+          inherit
+            (root.errors.requiredInputs inputs.inputs "omnibus.pops.allData" [ "nixpkgs" ])
+            nixpkgs
+            ;
+        in
+        root.ops.readYAML nixpkgs path
       ))
     ];
   };

@@ -3,12 +3,8 @@
 # SPDX-License-Identifier: MIT
 
 { inputs, root }: # source from std
+nixpkgs:
 let
-  inherit
-    (root.errors.requiredInputsLazily inputs "omnibus.pops.self" [ "nixpkgs" ])
-    nixpkgs
-    ;
-
   inherit (builtins) fromJSON;
   inherit (nixpkgs) runCommand yq-go;
   inherit (nixpkgs.lib) readFile;

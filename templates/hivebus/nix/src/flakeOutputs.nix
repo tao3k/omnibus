@@ -29,14 +29,15 @@ in
     system:
     let
       inputs' = (super.pops.flake.setSystem system).inputs;
-      allData =
-        (super.pops.omnibus.lib.addLoadExtender { load.inputs.inputs = inputs'; })
-        .exports.default.pops.allData;
     in
     {
       data =
-        (allData.addLoadExtender { load.src = projectRoot + "/local/data"; })
-        .exports.default;
+        (omnibus.pops.allData.addLoadExtender {
+          load = {
+            src = projectRoot + "/local/data";
+            inputs.inputs = inputs';
+          };
+        }).exports.default;
     }
   );
 

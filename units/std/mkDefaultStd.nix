@@ -23,6 +23,8 @@ super.mkStandardStd (
       # extraPops for extending the cell's pops
       _pops = pops;
       cellsFrom = mkCellsFrom attrs.cellsFrom;
+      # without std.incl
+      cellsFrom' = attrs.cellsFrom;
     };
     cellsFrom = mkCellsFrom ./defaultCellsFrom;
   }

@@ -1,6 +1,11 @@
 { inputs, cell }@commonArgs:
 let
-  inherit (inputs) omnibusStd cellsFrom _pops;
+  inherit (inputs)
+    omnibusStd
+    cellsFrom
+    cellsFrom'
+    _pops
+    ;
   cellName = builtins.baseNameOf ./.;
 in
 omnibusStd.mkCells.pops commonArgs (
@@ -19,6 +24,9 @@ omnibusStd.mkCells.pops commonArgs (
     };
     shells = {
       src = cellsFrom + /${cellName}/shells;
+    };
+    data = {
+      src = cellsFrom' + /${cellName}/data;
     };
     pops = {
       src = cellsFrom + /${cellName}/pops;
