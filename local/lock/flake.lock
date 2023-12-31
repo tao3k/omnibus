@@ -840,6 +840,29 @@
         "type": "github"
       }
     },
+    "n2c": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1703410130,
+        "narHash": "sha256-qbJQ8DtdKzFK0fZck7kX64QWkS/3tKefxGjyI+SAQa4=",
+        "owner": "nlewo",
+        "repo": "nix2container",
+        "rev": "6aa8491e73843ac8bf714a3904a45900f356ea44",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nlewo",
+        "repo": "nix2container",
+        "type": "github"
+      }
+    },
     "navi-tldr-pages": {
       "flake": false,
       "locked": {
@@ -1707,6 +1730,7 @@
         "jupyenv": "jupyenv",
         "makesSrc": "makesSrc",
         "microvm": "microvm",
+        "n2c": "n2c",
         "navi-tldr-pages": "navi-tldr-pages",
         "nickel": "nickel",
         "nil": "nil",
@@ -2047,8 +2071,7 @@
           "microvm"
         ],
         "n2c": [
-          "std",
-          "blank"
+          "n2c"
         ],
         "nixago": [
           "std",

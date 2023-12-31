@@ -32,6 +32,10 @@
     devshell.inputs.nixpkgs.follows = "nixpkgs";
     devshell.inputs.systems.follows = "systems";
 
+    n2c.url = "github:nlewo/nix2container";
+    n2c.inputs.nixpkgs.follows = "nixpkgs";
+    n2c.inputs.flake-utils.follows = "flake-utils";
+
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -47,6 +51,7 @@
     std.inputs.devshell.follows = "devshell";
     std.inputs.microvm.follows = "microvm";
     std.inputs.makes.follows = "makesSrc";
+    std.inputs.n2c.follows = "n2c";
 
     nuenv.url = "github:DeterminateSystems/nuenv";
     nuenv.inputs.nixpkgs.follows = "nixpkgs";

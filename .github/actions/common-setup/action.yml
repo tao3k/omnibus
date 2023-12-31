@@ -11,6 +11,8 @@ runs:
   steps:
     - uses: DeterminateSystems/nix-installer-action@main
       with:
+        extra-conf: |
+          accept-flake-config = true
         github_token: ${{ inputs.SECRET_GITHUB_TOKEN }}
 
     - uses: DeterminateSystems/magic-nix-cache-action@main

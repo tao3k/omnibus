@@ -1,3 +1,22 @@
+override-omnibus := "nix flake lock --override-input omnibus"
+remove-flake-lock := "git rm flake.lock -f"
+
+
+std-standard:
+    nix develop ./local\#std --command bash -c "(cd examples/stdStandard \
+    && {{ override-omnibus }} ../.. \
+    && std //dev/scripts/hello:run \
+    && {{ remove-flake-lock }})"
+
+std-default:
+    nix develop ./local\#std --command bash -c "(cd examples/stdDefault \
+    && {{ override-omnibus }} ../.. \
+    && std //dev/scripts/hello:run \
+    && {{ remove-flake-lock }})"
+
+std-default-sync:
+    rsync -av ./units/std/defaultCellsFrom/dev/ ./units/std/defaultCellsFrom/prod
+
 deadnix:
     deadnix . --edit --exclude ./units/std/blockTypes/*
 
@@ -15,15 +34,14 @@ local-nixos:
     nix build ./local#eval.nixos.expr.nixosConfiguration.config.system.build.toplevel --dry-run --no-link
 
 nixci-examples-packages:
-    nix flake lock --update-input omnibus ./examples --override-input omnibus ./.
-    (cd examples && nixci && git rm flake.lock -f)
+    (cd examples && {{ override-omnibus }} .. && nixci && {{ remove-flake-lock }})
 
 examples-simple:
     nix flake lock --update-input omnibus ./examples/simple --override-input omnibus ./.
     (cd examples/simple && \
     nix build ./#nixosConfigurations.simple.config.system.build.toplevel \
                                 --dry-run --no-link \
-    && git rm flake.lock -f)
+    && {{ remove-flake-lock }})
 
 examples-system-manager:
     nix flake lock --update-input omnibus ./examples/system-manager --override-input omnibus ./.
@@ -31,7 +49,7 @@ examples-system-manager:
     nix run 'github:numtide/system-manager' --refresh --extra-substituters https://cache.garnix.io \
     --extra-trusted-public-keys cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= \
     -- build --flake ./#example \
-    && git rm flake.lock -f && rm ./result)
+    && {{ remove-flake-lock }} && rm ./result)
 
 nixci-examples-python:
     nix flake lock --update-input omnibus ./examples/python --override-input omnibus ./.
@@ -42,4 +60,4 @@ nixci-jupyenv +quarto:
     nix flake lock --update-input omnibus ./examples/jupyenv+quarto --override-input omnibus ./.
     (cd examples/jupyenv+quarto && nixci && \
     nix run .#quartoSimple -- render ./quarto \
-    && git rm flake.lock -f)
+    && {{ remove-flake-lock }})

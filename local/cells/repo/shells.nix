@@ -41,4 +41,10 @@ in
 
     commands = [ ];
   };
+
+  std = lib.dev.mkShell {
+    name = "std devshell";
+    imports = [ std.std.devshellProfiles.default ];
+    packages = [ nixpkgs.which ];
+  };
 }

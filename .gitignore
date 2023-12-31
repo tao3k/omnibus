@@ -1,4 +1,5 @@
 /.data
+/.local
 /.nickel
 # nixago: ignore-linked-files
 /lefthook.yml
