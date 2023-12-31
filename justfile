@@ -11,6 +11,7 @@ std-default: std-default-sync
     nix develop ./local\#std --command bash -c "(cd examples/stdDefault \
     && {{ override-omnibus }} ../.. \
     && std //dev/scripts/hello:run \
+    && std //dev/tasks/hello:run \
     && {{ remove-flake-lock }})"
 
 std-default-sync:

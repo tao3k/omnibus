@@ -16,6 +16,12 @@ let
     lib.mapAttrs
       (
         n: v:
+        assert lib.assertMsg
+          (!(checkSrc v && checkSrc' v && commonArgs.inputs ? cellsFrom))
+          ''
+            mkDefaultStd: Both ${n} and ${v.src}.nix exist.
+            Since the loader has been embedded, Please remove one of them.
+          '';
         if (lib.hasAttr n outputs && checkSrc v) then
           outputs.${n}.addLoadExtender { load = v; }
         else if (lib.hasAttr n super && checkSrc' v) then
