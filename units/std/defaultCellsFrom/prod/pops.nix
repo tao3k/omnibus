@@ -8,7 +8,7 @@ let
     ;
   cellName = builtins.baseNameOf ./.;
 in
-omnibusStd.mkCells.pops commonArgs (
+omnibusStd.mkBlocks.pops commonArgs (
   {
     scripts = {
       src = cellsFrom + /${cellName}/scripts;

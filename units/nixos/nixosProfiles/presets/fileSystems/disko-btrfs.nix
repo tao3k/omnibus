@@ -45,6 +45,11 @@ in
                   type = "filesystem";
                   format = "vfat";
                   mountpoint = "/boot";
+                  mountOptions = [
+                    "nodev"
+                    "noexec"
+                    "nosuid"
+                  ];
                 };
               };
               root = {
@@ -61,7 +66,11 @@ in
                     };
                     # Subvolume name is the same as the mountpoint
                     "/home" = {
-                      mountOptions = [ "compress=zstd" ];
+                      mountOptions = [
+                        "compress=zstd"
+                        "nosuid"
+                        "nodev"
+                      ];
                       mountpoint = "/home";
                     };
                     # Parent is not mounted so the mountpoint must be set
@@ -69,6 +78,8 @@ in
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
+                        "nosuid"
+                        "nodev"
                       ];
                       mountpoint = "/nix";
                     };
@@ -76,6 +87,8 @@ in
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
+                        "nosuid"
+                        "nodev"
                       ];
                       mountpoint = "/persist";
                     };
@@ -96,7 +109,10 @@ in
         mountOptions = [
           "defaults"
           "size=2G"
-          "mode=755"
+          "mode=1777"
+          "nosuid"
+          "nodev"
+          "relatime"
         ];
       };
     };
