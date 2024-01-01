@@ -28,6 +28,9 @@ omnibusStd.mkCells.pops commonArgs (
     data = {
       src = cellsFrom' + /${cellName}/data;
     };
+    packages = {
+      src = cellsFrom + /${cellName}/packages;
+    };
     pops = {
       src = cellsFrom + /${cellName}/pops;
     };

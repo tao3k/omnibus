@@ -10,7 +10,6 @@ let
   inherit (flops) recursiveMerge;
 in
 recursiveMerge [
-  (lib.removeAttrs top [ "projectRoot" ])
   {
     inputs = {
       projectRoot = top.projectRoot;
@@ -22,6 +21,8 @@ recursiveMerge [
     ];
     cellBlocks = with std.blockTypes; [
       (data "configs")
+      (data "data")
+      (installables "packages" { ci.build = true; })
       # runnables
       (runnables "scripts")
       (runnables "tasks")
@@ -31,10 +32,10 @@ recursiveMerge [
       (super.blockTypes.jupyenv "jupyenv")
 
       (nixago "nixago")
-
-      (containers "containers")
+      (containers "containers" { ci.publish = true; })
       (functions "lib")
       (functions "pops")
     ];
   }
+  (lib.removeAttrs top [ "projectRoot" ])
 ]

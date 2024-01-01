@@ -12,6 +12,8 @@ std-default: std-default-sync
     && {{ override-omnibus }} ../.. \
     && std //dev/scripts/hello:run \
     && std //dev/tasks/hello:run \
+    && std //dev/packages/hello:build \
+    && rm result \
     && {{ remove-flake-lock }})"
 
 std-default-sync:
