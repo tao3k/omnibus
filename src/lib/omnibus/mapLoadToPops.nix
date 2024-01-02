@@ -4,6 +4,19 @@
 
 { lib }:
 pops: load:
-lib.mapAttrsRecursiveCond ((as: !(as ? "addLoadExtender")))
-  (n: v: v.addLoadExtender (load n v))
-  pops
+let
+  # Condition to check if an attribute set contains 'addLoadExtender'
+  hasAddLoadExtender =
+    attrSet:
+    (
+      !(lib.isDerivation attrSet)
+      && lib.isAttrs attrSet
+      && attrSet ? "addLoadExtender"
+    );
+
+  # Function to process an attribute
+  processAttr =
+    n: v: if hasAddLoadExtender v then v.addLoadExtender (load n v) else v;
+in
+
+lib.mapAttrsRecursiveCond (as: !(hasAddLoadExtender as)) processAttr pops

@@ -7,13 +7,11 @@
 top:
 let
   inherit (inputs) std;
-  inherit (top) projectRoot;
   inherit (flops) recursiveMerge;
 in
 recursiveMerge [
   {
     inputs = {
-      projectRoot = top.projectRoot;
       omnibusStd = root;
       inherit std;
     };

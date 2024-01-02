@@ -27,30 +27,33 @@
             "nixpkgs"
             "makesSrc"
             "nuenv"
+            "climodSrc"
           ])
           nixpkgs
           makesSrc
           nuenv
+          climodSrc
           ;
       in
-      self
-      // {
-        inherit nixpkgs;
-        writeShellApplication = root.ops.writeShellApplication { inherit nixpkgs; };
-      }
-      // lib.optionalAttrs (self.inputs ? climodSrc) {
-        climod = nixpkgs.callPackage inputs.climodSrc { pkgs = nixpkgs; };
-      }
-      // lib.optionalAttrs (self.inputs ? nuenv) {
-        nuenv = nixpkgs.extend nuenv.overlays.nuenv;
-      }
-      // lib.optionalAttrs (self.inputs ? makesSrc) (
-        makes
-        // {
-          inputs = {
-            inherit makes;
-          };
+      lib.recursiveUpdate self (
+        {
+          inherit nixpkgs;
+          writeShellApplication = root.ops.writeShellApplication { inherit nixpkgs; };
         }
+        // lib.optionalAttrs (self.inputs ? climodSrc) {
+          climod = nixpkgs.callPackage climodSrc { pkgs = nixpkgs; };
+        }
+        // lib.optionalAttrs (self.inputs ? nuenv) {
+          nuenv = nixpkgs.extend nuenv.overlays.nuenv;
+        }
+        // lib.optionalAttrs (self.inputs ? makesSrc) (
+          makes
+          // {
+            inputs = {
+              inherit makes;
+            };
+          }
+        )
       )
     )
   ];

@@ -1,8 +1,6 @@
 # SPDX-FileCopyrightText: 2023 The omnibus Authors
 #
 # SPDX-License-Identifier: MIT
-
-{ inputs, cell }:
 let
   inherit (inputs) nixpkgs;
   inputs' = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
@@ -13,7 +11,6 @@ in
     devshellProfiles = inputs.omnibus.pops.devshellProfiles.addLoadExtender {
       load.inputs.inputs = inputs';
     };
-
     configs = inputs.omnibus.pops.configs {
       inputs = {
         inputs = {

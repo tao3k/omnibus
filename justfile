@@ -10,6 +10,7 @@ std-standard:
 std-default: std-default-sync
     nix develop ./local\#std --command bash -c "(cd examples/stdDefault \
     && {{ override-omnibus }} ../.. \
+    && std //dev/scripts/climod-test:run -- tasks --help \
     && std //dev/scripts/makes-test:run \
     && std //dev/scripts/hello:run \
     && std //dev/tasks/hello:run \
