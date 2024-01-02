@@ -15,6 +15,7 @@ recursiveMerge [
     inputs = {
       projectRoot = top.projectRoot;
       omnibusStd = root;
+      inherit std;
     };
     systems = [
       "aarch64-darwin"

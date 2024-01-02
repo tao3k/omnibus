@@ -21,6 +21,9 @@ omnibusStd.mkBlocks.pops commonArgs (
     };
     devshellProfiles = {
       src = cellsFrom + /${cellName}/devshellProfiles;
+      inputs.inputs = {
+        inherit (inputs.std.inputs) devshell;
+      };
     };
     shells = {
       src = cellsFrom + /${cellName}/shells;

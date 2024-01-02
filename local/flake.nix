@@ -56,7 +56,7 @@
     omnibusStd.mkDefaultStd
       {
         inputs = inputs // {
-          inherit omnibus omnibusStd;
+          inherit omnibus;
         };
         cellsFrom = ./cells;
       }
