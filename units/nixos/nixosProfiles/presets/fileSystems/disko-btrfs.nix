@@ -63,6 +63,10 @@ in
                     # Subvolume name is different from mountpoint
                     "/rootfs" = {
                       mountpoint = "/";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     # Subvolume name is the same as the mountpoint
                     "/home" = {

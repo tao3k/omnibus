@@ -12,6 +12,9 @@ omnibusStd.mkBlocks.pops commonArgs (
   {
     scripts = {
       src = cellsFrom + /${cellName}/scripts;
+      inputs.inputs = {
+        makesSrc = inputs.std.inputs.makes;
+      };
     };
     tasks = {
       src = cellsFrom + /${cellName}/tasks;
