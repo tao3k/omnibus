@@ -30,6 +30,7 @@
 
       inherit src;
       inherit (src) lib ops errors;
+      call-flake = inputs.flops.inputs.call-flake;
 
       templates = {
         nixos = {

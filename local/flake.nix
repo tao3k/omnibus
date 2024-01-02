@@ -22,30 +22,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    std = {
-      url = "github:divnix/std";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.devshell.follows = "devshell";
-      inputs.nixago.follows = "nixago";
-    };
-    nixago = {
-      url = "github:nix-community/nixago";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixago-exts.follows = "";
-    };
-    devshell = {
-      url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
-  inputs.call-flake.url = "github:divnix/call-flake";
   inputs.namaka.url = "github:nix-community/namaka";
-  inputs.haumea.follows = "namaka/haumea";
 
   outputs =
-    { std, self, ... }@inputs:
+    { self, ... }@inputs:
     let
-      omnibus = inputs.call-flake ../.;
+      omnibus = import ../.;
+      inherit (omnibus.flake.inputs) std;
       omnibusStd =
         (omnibus.pops.std {
           inputs.inputs = {

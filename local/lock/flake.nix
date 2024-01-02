@@ -36,6 +36,13 @@
     n2c.inputs.nixpkgs.follows = "nixpkgs";
     n2c.inputs.flake-utils.follows = "flake-utils";
 
+    arion.url = "github:hercules-ci/arion";
+    arion.inputs.flake-parts.follows = "flake-parts";
+
+    nixago.url = "github:nix-community/nixago";
+    nixago.inputs.nixpkgs.follows = "nixpkgs";
+    nixago.inputs.nixago-exts.follows = "";
+
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -48,10 +55,12 @@
 
     std.url = "github:divnix/std";
     std.inputs.nixpkgs.follows = "nixpkgs";
+    std.inputs.nixago.follows = "nixago";
     std.inputs.devshell.follows = "devshell";
     std.inputs.microvm.follows = "microvm";
     std.inputs.makes.follows = "makesSrc";
     std.inputs.n2c.follows = "n2c";
+    std.inputs.arion.follows = "arion";
 
     nuenv.url = "github:DeterminateSystems/nuenv";
     nuenv.inputs.nixpkgs.follows = "nixpkgs";
