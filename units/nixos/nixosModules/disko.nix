@@ -13,6 +13,13 @@
           The name of the profile to use.
         '';
       };
+      ssd = mkOption {
+        type = types.bool;
+        default = true;
+        description = ''
+          Whether to use the SSD profile
+        '';
+      };
       boot = mkOption {
         type = types.bool;
         default = false;

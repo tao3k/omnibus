@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
+# https://github.com/openlab-aux/vuizvui/blob/57a02c9b4a36abadc020008a9e5a85315b58bb54/machines/aszlig/meshuggah.nix#L19
 {
   inputs,
   omnibus,
@@ -16,6 +17,18 @@ let
     ])
     disko
     ;
+  ssdMountOptions = lib.optionals cfg.__profiles__.ssd [
+    "discard"
+    "ssd"
+    "space_cache"
+  ];
+  commonMountOptions = [
+    "noatime"
+    "compress=zstd"
+    # hardening options
+    "nosuid"
+    "nodev"
+  ];
 in
 {
   imports = [
@@ -63,37 +76,20 @@ in
                     # Subvolume name is different from mountpoint
                     "/rootfs" = {
                       mountpoint = "/";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
+                      mountOptions = [ ] ++ commonMountOptions ++ ssdMountOptions;
                     };
                     # Subvolume name is the same as the mountpoint
                     "/home" = {
-                      mountOptions = [
-                        "compress=zstd"
-                        "nosuid"
-                        "nodev"
-                      ];
+                      mountOptions = [ ] ++ commonMountOptions ++ ssdMountOptions;
                       mountpoint = "/home";
                     };
                     # Parent is not mounted so the mountpoint must be set
                     "/nix" = {
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                        "nosuid"
-                        "nodev"
-                      ];
+                      mountOptions = [ ] ++ commonMountOptions ++ ssdMountOptions;
                       mountpoint = "/nix";
                     };
                     "/persist" = {
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                        "nosuid"
-                        "nodev"
-                      ];
+                      mountOptions = [ ] ++ commonMountOptions ++ ssdMountOptions;
                       mountpoint = "/persist";
                     };
                     "/swap" = {
@@ -117,7 +113,7 @@ in
           "nosuid"
           "nodev"
           "relatime"
-        ];
+        ] ++ ssdMountOptions;
       };
     };
   };
