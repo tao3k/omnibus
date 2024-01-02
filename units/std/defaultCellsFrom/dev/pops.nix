@@ -1,7 +1,6 @@
 { inputs, cell }@commonArgs:
 let
   inherit (inputs) omnibusStd cellsFrom cellsFrom';
-  inherit (inputs.nixpkgs) lib;
   cellName = builtins.baseNameOf ./.;
 in
 omnibusStd.mkBlocks.pops commonArgs {

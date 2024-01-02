@@ -2,7 +2,6 @@
   omnibus,
   super,
   lib,
-  inputs,
   haumea,
 }:
 { inputs, cell }@commonArgs:
@@ -11,7 +10,7 @@ let
   inherit (omnibus.lib.omnibus) mapLoadToPops;
 
   # Helper function to update load inputs
-  updateLoadInputs = n: v: {
+  updateLoadInputs = _n: _v: {
     load.inputs = lib.recursiveUpdate { inputs = inputs; } commonArgs;
   };
 
@@ -43,7 +42,7 @@ let
 
   # Helper function to map load to pops
   mapLoadToPopsHelper =
-    n: v:
+    n: _v:
     let
       firstKey = lib.head n;
     in

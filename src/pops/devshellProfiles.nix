@@ -7,7 +7,6 @@
   projectRoot,
   haumea,
   lib,
-  inputs,
   root,
 }:
 super.nixosProfiles.addLoadExtender {

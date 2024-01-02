@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ inputs, root }: # source from std
+{ root }: # source from std
 nixpkgs:
 let
   inherit (builtins) fromJSON;

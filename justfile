@@ -16,6 +16,7 @@ std-default: std-default-sync
     && std //dev/tasks/hello:run \
     && std //dev/packages/hello:build \
     && std //dev/shells/default:build \
+    && nix build .#hello \
     && rm result \
     && {{ remove-flake-lock }})"
 

@@ -4,7 +4,6 @@
 let
   inherit (inputs) nixpkgs;
   inputs' = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
-  inherit (inputs.omnibus.pops.self.load.inputs) POP flops;
 in
 {
   omnibus = {

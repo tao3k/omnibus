@@ -7,7 +7,6 @@
   root,
   self,
   lib,
-  inputs,
   super,
 }:
 let
