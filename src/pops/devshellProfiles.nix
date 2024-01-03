@@ -16,7 +16,7 @@ super.nixosProfiles.addLoadExtender {
     loader = with haumea; [
       (matchers.nix loaders.default)
       (matchers.regex "^(.+)\\.(toml)$" (
-        _maches: inputs: path:
+        _matches: inputs: path:
         let
           inherit
             (root.errors.requiredInputs inputs.inputs "omnibus.pops.devshellProfiles" [

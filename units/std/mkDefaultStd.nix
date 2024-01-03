@@ -13,10 +13,15 @@ let
       "prod"
     ];
 in
-{ ... }@attrs:
+{
+  pops ? { },
+  ...
+}@attrs:
 super.mkStandardStd (
   lib.recursiveUpdate attrs {
     inputs = {
+      # extraPops for extending the cell's pops
+      _pops = pops;
       cellsFrom = mkCellsFrom attrs.cellsFrom;
       # without std.incl
       cellsFrom' = attrs.cellsFrom;

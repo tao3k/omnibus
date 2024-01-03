@@ -13,7 +13,7 @@ in
     configs = inputs.omnibus.pops.configs {
       inputs = {
         inputs = {
-          inherit (inputs') nixfmt nur;
+          inherit (inputs') nixfmt nur pre-commit-hooks;
           inherit (inputs) std;
           inherit nixpkgs;
         };
