@@ -22,7 +22,7 @@ in
   };
   hardware = {
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
       modesetting.enable = lib.mkDefault true;
       powerManagement.enable = lib.mkDefault true;
       prime = {

@@ -7,6 +7,7 @@
   omnibus,
   super,
   self,
+  lib,
 }:
 let
   inherit
@@ -42,7 +43,11 @@ in
       }).typos;
   };
   default = {
-    packages = [ nixpkgs.jq ];
+    packages =
+      [ nixpkgs.jq ]
+      ++ (map (x: pre-commit-hooks.packages.${x}) (
+        lib.attrNames (removeAttrs self.pre-commit-hooks [ "__functor" ])
+      ));
     data = {
       commit-msg = {
         commands = {
