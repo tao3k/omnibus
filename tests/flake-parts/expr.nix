@@ -39,7 +39,7 @@ let
           { ... }: { imports = [ flakeProfiles.process-compose.sqlite-example ]; };
       };
 in
-lib.mapAttrs (_: builtins.unsafeDiscardStringContext) {
-  example = mkFlake.packages.${system}.sqlite-example;
+{
+  example = mkFlake.packages.${system}.sqlite-example.name;
 }
 // lib.optionalAttrs debug { inherit flakeProfiles; }
