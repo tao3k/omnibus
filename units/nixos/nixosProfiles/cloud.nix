@@ -92,7 +92,16 @@ mkSuites {
     }
   ];
 
-  btrfs = [
+  disko = [
+    {
+      keywords = [ "disko" ];
+      knowledges =
+        [
+          # chinese
+          "https://lantian.pub/article/modify-computer/nixos-low-ram-vps.lantian/"
+        ];
+      profiles = [ ];
+    }
     fileSystems.btrfs
     fileSystems.disko-btrfs
     fileSystems.impermanence

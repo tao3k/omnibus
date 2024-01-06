@@ -106,7 +106,7 @@ in
                 (self.exports.packages.packages (
                   final // { overrideScope = self.exports.packages.overrideScope; }
                 ));
-              composePackages =
+              composedPackages =
                 final: prev:
                 (
                   (self.exports.packages.overrideScope (

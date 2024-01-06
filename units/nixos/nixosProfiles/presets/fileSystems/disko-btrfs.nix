@@ -47,6 +47,7 @@ in
               BOOT = {
                 size = "1M";
                 type = "EF02"; # for grub MBR
+                priority = 0;
               };
             })
             // {
@@ -54,6 +55,7 @@ in
                 size = "256M";
                 name = "boot";
                 type = "EF00";
+                priority = if cfg.__profiles__.boot then 1 else 0;
                 content = {
                   type = "filesystem";
                   format = "vfat";
