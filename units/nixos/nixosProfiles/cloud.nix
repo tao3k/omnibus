@@ -92,9 +92,12 @@ mkSuites {
     }
   ];
 
-  disko = [
+  btrfs = [
     {
-      keywords = [ "disko" ];
+      keywords = [
+        "disko"
+        "btrfs"
+      ];
       knowledges =
         [
           # chinese

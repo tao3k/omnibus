@@ -199,18 +199,37 @@ Please note that in Pops, the outputs/results should not be directly printed, bu
 #+end_quote
 
 
-+ exports
++ exports (layouts)
+  - default (without *makeScope*)
 
 #+begin_src nix
-
-# => default (packageSet)
-nix-repl> :p Flake.examples.packages.exports.default
-{ hello1 = «derivation /nix/store/kc6j6vssi60h1yn3kafc7v8ywn1j35lp-example-unfree-package-2.0.drv»; hello2 = «derivation /
-nix/store/v0qa0lw6jhzcwj68zz939kn8ixmiabnb-example-unfree-package-3.0.drv»; }
-# => overlay
-nix-repl> :p Flake.examples.packages.exports.overlay
-«lambda @ /home/guangtao/Dropbox/omnibus/src/pops/packages.nix:27:15»
+# => default
+Flake.examples.x86_64-linux.packages.exports.default
+{ by-loader = { ... }; hello1 = «derivation /nix/store/0xmz73mcmgx5c8q32b4jic63hgdw4bb2-example-unfree-package-2.0.drv»; hello2 = «der
+ivation /nix/store/n08mpq35ycsxpg3pr73nfyywndr401ar-example-unfree-package-3.0.drv»; }
 #+end_src
+
+- packages: (with *makeScope*)
+
+#+begin_src nix
+Flake.examples.x86_64-linux.packages.exports.packages
+{ __inputs__ = { ... }; by-loader = { ... }; callPackage = «lambda @ /nix/store/7b7m3p9gc9da6cd7wgyabs3wg1832j0v-source/lib/customisation.nix:153:31»; hello1 = «derivation /nix/store/0xmz73mcmgx5c8q32b4jic63hgdw4bb2-example-unfree-package-2.0.drv»; 
+hello2 = «derivation /nix/store/n08mpq35ycsxpg3pr73nfyywndr401ar-example-unfree-package-3.0.drv»; newScope = «lambda @ /nix/store/7b7m3p9gc9da6cd7wgyabs3
+wg1832j0v-source/lib/customisation.nix:319:22»; overrideScope = «lambda @ /nix/store/7b7m3p9gc9da6cd7wgyabs3wg1832j0v-source/lib/custo
+misation.nix:321:27»; overrideScope' = «lambda @ /nix/store/7b7m3p9gc9da6cd7wgyabs3wg1832j0v-source/lib/customisation.nix:323:28»; pac
+kages = «lambda @ /nix/store/7b7m3p9gc9da6cd7wgyabs3wg1832j0v-source/lib/fixed-points.nix:141:24»; }
+#+end_src
+
+
+- derivations: (flattenTreeDerivations without trivial attributes)
+
+#+begin_src nix
+Flake.examples.x86_64-linux.packages.exports.derivations
+{ btest_1 = «derivation /nix/store/7yadv7z9yqzyvqwzd9wq6kwkn12jk958-python3.11-btest-1.1-test.drv»; btest_2 = «derivation /nix/store/i
+rjy5jfahjgcsl6w1sc6913xdfdkkg2x-python3.11-btest-1.2-test.drv»; hello1 = «derivation /nix/store/0xmz73mcmgx5c8q32b4jic63hgdw4bb2-examp
+le-unfree-package-2.0.drv»; hello2 = «derivation /nix/store/n08mpq35ycsxpg3pr73nfyywndr401ar-example-unfree-package-3.0.drv»; }
+#+end_src
+
 
   - apply the overlay with nixpkgs
     #+begin_src nix :tangle (concat (org-entry-get nil "EXP-DIR" t) "/packages/packagesOverlay.nix")
