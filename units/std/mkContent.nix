@@ -20,23 +20,28 @@ recursiveMerge [
       "aarch64-linux"
       "x86_64-linux"
     ];
-    cellBlocks = with std.blockTypes; [
-      (data "configs")
-      (data "data")
-      (installables "packages" { ci.build = true; })
-      # runnables
-      (runnables "scripts")
-      (runnables "tasks")
+    cellBlocks =
+      with std.blockTypes;
+      let
+        functions' = name: (functions name) // { cli = false; };
+      in
+      [
+        (data "configs")
+        (data "data")
+        (installables "packages" { ci.build = true; })
+        # runnables
+        (runnables "scripts")
+        (runnables "tasks")
 
-      (functions "devshellProfiles")
-      (devshells "shells")
-      (super.blockTypes.jupyenv "jupyenv")
+        (functions' "devshellProfiles")
+        (devshells "shells")
+        (super.blockTypes.jupyenv "jupyenv")
 
-      (nixago "nixago")
-      (containers "containers" { ci.publish = true; })
-      (functions "lib")
-      (functions "pops")
-    ];
+        (nixago "nixago")
+        (containers "containers" { ci.publish = true; })
+        (functions' "lib")
+        (functions' "pops")
+      ];
   }
   (lib.removeAttrs top [ "projectRoot" ])
 ]
