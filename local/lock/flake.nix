@@ -30,7 +30,6 @@
   inputs = {
     devshell.url = "github:numtide/devshell";
     devshell.inputs.nixpkgs.follows = "nixpkgs";
-    devshell.inputs.systems.follows = "systems";
 
     n2c.url = "github:nlewo/nix2container";
     n2c.inputs.nixpkgs.follows = "nixpkgs";
