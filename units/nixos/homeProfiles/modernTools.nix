@@ -2,4 +2,14 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ ... }: { packages = [ ({ pkgs, ... }: { home.packages = [ pkgs.fd ]; }) ]; }
+{ ... }:
+{
+  packages = [
+    (
+      { pkgs, ... }:
+      {
+        home.packages = [ pkgs.fd ];
+      }
+    )
+  ];
+}

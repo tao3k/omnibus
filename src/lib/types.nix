@@ -3,7 +3,8 @@
 # SPDX-License-Identifier: MIT
 
 { yants, self }:
-with yants; {
+with yants;
+{
   suiteProfile = struct "profile" {
     keywords = list string;
     knowledges = list string;

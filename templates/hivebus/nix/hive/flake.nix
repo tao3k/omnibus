@@ -73,7 +73,8 @@
 
         cellBlocks =
           with std.blockTypes;
-          with hive.blockTypes; [
+          with hive.blockTypes;
+          [
             # configurations can be deployed
             colmenaConfigurations
             homeConfigurations

@@ -22,12 +22,10 @@ in
                 selfModule' (
                   m:
                   dmerge
-                    (lib.removeAttrs m
-                      [
-                        # popup the imports, so that we can use own nixosModule
-                        # "imports"
-                      ]
-                    )
+                    (lib.removeAttrs m [
+                      # popup the imports, so that we can use own nixosModule
+                      # "imports"
+                    ])
                     {
                       config.contents = update [ 0 ] [
                         {

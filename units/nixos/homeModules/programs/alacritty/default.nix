@@ -7,18 +7,30 @@ let
     (builtins.fromTOML (builtins.readFile ./key-bindings.toml)).key_bindings;
 in
 {
-  options = {
-    CSIuSupport = lib.mkEnableOption "Enable CSIu support";
+  options = with lib; {
+    CSIuSupport = mkEnableOption "Enable CSIu support";
+    __profiles__ = {
+      enableZellij = mkEnableOption "Enable zellij profile";
+    };
   };
   config =
     with lib;
-    mkMerge [
-      (mkIf (cfg.enable && pkgs.stdenv.isLinux) (
-        mkModulePath {
-          settings = {
-            key_bindings = mkIf cfg.CSIuSupport CSIuKeyBindings;
-          };
-        }
-      ))
-    ];
+    mkIf cfg.enable (
+      mkMerge [
+        (mkIf pkgs.stdenv.isLinux (
+          mkModulePath {
+            settings = {
+              key_bindings = mkIf cfg.CSIuSupport CSIuKeyBindings;
+            };
+          }
+        ))
+        (mkIf (cfg.__profiles__.enableZellij && config.programs.zellij.enable) (
+          mkModulePath {
+            settings = {
+              shell.program = lib.getExe config.programs.zellij.package;
+            };
+          }
+        ))
+      ]
+    );
 }

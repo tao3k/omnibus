@@ -85,10 +85,9 @@ mkSuites {
         "optimization"
       ];
       knowledges = [ "https://github.com/microsoft/mimalloc#performance" ];
-      profiles =
-        [
-          # mimalloc
-        ];
+      profiles = [
+        # mimalloc
+      ];
     }
   ];
 
@@ -98,11 +97,10 @@ mkSuites {
         "disko"
         "btrfs"
       ];
-      knowledges =
-        [
-          # chinese
-          "https://lantian.pub/article/modify-computer/nixos-low-ram-vps.lantian/"
-        ];
+      knowledges = [
+        # chinese
+        "https://lantian.pub/article/modify-computer/nixos-low-ram-vps.lantian/"
+      ];
       profiles = [ ];
     }
     fileSystems.btrfs

@@ -7,7 +7,8 @@
 let
   presets = root.presets;
 in
-with presets; {
+with presets;
+{
   default = [
     audio.bluetooth
     audio.pipewire

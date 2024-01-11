@@ -11,7 +11,8 @@
 let
   presets = root.presets;
 in
-with presets; {
+with presets;
+{
   minimal = [ shell.default ];
 
   default = [

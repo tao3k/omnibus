@@ -3,7 +3,8 @@
 # SPDX-License-Identifier: MIT
 
 { lib, inputs }:
-with lib; {
+with lib;
+{
   themes = mkOption {
     default = { };
     type = types.attrsOf (

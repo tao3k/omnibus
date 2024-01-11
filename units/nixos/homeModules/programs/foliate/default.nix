@@ -9,7 +9,8 @@
   inputs,
   config,
 }:
-with lib; {
+with lib;
+{
   options = {
     enable = mkEnableOption (lib.mdDoc "Whether to enable foliate");
     __profiles__ = {

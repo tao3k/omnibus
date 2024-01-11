@@ -12,7 +12,8 @@
 let
   presets = root.presets;
 in
-with presets; {
+with presets;
+{
   minimal = [
     direnv
     git

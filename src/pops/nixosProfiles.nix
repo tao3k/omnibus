@@ -16,5 +16,9 @@
   };
 }).addExporters
   [
-    (POP.extendPop flops.haumea.pops.exporter (_selfP: _super: { exports = { }; }))
+    (POP.extendPop flops.haumea.pops.exporter (
+      _selfP: _super: {
+        exports = { };
+      }
+    ))
   ]

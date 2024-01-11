@@ -6,7 +6,8 @@
 let
   presets = super.presets;
 in
-with presets; {
+with presets;
+{
   default = [
     bootstrap
     nix.default

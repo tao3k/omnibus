@@ -43,11 +43,10 @@ in
     )
   ];
 
-  homeSuites =
-    [
-      # outputs.homeProfiles.presets.emacs
-      # outputs.homeProfiles.presets.bat
-      # # # The parent directory of "presets" is categorized as a list type of "suites"
-      # (outputs.homeProfiles.shell { }).default
-    ];
+  homeSuites = [
+    # outputs.homeProfiles.presets.emacs
+    # outputs.homeProfiles.presets.bat
+    # # # The parent directory of "presets" is categorized as a list type of "suites"
+    # (outputs.homeProfiles.shell { }).default
+  ];
 }

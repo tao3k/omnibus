@@ -22,7 +22,8 @@ in
     (hunspellWithDicts [ hunspellDicts.en-us ])
     (aspellWithDicts (
       dicts:
-      with dicts; [
+      with dicts;
+      [
         en
         en-computers
         en-science

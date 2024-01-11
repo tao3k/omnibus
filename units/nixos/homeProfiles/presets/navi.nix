@@ -40,10 +40,9 @@ let
               true
           )
         ]
-        ++ lib.optionals isDarwin
-          [
-            # (root: path: type: if (l.match "[^/]*brew.*\.cheat" (l.baseNameOf path)) == null then false else true)
-          ];
+        ++ lib.optionals isDarwin [
+          # (root: path: type: if (l.match "[^/]*brew.*\.cheat" (l.baseNameOf path)) == null then false else true)
+        ];
     };
 in
 {

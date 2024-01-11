@@ -2,7 +2,8 @@
 #
 # SPDX-License-Identifier: MIT
 
-with lib; {
+with lib;
+{
   # do we need to import the submodules automatically in imports?
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")

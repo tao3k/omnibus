@@ -3,7 +3,8 @@
 # SPDX-License-Identifier: MIT
 
 { inputs }:
-with inputs.dmerge; {
+with inputs.dmerge;
+{
   data = {
     commit.conventional.scopes = append [
       "nixosModules"

@@ -1240,11 +1240,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1704325397,
-        "narHash": "sha256-g6n0K5VsD0MitRXJ0mrspGP7R9VKJYNwJFZRmBop1Nw=",
+        "lastModified": 1704833612,
+        "narHash": "sha256-yhnKT8z5FOTUb/1ZXaErmFHsv1oKg1aYQVLVUCzQWMA=",
         "owner": "serokell",
         "repo": "nixfmt",
-        "rev": "35da23233a1cfd799d2b59cee056ece6dff06ea1",
+        "rev": "82457ef5fc7b324d3cab4300af0ff7f854135cfa",
         "type": "github"
       },
       "original": {

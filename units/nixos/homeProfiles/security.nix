@@ -4,8 +4,7 @@
 
 { ... }:
 {
-  secrets =
-    [
-      # super.presets.sequoia-pgp
-    ];
+  secrets = [
+    # super.presets.sequoia-pgp
+  ];
 }

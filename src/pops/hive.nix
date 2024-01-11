@@ -6,6 +6,7 @@
 }:
 let
   inherit (POP) pop;
+
   genColmenaFromHosts = hosts: {
     meta = {
       nodeNixpkgs =
@@ -55,10 +56,19 @@ pop {
           }
         )
         hosts;
+    pops = { };
+    exports = {
+      pops = { };
+    };
   };
   extension = final: prev: {
     colmena = genColmenaFromHosts (
       lib.filterAttrs (n: v: v.meta ? "colmena") prev.hosts
     );
+    addMapLoadToPops = load: { };
+    pops = { };
+    exports = {
+      pops = lib.omnibus.mapLoadToPops final.pops { };
+    };
   };
 }
