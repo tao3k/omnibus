@@ -56,9 +56,13 @@ pop {
           }
         )
         hosts;
-    pops = { };
+    pops = {
+      omnibus = { };
+      nixosProfiles = { };
+      nixosModules = { };
+    };
     exports = {
-      pops = { };
+      hosts = { };
     };
   };
   extension = final: prev: {
@@ -68,7 +72,17 @@ pop {
     addMapLoadToPops = load: { };
     pops = { };
     exports = {
-      pops = lib.omnibus.mapLoadToPops final.pops { };
+      hosts = lib.omnibus.mkHosts {
+        # hostsDir = projectRoot + "/units/nixos/hosts";
+        pops = super.hostsInterface;
+        addLoadExtender = {
+          load = {
+            inputs = {
+              inherit inputs;
+            };
+          };
+        };
+      };
     };
   };
 }

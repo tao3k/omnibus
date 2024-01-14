@@ -5,7 +5,10 @@
         "flake-compat": [
           "flops"
         ],
-        "nixlib": "nixlib",
+        "nixlib": [
+          "flops",
+          "nixlib"
+        ],
         "nixpkgs": [
           "flops"
         ]
@@ -74,15 +77,15 @@
         "call-flake": "call-flake",
         "dmerge": "dmerge",
         "haumea": "haumea",
-        "nixlib": "nixlib_2",
+        "nixlib": "nixlib",
         "yants": "yants"
       },
       "locked": {
-        "lastModified": 1704188249,
-        "narHash": "sha256-Wv2CFbNiFYhbmMSyYrOnqGr1aGuB06/dOCsqxCHiDhg=",
+        "lastModified": 1705217630,
+        "narHash": "sha256-3NBtDY1euNkQFkDGvLXZFgoeRhYnALktzbSLDeCUcDY=",
         "owner": "gtrunsec",
         "repo": "flops",
-        "rev": "2befbbee09bf612834109d417bc7c60d6be4e0f7",
+        "rev": "9a97f5d108f2f5a6d461e4d00e86b1e7c0a9973a",
         "type": "github"
       },
       "original": {
@@ -114,41 +117,11 @@
     },
     "nixlib": {
       "locked": {
-        "lastModified": 1653180592,
-        "narHash": "sha256-sVGwmxTj7CY1D4ioy7E+iJE+1/yHqQlxjnTpar3ap/E=",
+        "lastModified": 1705193289,
+        "narHash": "sha256-oL5EAaZHiA3ABLdyKag/DgT+457vmELv8A+eaox2xsI=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "42c5f5785b70cd64b4afd830dc31d0b08461abd5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "type": "github"
-      }
-    },
-    "nixlib_2": {
-      "locked": {
-        "lastModified": 1703983607,
-        "narHash": "sha256-YECXW8P0bqFM5e65Mu2fL4wZlonNWCuNEk7UQPsuJZ0=",
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "rev": "a6c99b57d2e58f7fc6d52a08b0ba40160e75f738",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "type": "github"
-      }
-    },
-    "nixpkgs": {
-      "locked": {
-        "lastModified": 1660438583,
-        "narHash": "sha256-rJUTYxFKlWUJI3njAwEc1pKAVooAViZGJvsgqfh/q/E=",
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "rev": "bbd8f7cd87d0b29294ef3072ffdbd61d60f05da4",
+        "rev": "da839f74dc77c9826fa333b1bc2c8258fd6ffcbe",
         "type": "github"
       },
       "original": {
@@ -164,7 +137,10 @@
     },
     "yants": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "flops",
+          "nixlib"
+        ]
       },
       "locked": {
         "lastModified": 1699522279,
