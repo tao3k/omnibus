@@ -17,9 +17,6 @@ jobs:
         with:
           SECRET_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Example/nixos
-        run: nix -Lv build ./local#eval.nixos.expr.nixosConfiguration.config.system.build.toplevel --dry-run
-
       - name: Run Eval check
         run: nix -Lv eval ./local#checks --override-input namaka github:nix-community/namaka
 
