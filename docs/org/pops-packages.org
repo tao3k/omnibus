@@ -169,6 +169,8 @@ in
 
 ** Example
 
+- Loading Dir: [[https://github.com/GTrunSec/omnibus-examples/tree/main/packages/__fixture][omnibus-examples/packages/__fixture at main · GTrunSec/omnibus-examples]]
+
 #+begin_src nix :tangle (concat (org-entry-get nil "EXP-DIR" t) "/packages/default.nix")
 { omnibus, inputs }:
 let

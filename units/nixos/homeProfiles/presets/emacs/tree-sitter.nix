@@ -30,6 +30,7 @@ let
     tree-sitter-lua
     tree-sitter-yaml
     tree-sitter-nu
+    tree-sitter-java
   ];
 in
 {

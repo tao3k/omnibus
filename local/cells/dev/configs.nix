@@ -7,7 +7,7 @@
    Q: Why not just put the put the file there?
 
    A: (1) dotfile proliferation
-      (2) have all the things in one place / fromat
+      (2) have all the things in one place / format
       (3) potentially share / re-use configuration data - keeping it in sync
 */
 { inputs, cell }:
