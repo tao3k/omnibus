@@ -16,11 +16,7 @@ in
       loader =
         __inputs__: path:
         #  without the scope loader
-        (__inputs__.inputs.nixpkgs.extend (
-          _: _: {
-            inherit __inputs__;
-          }
-        )).callPackage
+        (__inputs__.inputs.nixpkgs.extend (_: _: { inherit __inputs__; })).callPackage
           path
           { };
       transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
@@ -57,13 +53,7 @@ in
                 load = {
                   loader =
                     __inputs__: path:
-                    (selfScope.overrideScope (
-                      _: _: {
-                        inherit __inputs__;
-                      }
-                    )).callPackage
-                      path
-                      { };
+                    (selfScope.overrideScope (_: _: { inherit __inputs__; })).callPackage path { };
                   inputs = { };
                 };
               });
@@ -99,9 +89,7 @@ in
                           loader =
                             _: path:
                             (selfScope.overrideScope (
-                              _: _: {
-                                __inputs__ = self.layouts.self.load.inputs;
-                              }
+                              _: _: { __inputs__ = self.layouts.self.load.inputs; }
                             )).callPackage
                               path
                               { };

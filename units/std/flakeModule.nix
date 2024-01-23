@@ -54,8 +54,6 @@ in
         )
       );
     # exposes the raw scheme of the std layout inside flake-parts
-    perInput = system: flake: {
-      cells = flake.${system} or { };
-    };
+    perInput = system: flake: { cells = flake.${system} or { }; };
   };
 }

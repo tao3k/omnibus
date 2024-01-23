@@ -9,41 +9,22 @@ let
 
   genColmenaFromHosts = hosts: {
     meta = {
-      nodeNixpkgs =
-        lib.mapAttrs (hostName: hostConfig: hostConfig.meta.colmena.nixpkgs)
-          hosts;
       nodes =
         lib.mapAttrs
           (hostName: hostConfig: {
             inherit (hostConfig.meta.colmena) imports deployment;
           })
           hosts;
-    };
-  };
-  hosts = {
-    host-1 = {
-      colmena = {
-        nixpkgs = { };
-        deployment = { };
-        imports = [ ];
-      };
-    };
-    host-2 = {
-      meta = {
-        a = 1;
-      };
-      colmena = {
-        nixpkgs = { };
-        deployment = { };
-        imports = [ "2" ];
-      };
-    };
-    host-3 = {
-      meta = { };
-      a = { };
+      nodeNixpkgs =
+        lib.mapAttrs
+          (
+            hostName: hostConfig: (super.types.hive.colmena hostConfig.meta.colmena).nixpkgs
+          )
+          hosts;
     };
   };
 in
+setHosts:
 pop {
   defaults = {
     hosts =
@@ -55,7 +36,7 @@ pop {
             meta = (hostConfig.meta or { }) // (removeAttrs hostConfig [ "meta" ]);
           }
         )
-        hosts;
+        setHosts;
     pops = {
       omnibus = { };
       nixosProfiles = { };
@@ -76,11 +57,7 @@ pop {
         # hostsDir = projectRoot + "/units/nixos/hosts";
         pops = super.hostsInterface;
         addLoadExtender = {
-          load = {
-            inputs = {
-              inherit inputs;
-            };
-          };
+          load = { };
         };
       };
     };

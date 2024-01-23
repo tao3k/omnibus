@@ -5,13 +5,14 @@
 { lib, super }:
 inputs': object: listNames:
 let
-  notFoundInputs =
-    (lib.filter (pair: pair != true) (
+  notFoundInputs = (
+    lib.filter (pair: pair != true) (
       map (v: if (lib.hasAttr v inputs') then true else v) listNames
-    ));
+    )
+  );
   isFound = (lib.length notFoundInputs == 0);
-  msg =
-    (lib.concatMapStringsSep "\n         "
+  msg = (
+    lib.concatMapStringsSep "\n         "
       (
         { name, url }:
         ''
@@ -20,7 +21,7 @@ let
         ''
       )
       (super.inputsSource notFoundInputs)
-    );
+  );
 
   noSysNixpkgs =
     if (lib.elem "nixpkgs" listNames && inputs' ? nixpkgs) then

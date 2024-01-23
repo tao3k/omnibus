@@ -5,8 +5,8 @@
 { pkgs, lib, ... }:
 let
   cfg = config.omnibus.coding.python;
-  pythonEnv =
-    (cfg.python.withPackages (
+  pythonEnv = (
+    cfg.python.withPackages (
       ps:
       with ps;
       (
@@ -39,7 +39,8 @@ let
         ])
         ++ [ ]
       )
-    ));
+    )
+  );
 in
 #.override (args: {ignoreCollisions = true;});
 {

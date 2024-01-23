@@ -57,14 +57,13 @@ in
         };
       };
     };
-    profiles.default.extensions =
-      with cfg.__profiles__.nurPkgs.repos.rycee.firefox-addons; [
-        vimium
-        darkreader
-        privacy-badger
-        decentraleyes
-        theater-mode-for-youtube
-        clearurls
-      ];
+    profiles.default.extensions = with cfg.__profiles__.nurPkgs.repos.rycee.firefox-addons; [
+      vimium
+      darkreader
+      privacy-badger
+      decentraleyes
+      theater-mode-for-youtube
+      clearurls
+    ];
   };
 }

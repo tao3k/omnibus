@@ -21,9 +21,7 @@ in
   home.packages = with pkgs; [
     (hunspellWithDicts [ hunspellDicts.en-us ])
     (aspellWithDicts (
-      dicts:
-      with dicts;
-      [
+      dicts: with dicts; [
         en
         en-computers
         en-science
