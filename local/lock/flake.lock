@@ -923,11 +923,11 @@
     "makesSrc": {
       "flake": false,
       "locked": {
-        "lastModified": 1703702361,
-        "narHash": "sha256-5ysy8XhWLTQ1n+rTw9RirQXavcR7PiEbJ8hqgYCHOTI=",
+        "lastModified": 1706111053,
+        "narHash": "sha256-qurJA5HfbcK3yeeJ5XTROzdSLMFEQsGlqrg64LIEi0M=",
         "owner": "fluidattacks",
         "repo": "makes",
-        "rev": "ce9f3492cecce984391fcd1b7f127933c3f79c8e",
+        "rev": "7503b4482680317d6a3843b922a87f6946223edd",
         "type": "github"
       },
       "original": {
@@ -1240,11 +1240,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1705351614,
-        "narHash": "sha256-A4lWuddBY2SI4AbQFT+/eP9LsrNarnkQ2AeikrU56N0=",
+        "lastModified": 1706048169,
+        "narHash": "sha256-jiFbX7vefrEK+oaLb7/50UCqD+FQcA7lxEm+Pt+FtKM=",
         "owner": "serokell",
         "repo": "nixfmt",
-        "rev": "1eff7a84ac82fbebb5f586244f1c80e1fcc4f494",
+        "rev": "96c1e8da1e4cd08ef5cfe0590b350ebdb24e8bb0",
         "type": "github"
       },
       "original": {
@@ -1560,11 +1560,11 @@
     },
     "nixpkgs_9": {
       "locked": {
-        "lastModified": 1703961334,
-        "narHash": "sha256-M1mV/Cq+pgjk0rt6VxoyyD+O8cOUiai8t9Q6Yyq4noY=",
+        "lastModified": 1705856552,
+        "narHash": "sha256-JXfnuEf5Yd6bhMs/uvM67/joxYKoysyE3M2k6T3eWbg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b0d36bd0a420ecee3bc916c91886caca87c894e9",
+        "rev": "612f97239e2cc474c13c9dafa0df378058c5ad8d",
         "type": "github"
       },
       "original": {

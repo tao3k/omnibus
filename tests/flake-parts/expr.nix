@@ -36,7 +36,10 @@ let
         systems = [ system ];
         imports = [ flake.inputs.process-compose-flake.flakeModule ];
         perSystem =
-          { ... }: { imports = [ flakeProfiles.process-compose.sqlite-example ]; };
+          { ... }:
+          {
+            imports = [ flakeProfiles.process-compose.sqlite-example ];
+          };
       };
 in
 {

@@ -66,8 +66,10 @@ in
       pre-commit = {
         commands = {
           hunspell = {
-            run = "${(self.pre-commit-hooks { }).hunspell.entry} -l {staged_files}";
-            glob = "*.{txt,md,html,xml,rst,tex,odf}";
+            run = "${
+              (nixpkgs.hunspellWithDicts [ nixpkgs.hunspellDicts.en-us ])
+            }/bin/hunspell -l {staged_files}";
+            glob = "*.{txt,md,html,xml,rst,tex,odf,org}";
             skip = [
               "merge"
               "rebase"
