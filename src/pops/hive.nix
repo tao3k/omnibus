@@ -55,6 +55,7 @@ pop {
     exports = {
       hosts = lib.omnibus.mkHosts {
         # hostsDir = projectRoot + "/units/nixos/hosts";
+        hostsDir = ./.;
         pops = super.hostsInterface;
         addLoadExtender = {
           load = { };
