@@ -15,22 +15,18 @@ in
   };
   config =
     with lib;
-    mkIf cfg.enable (
-      mkMerge [
-        (mkIf pkgs.stdenv.isLinux (
-          mkModulePath {
-            settings = {
-              key_bindings = mkIf cfg.CSIuSupport CSIuKeyBindings;
-            };
-          }
-        ))
-        (mkIf (cfg.__profiles__.enableZellij && config.programs.zellij.enable) (
-          mkModulePath {
-            settings = {
-              shell.program = lib.getExe config.programs.zellij.package;
-            };
-          }
-        ))
-      ]
-    );
+    mkIf cfg.enable (mkMerge [
+      (mkIf pkgs.stdenv.isLinux (mkModulePath {
+        settings = {
+          key_bindings = mkIf cfg.CSIuSupport CSIuKeyBindings;
+        };
+      }))
+      (mkIf (cfg.__profiles__.enableZellij && config.programs.zellij.enable)
+        (mkModulePath {
+          settings = {
+            shell.program = lib.getExe config.programs.zellij.package;
+          };
+        })
+      )
+    ]);
 }

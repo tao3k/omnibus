@@ -79,27 +79,23 @@ in
     with lib;
     mkMerge [
       (mkModulePath { inherit casks brews; })
-      (mkIf cfg.__profiles__.default (
-        mkModulePath {
-          taps = [
-            "homebrew/bundle"
-            "homebrew/core"
-          ];
-        }
-      ))
-      (mkIf (cfg.casks != [ ]) (
-        mkModulePath {
-          taps = [
-            "homebrew/cask"
-            "homebrew/cask-versions"
-          ];
-        }
-      ))
-      (mkIf cfg.__profiles__.fonts (
-        mkModulePath { taps = [ "homebrew/cask-fonts" ]; }
-      ))
-      (mkIf cfg.__profiles__.emacs (
-        mkModulePath { taps = [ "d12frosted/emacs-plus" ]; }
-      ))
+      (mkIf cfg.__profiles__.default (mkModulePath {
+        taps = [
+          "homebrew/bundle"
+          "homebrew/core"
+        ];
+      }))
+      (mkIf (cfg.casks != [ ]) (mkModulePath {
+        taps = [
+          "homebrew/cask"
+          "homebrew/cask-versions"
+        ];
+      }))
+      (mkIf cfg.__profiles__.fonts (mkModulePath {
+        taps = [ "homebrew/cask-fonts" ];
+      }))
+      (mkIf cfg.__profiles__.emacs (mkModulePath {
+        taps = [ "d12frosted/emacs-plus" ];
+      }))
     ];
 }

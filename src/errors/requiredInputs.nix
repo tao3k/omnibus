@@ -12,15 +12,13 @@ let
   );
   isFound = (lib.length notFoundInputs == 0);
   msg = (
-    lib.concatMapStringsSep "\n         "
-      (
-        { name, url }:
-        ''
-          # please get the input from `${name}.url = "${url}"`
-                   ${name} = inputs.${name};
-        ''
-      )
-      (super.inputsSource notFoundInputs)
+    lib.concatMapStringsSep "\n         " (
+      { name, url }:
+      ''
+        # please get the input from `${name}.url = "${url}"`
+                 ${name} = inputs.${name};
+      ''
+    ) (super.inputsSource notFoundInputs)
   );
 
   noSysNixpkgs =

@@ -31,18 +31,14 @@ in
     # outputs.pops.nixosModules.exports.customModules.boot
 
     # outputs.srvos.default.common.nix
-    (outputs.omnibus.self.mkHome inputs.home.nixosModule
-      {
-        admin = {
-          uid = 1000;
-          description = "default manager";
-          isNormalUser = true;
-          extraGroups = [ "wheel" ];
-        };
-      }
-      "zsh"
-      self.homeSuites
-    )
+    (outputs.omnibus.self.mkHome inputs.home.nixosModule {
+      admin = {
+        uid = 1000;
+        description = "default manager";
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+      };
+    } "zsh" self.homeSuites)
   ];
 
   homeSuites = [

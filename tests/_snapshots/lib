@@ -1,11 +1,7 @@
 #pretty
 {
   inputsToPaths = [
-    "<PATH-a.b>"
-    "<PATH-a.c>"
-    "<PATH-b.d>"
-    "<PATH-b.f>"
-    "<PATH-a>"
-    "<PATH-b>"
+    "/nix/store/w065s95yy5k456kwa1h6bg9mc46gy89n-tracing-log-0.2.0"
+    "/nix/store/w065s95yy5k456kwa1h6bg9mc46gy89n-tracing-log-0.3.0"
   ];
 }

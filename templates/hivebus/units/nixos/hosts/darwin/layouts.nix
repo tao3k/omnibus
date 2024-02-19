@@ -31,16 +31,12 @@ in
     # outputs.pops.nixosModules.exports.customModules.boot
 
     # outputs.srvos.default.common.nix
-    (outputs.omnibus.mkHome inputs.home.darwinModule
-      {
-        admin = {
-          uid = 1000;
-          description = "default manager";
-        };
-      }
-      "zsh"
-      self.homeSuites
-    )
+    (outputs.omnibus.mkHome inputs.home.darwinModule {
+      admin = {
+        uid = 1000;
+        description = "default manager";
+      };
+    } "zsh" self.homeSuites)
   ];
 
   homeSuites = [

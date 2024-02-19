@@ -8,6 +8,7 @@
   self,
   lib,
   super,
+  inputs,
 }:
 let
   presets = root.presets;
@@ -45,8 +46,7 @@ with presets;
     # ------------------------------
     spell-check
     self.fileManager
-    # (lib.optionals nixpkgs.stdenv.isLinux presets.alacritty)
-    presets.alacritty
+    (lib.optionals inputs.nixpkgs.stdenv.isLinux presets.alacritty)
   ];
 
   modernTools = [

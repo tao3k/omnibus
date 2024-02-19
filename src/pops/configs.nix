@@ -29,15 +29,13 @@ let
   # Function to process each layout
   processLayouts =
     data: cfgName:
-    applyRecursive
-      (
-        layoutData:
-        if (lib.hasAttr cfgName cfg) then
-          mkNixago cfg.${cfgName} layoutData
-        else
-          throw "Unknown layout: ${cfgName}"
-      )
-      (data.layouts.default.${cfgName});
+    applyRecursive (
+      layoutData:
+      if (lib.hasAttr cfgName cfg) then
+        mkNixago cfg.${cfgName} layoutData
+      else
+        throw "Unknown layout: ${cfgName}"
+    ) (data.layouts.default.${cfgName});
 in
 (
   (flops.haumea.pops.default.setInit {

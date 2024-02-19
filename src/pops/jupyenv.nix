@@ -46,12 +46,12 @@
             setJupyenvModule = self.layouts.self.load.inputs.setJupyenvModule;
           in
           {
-            jupyenvEvalModules =
-              lib.mapAttrsRecursive (_: v: setJupyenvModule v)
-                self.layouts.default;
-            jupyenvEnv =
-              lib.mapAttrsRecursive (_: v: (setJupyenvModule v).config.build)
-                self.layouts.default;
+            jupyenvEvalModules = lib.mapAttrsRecursive (
+              _: v: setJupyenvModule v
+            ) self.layouts.default;
+            jupyenvEnv = lib.mapAttrsRecursive (
+              _: v: (setJupyenvModule v).config.build
+            ) self.layouts.default;
           };
       }
     ))

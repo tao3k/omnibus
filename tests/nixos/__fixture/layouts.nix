@@ -25,18 +25,14 @@ in
     # # exporter.nixosProfiles.customProfiles.presets.boot
     # outputs.srvos.default.common.nix
 
-    (outputs'.omnibus.mkHome inputs.home-manager.nixosModule
-      {
-        admin = {
-          uid = 1000;
-          description = "default manager";
-          isNormalUser = true;
-          extraGroups = [ "wheel" ];
-        };
-      }
-      "zsh"
-      self.homeSuites
-    )
+    (outputs'.omnibus.mkHome inputs.home-manager.nixosModule {
+      admin = {
+        uid = 1000;
+        description = "default manager";
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+      };
+    } "zsh" self.homeSuites)
   ];
 
   homeSuites = [

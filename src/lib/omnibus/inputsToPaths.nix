@@ -58,24 +58,27 @@ let
     l.pipe inputs [
       (l.filterAttrs (_: v: l.isAttrs v && (v ? sourceInfo.outPath || v ? outPath)))
       (l.mapAttrs (_: v: v.sourceInfo.outPath or v.outPath or v.path))
-      (l.mapAttrs (_: v: getTopLevelPath (toString v)))
+      (l.mapAttrs (
+        _: v: if lib.strings.isStorePath v then getTopLevelPath (toString v) else [ ]
+      ))
     ];
 
   attrsToPaths = i: lib.attrValues (extractAttrsFromInputs i);
 
   inherit (flops) recursiveMerge;
-  updatedInputs = (recursiveMerge (l.flatten [ inputs ]));
+  updatedInputs = recursiveMerge (l.flatten [ inputs ]);
 in
 l.pipe updatedInputs [
   (
     v:
-    map (x: if v.${x} ? inputs then attrsToPaths v.${x}.inputs else attrsToPaths v)
-      (l.attrNames (extractAttrsFromInputs v))
+    map (
+      x: if v.${x} ? inputs then attrsToPaths v.${x}.inputs else attrsToPaths v
+    ) (l.attrNames (extractAttrsFromInputs v))
   )
+  (x: x ++ attrsToPaths updatedInputs)
   l.flatten
   l.unique
-]
-++ attrsToPaths updatedInputs # extractPaths From the top level inputs
+] # extractPaths From the top level inputs
 /* inputsToPaths {
      b = {
        inputs = {

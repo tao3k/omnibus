@@ -38,8 +38,7 @@ in
         out.outputs.homeProfiles.customProfiles.presets.hyprland.default
         out.outputs.homeProfiles.default.presets.firefox
       ])
-    ])
-    .config.home-manager.users.admin.wayland.windowManager.hyprland.__profiles__;
+    ]).config.home-manager.users.admin.wayland.windowManager.hyprland.__profiles__;
 }
 // lib.optionalAttrs debug {
   nixosConfiguration = out.nixosConfiguration [

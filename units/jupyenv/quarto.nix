@@ -61,20 +61,14 @@ in
         inherit (config.publishers.quarto) runtimeEnv package runtimeInputs;
         text =
           let
-            syncKernels =
-              lib.concatMapStringsSep "\n"
-                (p: ''
-                  rsync --chmod +rw -avzh ${p}/kernels/${p.kernelInstance.name} \
-                  "$HOME"/.local/share/jupyter/kernels
-                '')
-                (lib.attrValues config.build.passthru.kernels);
+            syncKernels = lib.concatMapStringsSep "\n" (p: ''
+              rsync --chmod +rw -avzh ${p}/kernels/${p.kernelInstance.name} \
+              "$HOME"/.local/share/jupyter/kernels
+            '') (lib.attrValues config.build.passthru.kernels);
 
-            cleanupKernels =
-              lib.concatMapStringsSep "\n"
-                (p: ''
-                  rm -rf "$HOME"/.local/share/jupyter/kernels/${p.kernelInstance.name}
-                '')
-                (lib.attrValues config.build.passthru.kernels);
+            cleanupKernels = lib.concatMapStringsSep "\n" (p: ''
+              rm -rf "$HOME"/.local/share/jupyter/kernels/${p.kernelInstance.name}
+            '') (lib.attrValues config.build.passthru.kernels);
           in
           ''
             if [ ! -d "$HOME"/.local/share/jupyter/kernels ]; then

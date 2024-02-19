@@ -18,8 +18,8 @@ in
 #   Path -> a :: Nix
 path:
 let
-  jsonOutputDrv =
-    runCommand "from-yaml" { nativeBuildInputs = [ yq-go ]; }
-      ''yq -o=json "${path}" > "$out"'';
+  jsonOutputDrv = runCommand "from-yaml" {
+    nativeBuildInputs = [ yq-go ];
+  } ''yq -o=json "${path}" > "$out"'';
 in
 fromJSON (readFile jsonOutputDrv)

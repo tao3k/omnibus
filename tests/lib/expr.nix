@@ -11,7 +11,7 @@ in
     b = {
       inputs = {
         d = {
-          outPath = "<PATH-b.d>";
+          outPath = "/nix/store/w065s95yy5k456kwa1h6bg9mc46gy89n-tracing-log-0.2.0";
         };
         f = {
           outPath = "<PATH-b.f>";
@@ -28,7 +28,7 @@ in
           outPath = "<PATH-a.c>";
         };
       };
-      outPath = "<PATH-a>";
+      outPath = "/nix/store/w065s95yy5k456kwa1h6bg9mc46gy89n-tracing-log-0.3.0";
     };
   };
 }

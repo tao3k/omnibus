@@ -12,15 +12,13 @@ with lib;
   ];
 
   config = mkMerge [
-    (mkIf cfg.__profiles__.systemd-boot.enable (
-      mkModulePath {
-        loader = {
-          timeout = mkIf cfg.__profiles__.speedup 0;
-          systemd-boot.enable = true;
-          efi.canTouchEfiVariables = true;
-        };
-      }
-    ))
+    (mkIf cfg.__profiles__.systemd-boot.enable (mkModulePath {
+      loader = {
+        timeout = mkIf cfg.__profiles__.speedup 0;
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+      };
+    }))
   ];
 
   # config.loader.timeout = 1;

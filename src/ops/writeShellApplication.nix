@@ -41,8 +41,9 @@ nixpkgs.writeTextFile {
     ''
     + l.optionalString (runtimeEnv != { }) ''
       ${l.concatStringsSep "\n" (
-        l.mapAttrsToList (n: v: "export ${n}=${''"$''}{${n}:-${toString v}}${''"''}")
-          runtimeEnv
+        l.mapAttrsToList (
+          n: v: "export ${n}=${''"$''}{${n}:-${toString v}}${''"''}"
+        ) runtimeEnv
       )}
     ''
     + ''

@@ -24,11 +24,8 @@ name: {
     [
       (actions.build currentSystem target.config.build)
       (run currentSystem target.config.build)
-      (mkCommand currentSystem "quarto" "pass any command to quarto" [ ]
-        ''
-          (cd "$PRJ_ROOT" && ${target.config.quartoEnv}/bin/quarto "$@")
-        ''
-        { }
-      )
+      (mkCommand currentSystem "quarto" "pass any command to quarto" [ ] ''
+        (cd "$PRJ_ROOT" && ${target.config.quartoEnv}/bin/quarto "$@")
+      '' { })
     ];
 }

@@ -10,20 +10,18 @@ load:
 let
   inherit (flops) recursiveMerge';
 in
-(super.load (
-  recursiveMerge' [
-    {
-      loader =
-        __inputs__: path:
-        #  without the scope loader
-        (__inputs__.inputs.nixpkgs.extend (_: _: { inherit __inputs__; })).callPackage
-          path
-          { };
-      transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
-    }
-    load
-  ]
-)).addExporters
+(super.load (recursiveMerge' [
+  {
+    loader =
+      __inputs__: path:
+      #  without the scope loader
+      (__inputs__.inputs.nixpkgs.extend (_: _: { inherit __inputs__; })).callPackage
+        path
+        { };
+    transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
+  }
+  load
+])).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: _super: {
@@ -111,30 +109,26 @@ in
                 (
                   (self.exports.packages.overrideScope (
                     _: scopeSuper: {
-                      python3 = prev.python3.override (
-                        old: {
-                          packageOverrides =
-                            prev.lib.composeExtensions (old.packageOverrides or (_: _: { }))
-                              (
-                                pythonSelf: _:
-                                if (scopeSuper ? by-loader && scopeSuper.by-loader ? python3Packages) then
-                                  scopeSuper.by-loader.python3Packages.packages pythonSelf
-                                else
-                                  { }
-                              );
-                        }
-                      );
-                      python3Packages = prev.python3Packages.override (
-                        old: {
-                          overrides = prev.lib.composeExtensions (old.overrides or (_: _: { })) (
-                            pythonSelf: _:
-                            if (scopeSuper ? by-loader && scopeSuper.by-loader ? python3Packages) then
-                              scopeSuper.by-loader.python3Packages.packages pythonSelf
-                            else
-                              { }
-                          );
-                        }
-                      );
+                      python3 = prev.python3.override (old: {
+                        packageOverrides =
+                          prev.lib.composeExtensions (old.packageOverrides or (_: _: { }))
+                            (
+                              pythonSelf: _:
+                              if (scopeSuper ? by-loader && scopeSuper.by-loader ? python3Packages) then
+                                scopeSuper.by-loader.python3Packages.packages pythonSelf
+                              else
+                                { }
+                            );
+                      });
+                      python3Packages = prev.python3Packages.override (old: {
+                        overrides = prev.lib.composeExtensions (old.overrides or (_: _: { })) (
+                          pythonSelf: _:
+                          if (scopeSuper ? by-loader && scopeSuper.by-loader ? python3Packages) then
+                            scopeSuper.by-loader.python3Packages.packages pythonSelf
+                          else
+                            { }
+                        );
+                      });
                     }
                   )).packages
                   (final // { overrideScope = self.exports.packages.overrideScope; })

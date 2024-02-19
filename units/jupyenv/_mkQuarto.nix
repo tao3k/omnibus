@@ -20,11 +20,9 @@ in
   } // runtimeEnv;
   inherit text;
 }).overrideAttrs
-  (
-    _old: {
-      passthru = {
-        quarto = package;
-        inherit kernels;
-      };
-    }
-  )
+  (_old: {
+    passthru = {
+      quarto = package;
+      inherit kernels;
+    };
+  })

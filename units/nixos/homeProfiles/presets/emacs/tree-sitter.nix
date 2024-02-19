@@ -28,6 +28,7 @@ let
     tree-sitter-toml
     tree-sitter-typescript
     tree-sitter-lua
+    tree-sitter-typst
     tree-sitter-yaml
     tree-sitter-nu
     tree-sitter-java

@@ -37,9 +37,9 @@ in
   (POP.extendPop flops.haumea.pops.exporter (
     self: _super: {
       exports = {
-        microvms =
-          lib.mapAttrsRecursiveCond (as: !(lib.isFunction as)) (_: v: mkMicrovm v)
-            self.layouts.default;
+        microvms = lib.mapAttrsRecursiveCond (as: !(lib.isFunction as)) (
+          _: v: mkMicrovm v
+        ) self.layouts.default;
       };
     }
   ))
