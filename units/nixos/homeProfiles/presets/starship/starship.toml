@@ -3,3 +3,6 @@ add_newline = true
 
 [character]
 success_symbol = "[λ](bold blue)"
+
+[git_status]
+ignore_submodules = true

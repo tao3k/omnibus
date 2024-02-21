@@ -57,7 +57,7 @@ let
     inputs:
     l.pipe inputs [
       (l.filterAttrs (_: v: l.isAttrs v && (v ? sourceInfo.outPath || v ? outPath)))
-      (l.mapAttrs (_: v: v.sourceInfo.outPath or v.outPath or v.path))
+      (l.mapAttrs (_: v: v.outPath or v.sourceInfo.outPath or v.path))
       (l.mapAttrs (
         _: v: if lib.strings.isStorePath v then getTopLevelPath (toString v) else [ ]
       ))
