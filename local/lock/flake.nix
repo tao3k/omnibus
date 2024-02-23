@@ -32,7 +32,7 @@
     devshell.inputs.nixpkgs.follows = "nixpkgs";
 
     n2c.url = "github:nlewo/nix2container";
-    n2c.inputs.nixpkgs.follows = "nixpkgs";
+    # n2c.inputs.nixpkgs.follows = "nixpkgs";
     n2c.inputs.flake-utils.follows = "flake-utils";
 
     arion.url = "github:hercules-ci/arion";
