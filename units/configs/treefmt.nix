@@ -2,7 +2,11 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ inputs, omnibus }:
+{
+  inputs,
+  omnibus,
+  lib,
+}:
 let
   inherit
     (omnibus.errors.requiredInputsLazily inputs "omnibus.pops.configs" [
@@ -38,7 +42,14 @@ in
           command = "prettier";
           options = [
             "--plugin"
-            "${nixpkgs.nodePackages.prettier-plugin-toml}/lib/node_modules/prettier-plugin-toml/lib/api.js"
+            "${nixpkgs.nodePackages.prettier-plugin-toml}/lib/node_modules/prettier-plugin-toml/lib/${
+              if
+                lib.strings.versionOlder nixpkgs.nodePackages.prettier-plugin-toml.version "2.0.1"
+              then
+                "api.js"
+              else
+                "index.js"
+            }"
             "--write"
           ];
           includes = [
