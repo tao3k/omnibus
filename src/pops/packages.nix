@@ -9,6 +9,7 @@
   POP,
   flops,
   lib,
+  inputs,
 }:
 load:
 let
@@ -42,12 +43,9 @@ in
             inherit (nixpkgs.lib) makeScope;
           in
           {
-            derivations =
-              lib.attrsets.filterDerivations self.exports.packages
-              // (lib.optionalAttrs (self.exports.packages ? by-loader)
-                lib.attrsets.filterDerivations
-                (lib.concatMapAttrs (_: v: v) self.exports.packages.by-loader)
-              );
+            derivations = inputs.self.flake.inputs.flake-utils.lib.flattenTree (
+              self.exports.packages // self.exports.packages.by-loader
+            );
 
             scopePackagesPop =
               selfScope:
@@ -77,8 +75,8 @@ in
                   {
                     by-loader = lib.optionalAttrs (checkPath "/by-loader/python3Packages") {
                       python3Packages =
-                        selfScope.callPackage lib.omnibus.mkPython3PackagesWithScope
-                          { };
+                        (selfScope.callPackage lib.omnibus.mkPython3PackagesWithScope { }).overrideScope
+                          (_: _: { recurseForDerivations = true; });
                     };
                     __inputs__ = {
                       __load__ = self.layouts.self.load;
