@@ -16,6 +16,8 @@
 
     darwin.url = "github:LnL7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nixcasks.url = "github:jacekszymanski/nixcasks";
+    nixcasks.inputs.nixpkgs.follows = "nixpkgs";
 
     audioNix.url = "github:polygon/audio.nix";
     audioNix.inputs.nixpkgs.follows = "nixpkgs";

@@ -26,6 +26,7 @@
         latexmk
         # elegantpaper
 
+        minted
         fontawesome5
         roboto
         lato

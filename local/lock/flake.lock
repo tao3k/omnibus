@@ -304,11 +304,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1705332421,
-        "narHash": "sha256-USpGLPme1IuqG78JNqSaRabilwkCyHmVWY0M9vYyqEA=",
+        "lastModified": 1708939976,
+        "narHash": "sha256-O5+nFozxz2Vubpdl1YZtPrilcIXPcRAjqNdNE8oCRoA=",
         "owner": "numtide",
         "repo": "devshell",
-        "rev": "83cb93d6d063ad290beee669f4badf9914cc16ec",
+        "rev": "5ddecd67edbd568ebe0a55905273e56cc82aabe3",
         "type": "github"
       },
       "original": {
@@ -925,11 +925,11 @@
     "makesSrc": {
       "flake": false,
       "locked": {
-        "lastModified": 1706706618,
-        "narHash": "sha256-EuT9C9oN0gv75vu//nT55vlN+QgYGEz3YFi0Z1gcQgM=",
+        "lastModified": 1708956416,
+        "narHash": "sha256-OaVbS0gh0+x8IrO1Kgx+tWsFiDoGOZhjuCF+RD2lVgI=",
         "owner": "fluidattacks",
         "repo": "makes",
-        "rev": "9f93d141b35387013bd17d2455e8e8e2a54ae953",
+        "rev": "3cc1a3dca2c354ead1eccf2292fbcd38365a597c",
         "type": "github"
       },
       "original": {
@@ -1227,6 +1227,26 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixago",
+        "type": "github"
+      }
+    },
+    "nixcasks": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709069953,
+        "narHash": "sha256-eEddO7WxkU3PAt1LG5jXViT2Obue34+d5FhTObdbeIU=",
+        "owner": "jacekszymanski",
+        "repo": "nixcasks",
+        "rev": "ebe5830f8bb66fa0e3ba186aca7de011b1cc17ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jacekszymanski",
+        "repo": "nixcasks",
         "type": "github"
       }
     },
@@ -1939,6 +1959,7 @@
         "nix-fast-build": "nix-fast-build",
         "nix-filter": "nix-filter",
         "nixago": "nixago",
+        "nixcasks": "nixcasks",
         "nixfmt": "nixfmt",
         "nixos": [
           "nixpkgs"
