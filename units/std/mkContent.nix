@@ -41,6 +41,11 @@ recursiveMerge [
         (devshells "shells")
         (super.blockTypes.jupyenv "jupyenv")
 
+        (functions' "nixosProfiles")
+        (functions "nixosModules")
+        (functions' "homeProfiles")
+        (functions' "homeModules")
+
         (nixago "nixago")
         (containers "containers" { ci.publish = true; })
         (functions' "lib")

@@ -18,6 +18,10 @@
     // {
       pops = src.pops // {
         self = srcPops;
+        nixosProfilesOmnibus = src.pops.nixosProfiles;
+        darwinProfilesOmnibus = src.pops.darwinProfiles;
+        homeProfilesOmnibus = src.pops.homeProfiles;
+
         nixosProfiles = src.pops.nixosProfiles.addLoadExtender {
           load.type = "nixosProfiles";
         };

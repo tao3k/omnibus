@@ -3,6 +3,10 @@
 #
 # SPDX-License-Identifier: MIT
 
+let
+  flake_env =
+    (pkgs.extend omnibus.flake.inputs.flake_env.overlays.default).flake_env;
+in
 {
   programs.direnv = {
     enable = true;
@@ -13,5 +17,8 @@
     nix-direnv = {
       enable = true;
     };
+    # stdlib = ''
+    #   . ${flake_env}/share/flake_env/direnvrc
+    # '';
   };
 }

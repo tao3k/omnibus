@@ -58,6 +58,13 @@
 
     nur.url = "github:nix-community/NUR";
 
+    flake_env = {
+      url = "sourcehut:~bryan_bennett/flake_env";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nix-filter.follows = "nix-filter";
+    };
+
     topiary.url = "github:tweag/topiary";
 
     std.url = "github:divnix/std";

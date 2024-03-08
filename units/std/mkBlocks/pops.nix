@@ -31,7 +31,13 @@ let
   processAttr =
     n: v:
     let
-      assertMsg = !(checkSrc v && checkSrcNix v && commonArgs.inputs ? cellsFrom);
+      assertMsg =
+        !(
+          lib.hasAttr n outputs
+          && checkSrc v
+          && checkSrcNix v
+          && commonArgs.inputs ? cellsFrom
+        );
     in
     assert lib.assertMsg assertMsg
       "mkDefaultStd: Both ${n} and ${v.src}.nix exist. Since the loader has been embedded, Please remove one of them.";
@@ -40,7 +46,7 @@ let
     else if lib.hasAttr n super && checkSrcNix v then
       { exports.default = haumea.loaders.scoped commonArgs (v.src + ".nix"); }
     else
-      { exports.default = { }; };
+      v;
 
   # Processed base attributes
   base = lib.mapAttrs processAttr attrs;
