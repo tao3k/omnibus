@@ -80,30 +80,31 @@ l.pipe updatedInputs [
   l.flatten
   l.unique
 ] # extractPaths From the top level inputs
-/* inputsToPaths {
-     b = {
-       inputs = {
-         d = {
-           outPath = "<PATH-b.d>";
-         };
-         f = {
-           outPath = "<PATH-b.f>";
-         };
-       };
-       outPath = "<PATH-b>";
-     };
-     a = {
-       inputs = {
-         b = {
-           outPath = "<PATH-a.b>";
-         };
-         c = {
-           outPath = "<PATH-a.c>";
-         };
-       };
-       outPath = "<PATH-a>";
-     };
-   }
-   =>
-   [ "<PATH-a>" "<PATH-a.b>" "<PATH-a.c>" "<PATH-b>" "<PATH-b.d>" "<PATH-b.f>" ]
+/*
+  inputsToPaths {
+    b = {
+      inputs = {
+        d = {
+          outPath = "<PATH-b.d>";
+        };
+        f = {
+          outPath = "<PATH-b.f>";
+        };
+      };
+      outPath = "<PATH-b>";
+    };
+    a = {
+      inputs = {
+        b = {
+          outPath = "<PATH-a.b>";
+        };
+        c = {
+          outPath = "<PATH-a.c>";
+        };
+      };
+      outPath = "<PATH-a>";
+    };
+  }
+  =>
+  [ "<PATH-a>" "<PATH-a.b>" "<PATH-a.c>" "<PATH-b>" "<PATH-b.d>" "<PATH-b.f>" ]
 */

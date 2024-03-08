@@ -7,5 +7,4 @@
 let
   load = root.pops.load;
 in
-loadCfg:
-(load loadCfg).exports.default
+loadCfg: (load loadCfg).exports.default

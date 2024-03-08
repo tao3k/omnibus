@@ -46,20 +46,22 @@ writeShellApplication {
       (import "''${ENTRY}").renderable_config
     EOF
 
-    ${if git != { } then
-      ''
-        ENTRY_DIR="$(dirname "$ENTRY")"
+    ${
+      if git != { } then
+        ''
+          ENTRY_DIR="$(dirname "$ENTRY")"
 
-        terraform-backend-git git \
-           --dir "$PRJ_DATA_DIR"/tf-ncl/${name} \
-           --repository ${git.repo} \
-           --ref ${git.ref} \
-           --state "''${ENTRY_DIR}/state.json" \
-           terraform "$@"
-      ''
-    else
-      ''
-        terraform -chdir="$PRJ_DATA_DIR"/tf-ncl/${name} "$@"
-      ''}
+          terraform-backend-git git \
+             --dir "$PRJ_DATA_DIR"/tf-ncl/${name} \
+             --repository ${git.repo} \
+             --ref ${git.ref} \
+             --state "''${ENTRY_DIR}/state.json" \
+             terraform "$@"
+        ''
+      else
+        ''
+          terraform -chdir="$PRJ_DATA_DIR"/tf-ncl/${name} "$@"
+        ''
+    }
   '';
 }

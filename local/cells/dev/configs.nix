@@ -3,13 +3,14 @@
 #
 # SPDX-License-Identifier: MIT
 
-/* This file holds configuration data for repo dotfiles.
+/*
+  This file holds configuration data for repo dotfiles.
 
-   Q: Why not just put the put the file there?
+  Q: Why not just put the put the file there?
 
-   A: (1) dotfile proliferation
-      (2) have all the things in one place / format
-      (3) potentially share / re-use configuration data - keeping it in sync
+  A: (1) dotfile proliferation
+     (2) have all the things in one place / format
+     (3) potentially share / re-use configuration data - keeping it in sync
 */
 { inputs, cell }:
 with inputs.std.inputs.dmerge;

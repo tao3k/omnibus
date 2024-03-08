@@ -4,8 +4,9 @@
 # SPDX-License-Identifier: MIT
 
 { inputs, root }:
-/* Use the Runnables Blocktype for targets that you want to
-   make accessible with a 'run' action on the TUI.
+/*
+  Use the Runnables Blocktype for targets that you want to
+  make accessible with a 'run' action on the TUI.
 */
 let
   inherit (inputs.std) actions;

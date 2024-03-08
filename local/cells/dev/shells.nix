@@ -3,9 +3,10 @@
 #
 # SPDX-License-Identifier: MIT
 
-/* This file holds reproducible shells with commands in them.
+/*
+  This file holds reproducible shells with commands in them.
 
-   They conveniently also generate config files in their startup hook.
+  They conveniently also generate config files in their startup hook.
 */
 { inputs, cell }:
 let

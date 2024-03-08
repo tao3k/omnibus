@@ -63,27 +63,28 @@
   transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
 })
 
-/* (matchers.regex "^(default)\\.(nix)" (
-            _: _: path:
-            let
-              getDir = (list: builtins.elemAt list ((builtins.length list) - 3)) (
-                l.split "/" path
-              );
-            in
-            (
-              if l.hasPrefix "makes-" getDir then
-                (scopedImport
-                  (
-                    self.load.inputs
-                    // {
-                      # inherit (self.initLoad.inputs.makes) makeEnvVars;
-                      makeEnvVars = self: self;
-                    }
-                  )
-                  path
-                )
-              else
-                { }
-            )
-          ))
+/*
+  (matchers.regex "^(default)\\.(nix)" (
+           _: _: path:
+           let
+             getDir = (list: builtins.elemAt list ((builtins.length list) - 3)) (
+               l.split "/" path
+             );
+           in
+           (
+             if l.hasPrefix "makes-" getDir then
+               (scopedImport
+                 (
+                   self.load.inputs
+                   // {
+                     # inherit (self.initLoad.inputs.makes) makeEnvVars;
+                     makeEnvVars = self: self;
+                   }
+                 )
+                 path
+               )
+             else
+               { }
+           )
+         ))
 */
