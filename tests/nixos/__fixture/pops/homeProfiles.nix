@@ -6,7 +6,7 @@
 let
   inherit (inputs) dmerge;
 in
-(omnibus.pops.homeProfilesOmnibus.addLoadExtender {
+(omnibus.src.pops.homeProfiles.addLoadExtender {
   load.inputs = {
     omnibus = {
       homeModules = super.homeModules.exports.default;

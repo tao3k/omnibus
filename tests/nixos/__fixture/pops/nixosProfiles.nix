@@ -6,7 +6,7 @@
 let
   inherit (inputs) dmerge;
 in
-(omnibus.pops.nixosProfilesOmnibus.addLoadExtender {
+(omnibus.src.pops.nixosProfiles.addLoadExtender {
   load = {
     inputs = {
       inputs = super.flake.inputs;
