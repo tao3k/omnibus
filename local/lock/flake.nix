@@ -147,7 +147,6 @@
 
     nixfmt.url = "github:serokell/nixfmt/?ref=refs/pull/118/head";
     nixfmt.inputs.flake-utils.follows = "flake-utils";
-    nixfmt.inputs.nixpkgs.follows = "nixpkgs";
     nixfmt.inputs.flake-compat.follows = "";
 
     nix-std.url = "github:chessai/nix-std";
