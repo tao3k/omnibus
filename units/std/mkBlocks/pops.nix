@@ -65,7 +65,7 @@ let
           { };
     };
 in
-if base ? pops && base.pops.exports.default != { } then
+if base ? pops && base.pops ? exports && base.pops.exports.default != { } then
   base.pops.exports.default // (mapLoadToPops base mapLoadToPopsHelper)
 else
   base

@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-cell.pops.configs.exports.default
+cell.pops.configs.exports.default or { }

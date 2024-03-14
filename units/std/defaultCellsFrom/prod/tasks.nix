@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-cell.pops.tasks.exports.default
+cell.pops.tasks.exports.default or { }

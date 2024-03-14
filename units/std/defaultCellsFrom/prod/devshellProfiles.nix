@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-cell.pops.devshellProfiles.exports.default
+cell.pops.devshellProfiles.exports.default or { }
