@@ -27,7 +27,10 @@ in
   treefmt = {
     default = (cfg.treefmt.default treefmt.nvfetcher treefmt.nickel) {
       data.global = {
-        excludes = append [ "./examples/jupyenv+quarto/quarto/*" ];
+        excludes = append [
+          "./examples/jupyenv+quarto/quarto/*"
+          "sdsds"
+        ];
       };
     };
   };
