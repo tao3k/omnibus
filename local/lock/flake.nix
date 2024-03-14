@@ -147,8 +147,10 @@
 
     nixfmt.url = "github:serokell/nixfmt/?ref=refs/pull/118/head";
     nixfmt.inputs.flake-utils.follows = "flake-utils";
-    nixfmt.inputs.nixpkgs-stable.follows = "nixpkgs";
+    nixfmt.inputs.nixpkgs.follows = "nixpkgs";
     nixfmt.inputs.flake-compat.follows = "";
+
+    nix-std.url = "github:chessai/nix-std";
 
     bird-nix-lib.url = "github:spikespaz/bird-nix-lib";
     bird-nix-lib.flake = false;

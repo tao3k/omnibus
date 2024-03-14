@@ -11,5 +11,6 @@
 inputs.self.pops.self.load.inputs
 // {
   nix-filter = root.pops.flake.inputs.nix-filter.lib;
+  nix-std = root.pops.flake.inputs.nix-std.lib;
   omnibus = inputs.self;
 }
