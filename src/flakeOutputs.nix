@@ -40,7 +40,7 @@ in
     }).exports.default;
 
   units = {
-    inherit (outputs) configs std jupenv;
+    inherit (outputs) configs std jupyenv;
 
     nixos = {
       inherit (outputs)
