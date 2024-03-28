@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       14767bd9-8cc2-4bf9-8547-a77cb65710f5
+:END:
+#+TITLE: linux-desktop
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2024-03-25 Mon 09:29
+
+
+
+
+* Document viewer
+
+** [[https://github.com/pwmt/zathura][pwmt/zathura: a document viewer]]
+
+** [[https://github.com/ahrm/sioyek][ahrm/sioyek: Sioyek is a PDF viewer with a focus on textbooks and research papers]] :pdf:
