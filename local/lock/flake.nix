@@ -145,9 +145,8 @@
     sops-nix.url = "github:Mic92/sops-nix"; # sops-template
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixfmt.url = "github:serokell/nixfmt/?ref=refs/pull/118/head";
+    nixfmt.url = "github:NixOS/nixfmt";
     nixfmt.inputs.flake-utils.follows = "flake-utils";
-    nixfmt.inputs.flake-compat.follows = "";
 
     nix-std.url = "github:chessai/nix-std";
 

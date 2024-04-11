@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       10fc7fc7-fdfd-4108-8d5c-46d86aa0154b
+:END:
+#+TITLE: scripts
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2024-04-08 Mon 10:11
+
+
+
+* utils
+
+** [[https://github.com/robherley/snips.sh][robherley/snips.sh: ✂️ passwordless, anonymous SSH-powered pastebin with a human-friendly TUI and web UI]] :ssh:
