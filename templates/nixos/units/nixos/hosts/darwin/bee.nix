@@ -1,0 +1,5 @@
+{
+  colmena = {
+    nixpkgs = { };
+  };
+}

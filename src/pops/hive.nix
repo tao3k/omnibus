@@ -7,55 +7,76 @@
   lib,
   flops,
   super,
+  root,
+  projectRoot,
 }:
 let
   inherit (POP) pop;
-
-  genColmenaFromHosts = hosts: {
-    meta = {
-      nodes = lib.mapAttrs (hostName: hostConfig: {
-        inherit (hostConfig.meta.colmena) imports deployment;
-      }) hosts;
-      nodeNixpkgs = lib.mapAttrs (
-        hostName: hostConfig: (super.types.hive.colmena hostConfig.meta.colmena).nixpkgs
-      ) hosts;
-    };
-  };
+  hosts = root.load { src = projectRoot + "/templates/nixos/units/nixos/hosts"; };
 in
-setHosts:
-pop {
-  defaults = {
-    hosts = lib.mapAttrs (
-      hostName: hostConfig:
-      (hostConfig)
-      // {
-        meta = (hostConfig.meta or { }) // (removeAttrs hostConfig [ "meta" ]);
-      }
-    ) setHosts;
-    pops = {
-      omnibus = { };
-      nixosProfiles = { };
-      nixosModules = { };
-    };
-    exports = {
-      hosts = { };
-    };
-  };
-  extension = final: prev: {
-    colmena = genColmenaFromHosts (
-      lib.filterAttrs (n: v: v.meta ? "colmena") prev.hosts
-    );
-    addMapLoadToPops = load: { };
-    pops = { };
-    exports = {
-      hosts = lib.omnibus.mkHosts {
-        # hostsDir = projectRoot + "/units/nixos/hosts";
-        hostsDir = ./.;
-        pops = super.hostsInterface;
-        addLoadExtender = {
-          load = { };
-        };
+/*
+     bee = {
+      home = {};
+      nixpkgs = {};
+      nixos = {};
+    }
+*/
+(
+  setHosts:
+  pop {
+    defaults = {
+      hosts = lib.mapAttrs (
+        hostName: hostConfig:
+        (hostConfig)
+        // {
+          bee = (hostConfig.bee or { }) // (removeAttrs hostConfig [ "bee" ]);
+        }
+      ) setHosts;
+      pops = {
+        omnibus = { };
+        nixosProfiles = { };
+        nixosModules = { };
+      };
+      exports = {
+        hosts = { };
       };
     };
-  };
-}
+    extension = final: prev: {
+      colmena = final.genColmenaFromHosts (
+        lib.filterAttrs (n: v: v.bee ? "colmena") prev.hosts
+      );
+      genColmenaFromHosts = hosts: {
+        meta = {
+          nodes = lib.mapAttrs (hostName: hostConfig: {
+            inherit (hostConfig.bee.colmena) imports deployment;
+          }) hosts;
+          nodeNixpkgs = lib.mapAttrs (
+            hostName: hostConfig: (super.types.bee.colmena hostConfig.bee.colmena).nixpkgs
+          ) hosts;
+        };
+      };
+      addMapLoadToPops = load: { };
+
+      nixosConfigurations = lib.mapAttrs (
+        hostName: hostConfig:
+        let
+          nixosConfiguration = hostConfig.bee.nixosConfiguration or { };
+        in
+        nixosConfiguration
+      ) hosts;
+
+      pops = { };
+      exports = {
+        # hosts = lib.omnibus.mkHosts {
+        #   # hostsDir = projectRoot + "/units/nixos/hosts";
+        #   hostsDir = ./.;
+        #   pops = super.hostsInterface;
+        #   addLoadExtender = {
+        #     load = { };
+        #   };
+        # };
+      };
+    };
+  }
+)
+  hosts
