@@ -47,6 +47,5 @@ let
   inherit (hivePop.exports) darwinConfiguraitons colmenaHive;
 in
 {
-  # inherit colmenaHive;
   # inherit hivePop;
 }
