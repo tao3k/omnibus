@@ -12,17 +12,19 @@ let
   walk' = lib.mapAttrs (
     hostName: hostConfig:
     pipe hostConfig (
-      l.optionals (hostConfig.meta ? ${renamer} || hostConfig ? ${renamer}) (
-        [
-          (hostConfig: hostConfig.meta.${renamer} or hostConfig.${renamer})
-          checks.bee
-          transformer
-        ]
-        ++ extraPipe
-      )
-      ++ l.optionals (!hostConfig.meta ? ${renamer} && !hostConfig ? ${renamer}) [
-        (_: { })
-      ]
+      l.optionals
+        (hostConfig ? ${renamer} || (hostConfig ? meta && hostConfig.meta.${renamer}))
+        (
+          [
+            (hostConfig: hostConfig.${renamer} or hostConfig.meta.${renamer})
+            checks.bee
+            transformer
+          ]
+          ++ extraPipe
+        )
+      ++ l.optionals (
+        !hostConfig ? ${renamer} && !(hostConfig ? meta && hostConfig.meta.${renamer})
+      ) [ (_: { }) ]
     )
   ) hosts;
 in
