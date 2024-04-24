@@ -19,6 +19,3 @@ jobs:
 
       - name: Run Eval check
         run: nix -Lv eval ./local#checks --override-input namaka github:nix-community/namaka
-
-      - name: Run templates/nixos
-        run: nix build ./templates/nixos#nixosConfigurations.nixos.config.system.build.toplevel --dry-run --override-input omnibus ./.

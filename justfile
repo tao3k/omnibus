@@ -29,7 +29,7 @@ deadnix:
 justfmt:
     just --fmt --unstable
 
-exmaples-nvfetcher:
+examples-nvfetcher:
     nix run .\#scripts.nvfetch-update ./examples/packages/source.toml
 
 template-nixos:
@@ -40,7 +40,7 @@ local-nixos:
     nix build ./local#eval.nixos.expr.nixosConfiguration.config.system.build.toplevel --dry-run --no-link
 
 nixci-examples-packages:
-    (cd examples && {{ override-omnibus }} .. && nixci && {{ remove-flake-lock }})
+    (cd examples && {{ override-omnibus }} .. && nixci build && {{ remove-flake-lock }})
 
 examples-simple:
     nix flake lock --update-input omnibus ./examples/simple --override-input omnibus ./.
@@ -59,11 +59,11 @@ examples-system-manager:
 
 nixci-examples-python:
     nix flake lock --update-input omnibus ./examples/python --override-input omnibus ./.
-    (cd examples/python && nixci && git rm flake.lock -f)
+    (cd examples/python && nixci build && git rm flake.lock -f)
 
 nixci-jupyenv +quarto:
     # --execute-daemon-restart
     nix flake lock --update-input omnibus ./examples/jupyenv+quarto --override-input omnibus ./.
-    (cd examples/jupyenv+quarto && nixci && \
+    (cd examples/jupyenv+quarto && nixci build && \
     nix run .#quartoSimple -- render ./quarto \
     && {{ remove-flake-lock }})
