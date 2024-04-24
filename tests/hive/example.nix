@@ -3,6 +3,7 @@
   lib,
   root,
   omnibus,
+  inputs,
 }:
 let
   hosts = omnibus.load {
@@ -15,6 +16,9 @@ let
   hive = omnibus.pops.hive.setHosts hosts;
 in
 {
-  darwin = hive.exports.darwinConfiguraitons.darwin.config.system;
+  darwin = hive.darwinConfiguraitons.darwin.config.system;
   inherit hive;
+  hiveExpr = (
+    (hive.setSystem "x86_64-linux").setNixosConfigurationsRenamer "asd"
+  );
 }

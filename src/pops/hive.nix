@@ -29,6 +29,7 @@ in
       nixosProfiles = { };
       nixosModules = { };
     };
+    system = "";
     nixosConfigurationRenamer = "nixosConfiguration";
     exports = {
       hosts = { };
@@ -50,18 +51,27 @@ in
     };
     setHosts =
       setHosts: extendPop final (_: superP: { hosts = superP.hosts // setHosts; });
+    setSystem = system: extendPop final (_: _: { inherit system; });
+
     addMapLoadToPops = load: { };
 
-    darwinConfiguraitons = root.hive.collectors.darwinConfigurations "darwinConfiguration" final.hosts;
-
-    colmenaHive = root.hive.collectors.colmenaConfigurations "colmetaConfiguration" final.hosts;
-
-    nixosConfigurations = root.hive.collectors.nixosConfigurations final.nixosConfigurationRenamer final.hosts;
-    setNixosConfigurationRenamer =
+    setNixosConfigurationsRenamer =
       renamer: extendPop final (_: _: { nixosConfigurationRenamer = renamer; });
 
     pops = { };
     exports = {
+      darwinConfiguraitons =
+        root.hive.collectors.darwinConfigurations "darwinConfiguration" final.hosts
+          final.system;
+
+      colmenaHive =
+        root.hive.collectors.colmenaConfigurations "colmenaConfiguration" final.hosts
+          final.system;
+
+      nixosConfigurations =
+        root.hive.collectors.nixosConfigurations final.nixosConfigurationRenamer
+          final.hosts
+          final.system;
       # hosts = lib.omnibus.mkHosts {
       #   # hostsDir = projectRoot + "/units/nixos/hosts";
       #   hostsDir = ./.;

@@ -40,7 +40,7 @@ let
         };
     });
 in
-renamer: self:
+renamer: self: system:
 colmenaTopLevelCliSchema (
-  super.walk transformers.colmenaConfiguration [ ] renamer self
+  super.walk transformers.colmenaConfiguration [ ] renamer self system
 )
