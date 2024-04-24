@@ -7,8 +7,12 @@
   root,
   super,
 }:
+renamer:
+{ ... }@hiveArgs:
 let
   l = lib // builtins;
+
+  inherit (hiveArgs) inputs;
 
   inherit (root.hive) transformers;
 
@@ -34,13 +38,12 @@ let
       introspect =
         f:
         f {
-          # lib = nixpkgs.lib // builtins;
-          # pkgs = nixpkgs.legacyPackages.${builtins.currentSystem};
+          lib = inputs.nixpkgs.lib // builtins;
+          pkgs = inputs.nixpkgs.legacyPackages.${builtins.currentSystem};
           nodes = comb;
         };
     });
 in
-renamer: self: system:
 colmenaTopLevelCliSchema (
-  super.walk transformers.colmenaConfiguration [ ] renamer self system
+  super.walk transformers.colmenaConfiguration [ ] renamer hiveArgs
 )

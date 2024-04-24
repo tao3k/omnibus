@@ -52,14 +52,6 @@ in
       };
       description = "omnibus/hive requires you to set the darwin input via 'config.bee.darwin = inputs.darwin;'";
     };
-    colmena = l.mkOption {
-      type = l.mkOptionType {
-        name = "input";
-        description = "colmena input";
-        check = x: (l.isAttrs x) && (l.hasAttr "sourceInfo" x);
-      };
-      description = "omnibus/hive requires you to set the colmena input via 'config.bee.colmena = inputs.colmena;'";
-    };
     pkgs = l.mkOption {
       type = l.mkOptionType {
         name = "packages";

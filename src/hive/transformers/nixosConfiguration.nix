@@ -3,7 +3,11 @@
 # SPDX-License-Identifier: Unlicense
 
 { lib, root }:
-{ evaled, locatedConfig }:
+{
+  evaled,
+  locatedConfig,
+  inputs ? { },
+}:
 let
   inherit (root.hive) beeModule;
 

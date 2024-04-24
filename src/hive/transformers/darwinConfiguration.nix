@@ -4,7 +4,11 @@
 
 { lib, root }:
 
-{ evaled, locatedConfig }:
+{
+  evaled,
+  locatedConfig,
+  inputs ? { },
+}:
 let
   l = lib // builtins;
 

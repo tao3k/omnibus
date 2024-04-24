@@ -8,7 +8,7 @@
 let
   inherit (inputs) nixpkgs;
   hosts = {
-    hosts1 = rec {
+    host1 = rec {
       colmena = {
         nixpkgs = { };
       };
@@ -16,7 +16,6 @@ let
       nixosConfiguration = {
         bee.pkgs = import nixpkgs { system = system; };
         bee.system = system;
-        bee.colmena = inputs.colmena;
         imports = [ omnibus.flake.inputs.disko.nixosModules.default ];
       };
       asd = nixosConfiguration;
@@ -28,7 +27,7 @@ let
         inherit (nixosConfiguration) bee imports;
       };
     };
-    hosts2 = rec {
+    host2 = rec {
       colmena = {
         nixpkgs = { };
       };
@@ -40,10 +39,14 @@ let
       };
     };
   };
-  hive = omnibus.pops.hive.setHosts hosts;
+  hivePop =
+    ((omnibus.pops.hive.setHosts hosts).addInputs {
+      inherit (omnibus.flake.inputs) colmena nixpkgs;
+    }).setNixosConfigurationsRenamer
+      "asd";
+  inherit (hivePop.exports) darwinConfiguraitons colmenaHive;
 in
 {
-  darwin = hive.darwinConfiguraitons.darwin.config.system;
-  inherit hive;
-  hivePop = ((hive.setSystem "x86_64-linux").setNixosConfigurationsRenamer "asd");
+  # inherit colmenaHive;
+  # inherit hivePop;
 }

@@ -7,9 +7,13 @@
   super,
   lib,
 }:
-{ evaled, locatedConfig }:
+{
+  evaled,
+  locatedConfig,
+  inputs ? { },
+}@args:
 let
-  inherit (evaled.config.bee) colmena;
+  inherit (args.inputs) colmena;
 
   l = lib // builtins;
 

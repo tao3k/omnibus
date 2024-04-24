@@ -3,8 +3,12 @@
 # SPDX-License-Identifier: Unlicense
 
 { lib, root }:
-transformer: extraPipe: renamer: hosts: system:
-
+transformer: extraPipe: renamer:
+{
+  hosts ? { },
+  system ? "",
+  inputs ? { },
+}@a:
 let
   l = lib // builtins;
   inherit (l) pipe;
@@ -18,6 +22,7 @@ let
           [
             (hostConfig: hostConfig.${renamer} or hostConfig.meta.${renamer})
             checks.bee
+            (c: c // { inherit inputs; })
             transformer
           ]
           ++ extraPipe
