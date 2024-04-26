@@ -44,7 +44,7 @@ let
       inherit (omnibus.flake.inputs) colmena nixpkgs;
     }).setNixosConfigurationsRenamer
       "asd";
-  inherit (hivePop.exports) darwinConfiguraitons colmenaHive;
+  inherit (hivePop.exports) darwinConfigurations colmenaHive;
 in
 {
   # inherit hivePop;

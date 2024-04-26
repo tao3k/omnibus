@@ -80,7 +80,7 @@ in
 
       pops = { };
       exports = {
-        darwinConfiguraitons = root.hive.collectors.darwinConfigurations final.darwinConfigurationRenamer hostsArgs;
+        darwinConfigurations = root.hive.collectors.darwinConfigurations final.darwinConfigurationRenamer hostsArgs;
 
         colmenaHive = root.hive.collectors.colmenaConfigurations final.colmenaConfigurationRenamer hostsArgs;
 

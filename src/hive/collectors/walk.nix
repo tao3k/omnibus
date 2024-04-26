@@ -17,7 +17,7 @@ let
     hostName: hostConfig:
     pipe hostConfig (
       l.optionals
-        (hostConfig ? ${renamer} || (hostConfig ? meta && hostConfig.meta.${renamer}))
+        (hostConfig ? ${renamer} || (hostConfig ? meta && hostConfig.meta ? ${renamer}))
         (
           [
             (hostConfig: hostConfig.${renamer} or hostConfig.meta.${renamer})
@@ -28,7 +28,7 @@ let
           ++ extraPipe
         )
       ++ l.optionals (
-        !hostConfig ? ${renamer} && !(hostConfig ? meta && hostConfig.meta.${renamer})
+        !hostConfig ? ${renamer} && !(hostConfig ? meta && hostConfig.meta ? ${renamer})
       ) [ (_: { }) ]
     )
   ) hosts;
