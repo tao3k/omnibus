@@ -36,6 +36,7 @@ in
     nixosConfigurationRenamer = "nixosConfiguration";
     darwinConfigurationRenamer = "darwinConfiguration";
     colmenaConfigurationRenamer = "colmenaConfiguration";
+    homeConfigurationRenamer = "homeConfiguration";
     exports = {
       hosts = { };
     };
@@ -72,6 +73,9 @@ in
       setNixosConfigurationsRenamer =
         renamer: extendPop final (_: _: { nixosConfigurationRenamer = renamer; });
 
+      setHomeConfigurationsRenamer =
+        renamer: extendPop final (_: _: { homeConfigurationRenamer = renamer; });
+
       setDarwinConfigurationsRenamer =
         renamer: extendPop final (_: _: { darwinConfigurationRenamer = renamer; });
 
@@ -85,6 +89,8 @@ in
         colmenaHive = root.hive.collectors.colmenaConfigurations final.colmenaConfigurationRenamer hostsArgs;
 
         nixosConfigurations = root.hive.collectors.nixosConfigurations final.nixosConfigurationRenamer hostsArgs;
+
+        homeConfigurations = root.hive.collectors.homeConfigurations final.homeConfigurationRenamer hostsArgs;
         # hosts = lib.omnibus.mkHosts {
         #   # hostsDir = projectRoot + "/units/nixos/hosts";
         #   hostsDir = ./.;

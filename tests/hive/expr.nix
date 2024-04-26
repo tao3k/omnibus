@@ -37,6 +37,12 @@ let
         bee.system = system;
         bee.pkgs = import nixpkgs { system = system; };
       };
+
+      homeConfiguration = {
+        bee.system = system;
+        bee.pkgs = import nixpkgs { system = system; };
+        bee.home = omnibus.flake.inputs.home-manager;
+      };
     };
   };
   hivePop =
