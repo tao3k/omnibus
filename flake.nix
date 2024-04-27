@@ -11,6 +11,7 @@
   outputs =
     inputs:
     let
+      inherit (inputs.flops.inputs) haumea;
       srcPops = import ./src { inherit inputs; };
       src = srcPops.exports.default;
     in
@@ -22,14 +23,26 @@
         darwinProfilesOmnibus = src.pops.darwinProfiles;
         homeProfilesOmnibus = src.pops.homeProfiles;
 
+        nixosModules = src.pops.nixosModules.addLoadExtender {
+          load.nixosModuleImporter = haumea.lib.loaders.default;
+        };
+        homeModules = src.pops.homeModules.addLoadExtender {
+          load.nixosModuleImporter = haumea.lib.loaders.default;
+        };
+        darwinModules = src.pops.darwinModules.addLoadExtender {
+          load.nixosModuleImporter = haumea.lib.loaders.default;
+        };
         nixosProfiles = src.pops.nixosProfiles.addLoadExtender {
           load.type = "nixosProfiles";
+          load.nixosModuleImporter = haumea.lib.loaders.default;
         };
         darwinProfiles = src.pops.darwinProfiles.addLoadExtender {
           load.type = "nixosProfiles";
+          load.nixosModuleImporter = haumea.lib.loaders.default;
         };
         homeProfiles = src.pops.nixosProfiles.addLoadExtender {
           load.type = "nixosProfiles";
+          load.nixosModuleImporter = haumea.lib.loaders.default;
         };
       };
 

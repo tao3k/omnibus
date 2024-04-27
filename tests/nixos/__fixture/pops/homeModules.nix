@@ -6,7 +6,7 @@
 let
   inherit (inputs) dmerge;
 in
-(omnibus.pops.homeModules.addLoadExtender {
+(omnibus.src.pops.homeModules.addLoadExtender {
   load.inputs = {
     inputs = {
       inherit (super.flake.inputs) catppuccin-bat;
