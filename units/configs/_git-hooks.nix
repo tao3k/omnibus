@@ -7,16 +7,16 @@ let
   inherit
     (omnibus.errors.requiredInputsLazily inputs "omnibus.pops.configs" [
       "nixpkgs"
-      "pre-commit-hooks"
+      "git-hooks"
     ])
     nixpkgs
-    pre-commit-hooks
+    git-hooks
     ;
   inherit (nixpkgs) lib;
   builtinStuff = {
-    tools = pre-commit-hooks.packages;
+    tools = git-hooks.packages;
   };
-  gitignore-nix-src = pre-commit-hooks.inputs.gitignore;
+  gitignore-nix-src = git-hooks.inputs.gitignore;
 in
 {
   src,
@@ -30,7 +30,7 @@ in
 let
   project = lib.evalModules {
     modules = [
-      (pre-commit-hooks + /modules/all-modules.nix)
+      (git-hooks + /modules/all-modules.nix)
       {
         config =
           {

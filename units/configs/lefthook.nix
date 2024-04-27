@@ -15,11 +15,11 @@ let
     (omnibus.errors.requiredInputsLazily inputs "omnibus.pops.configs" [
       "nixpkgs"
       "nur"
-      "pre-commit-hooks"
+      "git-hooks"
     ])
     nixpkgs
     nur
-    pre-commit-hooks
+    git-hooks
     ;
   languagetool-code-comments =
     (nixpkgs.extend nur.overlay)
@@ -27,13 +27,13 @@ let
 
   hooksFn =
     cfg:
-    (super.pre-commit-hooks {
+    (super.git-hooks {
       src = ./.;
       settings = cfg;
     }).hooks;
 in
 {
-  pre-commit-hooks = {
+  git-hooks = {
     __functor = _: settings: hooksFn settings;
     typos =
       (hooksFn {
@@ -46,8 +46,8 @@ in
   default = {
     packages =
       [ nixpkgs.jq ]
-      ++ (map (x: pre-commit-hooks.packages.${x}) (
-        lib.attrNames (removeAttrs self.pre-commit-hooks [ "__functor" ])
+      ++ (map (x: git-hooks.packages.${x}) (
+        lib.attrNames (removeAttrs self.git-hooks [ "__functor" ])
       ));
     data = {
       commit-msg = {
@@ -70,7 +70,7 @@ in
             run = "${
               (nixpkgs.hunspellWithDicts [ nixpkgs.hunspellDicts.en-us ])
             }/bin/hunspell -l {staged_files}";
-            glob = "*.{txt,md,html,xml,rst,tex,odf,org}";
+            glob = "*.{txt,md,html,xml,rst,tex,odf,org}"; # spellchecker:disable-line
             skip = [
               "merge"
               "rebase"
@@ -78,7 +78,7 @@ in
           };
           typos = {
             # run = "typos --format brief {staged_files}";
-            run = self.pre-commit-hooks.typos.entry + "  {staged_files}";
+            run = self.git-hooks.typos.entry + "  {staged_files}";
             skip = [
               "merge"
               "rebase"
