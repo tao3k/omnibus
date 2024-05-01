@@ -13,7 +13,7 @@ let
 
   l = lib // builtins;
 
-  hmLib = import (evaled.config.bee.home + /modules/lib/stdlib-extended.nix) lib;
+  hmLib = import (evaled.config.bee.home + /modules/lib/stdlib-extended.nix) l;
 
   hmModules = import (evaled.config.bee.home + /modules/modules.nix) {
     inherit (evaled.config.bee) pkgs;
@@ -26,8 +26,9 @@ let
   eval =
     extra:
     lib.evalModules {
-      specialArgs = {
+      specialArgs = rec {
         modulesPath = l.toString (evaled.config.bee.home + /modules);
+        lib = hmLib;
       };
       modules = [
         beeModule
