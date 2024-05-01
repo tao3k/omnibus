@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ omnibus }: omnibus.pops.allData
+{ omnibus }: omnibus.pops.data

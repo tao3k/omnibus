@@ -7,7 +7,7 @@
 let
   inherit (omnibus.flake.inputs) nixpkgs;
 in
-(omnibus.pops.allData.addLoadExtender {
+(omnibus.pops.data.addLoadExtender {
   load = {
     src = ./__fixture;
     inputs = {
