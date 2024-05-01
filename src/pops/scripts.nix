@@ -10,6 +10,8 @@
   lib,
   haumea,
   projectRoot,
+  POP,
+  flops,
 }:
 (super.load {
   src = projectRoot + "/units/scripts";
@@ -61,7 +63,26 @@
 
   loader = with haumea; [ (matchers.nix loaders.scoped) ];
   transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
-})
+}).addExporters
+  [
+    (POP.extendPop flops.haumea.pops.exporter (
+      self: _super: {
+        exports = {
+          apps = lib.mapAttrs (
+            _: target:
+            let
+              inherit (lib) getName;
+              programName = target.meta.mainProgram or (getName target);
+            in
+            {
+              type = "app";
+              program = "${target}/bin/${programName}";
+            }
+          ) self.layouts.default;
+        };
+      }
+    ))
+  ]
 
 /*
   (matchers.regex "^(default)\\.(nix)" (

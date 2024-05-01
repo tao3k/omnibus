@@ -13,14 +13,17 @@
 let
   inherit (flops) recursiveMerge';
 in
-load:
-(flops.haumea.pops.default.setInit (recursiveMerge' [
-  {
+(POP.extendPop
+  (flops.haumea.pops.default.setInit {
     loader = with haumea; [ (matchers.nix loaders.default) ];
     inputs = root.lib.omnibus.loaderInputs;
-  }
-  load
-])).addExporters
+  })
+  (
+    _: _: {
+      __functor = self: selectors: self.addLoadExtender { load = selectors; };
+    }
+  )
+).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: _super: {

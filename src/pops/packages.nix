@@ -11,22 +11,15 @@
   lib,
   inputs,
 }:
-load:
-let
-  inherit (flops) recursiveMerge';
-in
-(super.load (recursiveMerge' [
-  {
-    loader =
-      __inputs__: path:
-      #  without the scope loader
-      (__inputs__.inputs.nixpkgs.extend (_: _: { inherit __inputs__; })).callPackage
-        path
-        { };
-    transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
-  }
-  load
-])).addExporters
+(super.load.setInit {
+  loader =
+    __inputs__: path:
+    #  without the scope loader
+    (__inputs__.inputs.nixpkgs.extend (_: _: { inherit __inputs__; })).callPackage
+      path
+      { };
+  transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
+}).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
       self: _super: {
