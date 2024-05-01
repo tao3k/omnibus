@@ -13,7 +13,13 @@ let
     let
       checked = l.evalModules {
         modules = [
-          locatedConfig
+          # recursion encountered problem
+          # This error will be triggered when you define an Option.path
+          # from {boot,fileSystems,swapXxx} in other modules (Exp: (test with disko.module).
+          # But using nixos' eval-config will not. Only in bee.check
+          # So I dropped the locatedConfig here, only eval the beeConfig in  this stage
+          # locatedConfig
+          { bee = locatedConfig.bee; }
           beeModule
           {
             config._module.check = true;
