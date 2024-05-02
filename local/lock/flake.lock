@@ -1148,11 +1148,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714037530,
-        "narHash": "sha256-AL5YkdITO9CPFYzMGQwHbuFZrMDUvF1yTt2XTotoymM=",
+        "lastModified": 1714400454,
+        "narHash": "sha256-kjYStv53d+BJEpcz8ERlA/Ysxj83JYoJt2yeZlMTO6A=",
         "owner": "tweag",
         "repo": "nickel",
-        "rev": "13fe12cb7070a5b11d1731b2ed90be332ce2fc55",
+        "rev": "c09b4ca8651170f1c16253572b0dd32369f267a5",
         "type": "github"
       },
       "original": {

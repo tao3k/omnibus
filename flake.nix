@@ -5,7 +5,7 @@
 
 {
   inputs = {
-    flops.url = "github:gtrunsec/flops";
+    flops.url = "github:tao3k/flops";
   };
 
   outputs =
