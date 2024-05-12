@@ -2,7 +2,12 @@
 # SPDX-FileCopyrightText: 2024 The omnibus Authors
 #
 # SPDX-License-Identifier: MIT
-
+{
+  pkgs,
+  omnibus,
+  config,
+  lib,
+}:
 let
   flake_env =
     (pkgs.extend omnibus.flake.inputs.flake_env.overlays.default).flake_env;

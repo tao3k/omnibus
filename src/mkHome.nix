@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: MIT
 
 { lib }:
-homeModule: userSet: shell: suites:
+userSet: shell: suites:
 let
   user = lib.head (lib.attrNames userSet);
   pathsToLinkShell = lib.elem shell [
@@ -18,7 +18,6 @@ in
 {
   imports =
     [
-      homeModule
       { users.users = userSet; }
       (
         { pkgs, lib, ... }:
@@ -36,7 +35,7 @@ in
                     { programs.${shell}.enable = true; }
                   ];
                   home.stateVersion =
-                    if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "23.11";
+                    if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "24.05";
                 };
                 users.users.${user} = {
                   shell = pkgs."${shell}";
