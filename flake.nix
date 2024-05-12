@@ -40,7 +40,7 @@
           load.type = "nixosProfiles";
           load.nixosModuleImporter = haumea.lib.loaders.default;
         };
-        homeProfiles = src.pops.nixosProfiles.addLoadExtender {
+        homeProfiles = src.pops.homeProfiles.addLoadExtender {
           load.type = "nixosProfiles";
           load.nixosModuleImporter = haumea.lib.loaders.default;
         };

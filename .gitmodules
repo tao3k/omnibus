@@ -3,4 +3,4 @@
 	url = https://github.com/tao3k/omnibus-examples.git
 [submodule "units/nickel"]
 	path = units/nickel
-	url = https://github.com/hardenedlinux/omnibus-ncl.git
+	url = https://github.com/tao3k/omnibus-ncl.git

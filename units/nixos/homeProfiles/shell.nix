@@ -47,7 +47,7 @@ with presets;
     # ------------------------------
     spell-check
     self.fileManager
-    (lib.optionals inputs.nixpkgs.stdenv.isLinux presets.alacritty)
+    #(lib.optionals inputs.nixpkgs.stdenv.isLinux presets.alacritty)
   ];
 
   modernTools = [
