@@ -4,9 +4,14 @@
 # SPDX-License-Identifier: MIT
 
 { lib }:
-userSet: shell: suites:
+{
+  homeModule ? [ ],
+  user,
+  shell,
+  suites ? [ ],
+}:
 let
-  user = lib.head (lib.attrNames userSet);
+  userName = lib.head (lib.attrNames user);
   pathsToLinkShell = lib.elem shell [
     "fish"
     "zsh"
@@ -17,8 +22,9 @@ let
 in
 {
   imports =
-    [
-      { users.users = userSet; }
+    lib.flatten [
+      homeModule
+      { users.users = user; }
       (
         { pkgs, lib, ... }:
         {
@@ -29,7 +35,7 @@ in
                 home-manager.useGlobalPkgs = lib.mkDefault true;
                 home-manager.useUserPackages = lib.mkDefault true;
 
-                home-manager.users.${user} = {
+                home-manager.users.${userName} = {
                   imports = lib.flatten [
                     suites
                     { programs.${shell}.enable = true; }
@@ -37,9 +43,10 @@ in
                   home.stateVersion =
                     if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "24.05";
                 };
-                users.users.${user} = {
+                users.users.${userName} = {
                   shell = pkgs."${shell}";
-                  home = if pkgs.stdenv.isDarwin then "/Users/${user}" else "/home/${user}";
+                  home =
+                    if pkgs.stdenv.isDarwin then "/Users/${userName}" else "/home/${userName}";
                 };
               }
               enableDefaultShellProgram

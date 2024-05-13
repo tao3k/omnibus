@@ -2,7 +2,6 @@
 # SPDX-FileCopyrightText: 2024 The omnibus Authors
 #
 # SPDX-License-Identifier: MIT
-
 # [[id:cbe34da3-ffbb-423c-aee4-d0cd71af51e4][shell:1]]
 {
   root,
@@ -10,6 +9,8 @@
   lib,
   super,
   inputs,
+  isLinux,
+  isDarwin,
 }:
 let
   presets = root.presets;
@@ -47,7 +48,7 @@ with presets;
     # ------------------------------
     spell-check
     self.fileManager
-    #(lib.optionals inputs.nixpkgs.stdenv.isLinux presets.alacritty)
+    (lib.optionals isLinux presets.alacritty)
   ];
 
   modernTools = [
