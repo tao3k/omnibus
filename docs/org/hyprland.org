@@ -1,0 +1,11 @@
+#+TITLE: hyprland
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2024-05-15 Wed 18:28
+
+
+
+
+* Configurations collection
+
+** [[https://github.com/elythh/flake/tree/main][elythh/flake: my unavoidable system configuration]] :nixos:

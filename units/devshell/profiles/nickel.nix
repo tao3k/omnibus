@@ -15,6 +15,6 @@ in
 {
   packages = [
     nickel.packages.default
-    nickel.packages.lsp-nls
+    nickel.packages.nickel-lang-lsp
   ];
 }

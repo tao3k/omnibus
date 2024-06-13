@@ -7,7 +7,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos.follows = "nixpkgs";
-    nixos-23_11.url = "github:nixos/nixpkgs/release-23.11";
+    nixos-24_05.url = "github:nixos/nixpkgs/release-24.05";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -49,8 +49,6 @@
     nixago.inputs.nixago-exts.follows = "";
 
     git-hooks.url = "github:cachix/git-hooks.nix";
-    git-hooks.inputs.nixpkgs.follows = "nixpkgs";
-    git-hooks.inputs.flake-utils.follows = "flake-utils";
     git-hooks.inputs.flake-compat.follows = "";
 
     fenix.url = "github:nix-community/fenix";
@@ -172,5 +170,5 @@
     catppuccin-foliate.url = "github:catppuccin/foliate";
     catppuccin-foliate.flake = false;
   };
-  outputs = _: { };
+  outputs = inputs: { inherit inputs; };
 }

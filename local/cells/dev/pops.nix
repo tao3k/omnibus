@@ -17,7 +17,7 @@ in
         inputs = {
           inherit (inputs') nixfmt git-hooks;
           inherit (inputs) std;
-          inherit nixpkgs;
+          nixpkgs = import inputs'.nixos-24_05 { system = nixpkgs.system; };
         };
       };
     };
