@@ -49,6 +49,7 @@
     nixago.inputs.nixago-exts.follows = "";
 
     git-hooks.url = "github:cachix/git-hooks.nix";
+    git-hooks.inputs.nixpkgs.follows = "nixpkgs";
     git-hooks.inputs.flake-compat.follows = "";
 
     fenix.url = "github:nix-community/fenix";

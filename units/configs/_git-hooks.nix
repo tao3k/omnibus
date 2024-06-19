@@ -34,13 +34,7 @@ let
       {
         config =
           {
-            _module.args.pkgs = nixpkgs.extend (
-              prev: final: {
-                nodePackages = prev.nodePackages // {
-                  pyright = prev.pyright;
-                };
-              }
-            );
+            _module.args.pkgs = nixpkgs;
             _module.args.gitignore-nix-src = gitignore-nix-src;
             inherit
               hooks
