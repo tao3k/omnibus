@@ -19,11 +19,6 @@ recursiveMerge [
       omnibusStd = root;
       inherit std;
     };
-    systems = [
-      "aarch64-darwin"
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
     cellBlocks =
       with std.blockTypes;
       let
@@ -52,5 +47,12 @@ recursiveMerge [
         (functions' "pops")
       ];
   }
+  (lib.optionalAttrs (!top ? systems) {
+    systems = [
+      "aarch64-darwin"
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
+  })
   (lib.removeAttrs top [ "projectRoot" ])
 ]
