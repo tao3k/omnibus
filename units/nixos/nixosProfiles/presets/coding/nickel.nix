@@ -24,6 +24,6 @@ in
   environment.systemPackages =
     [ (nickel.packages.${pkgs.system}.default or inputs.nickel.default) ]
     ++ lib.optionals cfg.enableLsp [
-      (nickel.packages.${pkgs.system}.lsp-nls or inputs.nickel.lsp-nls)
+      (nickel.packages.${pkgs.system}.nickel-lang-lsp)
     ];
 }

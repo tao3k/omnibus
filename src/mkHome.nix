@@ -40,8 +40,9 @@ in
                     suites
                     { programs.${shell}.enable = true; }
                   ];
-                  home.stateVersion =
-                    if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "24.05";
+                  home.stateVersion = lib.mkDefault (
+                    if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "24.05"
+                  );
                 };
                 users.users.${userName} = {
                   shell = pkgs."${shell}";

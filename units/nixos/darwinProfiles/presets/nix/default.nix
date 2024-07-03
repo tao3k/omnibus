@@ -15,7 +15,7 @@ in
 {
   imports = [ (loadSubmodule ./optimise.nix) ];
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.git;
     configureBuildUsers = true;
     settings = {
       # Administrative users on Darwin systems are part of the admin group.
