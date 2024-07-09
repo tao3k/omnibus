@@ -8,7 +8,7 @@ std-standard:
     && {{ remove-flake-lock }})"
 
 std-default: std-default-sync
-    nix develop ./local\#std --command bash -c "(cd examples/stdDefault \
+    nix develop ./local\#std --command bash -c "(cd examples/StdDefault \
     && {{ override-omnibus }} ../.. \
     && TERM=xterm-256color; std //dev/scripts/climod-test:run -- tasks --help \
     && std //dev/scripts/makes-test:run \

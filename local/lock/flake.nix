@@ -106,7 +106,7 @@
 
     nickel.url = "github:tweag/nickel";
     nickel.inputs.flake-utils.follows = "flake-utils";
-    nickel.inputs.pre-commit-hooks.follows = "";
+    # nickel.inputs.pre-commit-hooks.follows = "";
     # nickel.follows = "organist/nickel";
     nickel.inputs.topiary.follows = "topiary";
 
