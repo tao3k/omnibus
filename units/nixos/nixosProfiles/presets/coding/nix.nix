@@ -20,6 +20,6 @@ in
 {
   environment.systemPackages = [
     pkgs'.nil
-    pkgs.namaka
+    # pkgs.namaka
   ];
 }
