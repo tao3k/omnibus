@@ -39,7 +39,6 @@ let
       asserted = showAssertions evaled;
     in
     {
-      # __schema = "v0";
       inherit (asserted) options config;
       inherit (asserted.config.home) activationPackage;
       newsDisplay = evaled.config.news.display;

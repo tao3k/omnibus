@@ -19,8 +19,7 @@ let
   colmenaTopLevelCliSchema =
     comb:
     l.fix (this: {
-      __schema = "v0";
-
+      __schema = (import (inputs.colmena + /src/nix/hive/eval.nix) { }).__schema;
       nodes = l.mapAttrs (_: c: c.bee._evaled) comb;
       toplevel = l.mapAttrs (_: v: v.config.system.build.toplevel) this.nodes;
       deploymentConfig = l.mapAttrs (_: v: v.config.deployment) this.nodes;
