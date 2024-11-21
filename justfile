@@ -10,7 +10,7 @@ std-standard:
 std-default: std-default-sync
     nix develop ./local\#std --command bash -c "(cd examples/StdDefault \
     && {{ override-omnibus }} ../.. \
-    && TERM=xterm-256color; std //dev/scripts/climod-test:run -- tasks --help \
+    && TERM=xterm-256color; std //dev/scripts/pog-test:run -- tasks --help \
     && std //dev/scripts/makes-test:run \
     && std //dev/scripts/hello:run \
     && std //dev/tasks/hello:run \

@@ -157,8 +157,8 @@
   };
 
   inputs = {
-    climodSrc.url = "github:nixosbrasil/climod";
-    climodSrc.flake = false;
+    pogSrc.url = "github:jpetrucciani/pog";
+    pogSrc.flake = false;
 
     nix-fast-build.url = "github:Mic92/nix-fast-build";
     nix-fast-build.inputs.nixpkgs.follows = "nixpkgs";

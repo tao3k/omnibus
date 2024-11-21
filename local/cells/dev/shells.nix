@@ -20,7 +20,6 @@ in
 
     imports = [
       cell.pops.omnibus.devshellProfiles.exports.default.nickel
-      std.std.devshellProfiles.default
     ];
 
     # Tool Homepage: https://nix-community.github.io/nixago/
@@ -32,6 +31,8 @@ in
       cell.configs.treefmt.default
     ];
 
+    devshell.startup.pog.text = '''';
+
     packages = [
       nixpkgs.d2
       nixpkgs.statix
@@ -42,9 +43,18 @@ in
 
       nixpkgs.reuse
       nixpkgs.nixci
+      cell.scripts.pog
     ];
 
-    commands = [ ];
+    commands = [
+      {
+        name = "std";
+        help = std.packages.std.meta.description;
+        command = ''
+          (cd $PRJ_ROOT/local && ${std.packages.std}/bin/std "$@")
+        '';
+      }
+    ];
   };
 
   std = lib.dev.mkShell {

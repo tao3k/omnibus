@@ -8,6 +8,11 @@ let
   inputs' = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
 in
 {
+  scripts = {
+    inputs.inputs = {
+      inherit (inputs') pogSrc;
+    };
+  };
   omnibus = {
     devshellProfiles = inputs.omnibus.pops.devshellProfiles.addLoadExtender {
       load.inputs.inputs = inputs';

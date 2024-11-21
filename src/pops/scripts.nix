@@ -30,12 +30,12 @@
             "nixpkgs"
             "makesSrc"
             "nuenv"
-            "climodSrc"
+            "pogSrc"
           ])
           nixpkgs
           makesSrc
           nuenv
-          climodSrc
+          pogSrc
           ;
       in
       lib.recursiveUpdate self (
@@ -43,8 +43,8 @@
           inherit nixpkgs;
           writeShellApplication = root.ops.writeShellApplication { inherit nixpkgs; };
         }
-        // lib.optionalAttrs (self.inputs ? climodSrc) {
-          climod = nixpkgs.callPackage climodSrc { pkgs = nixpkgs; };
+        // lib.optionalAttrs (self.inputs ? pogSrc) {
+          pog = import (pogSrc + "/pog") { pkgs = nixpkgs; };
         }
         // lib.optionalAttrs (self.inputs ? nuenv) {
           nuenv = nixpkgs.extend nuenv.overlays.nuenv;
