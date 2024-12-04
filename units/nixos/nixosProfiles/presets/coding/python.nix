@@ -37,8 +37,9 @@ let
           six
           paramiko
           rapidfuzz
+          watchdog
         ])
-        ++ [ ]
+        ++ (cfg.extraPackages ps)
       )
     )
   );
