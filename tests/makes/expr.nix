@@ -34,6 +34,5 @@ in
         };
       };
     }).exports.default;
-
   inherit makeScript;
 }

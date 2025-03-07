@@ -4,5 +4,6 @@
   scripts = {
     example = <derivation runScriptWithEnv>;
     makeTemplate = <derivation example>;
+    pogTest = <derivation tool-name-0.0.0>;
   };
 }
