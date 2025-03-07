@@ -90,9 +90,6 @@
     jupyenv.inputs.pre-commit-hooks.follows = "";
 
     system-manager.url = "github:numtide/system-manager";
-    system-manager.inputs.flake-utils.follows = "flake-utils";
-    system-manager.inputs.treefmt-nix.follows = "treefmt-nix";
-    system-manager.inputs.pre-commit-hooks.follows = "";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
