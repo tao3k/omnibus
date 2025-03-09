@@ -5,3 +5,4 @@
 /lefthook.yml
 /.conform.yaml
 /treefmt.toml
+/.terraform

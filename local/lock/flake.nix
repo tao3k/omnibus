@@ -93,6 +93,11 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    tf-ncl.url = "github:tweag/tf-ncl";
+    tf-ncl.inputs.topiary.follows = "";
+    tf-ncl.inputs.pre-commit-hooks.follows = "";
+    tf-ncl.inputs.nickel.follows = "nickel";
   };
 
   inputs = {

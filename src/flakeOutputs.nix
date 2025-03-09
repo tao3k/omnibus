@@ -8,9 +8,15 @@
   root,
   projectRoot,
   inputs,
+  lib,
 }:
 let
   outputs = root.lib.omnibus.mapPopsExports super.pops;
+  eachSystem = lib.genAttrs [
+    "x86_64-linux"
+    "aarch64-linux"
+    "aarch64-darwin"
+  ];
 in
 {
   inherit (super) load;
@@ -29,15 +35,17 @@ in
     systemManagerProfiles
     ;
 
-  scripts =
+  scripts = eachSystem (
+    system:
     (super.pops.scripts.addLoadExtender {
       load.inputs = {
         inputs = {
-          nixpkgs = super.pops.flake.inputs.nixpkgs.legacyPackages.x86_64-linux;
+          nixpkgs = super.pops.flake.inputs.nixpkgs.legacyPackages.${system};
           inherit (super.pops.flake.inputs) makesSrc;
         };
       };
-    }).exports.default;
+    }).exports.default
+  );
 
   units = {
     inherit (outputs) configs std jupyenv;

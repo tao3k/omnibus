@@ -3,27 +3,58 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ super }:
-{ nixpkgs, tf-ncl }:
+{ super, lib }:
+{
+  nixpkgs,
+  tf-ncl,
+  terraform ? nixpkgs.opentofu,
+}:
 let
   writeShellApplication = super.writeShellApplication { inherit nixpkgs; };
 in
-name: nixpkgs: tfPlugins: git:
+name: tfPlugins: git:
 let
-  terraform-with-plugins = nixpkgs.terraform.withPlugins (
+  inherit (nixpkgs) system;
+  inherit (tf-ncl.inputs) nickel;
+
+  terraformProviders = nixpkgs.terraform-providers.actualProviders;
+
+  terraform-with-plugins = terraform.withPlugins (
     p: nixpkgs.lib.attrValues (tfPlugins p)
   );
 
-  ncl-schema = tf-ncl.initSchemaGenerator nixpkgs tfPlugins;
+  generateJsonSchema =
+    terraform: providerFn:
+    nixpkgs.callPackage
+      (import ./_terraform-schema.nix (providerFn terraformProviders))
+      {
+        inherit terraform;
+        inherit (tf-ncl.packages.${system}) schema-merge;
+      };
+
+  generateSchema =
+    terraform: providerFn:
+    nixpkgs.callPackage (tf-ncl + /nix/nickel_schema.nix) {
+      jsonSchema = (generateJsonSchema terraform) providerFn;
+      inherit (tf-ncl.packages.${system}) tf-ncl;
+    };
+
+  ncl-schema = generateSchema terraform tfPlugins;
 in
+# lib.mapAttrs (
+#   name: p:
+#   generateSchema nixpkgs.opentofu (_: {
+#     ${name} = p;
+#   })
+# ) { inherit (nixpkgs.terraform-providers) github; }# #
 writeShellApplication {
   inherit name;
   runtimeEnv = {
     TF_IN_AUTOMATION = 1;
     TF_PLUGIN_CACHE_DIR = "$PRJ_CACHE_HOME/tf-plugin-cache";
   };
-  runtimeInputs = with inputs.nixpkgs; [
-    nickel.packages.default
+  runtimeInputs = with nixpkgs; [
+    nickel.packages.${system}.default
     terraform-with-plugins
     terraform-backend-git
   ];
