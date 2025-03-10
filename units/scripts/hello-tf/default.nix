@@ -3,7 +3,6 @@
 #
 # SPDX-License-Identifier: MIT
 let
-  inherit (nixpkgs) terraform-providers;
   inherit (omnibus.flake.inputs) tf-ncl;
   github-users = p: {
     inherit (p) null;
@@ -16,6 +15,7 @@ let
     }).terraform;
 in
 omnibus.ops.mkTfNcl {
-  inherit nixpkgs tf-ncl terraform;
+  inherit nixpkgs tf-ncl;
+  # inherit terraform;
 } "hello-tf" github-users { }
 # nix run .#scripts.aarch64-darwin.hello-tf ./units/scripts/hello-tf/hello/hello-tf.ncl init

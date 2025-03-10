@@ -12,7 +12,23 @@ let
     providers:
     lib.mapAttrs (_: p: {
       inherit (p) version;
-      source = lib.toLower p.provider-source-address;
+      source =
+        lib.toLower
+          (p.override (
+            oldArgs:
+            if (builtins.hasAttr "homepage" oldArgs) && (terraform.pname == "opentofu") then
+              {
+                provider-source-address =
+                  lib.replaceStrings
+                    [ "https://registry.terraform.io/providers" ]
+                    [
+                      "registry.opentofu.org"
+                    ]
+                    oldArgs.homepage;
+              }
+            else
+              { }
+          )).provider-source-address;
     }) providers;
 
   retrieveProviderSchema =

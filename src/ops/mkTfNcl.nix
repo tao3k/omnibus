@@ -14,7 +14,7 @@ let
 in
 name: tfPlugins: git:
 let
-  inherit (nixpkgs) system;
+  inherit (nixpkgs.stdenv) system;
   inherit (tf-ncl.inputs) nickel;
 
   terraformProviders = nixpkgs.terraform-providers.actualProviders;
@@ -41,12 +41,13 @@ let
 
   ncl-schema = generateSchema terraform tfPlugins;
 in
+
 # lib.mapAttrs (
 #   name: p:
 #   generateSchema nixpkgs.opentofu (_: {
 #     ${name} = p;
 #   })
-# ) { inherit (nixpkgs.terraform-providers) github; }# #
+# )
 writeShellApplication {
   inherit name;
   runtimeEnv = {
@@ -87,11 +88,11 @@ writeShellApplication {
              --repository ${git.repo} \
              --ref ${git.ref} \
              --state "''${ENTRY_DIR}/state.json" \
-             terraform "$@"
+             ${lib.getExe terraform-with-plugins} "$@"
         ''
       else
         ''
-          terraform -chdir="$PRJ_DATA_DIR"/tf-ncl/${name} "$@"
+          ${lib.getExe terraform-with-plugins} -chdir="$PRJ_DATA_DIR"/tf-ncl/${name} "$@"
         ''
     }
   '';
