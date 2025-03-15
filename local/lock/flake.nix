@@ -7,7 +7,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos.follows = "nixpkgs";
-    nixos-24_05.url = "github:nixos/nixpkgs/release-24.05";
+    nixos-24_11.url = "github:nixos/nixpkgs/release-24.11";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -40,6 +40,14 @@
     n2c.url = "github:nlewo/nix2container";
     n2c.inputs.nixpkgs.follows = "nixpkgs";
     n2c.inputs.flake-utils.follows = "flake-utils";
+
+    nix-snapshotter.url = "github:pdtpartners/nix-snapshotter";
+    nix-snapshotter.inputs.nixpkgs.follows = "nixpkgs";
+    nix-snapshotter.inputs.flake-compat.follows = "";
+    nix-snapshotter.inputs.globset.follows = "globset";
+
+    globset.url = "github:pdtpartners/globset";
+    globset.inputs.nixpkgs-lib.follows = "nixpkgs";
 
     arion.url = "github:hercules-ci/arion";
     arion.inputs.flake-parts.follows = "flake-parts";

@@ -8,14 +8,23 @@ let
     inherit (p) null;
     # inherit (terraform-providers) github;
   };
-  terraform =
-    (import nixpkgs.path {
-      config.allowUnfree = true;
-      inherit (nixpkgs) system;
-    }).terraform;
+  # terraform =
+  #   (import nixpkgs.path {
+  #     config.allowUnfree = true;
+  #    inherit (nixpkgs) system;
+  #   }).terraform;
 in
-omnibus.ops.mkTfNcl {
-  inherit nixpkgs tf-ncl;
-  # inherit terraform;
-} "hello-tf" github-users { }
+omnibus.ops.mkTfNcl
+  {
+    inherit nixpkgs tf-ncl;
+    # use the unfree version of terraform
+    # inherit terraform;
+  }
+  "hello-tf"
+  github-users
+  {
+    # terraform-git-backend
+    # repo = "git@github.com:GTrunSec/tf-ncl-workflow.git";
+    # ref = "main";
+  }
 # nix run .#scripts.aarch64-darwin.hello-tf ./units/scripts/hello-tf/hello/hello-tf.ncl init

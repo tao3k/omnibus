@@ -15,6 +15,7 @@ in
   runtimeEnv ? { },
   runtimeShell ? nixpkgs.runtimeShell,
   checkPhase ? null,
+  passthru ? { },
 }:
 let
   runtimeShell' =
@@ -63,5 +64,8 @@ nixpkgs.writeTextFile {
     else
       checkPhase;
 
+  passthru = passthru // {
+    inherit runtimeInputs;
+  };
   meta.mainProgram = name;
 }

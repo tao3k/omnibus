@@ -463,6 +463,27 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
+          "nix-snapshotter",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733312601,
+        "narHash": "sha256-4pDvzqnegAfRkPwO3wmwBhVi/Sye1mzps0zHWYnP88c=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "205b12d8b7cd4802fbcb8e8ef6a0f1408781a4f9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_3": {
+      "inputs": {
+        "nixpkgs-lib": [
           "nur",
           "nixpkgs"
         ]
@@ -717,6 +738,26 @@
       }
     },
     "globset": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1738008127,
+        "narHash": "sha256-HcN58roxuzfGm/MlcTqUD/wCH9bPdhZmK1xI/t8tSUc=",
+        "owner": "pdtpartners",
+        "repo": "globset",
+        "rev": "9b586e135be867683f212d6e363816c24424084c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pdtpartners",
+        "repo": "globset",
+        "type": "github"
+      }
+    },
+    "globset_2": {
       "inputs": {
         "nixpkgs-lib": [
           "snapshotter",
@@ -1198,6 +1239,31 @@
         "type": "github"
       }
     },
+    "nix-snapshotter": {
+      "inputs": {
+        "flake-compat": [],
+        "flake-parts": "flake-parts_2",
+        "globset": [
+          "globset"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1734289443,
+        "narHash": "sha256-oU3AGvzByR7622kntPUPIHfAreOIktAsJav2ATHuc18=",
+        "owner": "pdtpartners",
+        "repo": "nix-snapshotter",
+        "rev": "387e220d369dfa0ad093035515e8757f83144be8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pdtpartners",
+        "repo": "nix-snapshotter",
+        "type": "github"
+      }
+    },
     "nix-std": {
       "locked": {
         "lastModified": 1710870712,
@@ -1275,18 +1341,18 @@
         "type": "github"
       }
     },
-    "nixos-24_05": {
+    "nixos-24_11": {
       "locked": {
-        "lastModified": 1735651292,
-        "narHash": "sha256-YLbzcBtYo1/FEzFsB3AnM16qFc6fWPMIoOuSoDwvg9g=",
+        "lastModified": 1741762505,
+        "narHash": "sha256-FBvKFchXCyJmR25wcnQHcQP8Pzfo4ei7umhjP+ABwBQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0da3c44a9460a26d2025ec3ed2ec60a895eb1114",
+        "rev": "cbd5a3d1f286215638a2ed6f410369b539bd9651",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "release-24.05",
+        "ref": "release-24.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1632,7 +1698,7 @@
     },
     "nur": {
       "inputs": {
-        "flake-parts": "flake-parts_2",
+        "flake-parts": "flake-parts_3",
         "nixpkgs": "nixpkgs_9",
         "treefmt-nix": "treefmt-nix"
       },
@@ -1964,6 +2030,7 @@
         "flake-utils": "flake-utils_2",
         "flake_env": "flake_env",
         "git-hooks": "git-hooks_2",
+        "globset": "globset",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "jupyenv": "jupyenv",
@@ -1975,6 +2042,7 @@
         "nil": "nil",
         "nix-fast-build": "nix-fast-build",
         "nix-filter": "nix-filter",
+        "nix-snapshotter": "nix-snapshotter",
         "nix-std": "nix-std",
         "nixago": "nixago",
         "nixcasks": "nixcasks",
@@ -1982,7 +2050,7 @@
         "nixos": [
           "nixpkgs"
         ],
-        "nixos-24_05": "nixos-24_05",
+        "nixos-24_11": "nixos-24_11",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_8",
         "nuenv": "nuenv",
@@ -2203,7 +2271,7 @@
         "flake-parts": [
           "flake-parts"
         ],
-        "globset": "globset",
+        "globset": "globset_2",
         "nixpkgs": [
           "nixpkgs"
         ]

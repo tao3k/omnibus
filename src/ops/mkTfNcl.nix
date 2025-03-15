@@ -39,25 +39,27 @@ let
       inherit (tf-ncl.packages.${system}) tf-ncl;
     };
 
+  devshell = nixpkgs.callPackage ./_tf-ncl-devshell.nix {
+    inherit terraform generateSchema nickel;
+  };
   ncl-schema = generateSchema terraform tfPlugins;
 in
-
-# lib.mapAttrs (
-#   name: p:
-#   generateSchema nixpkgs.opentofu (_: {
-#     ${name} = p;
-#   })
-# )
 writeShellApplication {
   inherit name;
   runtimeEnv = {
     TF_IN_AUTOMATION = 1;
     TF_PLUGIN_CACHE_DIR = "$PRJ_CACHE_HOME/tf-plugin-cache";
   };
+  passthru = {
+    devshellDeps = devshell { providers = tfPlugins; };
+  };
   runtimeInputs = with nixpkgs; [
     nickel.packages.${system}.default
     terraform-with-plugins
     terraform-backend-git
+    (nixpkgs.lib.attrValues (devshell {
+      providers = tfPlugins;
+    }))
   ];
   text = ''
     set -e

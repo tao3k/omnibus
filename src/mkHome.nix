@@ -41,7 +41,7 @@ in
                     { programs.${shell}.enable = true; }
                   ];
                   home.stateVersion = lib.mkDefault (
-                    if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "24.05"
+                    if pkgs.stdenv.isDarwin then pkgs.lib.trivial.release else "24.11"
                   );
                 };
                 users.users.${userName} = {
