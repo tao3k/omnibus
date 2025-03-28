@@ -12,7 +12,7 @@
 }:
 let
   outputs = root.lib.omnibus.mapPopsExports super.pops;
-  eachSystem = lib.genAttrs [
+  supportedSystems = lib.genAttrs [
     "x86_64-linux"
     "aarch64-linux"
     "aarch64-darwin"
@@ -35,7 +35,7 @@ in
     systemManagerProfiles
     ;
 
-  scripts = eachSystem (
+  scripts = supportedSystems (
     system:
     (super.pops.scripts.addLoadExtender {
       load.inputs = {
@@ -45,6 +45,20 @@ in
         };
       };
     }).exports.default
+  );
+
+  packages = supportedSystems (
+    system:
+    (super.pops.packages.addLoadExtender {
+      load = {
+        src = projectRoot + "/units/packages";
+        inputs = {
+          inputs = {
+            nixpkgs = super.pops.flake.inputs.nixpkgs.legacyPackages.${system};
+          };
+        };
+      };
+    }).exports.derivations
   );
 
   units = {

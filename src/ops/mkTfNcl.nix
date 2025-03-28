@@ -53,14 +53,16 @@ writeShellApplication {
   passthru = {
     devshellDeps = devshell { providers = tfPlugins; };
   };
-  runtimeInputs = with nixpkgs; [
-    nickel.packages.${system}.default
-    terraform-with-plugins
-    terraform-backend-git
-    (nixpkgs.lib.attrValues (devshell {
+  runtimeInputs =
+    with nixpkgs;
+    [
+      nickel.packages.${system}.default
+      terraform-with-plugins
+      terraform-backend-git
+    ]
+    ++ (nixpkgs.lib.attrValues (devshell {
       providers = tfPlugins;
-    }))
-  ];
+    }));
   text = ''
     set -e
 
