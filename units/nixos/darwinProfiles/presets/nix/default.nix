@@ -15,19 +15,18 @@ in
 {
   imports = [ (loadSubmodule ./optimise.nix) ];
   nix = {
-    package = pkgs.nixVersions.git;
-    configureBuildUsers = true;
+    package = pkgs.nixVersions.latest;
+    # configureBuildUsers = true;
     settings = {
       # Administrative users on Darwin systems are part of the admin group.
       trusted-users = [ "@admin" ];
       extra-platforms = l.mkIf isAarch64 [
-        "x86_64-darwin"
         "aarch64-darwin"
       ];
       keep-derivations = true;
       auto-optimise-store = false;
       accept-flake-config = true;
-      auto-allocate-uids = true;
+      #auto-allocate-uids = true;
       builders-use-substitutes = true;
       experimental-features = [
         "nix-command"
@@ -47,7 +46,6 @@ in
       extra-sandbox-paths = /System/Library/Frameworks /System/Library/PrivateFrameworks /usr/lib /private/tmp /private/var/tmp /usr/bin/env
     '';
   };
-  services.nix-daemon.enable = true;
   # Recreate /run/current-system symlink after boot
   # services.activate-system.enable = true;
 }

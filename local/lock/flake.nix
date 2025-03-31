@@ -174,7 +174,7 @@
     nix-fast-build.inputs.flake-parts.follows = "flake-parts";
     nix-fast-build.inputs.treefmt-nix.follows = "treefmt-nix";
 
-    navi-tldr-pages.url = "github:denisidoro/navi-tldr-pages";
+    navi-tldr-pages.url = "github:tao3k/navi-tldr-pages";
     navi-tldr-pages.flake = false;
 
     catppuccin-foliate.url = "github:catppuccin/foliate";

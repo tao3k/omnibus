@@ -39,7 +39,7 @@ in
       (hooksFn {
         typos = {
           format = "brief";
-          locale = "en-us";
+          locale = "en";
         };
       }).typos;
   };
