@@ -27,9 +27,9 @@ in
   default = {
     packages = [
       nixfmt.packages.default
-      nixpkgs.nodePackages.prettier
       nixpkgs.shfmt
-      nixpkgs.nodePackages.prettier-plugin-toml
+      nixpkgs.nodePackages.prettier
+      # nixpkgs.nodePackages.prettier-plugin-toml
     ];
     data = {
       formatter = {
@@ -42,15 +42,6 @@ in
         prettier = {
           command = "prettier";
           options = [
-            "--plugin"
-            "${nixpkgs.nodePackages.prettier-plugin-toml}/lib/node_modules/prettier-plugin-toml/lib/${
-              if
-                lib.strings.versionOlder nixpkgs.nodePackages.prettier-plugin-toml.version "2.0.1"
-              then
-                "api.js"
-              else
-                "index.js"
-            }"
             "--write"
           ];
           includes = [
@@ -64,7 +55,6 @@ in
             "*.scss"
             "*.ts"
             "*.yaml"
-            "*.toml"
           ];
         };
         shell = {
@@ -135,7 +125,7 @@ in
     data.formatter.topiary = {
       command = "topiary";
       options = [ "format" ];
-      includes = [ "*.ncl" ];
+      includes = [ "*.toml" ];
     };
     packages = [ topiary.packages.default ];
   };

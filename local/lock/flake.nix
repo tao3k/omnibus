@@ -5,8 +5,8 @@
 
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos.follows = "nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixos.follows = "nixos-24_11";
     nixos-24_11.url = "github:nixos/nixpkgs/release-24.11";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -52,7 +52,7 @@
     arion.url = "github:hercules-ci/arion";
     arion.inputs.flake-parts.follows = "flake-parts";
 
-    nixago.url = "github:nix-community/nixago";
+    nixago.url = "github:nix-community/nixago?ref=refs/pull/61/head";
     nixago.inputs.nixpkgs.follows = "nixpkgs";
     nixago.inputs.nixago-exts.follows = "";
 
@@ -77,8 +77,9 @@
 
     topiary.url = "github:tweag/topiary";
 
+    nixpkgs-nodejs.url = "github:NixOS/nixpkgs/?ref=refs/pull/400828/head";
     std.url = "github:divnix/std";
-    std.inputs.nixpkgs.follows = "nixpkgs";
+    std.inputs.nixpkgs.follows = "nixpkgs-nodejs";
     std.inputs.nixago.follows = "nixago";
     std.inputs.devshell.follows = "devshell";
     std.inputs.microvm.follows = "microvm";

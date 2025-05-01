@@ -7,7 +7,6 @@
   This file holds configuration data for repo dotfiles.
 
   Q: Why not just put the put the file there?
-
   A: (1) dotfile proliferation
      (2) have all the things in one place / format
      (3) potentially share / re-use configuration data - keeping it in sync
@@ -25,14 +24,16 @@ in
     default = cfg.lefthook.default lefthook.just;
   };
   treefmt = {
-    default = (cfg.treefmt.default treefmt.nvfetcher treefmt.nickel) {
-      data.global = {
-        excludes = append [
-          "./examples/jupyenv+quarto/quarto/*"
-          "sdsds"
-        ];
-      };
-    };
+    default =
+      (cfg.treefmt.default treefmt.nvfetcher treefmt.nickel treefmt.topiary)
+        {
+          data.global = {
+            excludes = append [
+              "./examples/jupyenv+quarto/quarto/*"
+              "sdsds"
+            ];
+          };
+        };
   };
   conform = rec {
     default = cfg.conform.default custom;

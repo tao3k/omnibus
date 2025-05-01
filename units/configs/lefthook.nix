@@ -45,7 +45,10 @@ in
   };
   default = {
     packages =
-      [ nixpkgs.jq ]
+      [
+        nixpkgs.jq
+        nixpkgs.treefmt
+      ]
       ++ (map (x: git-hooks.packages.${x}) (
         lib.attrNames (removeAttrs self.git-hooks [ "__functor" ])
       ));

@@ -195,407 +195,488 @@ key = "Escape"
 mods = "Shift|Alt|Control"
 chars = "\u001b[27;8u"
 
-[[key_bindings]] # 1
+[[key_bindings]]
+# 1
 key = 2
 mods = "Control"
 chars = "\u001b[49;5u"
 
-[[key_bindings]] # 1
+[[key_bindings]]
+# 1
 key = 2
 mods = "Alt|Control"
 chars = "\u001b[49;7u"
 
-[[key_bindings]] # !
+[[key_bindings]]
+# !
 key = 2
 mods = "Shift|Control"
 chars = "\u001b[33;5u"
 
-[[key_bindings]] # !
+[[key_bindings]]
+# !
 key = 2
 mods = "Shift|Alt|Control"
 chars = "\u001b[33;7u"
 
-[[key_bindings]] # 2
+[[key_bindings]]
+# 2
 key = 3
 mods = "Control"
 chars = "\u001b[50;5u"
 
-[[key_bindings]] # 2
+[[key_bindings]]
+# 2
 key = 3
 mods = "Alt|Control"
 chars = "\u001b[50;7u"
 
-[[key_bindings]] # @
+[[key_bindings]]
+# @
 key = 3
 mods = "Shift|Control"
 chars = "\u001b[64;5u"
 
-[[key_bindings]] # @
+[[key_bindings]]
+# @
 key = 3
 mods = "Shift|Alt|Control"
 chars = "\u001b[64;7u"
 
-[[key_bindings]] # 3
+[[key_bindings]]
+# 3
 key = 4
 mods = "Control"
 chars = "\u001b[51;5u"
 
-[[key_bindings]] # 3
+[[key_bindings]]
+# 3
 key = 4
 mods = "Alt|Control"
 chars = "\u001b[51;7u"
 
-[[key_bindings]] # #
+[[key_bindings]]
+# #
 key = 4
 mods = "Shift|Control"
 chars = "\u001b[35;5u"
 
-[[key_bindings]] # #
+[[key_bindings]]
+# #
 key = 4
 mods = "Shift|Alt|Control"
 chars = "\u001b[35;7u"
 
-[[key_bindings]] # 4
+[[key_bindings]]
+# 4
 key = 5
 mods = "Control"
 chars = "\u001b[52;5u"
 
-[[key_bindings]] # 4
+[[key_bindings]]
+# 4
 key = 5
 mods = "Alt|Control"
 chars = "\u001b[52;7u"
 
-[[key_bindings]] # $
+[[key_bindings]]
+# $
 key = 5
 mods = "Shift|Control"
 chars = "\u001b[36;5u"
 
-[[key_bindings]] # $
+[[key_bindings]]
+# $
 key = 5
 mods = "Shift|Alt|Control"
 chars = "\u001b[36;7u"
 
-[[key_bindings]] # 5
+[[key_bindings]]
+# 5
 key = 6
 mods = "Control"
 chars = "\u001b[53;5u"
 
-[[key_bindings]] # 5
+[[key_bindings]]
+# 5
 key = 6
 mods = "Alt|Control"
 chars = "\u001b[53;7u"
 
-[[key_bindings]] # %
+[[key_bindings]]
+# %
 key = 6
 mods = "Shift|Control"
 chars = "\u001b[37;5u"
 
-[[key_bindings]] # %
+[[key_bindings]]
+# %
 key = 6
 mods = "Shift|Alt|Control"
 chars = "\u001b[37;7u"
 
-[[key_bindings]] # 6
+[[key_bindings]]
+# 6
 key = 7
 mods = "Control"
 chars = "\u001b[54;5u"
 
-[[key_bindings]] # 6
+[[key_bindings]]
+# 6
 key = 7
 mods = "Alt|Control"
 chars = "\u001b[54;7u"
 
-[[key_bindings]] # ^
+[[key_bindings]]
+# ^
 key = 7
 mods = "Shift|Control"
 chars = "\u001b[94;5u"
 
-[[key_bindings]] # ^
+[[key_bindings]]
+# ^
 key = 7
 mods = "Shift|Alt|Control"
 chars = "\u001b[94;7u"
 
-[[key_bindings]] # 7
+[[key_bindings]]
+# 7
 key = 8
 mods = "Control"
 chars = "\u001b[55;5u"
 
-[[key_bindings]] # 7
+[[key_bindings]]
+# 7
 key = 8
 mods = "Alt|Control"
 chars = "\u001b[55;7u"
 
-[[key_bindings]] # &
+[[key_bindings]]
+# &
 key = 8
 mods = "Shift|Control"
 chars = "\u001b[38;5u"
 
-[[key_bindings]] # &
+[[key_bindings]]
+# &
 key = 8
 mods = "Shift|Alt|Control"
 chars = "\u001b[38;7u"
 
-[[key_bindings]] # 8
+[[key_bindings]]
+# 8
 key = 9
 mods = "Control"
 chars = "\u001b[56;5u"
 
-[[key_bindings]] # 8
+[[key_bindings]]
+# 8
 key = 9
 mods = "Alt|Control"
 chars = "\u001b[56;7u"
 
-[[key_bindings]] # *
+[[key_bindings]]
+# *
 key = 9
 mods = "Shift|Control"
 chars = "\u001b[42;5u"
 
-[[key_bindings]] # *
+[[key_bindings]]
+# *
 key = 9
 mods = "Shift|Alt|Control"
 chars = "\u001b[42;7u"
 
-[[key_bindings]] # 9
+[[key_bindings]]
+# 9
 key = 10
 mods = "Control"
 chars = "\u001b[57;5u"
 
-[[key_bindings]] # 9
+[[key_bindings]]
+# 9
 key = 10
 mods = "Alt|Control"
 chars = "\u001b[57;7u"
 
-[[key_bindings]] # (
+[[key_bindings]]
+# (
 key = 10
 mods = "Shift|Control"
 chars = "\u001b[40;5u"
 
-[[key_bindings]] # (
+[[key_bindings]]
+# (
 key = 10
 mods = "Shift|Alt|Control"
 chars = "\u001b[40;7u"
 
-[[key_bindings]] # 0
+[[key_bindings]]
+# 0
 key = 11
 mods = "Control"
 chars = "\u001b[48;5u"
 
-[[key_bindings]] # 0
+[[key_bindings]]
+# 0
 key = 11
 mods = "Alt|Control"
 chars = "\u001b[48;7u"
 
-[[key_bindings]] # )
+[[key_bindings]]
+# )
 key = 11
 mods = "Shift|Control"
 chars = "\u001b[41;5u"
 
-[[key_bindings]] # )
+[[key_bindings]]
+# )
 key = 11
 mods = "Shift|Alt|Control"
 chars = "\u001b[41;7u"
 
-[[key_bindings]] # -
+[[key_bindings]]
+# -
 key = 12
 mods = "Control"
 chars = "\u001b[45;5u"
 
-[[key_bindings]] # -
+[[key_bindings]]
+# -
 key = 12
 mods = "Alt|Control"
 chars = "\u001b[45;7u"
 
-[[key_bindings]] # _
+[[key_bindings]]
+# _
 key = 12
 mods = "Shift|Control"
 chars = "\u001b[95;5u"
 
-[[key_bindings]] # _
+[[key_bindings]]
+# _
 key = 12
 mods = "Shift|Alt|Control"
 chars = "\u001b[95;7u"
 
-[[key_bindings]] # =
+[[key_bindings]]
+# =
 key = 13
 mods = "Control"
 chars = "\u001b[61;5u"
 
-[[key_bindings]] # =
+[[key_bindings]]
+# =
 key = 13
 mods = "Alt|Control"
 chars = "\u001b[61;7u"
 
-[[key_bindings]] # +
+[[key_bindings]]
+# +
 key = 13
 mods = "Shift|Control"
 chars = "\u001b[43;5u"
 
-[[key_bindings]] # +
+[[key_bindings]]
+# +
 key = 13
 mods = "Shift|Alt|Control"
 chars = "\u001b[43;7u"
 
-[[key_bindings]] # [
+[[key_bindings]]
+# [
 key = 26
 mods = "Control"
 chars = "\u001b[91;5u"
 
-[[key_bindings]] # [
+[[key_bindings]]
+# [
 key = 26
 mods = "Alt|Control"
 chars = "\u001b[91;7u"
 
-[[key_bindings]] # [
+[[key_bindings]]
+# [
 key = 26
 mods = "Alt"
 chars = "\u001b[91;3u"
 
-[[key_bindings]] # {
+[[key_bindings]]
+# {
 key = 26
 mods = "Shift|Control"
 chars = "\u001b[123;5u"
 
-[[key_bindings]] # {
+[[key_bindings]]
+# {
 key = 26
 mods = "Shift|Alt|Control"
 chars = "\u001b[123;7u"
 
-[[key_bindings]] # ]
+[[key_bindings]]
+# ]
 key = 27
 mods = "Control"
 chars = "\u001b[93;5u"
 
-[[key_bindings]] # ]
+[[key_bindings]]
+# ]
 key = 27
 mods = "Alt|Control"
 chars = "\u001b[93;7u"
 
-[[key_bindings]] # }
+[[key_bindings]]
+# }
 key = 27
 mods = "Shift|Control"
 chars = "\u001b[125;5u"
 
-[[key_bindings]] # }
+[[key_bindings]]
+# }
 key = 27
 mods = "Shift|Alt|Control"
 chars = "\u001b[125;7u"
 
-[[key_bindings]] # '
+[[key_bindings]]
+# '
 key = 40
 mods = "Control"
 chars = "\u001b[39;5u"
 
-[[key_bindings]] # '
+[[key_bindings]]
+# '
 key = 40
 mods = "Alt|Control"
 chars = "\u001b[39;7u"
 
-[[key_bindings]] # "
+[[key_bindings]]
+# "
 key = 40
 mods = "Shift|Control"
 chars = "\u001b[34;5u"
 
-[[key_bindings]] # "
+[[key_bindings]]
+# "
 key = 40
 mods = "Shift|Alt|Control"
 chars = "\u001b[34;7u"
 
-[[key_bindings]] # `
+[[key_bindings]]
+# `
 key = 41
 mods = "Control"
 chars = "\u001b[96;5u"
 
-[[key_bindings]] # `
+[[key_bindings]]
+# `
 key = 41
 mods = "Alt|Control"
 chars = "\u001b[96;7u"
 
-[[key_bindings]] # ~
+[[key_bindings]]
+# ~
 key = 41
 mods = "Shift|Control"
 chars = "\u001b[126;5u"
 
-[[key_bindings]] # ~
+[[key_bindings]]
+# ~
 key = 41
 mods = "Shift|Alt|Control"
 chars = "\u001b[126;7u"
 
-[[key_bindings]] # ;
+[[key_bindings]]
+# ;
 key = 39
 mods = "Control"
 chars = "\u001b[59;5u"
 
-[[key_bindings]] # ;
+[[key_bindings]]
+# ;
 key = 39
 mods = "Alt|Control"
 chars = "\u001b[59;7u"
 
-[[key_bindings]] # :
+[[key_bindings]]
+# :
 key = 39
 mods = "Shift|Control"
 chars = "\u001b[58;5u"
 
-[[key_bindings]] # :
+[[key_bindings]]
+# :
 key = 39
 mods = "Shift|Alt|Control"
 chars = "\u001b[58;7u"
 
-[[key_bindings]] # /
+[[key_bindings]]
+# /
 key = 53
 mods = "Control"
 chars = "\u001b[47;5u"
 
-[[key_bindings]] # /
+[[key_bindings]]
+# /
 key = 53
 mods = "Alt|Control"
 chars = "\u001b[47;7u"
 
-[[key_bindings]] # ?
+[[key_bindings]]
+# ?
 key = 53
 mods = "Shift|Control"
 chars = "\u001b[63;5u"
 
-[[key_bindings]] # ?
+[[key_bindings]]
+# ?
 key = 53
 mods = "Shift|Alt|Control"
 chars = "\u001b[63;7u"
 
-[[key_bindings]] # ,
+[[key_bindings]]
+# ,
 key = 51
 mods = "Control"
 chars = "\u001b[44;5u"
 
-[[key_bindings]] # ,
+[[key_bindings]]
+# ,
 key = 51
 mods = "Alt|Control"
 chars = "\u001b[44;7u"
 
-[[key_bindings]] # <
+[[key_bindings]]
+# <
 key = 51
 mods = "Shift|Control"
 chars = "\u001b[60;5u"
 
-[[key_bindings]] # <
+[[key_bindings]]
+# <
 key = 51
 mods = "Shift|Alt|Control"
 chars = "\u001b[60;7u"
 
-[[key_bindings]] # .
+[[key_bindings]]
+# .
 key = 52
 mods = "Control"
 chars = "\u001b[46;5u"
 
-[[key_bindings]] # .
+[[key_bindings]]
+# .
 key = 52
 mods = "Alt|Control"
 chars = "\u001b[46;7u"
 
-[[key_bindings]] # >
+[[key_bindings]]
+# >
 key = 52
 mods = "Shift|Control"
 chars = "\u001b[62;5u"
 
-[[key_bindings]] # >
+[[key_bindings]]
+# >
 key = 52
 mods = "Shift|Alt|Control"
 chars = "\u001b[62;7u"

@@ -22,7 +22,7 @@
   description = "omnibus & std";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/?ref=refs/pull/400828/head";
   };
   inputs.namaka.url = "github:nix-community/namaka";
 

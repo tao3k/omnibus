@@ -21,6 +21,14 @@ let
   inherit (std.lib.dev) mkNixago;
   inherit (std.lib) cfg;
 
+  cfg' = cfg // {
+    treefmt = {
+      data = { };
+      output = "treefmt.toml";
+      format = "toml";
+    };
+  };
+
   applyRecursive =
     mkFunc: layoutData:
     lib.mapAttrsRecursiveCond (as: !(lib.isAttrs as && as ? data)) # Condition to check
@@ -28,12 +36,13 @@ let
       layoutData;
 
   # Function to process each layout
-  processLayouts =
+  processStdNixagoLayouts =
     data: cfgName:
     applyRecursive (
       layoutData:
       if (lib.hasAttr cfgName cfg) then
-        mkNixago cfg.${cfgName} layoutData
+        # wait upstram to fix the treefmt version
+        mkNixago cfg'.${cfgName} layoutData
       else
         throw "Unknown layout: ${cfgName}"
     ) (data.layouts.default.${cfgName});
@@ -50,7 +59,7 @@ in
       self: _super: {
         exports = {
           stdNixago = lib.listToAttrs (
-            map (name: lib.nameValuePair name (processLayouts self name)) (
+            map (name: lib.nameValuePair name (processStdNixagoLayouts self name)) (
               lib.attrNames self.layouts.default
             )
           );

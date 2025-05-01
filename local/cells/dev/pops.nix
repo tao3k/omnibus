@@ -20,9 +20,9 @@ in
     configs = inputs.omnibus.pops.configs {
       inputs = {
         inputs = {
-          inherit (inputs') nixfmt git-hooks;
-          inherit (inputs) std;
-          nixpkgs = import inputs'.nixos-24_11 { system = nixpkgs.system; };
+          inherit (inputs') nixfmt git-hooks topiary;
+          inherit (inputs) std nixpkgs;
+          # nixpkgs = import inputs'.nixos-24_11 { system = nixpkgs.system; };
         };
       };
     };
