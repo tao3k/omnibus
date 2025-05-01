@@ -43,8 +43,6 @@ units: units {
     nixosModules
     homeProfiles
     homeModules
-    homeProfiles
-    homeModules
   }
   flake-parts: {
     modules
