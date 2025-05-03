@@ -38,7 +38,7 @@ assert lib.assertMsg isFound ''
          inputs = {
            ${msg}
            # you can also see the full inputs list at
-           # https://github.com/GTrunSec/omnibus/blob/main/local/lock/flake.nix#L1
+           # https://github.com/GTrunSec/omnibus/blob/main/units/lock/flake.nix#L1
          };
        };
 '';

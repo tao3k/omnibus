@@ -8,7 +8,7 @@
 
 if [[ $# -lt 1 ]] || [[ ! -d $1 ]]; then
   echo "Usage:
-	$0 <dir containg images>"
+	$0 <dir containing images>"
   exit 1
 fi
 
@@ -33,6 +33,6 @@ while true; do
     sort -n | cut -d':' -f2- |
     while read -r img; do
       swww img "$img" --transition-type center
-      sleep $INTERVAL
+      sleep "$INTERVAL"
     done
 done

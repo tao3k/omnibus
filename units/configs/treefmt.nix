@@ -29,7 +29,6 @@ in
       nixfmt.packages.default
       nixpkgs.shfmt
       nixpkgs.nodePackages.prettier
-      # nixpkgs.nodePackages.prettier-plugin-toml
     ];
     data = {
       formatter = {
@@ -65,7 +64,10 @@ in
             "-s"
             "-w"
           ];
-          includes = [ "*.sh" ];
+          includes = [
+            "*.sh"
+            "*.bash"
+          ];
         };
       };
     };
@@ -125,8 +127,23 @@ in
     data.formatter.topiary = {
       command = "topiary";
       options = [ "format" ];
-      includes = [ "*.toml" ];
+      includes = [
+        "*.toml"
+        # "*.bash"
+        # "*.sh"
+      ];
     };
     packages = [ topiary.packages.default ];
+  };
+  just = {
+    data.formatter.just = {
+      command = "just";
+      options = [
+        "--fmt"
+        "--unstable"
+        "--justfile"
+      ];
+      includes = [ "justfile" ];
+    };
   };
 }

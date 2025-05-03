@@ -6,7 +6,7 @@
 { lib }:
 list:
 let
-  sources = (import ../../local/lock/flake.nix).inputs;
+  sources = (import ../../units/lock/flake.nix).inputs;
   listSources = map (x: {
     name = x;
     url = sources.${x}.url;

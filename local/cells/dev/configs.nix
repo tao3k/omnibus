@@ -21,11 +21,13 @@ let
 in
 {
   lefthook = {
-    default = cfg.lefthook.default lefthook.just;
+    default = cfg.lefthook.default;
   };
   treefmt = {
     default =
-      (cfg.treefmt.default treefmt.nvfetcher treefmt.nickel treefmt.topiary)
+      (cfg.treefmt.default treefmt.nvfetcher treefmt.nickel treefmt.topiary
+        treefmt.just
+      )
         {
           data.global = {
             excludes = append [

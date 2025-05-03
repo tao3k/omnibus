@@ -4,4 +4,4 @@
 # SPDX-License-Identifier: MIT
 
 { projectRoot, flops }:
-flops.flake.pops.default.setInitInputs (projectRoot + "/local/lock")
+flops.flake.pops.default.setInitInputs (projectRoot + "/units/lock")
