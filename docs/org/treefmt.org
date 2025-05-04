@@ -1,4 +1,19 @@
-# [[file:../../docs/org/treefmt.org::*justfile][justfile:1]]
+:PROPERTIES:
+:header-args: :noweb tangle :comments noweb :exports both
+:PRJ-DIR: ../../units/configs
+:END:
+#+TITLE: Treefmt
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+
+
+* justfile
+
+- packages: just-lsp just
+
+
+* Src
+#+begin_src nix :tangle (concat (org-entry-get nil "PRJ-DIR" t) "/treefmt.nix")
 # SPDX-FileCopyrightText: 2023 The omnibus Authors
 # SPDX-FileCopyrightText: 2024 The omnibus Authors
 #
@@ -137,10 +152,7 @@ in
     packages = [ topiary.packages.default ];
   };
   just = {
-    packages = [
-      nixpkgs.just
-      nixpkgs.just-lsp
-    ];
+    packages = [ nixpkgs.just nixpkgs.just-lsp ];
     data.formatter.just = {
       command = "just";
       options = [
@@ -152,4 +164,4 @@ in
     };
   };
 }
-# justfile:1 ends here
+#+end_src
