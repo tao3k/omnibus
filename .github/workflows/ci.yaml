@@ -8,7 +8,7 @@ jobs:
   examples-std:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           submodules: "recursive"
@@ -29,7 +29,7 @@ jobs:
   examples-jupyenv-quarto:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           submodules: "recursive"
@@ -47,7 +47,7 @@ jobs:
   examples-packages:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           submodules: "recursive"
@@ -63,7 +63,7 @@ jobs:
   examples-simple:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           submodules: "recursive"
@@ -79,7 +79,7 @@ jobs:
   examples-system-manager:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           submodules: "recursive"
@@ -95,7 +95,7 @@ jobs:
   examples-python:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           submodules: "recursive"
