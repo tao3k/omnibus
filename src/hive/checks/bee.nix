@@ -26,6 +26,7 @@ let
             config._module.freeformType = l.types.unspecified;
           }
         ];
+
       };
 
       failedAsserts = map (x: x.message) (
