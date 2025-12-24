@@ -17,7 +17,7 @@ let
   # Specialized POP for a computer
   computerPop = pop.pop {
     name = "computerPop";
-    supers = [ devicePop ];
+    parents = [ devicePop ];
     extension = self: super: {
       powerOn = "Computer booting up";
       startOS = "Operating System starting";
@@ -27,7 +27,7 @@ let
   # Another specialized POP for a smartphone
   smartphonePop = pop.pop {
     name = "smartphonePop";
-    supers = [ devicePop ];
+    parents = [ devicePop ];
     extension = self: super: {
       powerOn = "Smartphone turning on";
       startOS = "Mobile OS starting";
@@ -38,7 +38,7 @@ let
   # Advanced POP for a gaming computer, inheriting from computerPop
   gamingComputerPop = pop.pop {
     name = "gamingComputerPop";
-    supers = [ computerPop ];
+    parents = [ computerPop ];
     extension = self: super: {
       powerOn = super.powerOn + " test";
       startOS = "Gaming OS booting";
@@ -49,7 +49,7 @@ let
   # Combined POP for a smart gaming device, inheriting from both gamingComputerPop and smartphonePop
   smartGamingDevicePop = pop.pop {
     name = "smartGamingDevicePop";
-    supers = [
+    parents = [
       gamingComputerPop
       smartphonePop
     ];

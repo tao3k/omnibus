@@ -40,17 +40,17 @@ local-nixos:
     nix build ./local#eval.nixos.expr.nixosConfiguration.config.system.build.toplevel --dry-run --no-link
 
 nixci-examples-packages:
-    (cd examples && {{ override-omnibus }} .. && nixci build && {{ remove-flake-lock }})
+    (cd examples && {{ override-omnibus }} .. --allow-dirty-locks && nixci build && {{ remove-flake-lock }})
 
 examples-simple:
-    nix flake lock --update-input omnibus ./examples/simple --override-input omnibus ./.
+    nix flake lock --update-input omnibus ./examples/simple --override-input omnibus ./. --allow-dirty-locks 
     (cd examples/simple && \
     nix build ./#nixosConfigurations.simple.config.system.build.toplevel \
                                 --dry-run --no-link \
     && {{ remove-flake-lock }})
 
 examples-system-manager:
-    nix flake lock --update-input omnibus ./examples/system-manager --override-input omnibus ./.
+    nix flake lock --update-input omnibus ./examples/system-manager --override-input omnibus ./. --allow-dirty-locks
     (cd examples/system-manager && \
     nix run 'github:numtide/system-manager' --refresh --extra-substituters https://cache.garnix.io \
     --extra-trusted-public-keys cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= \
@@ -58,12 +58,12 @@ examples-system-manager:
     && {{ remove-flake-lock }} && rm ./result)
 
 nixci-examples-python:
-    nix flake lock --update-input omnibus ./examples/python --override-input omnibus ./.
+    nix flake lock --update-input omnibus ./examples/python --override-input omnibus ./. --allow-dirty-locks
     (cd examples/python && nixci build && git rm flake.lock -f)
 
 nixci-jupyenv +quarto:
     # --execute-daemon-restart
-    nix flake lock --update-input omnibus ./examples/jupyenv+quarto --override-input omnibus ./.
+    nix flake lock --update-input omnibus ./examples/jupyenv+quarto --override-input omnibus ./. --allow-dirty-locks
     (cd examples/jupyenv+quarto && nixci build && \
     nix run .#quartoSimple -- render ./quarto \
     && {{ remove-flake-lock }})
