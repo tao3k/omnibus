@@ -39,7 +39,6 @@
 
     n2c.url = "github:nlewo/nix2container";
     n2c.inputs.nixpkgs.follows = "nixpkgs";
-    n2c.inputs.flake-utils.follows = "flake-utils";
 
     nix-snapshotter.url = "github:pdtpartners/nix-snapshotter";
     nix-snapshotter.inputs.nixpkgs.follows = "nixpkgs";
@@ -52,7 +51,7 @@
     arion.url = "github:hercules-ci/arion";
     arion.inputs.flake-parts.follows = "flake-parts";
 
-    nixago.url = "github:nix-community/nixago?ref=refs/pull/61/head";
+    nixago.url = "github:nix-community/nixago";
     nixago.inputs.nixpkgs.follows = "nixpkgs";
     nixago.inputs.nixago-exts.follows = "";
 
@@ -91,7 +90,6 @@
     nuenv.inputs.nixpkgs.follows = "nixpkgs";
 
     microvm.url = "github:astro/microvm.nix";
-    microvm.inputs.flake-utils.follows = "flake-utils";
 
     jupyenv.url = "github:tweag/jupyenv/?ref=refs/pull/524/head";
     jupyenv.inputs.flake-utils.follows = "flake-utils";
@@ -122,7 +120,6 @@
 
     nil.url = "github:oxalica/nil";
     nil.inputs.nixpkgs.follows = "nixpkgs";
-    nil.inputs.flake-utils.follows = "flake-utils";
 
     typst.url = "github:typst/typst";
     typst.inputs.nixpkgs.follows = "nixpkgs";

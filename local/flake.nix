@@ -27,10 +27,15 @@
   inputs.namaka.url = "github:nix-community/namaka";
 
   outputs =
-    { self, ... }@inputs:
+    { self, nixpkgs, ... }@inputs:
     let
       omnibus = import ../.;
       inherit (omnibus.flake.inputs) std;
+      supportedSystems = nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
       omnibusStd =
         (omnibus.pops.std {
           inputs.inputs = {
@@ -58,15 +63,19 @@
           src = ../tests;
           inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.omnibus.loaderInputs {
             inherit inputs;
+            system = "aarch64-darwin";
             debug = true;
           };
         };
-        checks = inputs.namaka.lib.load {
-          src = ../tests;
-          inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.omnibus.loaderInputs {
-            inherit inputs;
-            debug = false;
-          };
-        };
+        checks = supportedSystems (
+          system:
+          inputs.namaka.lib.load {
+            src = ../tests;
+            inputs = inputs.nixpkgs.lib.recursiveUpdate omnibus.lib.omnibus.loaderInputs {
+              inherit inputs system;
+              debug = false;
+            };
+          }
+        );
       };
 }

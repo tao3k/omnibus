@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ omnibus }:
+{ omnibus, system }:
 let
   inherit (omnibus.flake.inputs) nixpkgs;
 in
@@ -11,7 +11,7 @@ in
   load = {
     src = ./__fixture;
     inputs = {
-      inputs.nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
+      inputs.nixpkgs = nixpkgs.legacyPackages.${system};
     };
   };
 }).exports.default

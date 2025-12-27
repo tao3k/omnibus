@@ -26,7 +26,9 @@ let
             config._module.freeformType = l.types.unspecified;
           }
         ];
-
+        # specialArgs = {
+        #   modulesPath = builtins.toString "${locatedConfig.bee.nixpkgs}/nixos/modules";
+        # };
       };
 
       failedAsserts = map (x: x.message) (
