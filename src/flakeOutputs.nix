@@ -72,6 +72,20 @@ in
         homeModules
         ;
     };
+
+    learn = supportedSystems (
+      system:
+      (super.pops.load.addLoadExtender {
+        load = {
+          src = projectRoot + "/units/learn";
+          inputs = {
+            inputs = {
+              nixpkgs = super.pops.flake.inputs.nixpkgs.legacyPackages.${system};
+            };
+          };
+        };
+      }).exports.default
+    );
     darwin = {
       inherit (outputs) darwinProfiles darwinModules;
     };

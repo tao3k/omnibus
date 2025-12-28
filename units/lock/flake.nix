@@ -78,7 +78,7 @@
 
     nixpkgs-nodejs.url = "github:NixOS/nixpkgs/?ref=refs/pull/400828/head";
     std.url = "github:divnix/std";
-    std.inputs.nixpkgs.follows = "nixpkgs-nodejs";
+    std.inputs.nixpkgs.follows = "nixpkgs";
     std.inputs.nixago.follows = "nixago";
     std.inputs.devshell.follows = "devshell";
     std.inputs.microvm.follows = "microvm";

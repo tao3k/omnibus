@@ -44,14 +44,13 @@ in
       }).typos;
   };
   default = {
-    packages =
-      [
-        nixpkgs.jq
-        nixpkgs.treefmt
-      ]
-      ++ (map (x: git-hooks.packages.${x}) (
-        lib.attrNames (removeAttrs self.git-hooks [ "__functor" ])
-      ));
+    packages = [
+      nixpkgs.jq
+      nixpkgs.treefmt
+    ]
+    ++ (map (x: git-hooks.packages.${x}) (
+      lib.attrNames (removeAttrs self.git-hooks [ "__functor" ])
+    ));
     data = {
       commit-msg = {
         commands = {
@@ -71,8 +70,11 @@ in
         commands = {
           hunspell = {
             run = "${
-              (nixpkgs.hunspellWithDicts [ nixpkgs.hunspellDicts.en-us ])
-            }/bin/hunspell -l {staged_files}";
+              (nixpkgs.hunspell.withDicts (dicts: [
+                dicts.en-us
+              ]))
+            }/bin/hunspell -l {staged_files}
+            ";
             glob = "*.{txt,md,html,xml,rst,tex,odf,org}"; # spellchecker:disable-line
             skip = [
               "merge"
@@ -81,7 +83,7 @@ in
           };
           typos = {
             # run = "typos --format brief {staged_files}";
-            run = self.git-hooks.typos.entry + "  {staged_files}";
+            run = self.git-hooks.typos.entry + "{staged_files}";
             skip = [
               "merge"
               "rebase"
@@ -98,9 +100,11 @@ in
       };
     };
   };
+
   languagetool-code-comments = {
     packages = [ languagetool-code-comments ];
   };
+
   just = {
     packages = [ nixpkgs.just ];
     data = {
@@ -108,6 +112,99 @@ in
         commands = {
           justfmt = {
             run = "just --fmt --unstable";
+            skip = [
+              "merge"
+              "rebase"
+            ];
+          };
+        };
+      };
+    };
+  };
+
+  nickel = {
+    packages = [ nixpkgs.nickel ];
+    data = {
+      pre-commit = {
+        commands = {
+          nickel = {
+            glob = "*.ncl";
+            exclude = [ "*.schema.ncl" ];
+            run = "nickel format {staged_files}";
+            skip = [
+              "merge"
+              "rebase"
+            ];
+          };
+        };
+      };
+    };
+  };
+
+  nix = {
+    packages = [ nixpkgs.nixfmt-rfc-style ];
+    data = {
+      pre-commit = {
+        commands = {
+          nixfmt = {
+            glob = "*.nix";
+            exclude = [ "generated.nix" ];
+            run = "nixfmt --width=80 {staged_files}";
+            skip = [
+              "merge"
+              "rebase"
+            ];
+          };
+        };
+      };
+    };
+  };
+
+  prettier = {
+    packages = [ nixpkgs.nodePackages.prettier ];
+    data = {
+      pre-commit = {
+        commands = {
+          prettier = {
+            glob = "*.{css,html,js,json,jsx,md,mdx,scss,ts,yaml}";
+            exclude = [ "generated.json" ];
+            run = "prettier --write {staged_files}";
+            skip = [
+              "merge"
+              "rebase"
+            ];
+          };
+        };
+      };
+    };
+  };
+
+  shell = {
+    packages = [ nixpkgs.shfmt ];
+    data = {
+      pre-commit = {
+        commands = {
+          shfmt = {
+            glob = "*.{sh,bash}";
+            run = "shfmt -i 2 -s -w {staged_files}";
+            skip = [
+              "merge"
+              "rebase"
+            ];
+          };
+        };
+      };
+    };
+  };
+
+  topiary = {
+    packages = [ nixpkgs.topiary ];
+    data = {
+      pre-commit = {
+        commands = {
+          topiary = {
+            glob = "*.toml";
+            run = "topiary format {staged_files}";
             skip = [
               "merge"
               "rebase"

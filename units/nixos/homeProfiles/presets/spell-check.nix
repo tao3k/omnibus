@@ -21,7 +21,7 @@ in
       en_US:${ordering}
     '';
   home.packages = with pkgs; [
-    (hunspellWithDicts [ hunspellDicts.en-us ])
+    (hunspell.withDicts [ hunspellDicts.en-us ])
     (aspellWithDicts (
       dicts: with dicts; [
         en
