@@ -6,8 +6,6 @@
 { inputs }:
 {
   default = {
-    output = "cog.toml";
-    commands = [ { package = inputs.nixpkgs.cocogitto; } ];
     data = {
       tag_prefix = "v";
       branch_whitelist = [
