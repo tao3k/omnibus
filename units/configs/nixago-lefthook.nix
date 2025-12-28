@@ -1,16 +1,12 @@
 {
   inputs,
   omnibus,
-  super,
-  self,
   lib,
 }:
 let
   inherit
     (omnibus.errors.requiredInputsLazily inputs "omnibus.pops.configs" [
       "nixpkgs"
-      "nur"
-      "git-hooks"
     ])
     nixpkgs
     ;
