@@ -49,7 +49,6 @@ in
   default = {
     packages = [
       nixpkgs.jq
-      nixpkgs.treefmt
     ]
     ++ self.git-hooks.settings.enabledPackages;
     data = {

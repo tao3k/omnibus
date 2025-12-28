@@ -5,7 +5,8 @@
 
 let
   inherit (inputs) nixpkgs;
-  inputs' = (inputs.omnibus.pops.flake.setSystem nixpkgs.system).inputs;
+  inputs' =
+    (inputs.omnibus.pops.flake.setSystem nixpkgs.stdenv.hostPlatform.system).inputs;
 in
 {
   scripts = {
@@ -22,7 +23,6 @@ in
         inputs = {
           inherit (inputs') nixfmt git-hooks topiary;
           inherit (inputs) std nixpkgs;
-          # nixpkgs = import inputs'.nixos-24_11 { system = nixpkgs.system; };
         };
       };
     };
