@@ -25,32 +25,33 @@ let
     (nixpkgs.extend nur.overlay)
     .nur.repos.dustinblackman.languagetool-code-comments;
 
-  hooksFn =
+  mkHooks =
     cfg:
     (super.git-hooks {
       src = ./.;
-      settings = cfg;
-    }).hooks;
+      imports = [ cfg ];
+    }).config;
 in
 {
   git-hooks = {
-    __functor = _: settings: hooksFn settings;
-    typos =
-      (hooksFn {
-        typos = {
+    __functor = _: settings: mkHooks settings;
+    settings = (
+      mkHooks {
+        hooks.typos.enable = true;
+        hooks.typos.settings = {
           format = "brief";
           locale = "en";
         };
-      }).typos;
+      }
+    );
   };
+
   default = {
     packages = [
       nixpkgs.jq
       nixpkgs.treefmt
     ]
-    ++ (map (x: git-hooks.packages.${x}) (
-      lib.attrNames (removeAttrs self.git-hooks [ "__functor" ])
-    ));
+    ++ self.git-hooks.settings.enabledPackages;
     data = {
       commit-msg = {
         commands = {
@@ -83,7 +84,7 @@ in
           };
           typos = {
             # run = "typos --format brief {staged_files}";
-            run = self.git-hooks.typos.entry + "{staged_files}";
+            run = self.git-hooks.settings.hooks.typos.entry + " {staged_files}";
             skip = [
               "merge"
               "rebase"

@@ -13,47 +13,48 @@ let
     git-hooks
     ;
   inherit (nixpkgs) lib;
+
   builtinStuff = {
-    tools = git-hooks.packages;
+    tools = git-hooks.packages.${nixpkgs.stdenv.hostPlatform.system};
   };
   gitignore-nix-src = git-hooks.inputs.gitignore;
 in
 {
   src,
-  hooks ? { },
-  excludes ? [ ],
+  imports ? [ ],
   tools ? { },
-  settings ? { },
-  isFlakes ? true,
-  default_stages ? [ "commit" ],
-}:
+  isFlakes ? false,
+  ...
+}@options:
 let
+  moduleOptions = builtins.removeAttrs options [
+    "imports"
+    "tools"
+  ];
   project = lib.evalModules {
     modules = [
+
       (git-hooks + /modules/all-modules.nix)
       {
-        config =
+        config = lib.mkMerge [
+          moduleOptions
           {
-            _module.args.pkgs = nixpkgs;
-            _module.args.gitignore-nix-src = gitignore-nix-src;
-            inherit
-              hooks
-              excludes
-              settings
-              default_stages
-              ;
-            tools = builtinStuff.tools // tools;
-            package = nixpkgs.pre-commit;
+            _module.args = {
+              inherit gitignore-nix-src;
+              pkgs = nixpkgs;
+            };
+            tools = lib.mkDefault (builtinStuff.tools // tools);
+            rootSrc = if isFlakes then src else gitignore-nix-src.lib.gitignoreSource src;
           }
-          // (
-            if isFlakes then
-              { rootSrc = src; }
-            else
-              { rootSrc = gitignore-nix-src.lib.gitignoreSource src; }
-          );
+        ];
       }
-    ];
+    ]
+    ++ imports;
   };
   inherit (project.config) installationScript;
 in
-project.config
+project.config.run
+// {
+  inherit (project) config;
+  inherit (project.config) enabledPackages shellHook;
+}
