@@ -142,7 +142,7 @@ in
   };
 
   nix = {
-    packages = [ nixpkgs.nixfmt-rfc-style ];
+    packages = [ nixpkgs.nixfmt ];
     data = {
       pre-commit = {
         commands = {

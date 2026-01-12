@@ -31,7 +31,7 @@ in
       cell.configs.treefmt.default
     ];
 
-    devshell.startup.pog.text = '''';
+    devshell.startup.pog.text = "";
 
     packages = [
       nixpkgs.d2
@@ -40,6 +40,7 @@ in
       nixpkgs.tree
       nixpkgs.poetry
       nixpkgs.tectonic
+      nixpkgs.treefmt
 
       nixpkgs.reuse
       nixpkgs.nixci
