@@ -26,6 +26,7 @@ in
   packages = [
     pkgs.nixtamal
     pkgs.namaka
+    pkgs.just
   ]
   ++ lib.flatten (map (g: g.__passthru.packages) generatedHooks);
 
