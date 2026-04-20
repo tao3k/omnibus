@@ -7,17 +7,22 @@
 dir: pops: ext:
 let
   list = lib.attrNames (lib.readDir dir);
-  getDirs = host: lib.attrNames (lib.readDir (dir + "/${host}"));
   processPops =
     name:
+    let
+      /**
+        Resolve the available pop directories for this host once and reuse them
+        across every pop in the attrset.
+      */
+      dirs = lib.attrNames (lib.readDir (dir + "/${name}"));
+    in
     lib.filterAttrs (_n: v: v != { }) (
       lib.mapAttrs (
         n: v:
         let
-          dirs = getDirs name;
-          src = (dir + "/${name}/${n}");
+          src = dir + "/${name}/${n}";
         in
-        if (v ? addLoadExtender && (lib.pathExists src) && (lib.elem n dirs)) then
+        if (v ? addLoadExtender && lib.elem n dirs) then
           if lib.isFunction ext then
             ext v
           else if lib.isAttrs ext then

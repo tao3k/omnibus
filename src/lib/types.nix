@@ -3,9 +3,12 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ yants, self }:
+{ yants, ... }:
 with yants;
 {
+  /**
+    Structured suite profile used by omnibus suite helpers.
+  */
   suiteProfile = struct "profile" {
     keywords = list string;
     knowledges = list string;

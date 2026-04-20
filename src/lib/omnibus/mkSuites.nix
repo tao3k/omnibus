@@ -6,6 +6,12 @@
 { lib, super }:
 attrs:
 let
-  fun = f: lib.mapAttrs (_: v: if lib.isList v then lib.flatten (f v) else v);
+  /**
+    Apply a list transformer to suite-like attrs and leave non-list metadata
+    untouched.
+  */
+  mapSuiteLists =
+    transform:
+    lib.mapAttrs (_: value: if lib.isList value then lib.flatten (transform value) else value);
 in
-fun super.concatProfiles attrs // { meta = fun lib.id attrs; }
+mapSuiteLists super.concatProfiles attrs // { meta = mapSuiteLists lib.id attrs; }

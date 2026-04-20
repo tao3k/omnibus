@@ -1,7 +1,87 @@
 #pretty
 {
-  inputsToPaths = [
-    "/nix/store/w065s95yy5k456kwa1h6bg9mc46gy89n-tracing-log-0.2.0"
-    "/nix/store/w065s95yy5k456kwa1h6bg9mc46gy89n-tracing-log-0.3.0"
+  addLoadToPopsShape = {
+    hostATest = {
+      host = "host-a";
+      popName = "test";
+    };
+    hostBKeep = 1;
+    hostNames = [
+      "host-a"
+      "host-b"
+    ];
+  };
+  cleanSourceTopDefaultEntries = [ ];
+  composeOverlaysType = "lambda";
+  concatProfiles = [
+    "a"
+    [
+      "b"
+      "c"
+    ]
   ];
+  filterDerivationsShape = {
+    nestedChildNames = [
+      "package"
+    ];
+    nestedChildPackageIsDerivation = true;
+    nestedNames = [
+      "child"
+      "package"
+    ];
+    nestedPackageIsDerivation = true;
+    packageIsDerivation = true;
+    rootNames = [
+      "nested"
+      "package"
+    ];
+  };
+  genAttrsPrime = {
+    a = "a-value";
+    b = "b-value";
+  };
+  inputsSourceNames = [
+    "nixpkgs"
+    "disko"
+  ];
+  inputsToPaths = [
+    "/nix/store/w065s95yy5k456kwa1h6bg9mc46gy89n-tracing-log-0.3.0"
+    "/nix/store/w065s95yy5k456kwa1h6bg9mc46gy89n-tracing-log-0.2.0"
+    "/nix/store/nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn-deeper-source"
+  ];
+  mapPopsExportsPrime = {
+    defaultValue = 1;
+    extraValue = 2;
+    leafNames = [
+      "default"
+      "extra"
+    ];
+  };
+  mkSuitesShape = {
+    metaSuiteProfiles = [
+      "b"
+      "c"
+    ];
+    passthru = 1;
+    suite = [
+      "a"
+      "b"
+      "c"
+    ];
+  };
+  overlayLayoutNames = [
+    "test1"
+    "test2"
+  ];
+  recursiveAttrValuesDerivation = {
+    isDerivation = true;
+    length = 1;
+  };
+  stripAttrsForHydra = {
+    keep = 1;
+    nested = {
+      keep = 1;
+    };
+  };
+  writeShellApplicationLiteralRuntimeEnvDefaults = true;
 }

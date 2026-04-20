@@ -1,9 +1,20 @@
 # SPDX-FileCopyrightText: 2023 The omnibus Authors
 # SPDX-FileCopyrightText: 2024 The omnibus Authors
+# SPDX-FileCopyrightText: 2026 The omnibus Authors
 #
 # SPDX-License-Identifier: MIT
 
-{ inputs }:
+let
+  /**
+    Inline a versioned shell hook into `cog.toml` while keeping nixago as the
+    single place that renders repository config.
+  */
+  shellHook = path: ''
+    sh -eu <<'SH'
+    ${builtins.readFile path}
+    SH
+  '';
+in
 {
   default = {
     data = {
@@ -12,39 +23,24 @@
         "main"
         "release/**"
       ];
+      ignore_fixup_commits = true;
       ignore_merge_commits = true;
+      /**
+        Keep the hook bodies in versioned shell files, but still inline them
+        into `cog.toml` so nixago remains the single source of truth.
+      */
       pre_bump_hooks = [
-        "echo {{version}} > ./VERSION"
-        ''
-          branch="$(echo "release/{{version}}" | sed 's/\.[^.]*$//')"
-          if [ `git rev-parse --verify $branch 2>/dev/null` ]
-          then
-            git switch -m "$branch" || exit 1
-            git merge main
-          else
-            git switch -c "$branch" || exit 1
-          fi
-        ''
+        (shellHook ./cog-pre-bump-release.sh)
       ];
       post_bump_hooks = [
-        ''
-          branch="$(echo "release/{{version}}" | sed 's/\.[^.]*$//')"
-          git push --set-upstream origin "$branch"
-          git push origin v{{version}}
-
-          git switch main
-          git merge "$branch" --no-commit --no-ff
-          echo {{version+minor-dev}} > ./VERSION
-          git add VERSION
-          git commit -m "chore: sync with release"
-          git push origin main
-        ''
-        "cog -q changelog --at v{{version}}"
+        (shellHook ./cog-post-bump-release.sh)
       ];
       changelog = {
         path = "CHANGELOG.md";
         template = "remote";
         remote = "github.com";
+        owner = "tao3k";
+        repository = "omnibus";
       };
     };
   };

@@ -2,4 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ ... }: values: f: builtins.listToAttrs (map f values)
+{ ... }:
+values: f:
+/**
+  Like `lib.genAttrs`, but the mapper returns complete `{ name, value }` pairs.
+*/
+builtins.listToAttrs (map f values)

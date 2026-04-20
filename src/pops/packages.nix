@@ -2,7 +2,6 @@
 #
 # SPDX-License-Identifier: MIT
 
-# [[id:f7adb0ad-2cc1-4723-a796-bf608682456a][No heading:1]]
 {
   super,
   root,
@@ -11,12 +10,18 @@
   lib,
   inputs,
 }:
+let
+  /**
+    Package loaders often use nested `default.nix` entrypoints, so collapse
+    those directories before exporting the package scope.
+  */
+  flattenDefaultDir = _cursor: dir: if dir ? default then dir.default else dir;
+in
 (super.load.withInitLoad {
   loader =
     __inputs__: path:
-    #  without the scope loader
     (__inputs__.inputs.nixpkgs.extend (_: _: { inherit __inputs__; })).callPackage path { };
-  transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
+  transformer = [ flattenDefaultDir ];
 }).addExporters
   [
     (POP.extendPop flops.haumea.pops.exporter (
@@ -31,18 +36,40 @@
               ;
             inherit (nixpkgs) newScope;
             inherit (nixpkgs.lib) makeScope;
+            /**
+              Reuse the same scoped `callPackage` wiring in both the main
+              package loader and nested by-loader entrypoints.
+            */
+            callPackageWithScope =
+              selfScope: inputMapper: __inputs__: path:
+              (selfScope.overrideScope (_: _: inputMapper __inputs__)).callPackage path { };
+            /**
+              Feed python package overlays from the optional by-loader scope
+              back into both `python3` and `python3Packages` entrypoints.
+            */
+            python3PackagesOverlay =
+              scopeSuper: pythonSelf: _:
+              if (scopeSuper ? by-loader && scopeSuper.by-loader ? python3Packages) then
+                scopeSuper.by-loader.python3Packages.packages pythonSelf
+              else
+                { };
           in
           {
             derivations = inputs.self.flake.inputs.flake-utils.lib.flattenTree (
               self.exports.packages // self.exports.packages.by-loader
             );
 
+            /**
+              Build a package pop that evaluates units with a caller-provided
+              scope, which is later used to assemble the public package scope.
+            */
             scopePackagesPop =
               selfScope:
               (self.layouts.self.addLoadExtender {
                 load = {
-                  loader =
-                    __inputs__: path: (selfScope.overrideScope (_: _: { inherit __inputs__; })).callPackage path { };
+                  loader = callPackageWithScope selfScope (__inputs__: {
+                    inherit __inputs__;
+                  });
                   inputs = { };
                 };
               });
@@ -51,17 +78,14 @@
               (makeScope newScope (selfScope: (self.exports.scopePackagesPop selfScope).exports.default))
               .overrideScope
                 (
-                  selfScope: _:
-                  let
-                    checkPath =
-                      pathSuffix: if lib.pathExists (self.layouts.self.load.src + pathSuffix) then true else false;
-                  in
-                  {
-                    by-loader = lib.optionalAttrs (checkPath "/by-loader/python3Packages") {
-                      python3Packages = (selfScope.callPackage lib.omnibus.mkPython3PackagesWithScope { }).overrideScope (
-                        _: _: { recurseForDerivations = true; }
-                      );
-                    };
+                  selfScope: _: {
+                    by-loader =
+                      lib.optionalAttrs (lib.pathExists (self.layouts.self.load.src + "/by-loader/python3Packages"))
+                        {
+                          python3Packages = (selfScope.callPackage lib.omnibus.mkPython3PackagesWithScope { }).overrideScope (
+                            _: _: { recurseForDerivations = true; }
+                          );
+                        };
                     __inputs__ = {
                       __load__ = self.layouts.self.load;
                       callPackagesWithLoader =
@@ -69,13 +93,16 @@
                         assert lib.assertMsg (!(lib.readDir src) ? "default.nix") ''
                           The top-level of ${src} must not contain a file named "default.nix"
                         '';
+                        /**
+                          Nested by-loader trees should see the original load
+                          inputs, not only the transient scoped call inputs.
+                        */
                         (super.load {
-                          loader =
-                            _: path:
-                            (selfScope.overrideScope (_: _: { __inputs__ = self.layouts.self.load.inputs; })).callPackage path
-                              { };
+                          loader = callPackageWithScope selfScope (_: {
+                            __inputs__ = self.layouts.self.load.inputs;
+                          });
                           inherit src;
-                          transformer = [ (_cursor: dir: if dir ? default then dir.default else dir) ];
+                          transformer = [ flattenDefaultDir ];
                         }).exports.default;
                     };
                   }
@@ -94,20 +121,12 @@
                     _: scopeSuper: {
                       python3 = prev.python3.override (old: {
                         packageOverrides = prev.lib.composeExtensions (old.packageOverrides or (_: _: { })) (
-                          pythonSelf: _:
-                          if (scopeSuper ? by-loader && scopeSuper.by-loader ? python3Packages) then
-                            scopeSuper.by-loader.python3Packages.packages pythonSelf
-                          else
-                            { }
+                          python3PackagesOverlay scopeSuper
                         );
                       });
                       python3Packages = prev.python3Packages.override (old: {
                         overrides = prev.lib.composeExtensions (old.overrides or (_: _: { })) (
-                          pythonSelf: _:
-                          if (scopeSuper ? by-loader && scopeSuper.by-loader ? python3Packages) then
-                            scopeSuper.by-loader.python3Packages.packages pythonSelf
-                          else
-                            { }
+                          python3PackagesOverlay scopeSuper
                         );
                       });
                     }
@@ -119,4 +138,3 @@
       }
     ))
   ]
-# No heading:1 ends here

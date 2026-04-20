@@ -5,18 +5,15 @@
 
 {
   flops,
-  haumea,
+  lib,
   super,
   POP,
-  flops,
 }:
 super.load.addExporters [
   (POP.extendPop flops.haumea.pops.exporter (
     self: _super: {
       exports = {
-        composeOverlays = lib.composeManyExtensions (
-          lib.recursiveAttrValues self.layouts.default
-        );
+        composeOverlays = lib.composeManyExtensions (lib.recursiveAttrValues self.layouts.default);
       };
     }
   ))

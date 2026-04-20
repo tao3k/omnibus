@@ -6,17 +6,15 @@
 { lib }:
 
 let
-  # Recursive function to collect all attribute values
+  /**
+    Collect the leaf values of a nested attrset.
+
+    Derivations are treated as leaves instead of descending into their large
+    internal attribute sets, which keeps callers focused on the exported values
+    they actually care about.
+  */
   recursiveAttrValues =
     set:
-    lib.flatten (
-      lib.mapAttrsToList (
-        _name: value:
-        if lib.isAttrs value && !(lib.isFunction value) then
-          recursiveAttrValues value
-        else
-          [ value ]
-      ) set
-    );
+    lib.mapAttrsToListRecursiveCond (_path: value: !(lib.isDerivation value)) (_path: value: value) set;
 in
 recursiveAttrValues

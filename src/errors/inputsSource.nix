@@ -7,9 +7,13 @@
 list:
 let
   sources = (import ../../units/lock/flake.nix).inputs;
-  listSources = map (x: {
-    name = x;
-    url = sources.${x}.url;
-  }) (lib.attrNames sources);
+  /**
+    Resolve only the requested lockfile inputs and preserve the caller's
+    requested order so diagnostics stay aligned with the missing-input list.
+  */
+  toSource = name: {
+    inherit name;
+    url = sources.${name}.url;
+  };
 in
-lib.filter (pair: lib.elem pair.name list) listSources
+map toSource (lib.filter (name: lib.hasAttr name sources) list)

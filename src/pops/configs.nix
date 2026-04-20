@@ -29,19 +29,23 @@ let
     };
   };
 
+  /**
+    Apply a nixago constructor across a nested layout tree until we reach leaf
+    nodes that carry a `data` payload.
+  */
   applyRecursive =
     mkFunc: layoutData:
-    lib.mapAttrsRecursiveCond (as: !(lib.isAttrs as && as ? data)) # Condition to check
-      (_n: v: mkFunc v) # Function to apply
-      layoutData;
+    lib.mapAttrsRecursiveCond (as: !(lib.isAttrs as && as ? data)) (_n: v: mkFunc v) layoutData;
 
-  # Function to process each layout
+  /**
+    Turn each std config layout into its `mkNixago`-derived output tree.
+  */
   processStdNixagoLayouts =
     data: cfgName:
     applyRecursive (
       layoutData:
       if (lib.hasAttr cfgName cfg) then
-        # wait upstram to fix the treefmt version
+        # Keep treefmt pinned to the std override until upstream catches up.
         mkNixago cfg'.${cfgName} layoutData
       else
         throw "Unknown layout: ${cfgName}"

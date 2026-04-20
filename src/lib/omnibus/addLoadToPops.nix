@@ -5,11 +5,16 @@
 
 { lib }:
 list: pops: load:
-lib.listToAttrs (
-  map (name: {
-    inherit name;
-    value = lib.mapAttrs (
-      n: v: if v ? addLoadExtender then v.addLoadExtender (load name n v) else v
+let
+  /**
+    Extend every pop for a given host name, leaving values without
+    `addLoadExtender` untouched.
+  */
+  extendPopsForHost =
+    hostName:
+    lib.mapAttrs (
+      popName: value:
+      if value ? addLoadExtender then value.addLoadExtender (load hostName popName value) else value
     ) pops;
-  }) list
-)
+in
+lib.genAttrs list extendPopsForHost

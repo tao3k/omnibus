@@ -17,6 +17,23 @@ let
     "aarch64-linux"
     "aarch64-darwin"
   ];
+  /**
+    Keep the system-specific nixpkgs lookup in one place so every exported
+    per-system surface shares the same resolution path.
+  */
+  systemNixpkgs = system: super.pops.flake.inputs.nixpkgs.legacyPackages.${system};
+  /**
+    Most per-system exports differ only by the load selectors and exported
+    surface name, so centralize the `addLoadExtender` pattern here.
+  */
+  perSystemPopExport =
+    pop: exportName: loadFn:
+    supportedSystems (
+      system:
+      (pop.addLoadExtender {
+        load = loadFn system;
+      }).exports.${exportName}
+    );
 in
 {
   inherit (super) load;
@@ -35,31 +52,23 @@ in
     systemManagerProfiles
     ;
 
-  scripts = supportedSystems (
-    system:
-    (super.pops.scripts.addLoadExtender {
-      load.inputs = {
-        inputs = {
-          nixpkgs = super.pops.flake.inputs.nixpkgs.legacyPackages.${system};
-          inherit (super.pops.flake.inputs) makesSrc;
-        };
+  scripts = perSystemPopExport super.pops.scripts "default" (system: {
+    inputs = {
+      inputs = {
+        nixpkgs = systemNixpkgs system;
+        inherit (super.pops.flake.inputs) makesSrc;
       };
-    }).exports.default
-  );
+    };
+  });
 
-  packages = supportedSystems (
-    system:
-    (super.pops.packages.addLoadExtender {
-      load = {
-        src = projectRoot + "/units/packages";
-        inputs = {
-          inputs = {
-            nixpkgs = super.pops.flake.inputs.nixpkgs.legacyPackages.${system};
-          };
-        };
+  packages = perSystemPopExport super.pops.packages "derivations" (system: {
+    src = projectRoot + "/units/packages";
+    inputs = {
+      inputs = {
+        nixpkgs = systemNixpkgs system;
       };
-    }).exports.derivations
-  );
+    };
+  });
 
   units = {
     inherit (outputs) configs std jupyenv;
@@ -73,19 +82,14 @@ in
         ;
     };
 
-    learn = supportedSystems (
-      system:
-      (super.pops.load.addLoadExtender {
-        load = {
-          src = projectRoot + "/units/learn";
-          inputs = {
-            inputs = {
-              nixpkgs = super.pops.flake.inputs.nixpkgs.legacyPackages.${system};
-            };
-          };
+    learn = perSystemPopExport super.pops.load "default" (system: {
+      src = projectRoot + "/units/learn";
+      inputs = {
+        inputs = {
+          nixpkgs = systemNixpkgs system;
         };
-      }).exports.default
-    );
+      };
+    });
     darwin = {
       inherit (outputs) darwinProfiles darwinModules;
     };
@@ -103,6 +107,6 @@ in
   dotfiles = projectRoot + "/dotfiles";
 
   # aliases
-  flakeModules = outputs.flake-parts.profiles;
-  flakeProfiles = outputs.flake-parts.modules;
+  flakeModules = outputs.flake-parts.modules;
+  flakeProfiles = outputs.flake-parts.profiles;
 }

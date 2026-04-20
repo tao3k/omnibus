@@ -5,22 +5,18 @@
 
 { lib, super }:
 pred: set:
-lib.listToAttrs (
-  lib.concatMap (
-    name:
-    let
-      v = set.${name};
-    in
-    if pred name v then
-      [
-        (lib.nameValuePair name (
-          if lib.isAttrs v && !lib.isDerivation v then
-            super.filterAttrsOnlyRecursive pred v
-          else
-            v
-        ))
-      ]
-    else
-      [ ]
-  ) (lib.attrNames set)
-)
+let
+  /**
+    Filter the current attrset first, then recurse only into the surviving
+    non-derivation attrsets. This keeps the recursive shape obvious and avoids
+    rebuilding the attrset through `concatMap`.
+  */
+  filtered = lib.filterAttrs pred set;
+in
+lib.mapAttrs (
+  _name: value:
+  if lib.isAttrs value && !lib.isDerivation value then
+    super.filterAttrsOnlyRecursive pred value
+  else
+    value
+) filtered

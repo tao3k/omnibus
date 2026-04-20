@@ -14,6 +14,13 @@
   root,
   ...
 }:
+let
+  /**
+    Reuse the flake input set in one place so downstream helpers can pull
+    shared libraries without repeating the long lookup chain.
+  */
+  flakeInputs = root.pops.flake.inputs;
+in
 {
   inherit
     lib
@@ -24,7 +31,7 @@
     projectRoot
     inputs
     ;
-  nix-filter = root.pops.flake.inputs.nix-filter.lib;
-  nix-std = root.pops.flake.inputs.nix-std.lib;
+  nix-filter = flakeInputs.nix-filter.lib;
+  nix-std = flakeInputs.nix-std.lib;
   omnibus = inputs.self;
 }

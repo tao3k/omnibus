@@ -6,18 +6,24 @@
 { lib }:
 pops: load:
 let
-  # Condition to check if an attribute set contains 'addLoadExtender'
+  /**
+    Detect pop nodes that can absorb an additional load extender.
+  */
   hasAddLoadExtender =
-    attrSet:
-    (
-      !(lib.isDerivation attrSet)
-      && lib.isAttrs attrSet
-      && attrSet ? "addLoadExtender"
-    );
+    attrSet: lib.isAttrs attrSet && !(lib.isDerivation attrSet) && attrSet ? "addLoadExtender";
 
-  # Function to process an attribute
+  /**
+    Recurse only into ordinary attrsets. Derivations are treated as leaves so
+    mapping a pop tree does not traverse large package metadata.
+  */
+  shouldRecurse =
+    attrSet: lib.isAttrs attrSet && !(lib.isDerivation attrSet) && !(hasAddLoadExtender attrSet);
+
+  /**
+    Apply the caller-provided load extender whenever a pop exposes
+    `addLoadExtender`.
+  */
   processAttr =
-    n: v: if hasAddLoadExtender v then v.addLoadExtender (load n v) else v;
+    path: value: if hasAddLoadExtender value then value.addLoadExtender (load path value) else value;
 in
-
-lib.mapAttrsRecursiveCond (as: !(hasAddLoadExtender as)) processAttr pops
+lib.mapAttrsRecursiveCond shouldRecurse processAttr pops

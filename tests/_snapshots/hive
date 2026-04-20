@@ -1,2 +1,9 @@
 #pretty
-{ }
+{
+  defaultHivePops = [
+    "nixosModules"
+    "nixosProfiles"
+    "omnibus"
+  ];
+  mappedHiveValue = 1;
+}

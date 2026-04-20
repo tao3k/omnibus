@@ -6,6 +6,10 @@
 { lib }:
 let
   inherit (lib.types) suiteProfile;
-  v = x: if lib.isAttrs x then (lib.types.suiteProfile x).profiles else x;
+  /**
+    Suite profile attrsets contribute their `profiles` payload, while plain
+    values pass through unchanged.
+  */
+  resolveProfile = value: if lib.isAttrs value then (suiteProfile value).profiles else value;
 in
-lib.concatMap (x: [ (v x) ])
+map resolveProfile

@@ -7,4 +7,7 @@
 let
   load = root.pops.load;
 in
+/**
+  Convenience wrapper that exposes only the default export of `root.pops.load`.
+*/
 loadCfg: (load loadCfg).exports.default

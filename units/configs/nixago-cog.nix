@@ -1,7 +1,6 @@
 {
   inputs,
   omnibus,
-  lib,
 }:
 let
   inherit
@@ -15,7 +14,9 @@ in
 {
   data = { };
   output = "cog.toml";
-  packages = [ nixpkgs.cocogitto ];
+  packages = [
+    nixpkgs.cocogitto
+  ];
   commands = [
     {
       package = nixpkgs.cocogitto;

@@ -6,32 +6,29 @@
 { lib, super }:
 inputs': object: listNames:
 let
-  notFoundInputs = (
-    lib.filter (pair: pair != true) (
-      map (v: if (lib.hasAttr v inputs') then true else v) listNames
-    )
-  );
-  isFound = (lib.length notFoundInputs == 0);
-  msg = (
-    lib.concatMapStringsSep "\n         " (
-      { name, url }:
-      ''
-        # please get the input from `${name}.url = "${url}"`
-                 ${name} = inputs.${name};
-      ''
-    ) (super.inputsSource notFoundInputs)
-  );
+  /**
+    Keep the missing-input list in the same order as the caller supplied it so
+    the guidance reads naturally for the requested inputs.
+  */
+  notFoundInputs = lib.filter (name: !(lib.hasAttr name inputs')) listNames;
+  msg = lib.concatMapStringsSep "\n         " (
+    { name, url }:
+    ''
+      # please get the input from `${name}.url = "${url}"`
+               ${name} = inputs.${name};
+    ''
+  ) (super.inputsSource notFoundInputs);
 
-  noSysNixpkgs =
-    if (lib.elem "nixpkgs" listNames && inputs' ? nixpkgs) then
-      if (lib.hasAttr "path" inputs'.nixpkgs) then true else false
-    else if (lib.elem "nixpkgs" listNames && !inputs' ? nixpkgs) then
-      false
-    else
-      true;
+  /**
+    `requiredInputs` expects a nixpkgs value that exposes `path` so downstream
+    code can reuse either `legacyPackages.${system}` or `import nixpkgs.path`.
+  */
+  hasResolvedNixpkgs =
+    !(lib.elem "nixpkgs" listNames)
+    || (inputs' ? nixpkgs && lib.isAttrs inputs'.nixpkgs && inputs'.nixpkgs ? path);
 in
-assert lib.assertMsg isFound ''
-  please, add the these inputs into
+assert lib.assertMsg (notFoundInputs == [ ]) ''
+  please add these inputs to
 
       ${object}.addLoadExtender {
         load.inputs =
@@ -42,8 +39,8 @@ assert lib.assertMsg isFound ''
          };
        };
 '';
-assert lib.assertMsg noSysNixpkgs ''
-  please, add the following inputs into
+assert lib.assertMsg hasResolvedNixpkgs ''
+  please add the following nixpkgs input to
       ${object}.addLoadExtender {
         load.inputs = {
           inputs = {

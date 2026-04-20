@@ -1,2 +1,2 @@
 #json
-{"example":"sqlite-example"}
+{"example":"sqlite-example","flakeModuleNames":["todo"],"flakeProfileNames":["process-compose"]}

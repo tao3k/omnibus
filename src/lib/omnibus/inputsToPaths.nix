@@ -3,108 +3,44 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ lib, flops }:
-# let
-#   # Helper function to collect outPath attributes recursively
-#   collectPaths =
-#     input:
-#     lib.concatMap
-#       (
-#         attr:
-#         let
-#           # Check for outPath or sourceInfo.outPath and collect if present
-#           paths =
-#             if lib.isAttrs attr then
-#               if attr ? outPath then
-#                 [ attr.outPath ]
-#               else if attr ? sourceInfo && attr.sourceInfo ? outPath then
-#                 [ attr.sourceInfo.outPath ]
-#               else
-#                 [ ]
-#             else
-#               [ ];
-#           # Recursively collect paths from nested inputs if they exist
-#           nestedPaths =
-#             if lib.isAttrs attr && attr ? inputs then collectPaths attr.inputs else [ ];
-#         in
-#         paths ++ nestedPaths
-#       )
-#       (lib.attrValues input);
-#   # Main function to collect outPath attributes from all inputs
-#   inputsToPaths = inputs: lib.flatten (collectPaths inputs);
-# in
-# # Example usage
-# inputsToPaths
+{ lib, ... }:
 inputs:
 let
-  l = lib;
-
-  getTopLevelPath =
-    pathString:
+  /**
+    Normalize nested store paths such as `/nix/store/.../share/doc` to the
+    enclosing store root so callers get stable source roots back.
+  */
+  normalizeStorePath =
+    pathValue:
     let
-      # Split the path into parts
+      pathString = toString pathValue;
       parts = lib.splitString "/" pathString;
-      # Take the first four parts which constitute the Nix store path
-      # and the hash with the source name
       topLevelParts = lib.take 4 parts;
     in
-    # Recombine the parts back into a string path
-    if l.length parts > 4 then
-      lib.concatStringsSep "/" topLevelParts
+    if lib.hasPrefix "/nix/store/" pathString then
+      if lib.length parts > 4 then lib.concatStringsSep "/" topLevelParts else pathString
     else
-      pathString;
+      null;
 
-  extractAttrsFromInputs =
-    inputs:
-    l.pipe inputs [
-      (l.filterAttrs (_: v: l.isAttrs v && (v ? sourceInfo.outPath || v ? outPath)))
-      (l.mapAttrs (_: v: v.outPath or v.sourceInfo.outPath or v.path))
-      (l.mapAttrs (
-        _: v: if lib.strings.isStorePath v then getTopLevelPath (toString v) else [ ]
-      ))
-    ];
-
-  attrsToPaths = i: lib.attrValues (extractAttrsFromInputs i);
-
-  inherit (flops) recursiveMerge;
-  updatedInputs = recursiveMerge (l.flatten [ inputs ]);
+  /**
+    Walk flake-style inputs recursively and collect any `outPath`-like entries
+    from both the current node and nested inputs.
+  */
+  collectPaths =
+    node:
+    if !lib.isAttrs node then
+      [ ]
+    else
+      let
+        currentPath =
+          if node ? outPath then
+            normalizeStorePath node.outPath
+          else if node ? sourceInfo && node.sourceInfo ? outPath then
+            normalizeStorePath node.sourceInfo.outPath
+          else
+            null;
+      in
+      lib.optional (currentPath != null) currentPath
+      ++ lib.concatMap collectPaths (lib.attrValues (node.inputs or { }));
 in
-l.pipe updatedInputs [
-  (
-    v:
-    map (
-      x: if v.${x} ? inputs then attrsToPaths v.${x}.inputs else attrsToPaths v
-    ) (l.attrNames (extractAttrsFromInputs v))
-  )
-  (x: x ++ attrsToPaths updatedInputs)
-  l.flatten
-  l.unique
-] # extractPaths From the top level inputs
-/*
-  inputsToPaths {
-    b = {
-      inputs = {
-        d = {
-          outPath = "<PATH-b.d>";
-        };
-        f = {
-          outPath = "<PATH-b.f>";
-        };
-      };
-      outPath = "<PATH-b>";
-    };
-    a = {
-      inputs = {
-        b = {
-          outPath = "<PATH-a.b>";
-        };
-        c = {
-          outPath = "<PATH-a.c>";
-        };
-      };
-      outPath = "<PATH-a>";
-    };
-  }
-  =>
-  [ "<PATH-a>" "<PATH-a.b>" "<PATH-a.c>" "<PATH-b>" "<PATH-b.d>" "<PATH-b.f>" ]
-*/
+lib.unique (lib.concatMap collectPaths (lib.attrValues inputs))

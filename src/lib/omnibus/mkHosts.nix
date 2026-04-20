@@ -10,4 +10,8 @@
     load = { };
   },
 }:
+/**
+  Attach host-specific `load.src` selectors for every pop directory found under
+  `hostsDir`.
+*/
 super.addLoadToPopsFilterBySrc hostsDir pops addLoadExtender

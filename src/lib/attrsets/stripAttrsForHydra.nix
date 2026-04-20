@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: MIT
 
 { super }:
-super.filterAttrsOnlyRecursive (
-  n: _: n != "recurseForDerivations" && n != "dimension"
-)
+/**
+  Drop Hydra-specific control attributes while preserving the remaining nested
+  shape.
+*/
+super.filterAttrsOnlyRecursive (n: _: n != "recurseForDerivations" && n != "dimension")

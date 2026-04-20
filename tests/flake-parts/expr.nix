@@ -54,5 +54,7 @@ let
 in
 {
   example = mkFlake.packages.${system}.sqlite-example.name;
+  flakeModuleNames = builtins.attrNames omnibus.flakeModules;
+  flakeProfileNames = builtins.attrNames omnibus.flakeProfiles;
 }
 // lib.optionalAttrs debug { inherit flakeProfiles; }

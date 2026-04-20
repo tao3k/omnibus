@@ -12,15 +12,7 @@
 }:
 let
   inherit (POP) pop extendPop;
-  inherit (lib) fix;
 in
-/*
-     bee = {
-      home = {};
-      nixpkgs = {};
-      nixos = {};
-    }
-*/
 (pop {
   defaults = {
     hosts = { };
@@ -47,58 +39,76 @@ in
       hostsArgs = {
         inherit (final) hosts system inputs;
       };
+      /**
+        Most mutators only override a single field, so keep that pattern in one
+        helper to make the pop surface easier to scan.
+      */
+      setField = name: value: extendPop final (_: _: { ${name} = value; });
+      /**
+        All configuration collectors share the same hosts/system/inputs payload
+        and only differ by renamer and collector implementation.
+      */
+      collectConfigurations = renamerName: collector: collector final.${renamerName} hostsArgs;
     in
     {
-      colmena = final.genColmenaFromHosts (
-        lib.filterAttrs (n: v: v.bee ? "colmena") prev.hosts
-      );
-      genColmenaFromHosts = hosts: {
-        meta = {
-          nodes = lib.mapAttrs (hostName: hostConfig: {
-            inherit (hostConfig.meta.colmena) imports deployment;
-          }) hosts;
-          nodeNixpkgs = lib.mapAttrs (
-            hostName: hostConfig: (super.types.hive.colmena hostConfig.meta.colmena).nixpkgs
-          ) hosts;
+      colmena = final.genColmenaFromHosts (lib.filterAttrs (_: v: v.bee ? "colmena") prev.hosts);
+      genColmenaFromHosts =
+        hosts:
+        let
+          /**
+            Normalize the per-host Colmena metadata once so both node exports
+            and nodeNixpkgs derive from the same source data.
+          */
+          colmenaMetaByHost = lib.mapAttrs (_: hostConfig: hostConfig.meta.colmena) hosts;
+        in
+        {
+          meta = {
+            nodes = lib.mapAttrs (_: colmenaMeta: {
+              inherit (colmenaMeta) imports deployment;
+            }) colmenaMetaByHost;
+            nodeNixpkgs = lib.mapAttrs (
+              _: colmenaMeta: (super.types.hive.colmena colmenaMeta).nixpkgs
+            ) colmenaMetaByHost;
+          };
         };
-      };
-      setHosts =
-        setHosts: extendPop final (_: superP: { hosts = superP.hosts // setHosts; });
-      setSystem = system: extendPop final (_: _: { inherit system; });
+      setHosts = setHosts: extendPop final (_: superP: { hosts = superP.hosts // setHosts; });
+      /**
+        Merge additional pops into the hive surface so helper combinators can
+        propagate shared load selectors across them.
+      */
+      setPops = pops: extendPop final (_: superP: { pops = superP.pops // pops; });
+      setSystem = system: setField "system" system;
 
-      addMapLoadToPops = load: { };
+      /**
+        Keep the compatibility surface for downstream callers that still expect
+        hive pops to expose this hook.
+      */
+      addMapLoadToPops =
+        load:
+        extendPop final (
+          _: superP: {
+            pops = root.lib.omnibus.mapLoadToPops superP.pops load;
+          }
+        );
 
       addInputs = inputs: extendPop final (_: _: { inputs = prev.inputs // inputs; });
 
-      setNixosConfigurationsRenamer =
-        renamer: extendPop final (_: _: { nixosConfigurationRenamer = renamer; });
+      setNixosConfigurationsRenamer = renamer: setField "nixosConfigurationRenamer" renamer;
 
-      setHomeConfigurationsRenamer =
-        renamer: extendPop final (_: _: { homeConfigurationRenamer = renamer; });
+      setHomeConfigurationsRenamer = renamer: setField "homeConfigurationRenamer" renamer;
 
-      setDarwinConfigurationsRenamer =
-        renamer: extendPop final (_: _: { darwinConfigurationRenamer = renamer; });
+      setDarwinConfigurationsRenamer = renamer: setField "darwinConfigurationRenamer" renamer;
 
-      setColmenaConfigurationsRenamer =
-        renamer: extendPop final (_: _: { colmenaConfigurationRenamer = renamer; });
+      setColmenaConfigurationsRenamer = renamer: setField "colmenaConfigurationRenamer" renamer;
 
-      pops = { };
       exports = {
-        darwinConfigurations = root.hive.collectors.darwinConfigurations final.darwinConfigurationRenamer hostsArgs;
+        darwinConfigurations = collectConfigurations "darwinConfigurationRenamer" root.hive.collectors.darwinConfigurations;
 
-        colmenaHive = root.hive.collectors.colmenaConfigurations final.colmenaConfigurationRenamer hostsArgs;
+        colmenaHive = collectConfigurations "colmenaConfigurationRenamer" root.hive.collectors.colmenaConfigurations;
 
-        nixosConfigurations = root.hive.collectors.nixosConfigurations final.nixosConfigurationRenamer hostsArgs;
+        nixosConfigurations = collectConfigurations "nixosConfigurationRenamer" root.hive.collectors.nixosConfigurations;
 
-        homeConfigurations = root.hive.collectors.homeConfigurations final.homeConfigurationRenamer hostsArgs;
-        # hosts = lib.omnibus.mkHosts {
-        #   # hostsDir = projectRoot + "/units/nixos/hosts";
-        #   hostsDir = ./.;
-        #   pops = super.hostsInterface;
-        #   addLoadExtender = {
-        #     load = { };
-        #   };
-        # };
+        homeConfigurations = collectConfigurations "homeConfigurationRenamer" root.hive.collectors.homeConfigurations;
       };
     };
 })

@@ -4,6 +4,11 @@
 # SPDX-License-Identifier: MIT
 
 { super, lib }:
+/**
+  Keep derivations and attrsets explicitly marked with
+  `recurseForDerivations = true`, recursively trimming everything else.
+*/
 super.filterAttrsOnlyRecursive (
-  _n: attrs: lib.isDerivation attrs || attrs.recurseForDerivations or false
+  _name: value:
+  lib.isDerivation value || (lib.isAttrs value && (value.recurseForDerivations or false))
 )

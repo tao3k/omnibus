@@ -1,11 +1,23 @@
 {
   pkgs,
   lib,
-  config,
-  inputs,
   ...
 }:
 
+let
+  omnibus = import ./.;
+
+  configsPrek = (
+    (omnibus.pops.configs {
+      inputs.inputs = {
+        nixago = omnibus.flake.inputs.nixago;
+        nixpkgs = pkgs;
+      };
+    }).exports.default.prek
+  );
+
+  generatedHooks = [ configsPrek.cog.nixago ];
+in
 {
   # https://devenv.sh/basics/
   env.GREET = "devenv";
@@ -14,7 +26,8 @@
   packages = [
     pkgs.nixtamal
     pkgs.namaka
-  ];
+  ]
+  ++ lib.flatten (map (g: g.__passthru.packages) generatedHooks);
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
@@ -29,7 +42,7 @@
   scripts.hello.exec = "";
 
   # https://devenv.sh/basics/
-  enterShell = "";
+  enterShell = lib.concatMapStringsSep "\n" (g: g.shellHook) generatedHooks;
 
   # https://devenv.sh/tasks/
   # tasks = {
@@ -41,8 +54,12 @@
   enterTest = "";
 
   # https://devenv.sh/git-hooks/
-  git-hooks.hooks.nixfmt.enable = true;
-  # git-hooks.hooks.shellcheck.enable = true;
-
+  git-hooks = {
+    package = pkgs.prek;
+    hooks = {
+      cocogitto-verify = configsPrek.cog.git-hooks.hooks.cocogitto-verify;
+      nixfmt.enable = true;
+    };
+  };
   # See full reference at https://devenv.sh/reference/options/
 }

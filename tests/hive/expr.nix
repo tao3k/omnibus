@@ -7,6 +7,16 @@
 }:
 let
   inherit (inputs) nixpkgs;
+  mappedHivePop = (
+    (omnibus.pops.hive.setPops {
+      test = omnibus.pops.load;
+    }).addMapLoadToPops
+      (
+        path: _v: {
+          load.src = ./__fixture + "/${lib.last path}";
+        }
+      )
+  );
   hosts = {
     host1 = rec {
       colmena = {
@@ -53,5 +63,6 @@ let
   inherit (hivePop.exports) darwinConfigurations colmenaHive;
 in
 {
-  # inherit hivePop;
+  defaultHivePops = builtins.attrNames omnibus.pops.hive.pops;
+  mappedHiveValue = mappedHivePop.pops.test.exports.default.default.value;
 }

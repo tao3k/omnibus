@@ -55,10 +55,6 @@
     nixago.inputs.nixpkgs.follows = "nixpkgs";
     nixago.inputs.nixago-exts.follows = "";
 
-    git-hooks.url = "github:cachix/git-hooks.nix";
-    git-hooks.inputs.nixpkgs.follows = "nixpkgs";
-    git-hooks.inputs.flake-compat.follows = "";
-
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -102,9 +98,6 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     tf-ncl.url = "github:tweag/tf-ncl";
-    tf-ncl.inputs.topiary.follows = "";
-    tf-ncl.inputs.pre-commit-hooks.follows = "";
-    tf-ncl.inputs.nickel.follows = "nickel";
   };
 
   inputs = {
@@ -121,10 +114,10 @@
     nil.url = "github:oxalica/nil";
     nil.inputs.nixpkgs.follows = "nixpkgs";
 
-    typst.url = "github:typst/typst";
-    typst.inputs.nixpkgs.follows = "nixpkgs";
-    typst.inputs.flake-parts.follows = "flake-parts";
-    typst.inputs.systems.follows = "systems";
+    # typst.url = "github:typst/typst";
+    # typst.inputs.nixpkgs.follows = "nixpkgs";
+    # typst.inputs.flake-parts.follows = "flake-parts";
+    # typst.inputs.systems.follows = "systems";
   };
 
   inputs = {
