@@ -48,7 +48,7 @@ let
     ) (data.layouts.default.${cfgName});
 in
 (
-  (flops.haumea.pops.default.setInit {
+  (flops.haumea.pops.default.withInitLoad {
     src = projectRoot + "/units/configs";
     inputs = root.lib.omnibus.loaderInputs;
   }).addLoadExtender

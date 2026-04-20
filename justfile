@@ -2,13 +2,13 @@ override-omnibus := "nix flake lock --override-input omnibus"
 remove-flake-lock := "git rm flake.lock -f"
 
 std-standard:
-    nix develop ./local\#std --command bash -c "(cd examples/stdStandard \
+    nix develop .\#std --command bash -c "(cd examples/stdStandard \
     && {{ override-omnibus }} ../.. \
     && std //dev/scripts/hello:run \
     && {{ remove-flake-lock }})"
 
 std-default: std-default-sync
-    nix develop ./local\#std --command bash -c "(cd examples/StdDefault \
+    nix develop .\#std --command bash -c "(cd examples/StdDefault \
     && {{ override-omnibus }} ../.. \
     && TERM=xterm-256color; std //dev/scripts/pog-test:run -- tasks --help \
     && std //dev/scripts/makes-test:run \
@@ -37,7 +37,7 @@ template-nixos:
                                --dry-run --override-input omnibus ./. --no-link
 
 local-nixos:
-    nix build ./local#eval.nixos.expr.nixosConfiguration.config.system.build.toplevel --dry-run --no-link
+    nix build .#eval.nixos.expr.nixosConfiguration.config.system.build.toplevel --dry-run --no-link
 
 nixci-examples-packages:
     (cd examples && {{ override-omnibus }} .. --allow-dirty-locks && nixci build && {{ remove-flake-lock }})

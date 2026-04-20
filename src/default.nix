@@ -6,26 +6,36 @@
 { inputs }:
 let
   inherit (inputs) flops self;
-  inherit (flops.inputs)
+  inherit (flops.popflow)
     POP
     yants
     haumea
     nixlib
     ;
-in
-flops.lib.haumea.pops.default.setInit {
-  src = ./.;
-  transformer = [ (import ./lib/haumea/removeTopDefault.nix { }) ];
-  inputs = {
-    lib = (nixlib.lib.recursiveUpdate nixlib.lib inputs.self.lib) // builtins;
+  commonInputs = {
     haumea = haumea.lib;
-    POP = POP.lib;
+    inherit POP yants;
     flops = flops.lib;
-    inherit yants;
     projectRoot = ../.;
     inputs = {
       inherit (inputs) self;
-      dmerge = flops.inputs.dmerge;
+      inherit (flops.popflow) dmerge;
     };
   };
+  selfLib =
+    (flops.lib.haumea.pops.default.withInitLoad {
+      src = ./lib;
+      inputs = {
+        lib = nixlib // builtins;
+      }
+      // commonInputs;
+    }).exports.default;
+in
+flops.lib.haumea.pops.default.withInitLoad {
+  src = ./.;
+  transformer = [ flops.lib.haumea.removeTopDefault ];
+  inputs = {
+    lib = (nixlib.recursiveUpdate nixlib selfLib) // builtins;
+  }
+  // commonInputs;
 }

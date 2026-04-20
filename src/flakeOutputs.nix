@@ -105,6 +105,4 @@ in
   # aliases
   flakeModules = outputs.flake-parts.profiles;
   flakeProfiles = outputs.flake-parts.modules;
-
-  devShells = (inputs.self.call-flake (projectRoot + "/local")).devShells;
 }

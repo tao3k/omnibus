@@ -6,8 +6,7 @@
 { omnibus }:
 let
   system = "x86_64-linux";
-  loadedInputs =
-    ((omnibus.pops.flake.setInitInputs ./__lock).setSystem system).inputs;
+  loadedInputs = ((omnibus.pops.flake.withInitInputs ./__lock).withSystem system).inputs;
   jupyenvModules = omnibus.pops.jupyenv.addLoadExtender {
     load = {
       src = ./__fixture;

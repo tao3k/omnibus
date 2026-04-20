@@ -5,11 +5,25 @@
 
 {
   inputs,
-  root,
   lib,
+  haumea,
+  POP,
+  flops,
+  yants,
+  projectRoot,
+  root,
+  ...
 }:
-inputs.self.pops.self.load.inputs
-// {
+{
+  inherit
+    lib
+    haumea
+    POP
+    flops
+    yants
+    projectRoot
+    inputs
+    ;
   nix-filter = root.pops.flake.inputs.nix-filter.lib;
   nix-std = root.pops.flake.inputs.nix-std.lib;
   omnibus = inputs.self;

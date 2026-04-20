@@ -11,7 +11,7 @@
   lib,
   haumea,
 }:
-(flops.haumea.pops.default.setInit {
+(flops.haumea.pops.default.withInitLoad {
   src = super.flake.inputs.srvos + "/nixos";
   type = "nixosProfiles";
   # reset the transformer to the default

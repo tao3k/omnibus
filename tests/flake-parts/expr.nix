@@ -11,8 +11,16 @@
 }:
 let
   system = "x86_64-linux";
-  flake.inputs =
-    ((omnibus.pops.flake.setInitInputs ./__lock).setSystem system).inputs;
+  flake =
+    let
+      resolvedFlake = (omnibus.pops.flake.withInitInputs ./__lock).withSystem system;
+    in
+    {
+      inherit (resolvedFlake)
+        inputs
+        sysInputs
+        ;
+    };
 
   flakeProfiles =
     (omnibus.pops.flake-parts.profiles.addLoadExtender {
@@ -39,6 +47,7 @@ let
         perSystem =
           { ... }:
           {
+            _module.args.pkgs = flake.sysInputs.nixpkgs.legacyPackages.${system};
             imports = [ flakeProfiles.process-compose.sqlite-example ];
           };
       };

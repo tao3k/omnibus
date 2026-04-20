@@ -9,16 +9,48 @@
   };
 
   outputs =
-    inputs:
+    { self, flops, ... }@inputs:
     let
-      inherit (inputs.flops.inputs) haumea;
-      srcPops = import ./src { inherit inputs; };
-      src = srcPops.exports.default;
+      inherit (flops.popflow)
+        haumea
+        namaka
+        ;
+      omnibusPop = import ./src { inherit inputs; };
+      src = omnibusPop.exports.default;
+      supportedSystems = src.flakeOutputs.flake.inputs.nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+      stdInputs = {
+        inherit self namaka;
+        omnibus = self;
+        inherit (src.flakeOutputs.flake.inputs) nixpkgs;
+      };
     in
     src.flakeOutputs
     // {
+      eval = src.load {
+        src = ./tests;
+        inputs = src.flakeOutputs.flake.inputs.nixpkgs.lib.recursiveUpdate src.lib.omnibus.loaderInputs {
+          inputs = stdInputs;
+          system = "aarch64-darwin";
+          debug = true;
+        };
+      };
+      checks = supportedSystems (
+        system:
+        namaka.lib.load {
+          src = ./tests;
+          inputs = src.flakeOutputs.flake.inputs.nixpkgs.lib.recursiveUpdate src.lib.omnibus.loaderInputs {
+            inputs = stdInputs;
+            inherit system;
+            debug = false;
+          };
+        }
+      );
       pops = src.pops // {
-        self = srcPops;
+        self = omnibusPop;
         nixosProfilesOmnibus = src.pops.nixosProfiles;
         darwinProfilesOmnibus = src.pops.darwinProfiles;
         homeProfilesOmnibus = src.pops.homeProfiles;
@@ -48,7 +80,7 @@
 
       inherit src;
       inherit (src) lib ops errors;
-      call-flake = inputs.flops.inputs.call-flake;
+      call-flake = flops.popflow.call-flake;
     };
 
   nixConfig = {

@@ -10,8 +10,7 @@
 }:
 let
   system = "x86_64-linux";
-  flake.inputs =
-    ((omnibus.pops.flake.setInitInputs ./__lock).setSystem system).inputs;
+  flake.inputs = ((omnibus.pops.flake.withInitInputs ./__lock).withSystem system).inputs;
 
   inherit
     ((omnibus.pops.microvms {
@@ -27,9 +26,7 @@ let
     default
     ;
 in
-lib.mapAttrs
-  (_: v: if !lib.isFunction v then builtins.unsafeDiscardStringContext v else v)
-  {
-    exampleRunner = microvms.example.config.microvm.runner.qemu;
-    exampleModule = default.example;
-  }
+lib.mapAttrs (_: v: if !lib.isFunction v then builtins.unsafeDiscardStringContext v else v) {
+  exampleRunner = microvms.example.config.microvm.runner.qemu;
+  exampleModule = default.example;
+}

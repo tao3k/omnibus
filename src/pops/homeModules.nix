@@ -14,7 +14,7 @@
   super,
 }:
 (
-  (flops.haumea.pops.default.setInit {
+  (flops.haumea.pops.default.withInitLoad {
     src = projectRoot + "/units/nixos/homeModules";
     type = "nixosModules";
     inputs = root.lib.omnibus.loaderInputs;

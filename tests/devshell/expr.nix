@@ -12,18 +12,18 @@
 let
   inputs =
     let
-      baseInputs = omnibus.pops.flake.setInitInputs ./__lock;
+      baseInputs = omnibus.pops.flake.withInitInputs ./__lock;
     in
     (
       (baseInputs.addInputsExtender (
-        POP.extendPop flops.flake.pops.inputsExtender (
+        POP.extendPop flops.flake.pops.inputs (
           _self: _super: {
             inputs = baseInputs.inputs // {
               devshell = baseInputs.inputs.devshell.legacyPackages;
             };
           }
         )
-      )).setSystem
+      )).withSystem
       "x86_64-linux"
     ).inputs;
 

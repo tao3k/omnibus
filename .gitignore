@@ -6,3 +6,5 @@
 /.conform.yaml
 /treefmt.toml
 /.terraform
+/.devenv
+/.pre-commit-config.yaml

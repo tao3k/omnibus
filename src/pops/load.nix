@@ -14,7 +14,7 @@ let
   inherit (flops) recursiveMerge';
 in
 (POP.extendPop
-  (flops.haumea.pops.default.setInit {
+  (flops.haumea.pops.default.withInitLoad {
     loader = with haumea; [ (matchers.nix loaders.default) ];
     inputs = root.lib.omnibus.loaderInputs;
   })

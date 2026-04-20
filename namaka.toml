@@ -1,5 +1,5 @@
 [check]
-cmd = ["nix", "flake", "check", "./local"]
+cmd = ["nix", "flake", "check", "."]
 
 [eval]
-cmd = ["nix", "eval", "./local#checks"]
+cmd = ["nix", "eval", ".#checks"]

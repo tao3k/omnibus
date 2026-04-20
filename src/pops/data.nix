@@ -8,7 +8,7 @@
   flops,
   root,
 }:
-flops.haumea.pops.default.setInit {
+flops.haumea.pops.default.withInitLoad {
   loader = with haumea; [
     matchers.json
     matchers.toml
